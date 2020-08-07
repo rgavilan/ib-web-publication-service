@@ -7,6 +7,7 @@ import { UserComponent } from './user/user.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
+import { NoAuthGuard } from './_guards/no-auth.guard';
 
 /**
  * Rutas securizadas
@@ -54,7 +55,8 @@ const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
+    canActivate: [NoAuthGuard],
     children: secureRoutes
   },
 

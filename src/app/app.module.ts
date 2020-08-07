@@ -31,6 +31,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 
 // -------------- Guards --------------
 import { AuthGuard } from './_guards/auth.guard';
+import { NoAuthGuard } from './_guards/no-auth.guard';
 
 // -------------- Interceptors --------------
 import { TokenizedInterceptor } from './_interceptors/tokenized-interceptor';
@@ -69,6 +70,7 @@ import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
   ],
   providers: [
     AuthGuard,
+    NoAuthGuard,
     LoginService,
     MenuService,
     UserService,
