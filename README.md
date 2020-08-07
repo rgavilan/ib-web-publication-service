@@ -1,4 +1,6 @@
-# Arquetipo Front - Angular
+![](./images/logos_feder.png)
+
+# ASIO - Web publication service
 
 Se trata del arquetipo para Front desarrollado en Angular.
 
@@ -7,7 +9,3 @@ Se trata del arquetipo para Front desarrollado en Angular.
 Dentro del proyecto base se integran las siguientes características:
 
 * Frontend Angular 9.1
-
-## Documentación
-
-* https://corpus.izertis.com/arquitectura/nodejs/angular/arquetipos/1-1-0
