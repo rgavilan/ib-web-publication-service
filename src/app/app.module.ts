@@ -28,6 +28,7 @@ import { MainComponent } from './main/main.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { SPARQLEditorComponent } from './sparqleditor/sparqleditor.component';
 
 // -------------- Guards --------------
 import { AuthGuard } from './_guards/auth.guard';
@@ -46,7 +47,8 @@ import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
     MainComponent,
     MenuComponent,
     HomeComponent,
-    PaginationComponent
+    PaginationComponent,
+    SPARQLEditorComponent
   ],
   imports: [
     BrowserModule,

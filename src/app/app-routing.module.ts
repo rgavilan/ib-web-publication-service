@@ -8,6 +8,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
 import { NoAuthGuard } from './_guards/no-auth.guard';
+import { SPARQLEditorComponent } from './sparqleditor/sparqleditor.component';
 
 /**
  * Rutas securizadas
@@ -37,6 +38,10 @@ const secureRoutes: Routes = [
   {
     path: 'users/:id',
     component: UserDetailComponent
+  },
+  {
+    path: 'sparql',
+    component: SPARQLEditorComponent
   }
 ];
 

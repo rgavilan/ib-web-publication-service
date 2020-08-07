@@ -37,6 +37,7 @@ import { TokenizedInterceptor } from '../_interceptors/tokenized-interceptor';
 import { OAuthInterceptor } from '../_interceptors/oauth-interceptor';
 
 import { APP_BASE_HREF } from '@angular/common';
+import { SPARQLEditorComponent } from '../sparqleditor/sparqleditor.component';
 
 /**
  * Clase de ayuda para construcción de tests unitarios.
@@ -51,7 +52,8 @@ export class TestingHelper {
                 MainComponent,
                 MenuComponent,
                 HomeComponent,
-                PaginationComponent
+                PaginationComponent,
+                SPARQLEditorComponent
             ],
             imports: [
                 BrowserModule,

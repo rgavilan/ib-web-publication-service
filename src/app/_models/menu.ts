@@ -29,5 +29,10 @@ export const MENU_ITEMS: MenuItem[] = [
     title: 'menu.users',
     icon: '',
     url: '/main/users'
+  },
+  {
+    title: 'menu.sparql',
+    icon: '',
+    url: '/main/sparql'
   }
 ];

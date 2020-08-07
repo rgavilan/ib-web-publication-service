@@ -3,5 +3,6 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "open-iconic/font/css/open-iconic-bootstrap.css";
 @import "~@ng-select/ng-select/themes/default.theme.css";
+@import '~@triply/yasgui/build/yasgui.min.css';
 @import "assets/sidebar/simple-sidebar.css";
 @import 'assets/app.css';

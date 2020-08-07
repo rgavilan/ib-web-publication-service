@@ -34,6 +34,7 @@
     "menu" : {
         "home": "Welcome",
         "users" : "Users",
+        "sparql" : "SPARQL",
         "logout" : "Log out"
     },
     "login" : {
