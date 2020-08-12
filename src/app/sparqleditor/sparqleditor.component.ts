@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Yasgui from "@triply/yasgui";
 import Yasqe from "@triply/yasqe";
 import Yasr from "@triply/yasr"
-import { Parser, Plugin } from "@triply/yasr";
+import { yasguiOpts } from '../../environments/environment';
 import * as superagent from "superagent";
 import { SuperAgentRequest } from 'superagent';
 
@@ -13,39 +13,31 @@ import { SuperAgentRequest } from 'superagent';
 })
 export class SPARQLEditorComponent implements OnInit {
 
-  result = '';
+  //result = '';
 
   constructor() { }
 
   ngOnInit(): void {
-    // const yasgui = new Yasgui(document.getElementById("yasgui"), {});
-    // yasgui.getTab().getYasqe();
+
+    Yasgui.defaults.requestConfig.endpoint = yasguiOpts.endpoint;
+    Yasgui.defaults.requestConfig.method = "POST";
 
     const yasqe = new Yasgui.Yasqe(document.getElementById("yasgui"));
-    // yasqe.on("query", this.onQuery);
+    const yasr = new Yasr(document.getElementById("yasr"));
+
     yasqe.on("queryResponse", (instance: Yasqe, req: superagent.SuperAgentRequest, duration: number) => {
-      this.onQueryResponse(instance, req, duration);
+      this.onQueryResponse(instance, req, duration, yasr);
     });
-
-    Yasr.registerPlugin("iztest", IzTest as any);
-
-    
-    // yasqe.on("queryResponse", this.onQueryResponse);
   }
 
-  onQueryResponse(instance: Yasqe, data: SuperAgentRequest, duration: number) {
+  onQueryResponse(instance: Yasqe, data: SuperAgentRequest, duration: number, yasr: Yasr) {
+    
+    yasr.setResponse(data);
+
+    /* result parse JSON */
     const jsonData = JSON.parse((data as any).text);
     console.log(jsonData.results.bindings);
-    this.result = JSON.stringify(jsonData.results.bindings);
-    // req.text
-    // myTest();
-
-    // let parser = new Parser(data, duration);
-    // let json = parser.getAsJson();
-
-    // console.info("prueba");
-
-    // console.log(json);
+    //this.result = JSON.stringify(jsonData.results.bindings);
   }
 
 }
