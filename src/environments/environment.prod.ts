@@ -5,3 +5,8 @@ export const environment = {
   oauthClientId: 'acme',
   oauthSecret: 'acmesecret'
 };
+
+// default settings for how to query the endpoint
+export const yasgui = {
+  endpoint: 'http://dbpedia.org/sparql'
+}

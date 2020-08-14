@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Yasgui from "@triply/yasgui";
 import Yasqe from "@triply/yasqe";
 import Yasr from "@triply/yasr"
-import { yasguiOpts } from '../../environments/environment';
+import { yasgui } from '../../environments/environment';
 import * as superagent from "superagent";
 import { SuperAgentRequest } from 'superagent';
 
@@ -19,7 +19,7 @@ export class SPARQLEditorComponent implements OnInit {
 
   ngOnInit(): void {
 
-    Yasgui.defaults.requestConfig.endpoint = yasguiOpts.endpoint;
+    Yasgui.defaults.requestConfig.endpoint = yasgui.endpoint;
     Yasgui.defaults.requestConfig.method = "POST";
 
     const yasqe = new Yasgui.Yasqe(document.getElementById("yasgui"));
