@@ -13,7 +13,7 @@ export const environment = {
 
 // default settings for how to query the endpoint
 export const yasgui = {
-  endpoint: 'http://dbpedia.org/sparql'
+  endpoint: 'http://localhost:8282/proxy/wdqs/bigdata/namespace/wdq/sparql'
 }
 
 /*

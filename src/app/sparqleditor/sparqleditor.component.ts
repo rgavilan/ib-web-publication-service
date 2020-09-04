@@ -20,7 +20,7 @@ export class SPARQLEditorComponent implements OnInit {
   ngOnInit(): void {
 
     Yasgui.defaults.requestConfig.endpoint = yasgui.endpoint;
-    Yasgui.defaults.requestConfig.method = "POST";
+    Yasgui.defaults.requestConfig.method = "GET";
 
     const yasqe = new Yasgui.Yasqe(document.getElementById("yasgui"));
     const yasr = new Yasr(document.getElementById("yasr"));
@@ -30,6 +30,8 @@ export class SPARQLEditorComponent implements OnInit {
     });
   }
 
+
+  // When Yasgui gets the results
   onQueryResponse(instance: Yasqe, data: SuperAgentRequest, duration: number, yasr: Yasr) {
     
     yasr.setResponse(data);
@@ -41,3 +43,4 @@ export class SPARQLEditorComponent implements OnInit {
   }
 
 }
+
