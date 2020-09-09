@@ -25,11 +25,13 @@ export const MENU_ITEMS: MenuItem[] = [
     icon: 'ion-home',
     url: '/main/home'
   },
+  /*
   {
     title: 'menu.users',
     icon: '',
     url: '/main/users'
   },
+  */
   {
     title: 'menu.sparql',
     icon: '',
