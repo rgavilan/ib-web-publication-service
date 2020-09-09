@@ -65,5 +65,13 @@
         "password": "Contraseña",
         "edit-user-title": "Editar usuario: {{name}}",
         "create-user-title": "Crear nuevo usuario"
+    },
+    "sparql" : {
+        "results" : {
+            "table" : "tabla",
+            "response" : "response",
+            "map" : "mapa",
+            "chart" : "gráfica"
+        }
     }
 }

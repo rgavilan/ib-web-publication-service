@@ -1,0 +1,29 @@
+results
+<div>
+    <tabset>
+      <tab  id="tab1">
+        <ng-template tabHeading>
+            <span class="oi oi-grid-three-up"></span> {{ 'sparql.results.table' | translate }}
+        </ng-template>
+        Table
+      </tab>
+      <tab>
+        <ng-template tabHeading>
+            <span class="oi oi-list"></span> {{ 'sparql.results.response' | translate }}
+        </ng-template>
+        Response
+      </tab>
+      <tab disabled="true">
+        <ng-template tabHeading>
+            <span class="oi oi-graph"></span> {{ 'sparql.results.chart' | translate }}
+        </ng-template>
+        Gráfico
+      </tab>
+      <tab disabled="true">
+        <ng-template tabHeading>
+            <span class="oi oi-map"></span> {{ 'sparql.results.map' | translate }}
+        </ng-template>
+        Mapa
+      </tab>
+    </tabset>
+  </div>

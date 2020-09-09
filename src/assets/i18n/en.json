@@ -65,5 +65,13 @@
         "password": "Password",
         "edit-user-title": "Edit user: {{name}}",
         "create-user-title": "Create new user"
+    },
+    "sparql" : {
+        "results" : {
+            "table" : "table",
+            "response" : "response",
+            "map" : "map",
+            "chart" : "chart"
+        }
     }
 }

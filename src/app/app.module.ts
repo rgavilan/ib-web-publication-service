@@ -13,6 +13,7 @@ import { NgProgressModule } from 'ngx-progressbar';
 import { NgProgressHttpModule } from 'ngx-progressbar/http';
 import { NgProgressRouterModule } from 'ngx-progressbar/router';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 // -------------- Services --------------
 import { LoginService } from './_services/login.service'; 
@@ -29,6 +30,7 @@ import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { SPARQLEditorComponent } from './sparqleditor/sparqleditor.component';
+import { ResultsComponent } from './sparqleditor/results/results.component';
 
 // -------------- Guards --------------
 import { AuthGuard } from './_guards/auth.guard';
@@ -48,7 +50,8 @@ import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
     MenuComponent,
     HomeComponent,
     PaginationComponent,
-    SPARQLEditorComponent
+    SPARQLEditorComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,8 @@ import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
     NgProgressModule,
     NgProgressHttpModule,
     NgProgressRouterModule,
-    NgSelectModule
+    NgSelectModule,
+    TabsModule.forRoot()
   ],
   providers: [
     AuthGuard,
