@@ -39,6 +39,7 @@ import { NoAuthGuard } from './_guards/no-auth.guard';
 // -------------- Interceptors --------------
 import { TokenizedInterceptor } from './_interceptors/tokenized-interceptor';
 import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
+import { TableResultsComponent } from './sparqleditor/table-results/table-results.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
     HomeComponent,
     PaginationComponent,
     SPARQLEditorComponent,
-    ResultsComponent
+    ResultsComponent,
+    TableResultsComponent
   ],
   imports: [
     BrowserModule,
