@@ -1,10 +1,45 @@
-<table *ngIf="!!data">
-    <tr>
-        <th class="first-header"></th>
-        <th *ngFor="let header of data.head.vars"> {{ header }} </th>
-    </tr>
-    <tr *ngFor="let item of data.results.bindings; index as i">
-        <td> {{i}} </td>
-        <td *ngFor="let header of data.head.vars"> {{item[header].value}} </td>
-    </tr>
-</table>
+<div class="container-fluid app-table-results">
+    <div class="row">
+        <div class="col">
+            <table class="table  table-bordered" *ngIf="!!_data">
+                <tr>
+                    <th class="first-header"></th>
+                    <th *ngFor="let header of _data.head.vars"> {{ header }} </th>
+                </tr>
+                <tr *ngFor="let item of _dataToShow; index as i" [ngClass]="{'table-secondary': i%2==1}">
+                    <td> {{i}} </td>
+                    <td *ngFor="let header of _data.head.vars">
+                        <a href="{{item[header].value}}" *ngIf="item[header].type=='uri'">{{item[header].value}}</a>
+                        <ng-container *ngIf="item[header].type!='uri'">{{item[header].value}}</ng-container>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="Page navigation example"  *ngIf="!!_data">
+                <ul class="pagination">
+                  <li class="page-item" [ngClass]="{'disabled': actualPage==1}">
+                    <a class="page-link" [routerLink]="" (click)="showPage(actualPage-1)" aria-label="Previous" >
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li class="page-item" *ngFor="let item of [].constructor(numPages); let i = index" [ngClass]="{'active': i+1==actualPage}">
+                      <a class="page-link" [routerLink]="" (click)="showPage(i+1)">{{i+1}}</a>
+                  </li>
+                  <li class="page-item" [ngClass]="{'disabled': actualPage==numPages}">
+                    <a class="page-link" [routerLink]="" (click)="showPage(actualPage+1)" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+        </div>
+    </div>
+</div>

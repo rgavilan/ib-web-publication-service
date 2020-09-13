@@ -33,10 +33,10 @@ export class SPARQLEditorComponent implements OnInit {
 
   // When Yasgui gets the results
   onQueryResponse(instance: Yasqe, data: SuperAgentRequest, duration: number) {
-      
-    const yasr = new Yasr(document.getElementById("yasr"));
-    
-    yasr.setResponse(data);
+
+    // const yasr = new Yasr(document.getElementById("yasr"));
+
+    // yasr.setResponse(data);
 
     /* result parse JSON */
     this.jsonData = JSON.parse((data as any).text);
