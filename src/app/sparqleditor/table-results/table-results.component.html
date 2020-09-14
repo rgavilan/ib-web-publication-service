@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col">
             <nav aria-label="Page navigation example"  *ngIf="!!_data">
-                <ul class="pagination">
+                <ul class="pagination  justify-content-center">
                   <li class="page-item" [ngClass]="{'disabled': actualPage==1}">
                     <a class="page-link" [routerLink]="" (click)="showPage(actualPage-1)" aria-label="Previous" >
                       <span aria-hidden="true">&laquo;</span>
@@ -42,4 +42,5 @@
               </nav>
         </div>
     </div>
+    
 </div>
