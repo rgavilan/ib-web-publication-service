@@ -94,6 +94,9 @@
             "browserTarget": "web-publication-service:build"
           },
           "configurations": {
+            "development": {
+              "browserTarget": "web-publication-service:build:development"
+            },
             "production": {
               "browserTarget": "web-publication-service:build:production"
             }
