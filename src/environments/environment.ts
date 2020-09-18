@@ -13,7 +13,13 @@ export const environment = {
 
 // default settings for how to query the endpoint
 export const yasgui = {
-  endpoint: 'http://localhost:8282/proxy/wdqs/bigdata/namespace/wdq/sparql'
+  // Wikibase:
+  // endpoint: 'http://localhost:8282/proxy/wdqs/bigdata/namespace/wdq/sparql',
+  // method: 'GET'
+
+  // Fuseki
+  endpoint: 'http://localhost:3030/trellis/sparql',
+  method: 'POST'
 }
 
 /*

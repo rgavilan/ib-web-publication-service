@@ -20,7 +20,7 @@ export class SPARQLEditorComponent implements OnInit {
   ngOnInit(): void {
 
     Yasgui.defaults.requestConfig.endpoint = yasgui.endpoint;
-    Yasgui.defaults.requestConfig.method = "GET";
+    Yasgui.defaults.requestConfig.method = (yasgui.method == "GET") ? "GET" : "POST";
 
     const yasqe = new Yasgui.Yasqe(document.getElementById("yasgui"));
 
