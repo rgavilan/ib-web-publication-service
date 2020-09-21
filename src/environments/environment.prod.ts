@@ -9,10 +9,10 @@ export const environment = {
 // default settings for how to query the endpoint
 export const yasgui = {
   // Wikibase:
-  endpoint: 'http://herc-iz-front-desa.atica.um.es/proxy/wdqs/bigdata/namespace/wdq/sparql',
-  method: 'GET'
+  // endpoint: 'http://herc-iz-front-desa.atica.um.es/proxy/wdqs/bigdata/namespace/wdq/sparql',
+  // method: 'GET'
 
   // Fuseki
-  // endpoint: 'http://herc-iz-front-desa.atica.um.es/trellis/sparql',
-  // method: 'POST'
+  endpoint: 'http://herc-iz-front-desa.atica.um.es/trellis/sparql',
+  method: 'POST'
 }
