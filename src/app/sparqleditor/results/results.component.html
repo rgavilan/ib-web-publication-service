@@ -12,7 +12,7 @@
                     <ng-template tabHeading>
                         <span class="oi oi-list"></span> {{ 'sparql.results.response' | translate }}
                     </ng-template>
-                    <pre *ngIf="data != null">{{data | json}}</pre>
+                    <app-json-results [data] = "data"></app-json-results>
                 </tab>
                 <tab disabled="true">
                     <ng-template tabHeading>
