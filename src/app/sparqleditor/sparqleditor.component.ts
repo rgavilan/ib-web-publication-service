@@ -13,7 +13,8 @@ import { SuperAgentRequest } from 'superagent';
 })
 export class SPARQLEditorComponent implements OnInit {
 
-  jsonData = null;
+  jsonData: any = null;
+  errorMessage: String;
 
   constructor() { }
 
@@ -24,10 +25,15 @@ export class SPARQLEditorComponent implements OnInit {
 
     const yasqe = new Yasgui.Yasqe(document.getElementById("yasgui"));
 
+
     yasqe.on("queryResponse", (instance: Yasqe, req: superagent.SuperAgentRequest, duration: number) => {
       // this.onQueryResponse(instance, req, duration, yasr);
+      console.log("queryResponse");
       this.onQueryResponse(instance, req, duration);
     });
+
+
+
   }
 
 
@@ -39,9 +45,15 @@ export class SPARQLEditorComponent implements OnInit {
     // yasr.setResponse(data);
 
     /* result parse JSON */
-    this.jsonData = JSON.parse((data as any).text);
-    console.log(this.jsonData.results.bindings);
-  }
+    if(data.hasOwnProperty("text")) {
+      this.errorMessage = null;
+      this.jsonData = JSON.parse((data as any).text);
+      console.log(this.jsonData.results.bindings);
+    } else {
+      this.errorMessage = data as any;
+      this.jsonData = null;
+    }
+  } 
 
 }
 
