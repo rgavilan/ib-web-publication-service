@@ -49,9 +49,11 @@ export class SPARQLEditorComponent implements OnInit {
       this.errorMessage = null;
       this.jsonData = JSON.parse((data as any).text);
       console.log(this.jsonData.results.bindings);
-    } else {
-      this.errorMessage = (data as any).response.text;
-      this.jsonData = null;
+    } else if (data.hasOwnProperty("response")) {
+      if(data.response.status == 400) {
+        this.errorMessage = (data as any).response.text;
+        this.jsonData = null;
+      }
     }
   } 
 
