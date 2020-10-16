@@ -2,13 +2,19 @@
     <div class="row">
         <div class="col">
             <tabset>
-                <tab   disabled="{{!errorMessage}}">
+                <tab disabled="{{!!data}}">
                     <ng-template tabHeading>
                         <span class="oi oi-grid-three-up"></span> {{ 'sparql.results.table' | translate }}
                     </ng-template>
-                    <app-table-results [data] = "data"></app-table-results>
+                    <ng-container *ngIf="!!data">
+                        <app-table-results [data] = "data"></app-table-results>
+                    </ng-container>
+                    <ng-container *ngIf="!!errorMessage">
+                        <app-error-results [errorMessage] = "errorMessage"></app-error-results>
+                    </ng-container>
+                    
                 </tab>
-                <tab disabled="{{!errorMessage}}">
+                <tab disabled="{{!!data}}">
                     <ng-template tabHeading>
                         <span class="oi oi-list"></span> {{ 'sparql.results.response' | translate }}
                     </ng-template>

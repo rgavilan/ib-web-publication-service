@@ -14,7 +14,7 @@ import { SuperAgentRequest } from 'superagent';
 export class SPARQLEditorComponent implements OnInit {
 
   jsonData: any = null;
-  errorMessage: String;
+  errorMessage: any;
 
   constructor() { }
 
@@ -26,7 +26,7 @@ export class SPARQLEditorComponent implements OnInit {
     const yasqe = new Yasgui.Yasqe(document.getElementById("yasgui"));
 
 
-    yasqe.on("queryResponse", (instance: Yasqe, req: superagent.SuperAgentRequest, duration: number) => {
+    yasqe.on("queryResponse", (instance: Yasqe, req: any, duration: number) => {
       // this.onQueryResponse(instance, req, duration, yasr);
       console.log("queryResponse");
       this.onQueryResponse(instance, req, duration);
@@ -38,7 +38,7 @@ export class SPARQLEditorComponent implements OnInit {
 
 
   // When Yasgui gets the results
-  onQueryResponse(instance: Yasqe, data: SuperAgentRequest, duration: number) {
+  onQueryResponse(instance: Yasqe, data: any, duration: number) {
 
     // const yasr = new Yasr(document.getElementById("yasr"));
 
@@ -50,7 +50,7 @@ export class SPARQLEditorComponent implements OnInit {
       this.jsonData = JSON.parse((data as any).text);
       console.log(this.jsonData.results.bindings);
     } else {
-      this.errorMessage = data as any;
+      this.errorMessage = (data as any).response.text;
       this.jsonData = null;
     }
   } 

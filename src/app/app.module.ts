@@ -41,6 +41,7 @@ import { TokenizedInterceptor } from './_interceptors/tokenized-interceptor';
 import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
 import { TableResultsComponent } from './sparqleditor/table-results/table-results.component';
 import { JsonResultsComponent } from './sparqleditor/json-results/json-results.component';
+import { ErrorResultsComponent } from './sparqleditor/error-results/error-results.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { JsonResultsComponent } from './sparqleditor/json-results/json-results.c
     SPARQLEditorComponent,
     ResultsComponent,
     TableResultsComponent,
-    JsonResultsComponent
+    JsonResultsComponent,
+    ErrorResultsComponent
   ],
   imports: [
     BrowserModule,
