@@ -14,6 +14,7 @@ import { NgProgressHttpModule } from 'ngx-progressbar/http';
 import { NgProgressRouterModule } from 'ngx-progressbar/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { AlertModule } from 'ngx-bootstrap/alert'
 
 // -------------- Services --------------
 import { LoginService } from './_services/login.service'; 
@@ -78,7 +79,8 @@ import { ErrorResultsComponent } from './sparqleditor/error-results/error-result
     NgProgressHttpModule,
     NgProgressRouterModule,
     NgSelectModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    AlertModule.forRoot()
   ],
   providers: [
     AuthGuard,
