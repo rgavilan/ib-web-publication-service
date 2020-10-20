@@ -7,14 +7,11 @@ import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { NgProgressModule } from 'ngx-progressbar';
 import { NgProgressHttpModule } from 'ngx-progressbar/http';
 import { NgProgressRouterModule } from 'ngx-progressbar/router';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { TabsModule } from 'ngx-bootstrap/tabs';
-import { AlertModule } from 'ngx-bootstrap/alert'
 
 // -------------- Services --------------
 import { LoginService } from './_services/login.service'; 
@@ -30,8 +27,6 @@ import { MainComponent } from './main/main.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { PaginationComponent } from './pagination/pagination.component';
-import { SPARQLEditorComponent } from './sparqleditor/sparqleditor.component';
-import { ResultsComponent } from './sparqleditor/results/results.component';
 
 // -------------- Guards --------------
 import { AuthGuard } from './_guards/auth.guard';
@@ -40,9 +35,10 @@ import { NoAuthGuard } from './_guards/no-auth.guard';
 // -------------- Interceptors --------------
 import { TokenizedInterceptor } from './_interceptors/tokenized-interceptor';
 import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
-import { TableResultsComponent } from './sparqleditor/table-results/table-results.component';
-import { JsonResultsComponent } from './sparqleditor/json-results/json-results.component';
-import { ErrorResultsComponent } from './sparqleditor/error-results/error-results.component';
+import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
+
+// -------------- Aux functions --------------
+import { createTranslateLoader } from './_helpers/loader-factory';
 
 @NgModule({
   declarations: [
@@ -53,12 +49,7 @@ import { ErrorResultsComponent } from './sparqleditor/error-results/error-result
     MainComponent,
     MenuComponent,
     HomeComponent,
-    PaginationComponent,
-    SPARQLEditorComponent,
-    ResultsComponent,
-    TableResultsComponent,
-    JsonResultsComponent,
-    ErrorResultsComponent
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -79,8 +70,8 @@ import { ErrorResultsComponent } from './sparqleditor/error-results/error-result
     NgProgressHttpModule,
     NgProgressRouterModule,
     NgSelectModule,
-    TabsModule.forRoot(),
-    AlertModule.forRoot()
+    // Application
+    SparqleditorModule
   ],
   providers: [
     AuthGuard,
@@ -102,7 +93,3 @@ import { ErrorResultsComponent } from './sparqleditor/error-results/error-result
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-export function createTranslateLoader(httpClient: HttpClient) {
-  return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
-}
