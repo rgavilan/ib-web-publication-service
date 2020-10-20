@@ -21,9 +21,6 @@ export class ResultsComponent implements AfterViewInit, OnChanges {
     if (!!this.resultsTab) {
       if (!this.data) {
         this.resultsTab.tabs[0].active = true;
-        this.resultsTab.tabs.forEach(tab => {
-          tab.disabled = true;
-        });
       }
     }
   }
