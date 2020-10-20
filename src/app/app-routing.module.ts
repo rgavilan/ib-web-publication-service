@@ -14,10 +14,6 @@ import { SPARQLEditorComponent } from './sparqleditor/sparqleditor.component';
  * Rutas securizadas
  */
 const secureRoutes: Routes = [
-  {
-    path: 'home',
-    component: HomeComponent
-  },
   /**
    * Consulta de usuarios
    */
@@ -38,10 +34,20 @@ const secureRoutes: Routes = [
   {
     path: 'users/:id',
     component: UserDetailComponent
-  },
+  }
+];
+
+/**
+ * Rutas securizadas
+ */
+const noSecureRoutes: Routes = [
+  {
+  path: 'home',
+  component: HomeComponent
+},
   {
     path: 'sparql',
-    component: SPARQLEditorComponent
+    loadChildren: () => import('./sparqleditor/sparqleditor.module').then(m => m.SparqleditorModule)
   }
 ];
 
@@ -60,9 +66,18 @@ const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
-    // canActivate: [AuthGuard],
-    canActivate: [NoAuthGuard],
+    canActivate: [AuthGuard],
     children: secureRoutes
+  },
+
+  /**
+   * Ruta main no securizada.
+   */
+  {
+    path: 'main',
+    component: MainComponent,
+    canActivate: [NoAuthGuard],
+    children: noSecureRoutes
   },
 
   // otherwhise redirect to main
