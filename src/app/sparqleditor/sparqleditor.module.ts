@@ -4,8 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AlertModule } from 'ngx-bootstrap/alert';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
 import { SparqleditorRoutingModule } from './sparqleditor-routing.module';
 
 // -------------- Components --------------
@@ -16,7 +15,6 @@ import { JsonResultsComponent } from './json-results/json-results.component';
 import { ErrorResultsComponent } from './error-results/error-results.component'
 
 // -------------- Aux functions --------------
-import { createTranslateLoader } from '../_helpers/loader-factory';
 
 
 
@@ -30,13 +28,7 @@ import { createTranslateLoader } from '../_helpers/loader-factory';
     ],
   imports: [
     SparqleditorRoutingModule,
-    TranslateModule.forRoot({
-    loader: {
-      provide: TranslateLoader,
-      useFactory: (createTranslateLoader),
-      deps: [HttpClient]
-    }
-  }),
+    TranslateModule,
     CommonModule,
     TabsModule.forRoot(),
     AlertModule.forRoot(),

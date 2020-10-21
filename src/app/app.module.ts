@@ -7,6 +7,7 @@ import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { NgProgressModule } from 'ngx-progressbar';
 import { NgProgressHttpModule } from 'ngx-progressbar/http';
@@ -38,7 +39,6 @@ import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
 import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
 
 // -------------- Aux functions --------------
-import { createTranslateLoader } from './_helpers/loader-factory';
 
 @NgModule({
   declarations: [
@@ -93,3 +93,7 @@ import { createTranslateLoader } from './_helpers/loader-factory';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function createTranslateLoader(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
+}
