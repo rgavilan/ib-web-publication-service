@@ -28,11 +28,7 @@ import { MainComponent } from './main/main.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { PaginationComponent } from './pagination/pagination.component';
-import { SPARQLEditorComponent } from './sparqleditor/sparqleditor.component';
-import { ResultsComponent } from './sparqleditor/results/results.component';
 import { ProyectsComponent } from './proyects/proyects.component';
-import { TableResultsComponent } from './sparqleditor/table-results/table-results.component';
-import { JsonResultsComponent } from './sparqleditor/json-results/json-results.component';
 
 // -------------- Guards --------------
 import { AuthGuard } from './_guards/auth.guard';
@@ -56,10 +52,6 @@ import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
     MenuComponent,
     HomeComponent,
     PaginationComponent,
-    SPARQLEditorComponent,
-    ResultsComponent,
-    TableResultsComponent,
-    JsonResultsComponent,
     ProyectsComponent
   ],
   imports: [
