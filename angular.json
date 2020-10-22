@@ -151,6 +151,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "web-publication-service"
+    }
+  },
+  "defaultProject": "web-publication-service",
+  "cli": {
+    "analytics": "bfabdf05-0731-4b05-8981-599dd3ee9573"
+  }
 }

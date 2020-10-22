@@ -9,6 +9,7 @@ import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
 import { NoAuthGuard } from './_guards/no-auth.guard';
 import { SPARQLEditorComponent } from './sparqleditor/sparqleditor.component';
+import { ProyectsComponent } from './proyects/proyects.component';
 
 /**
  * Rutas securizadas
@@ -48,6 +49,11 @@ const noSecureRoutes: Routes = [
   {
     path: 'sparql',
     loadChildren: () => import('./sparqleditor/sparqleditor.module').then(m => m.SparqleditorModule)
+  }
+  ,
+  {
+    path: 'proyects',
+    component: ProyectsComponent
   }
 ];
 
