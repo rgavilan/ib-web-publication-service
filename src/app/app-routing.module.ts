@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { NoAuthGuard } from './_guards/no-auth.guard';
 import { SPARQLEditorComponent } from './sparqleditor/sparqleditor.component';
 import { ProyectsComponent } from './proyects/proyects.component';
+import { UniversidadesComponent } from './universidades/universidades.component';
+import { LinksComponent } from './links/links.component';
 
 /**
  * Rutas securizadas
@@ -54,6 +56,14 @@ const noSecureRoutes: Routes = [
   {
     path: 'proyects',
     component: ProyectsComponent
+  },
+  {
+    path: 'universities',
+    component: UniversidadesComponent
+  },
+  {
+    path: 'links',
+    component: LinksComponent
   }
 ];
 

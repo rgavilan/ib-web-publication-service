@@ -29,6 +29,7 @@ import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ProyectsComponent } from './proyects/proyects.component';
+import { UniversidadesComponent } from './universidades/universidades.component';
 
 // -------------- Guards --------------
 import { AuthGuard } from './_guards/auth.guard';
@@ -38,6 +39,7 @@ import { NoAuthGuard } from './_guards/no-auth.guard';
 import { TokenizedInterceptor } from './_interceptors/tokenized-interceptor';
 import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
 import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
+import { LinksComponent } from './links/links.component';
 
 // -------------- Aux functions --------------
 
@@ -52,7 +54,9 @@ import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
     MenuComponent,
     HomeComponent,
     PaginationComponent,
-    ProyectsComponent
+    ProyectsComponent,
+    UniversidadesComponent,
+    LinksComponent
   ],
   imports: [
     BrowserModule,

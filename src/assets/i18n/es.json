@@ -73,5 +73,17 @@
             "map" : "mapa",
             "chart" : "gráfica"
         }
+    },
+    "proyect" : {
+        "title": "Proyectos",
+        "detail" :{
+            "name" : "Nombre",
+            "date" : "Fecha"
+        }
+    },
+    "links" : {
+        "title": "Links GitHub",
+        "principal": "Principal",
+        "repository": "Respositorios"
     }
 }
