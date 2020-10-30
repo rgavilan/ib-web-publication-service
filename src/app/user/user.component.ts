@@ -1,5 +1,16 @@
-import { Component, OnInit, ViewContainerRef, AfterContentInit } from '@angular/core';
-import { PaginatedSearchComponent, FindRequest, Page, Order, Direction } from '../_helpers/search';
+import {
+  Component,
+  OnInit,
+  ViewContainerRef,
+  AfterContentInit,
+} from '@angular/core';
+import {
+  PaginatedSearchComponent,
+  FindRequest,
+  Page,
+  Order,
+  Direction,
+} from '../_helpers/search';
 import { User } from '../_models/user';
 import { UserService } from '../_services/user.service';
 import { Observable } from 'rxjs';
@@ -12,14 +23,15 @@ import { TranslateService } from '@ngx-translate/core';
  */
 @Component({
   selector: 'app-user',
-  templateUrl: './user.component.html'
+  templateUrl: './user.component.html',
 })
 export class UserComponent extends PaginatedSearchComponent<User> {
-    
-  constructor(router: Router, 
-              translate: TranslateService, 
-              toastr: ToastrService, 
-              private userService: UserService) {
+  constructor(
+    router: Router,
+    translate: TranslateService,
+    toastr: ToastrService,
+    private userService: UserService
+  ) {
     super(router, translate, toastr);
   }
 
@@ -32,9 +44,9 @@ export class UserComponent extends PaginatedSearchComponent<User> {
   }
 
   protected getDefaultOrder(): Order {
-    return  {
+    return {
       property: 'id',
-      direction: Direction.ASC
+      direction: Direction.ASC,
     };
   }
 }

@@ -8,8 +8,7 @@ describe('LoginComponent', () => {
   let fixture: ComponentFixture<LoginComponent>;
 
   beforeEach(async(() => {
-   TestingHelper.configureTest()
-    .compileComponents();
+    TestingHelper.configureTest().compileComponents();
   }));
 
   beforeEach(() => {

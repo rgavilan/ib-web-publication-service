@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SPARQLEditorComponent } from './sparqleditor.component';
 
-
 const routes: Routes = [
   {
     path: '',
-    component: SPARQLEditorComponent
-  }];
+    component: SPARQLEditorComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SparqleditorRoutingModule { }
+export class SparqleditorRoutingModule {}

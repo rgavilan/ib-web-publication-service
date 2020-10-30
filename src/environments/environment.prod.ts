@@ -3,7 +3,7 @@ export const environment = {
   urlBase: 'http://localhost:8080',
   urlWebsocket: '/gs-guide-websocket',
   oauthClientId: 'acme',
-  oauthSecret: 'acmesecret'
+  oauthSecret: 'acmesecret',
 };
 
 // default settings for how to query the endpoint
@@ -14,5 +14,5 @@ export const yasgui = {
 
   // Fuseki
   endpoint: 'http://herc-iz-front-desa.atica.um.es/trellis/sparql',
-  method: 'POST'
-}
+  method: 'POST',
+};

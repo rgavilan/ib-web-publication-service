@@ -8,7 +8,7 @@ export const environment = {
   oauthUrl: '',
   urlWebsocket: '/gs-guide-websocket',
   oauthClientId: 'acme',
-  oauthSecret: 'acmesecret'
+  oauthSecret: 'acmesecret',
 };
 
 // default settings for how to query the endpoint
@@ -19,8 +19,8 @@ export const yasgui = {
 
   // Fuseki
   endpoint: 'http://localhost:3030/trellis/sparql',
-  method: 'POST'
-}
+  method: 'POST',
+};
 
 /*
  * For easier debugging in development mode, you can import the following file

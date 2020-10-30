@@ -8,8 +8,7 @@ describe('SPARQLEditorComponent', () => {
   let fixture: ComponentFixture<SPARQLEditorComponent>;
 
   beforeEach(async(() => {
-    TestingHelper.configureTest()
-    .compileComponents();
+    TestingHelper.configureTest().compileComponents();
   }));
 
   beforeEach(() => {

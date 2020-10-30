@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ErrorResultsComponent } from './error-results.component';
+import { GraphicComponent } from './graphic.component';
 
-describe('ErrorResultsComponent', () => {
-  let component: ErrorResultsComponent;
-  let fixture: ComponentFixture<ErrorResultsComponent>;
+describe('GraphicComponent', () => {
+  let component: GraphicComponent;
+  let fixture: ComponentFixture<GraphicComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ErrorResultsComponent],
+      declarations: [GraphicComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ErrorResultsComponent);
+    fixture = TestBed.createComponent(GraphicComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

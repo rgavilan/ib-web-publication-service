@@ -11,10 +11,9 @@ import { TranslateService } from '@ngx-translate/core';
  */
 @Component({
   selector: 'app-user-detail',
-  templateUrl: './user-detail.component.html'
+  templateUrl: './user-detail.component.html',
 })
 export class UserDetailComponent implements OnInit {
-   
   /**
    * Datos del usuarioa actual.
    */
@@ -37,28 +36,27 @@ export class UserDetailComponent implements OnInit {
    */
   userRoles: Array<string>;
 
-  constructor(private router: Router, 
-              private translate: TranslateService, 
-              private toastr: ToastrService, 
-              private route: ActivatedRoute, 
-              private userService: UserService) { }
+  constructor(
+    private router: Router,
+    private translate: TranslateService,
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
     this.userId = null;
     this.user = new User();
     this.userRoles = [];
 
-    this.route.params.subscribe
-    ((params: Params) => {
-       this.userId = params.id; // (+) converts string 'id' to a number
-       if (this.userId) {
+    this.route.params.subscribe((params: Params) => {
+      this.userId = params.id; // (+) converts string 'id' to a number
+      if (this.userId) {
         this.createMode = false;
 
-        this.userService.get(this.userId).subscribe(
-          ((user: User) => {
-            this.user = user;
-          })
-        );
+        this.userService.get(this.userId).subscribe((user: User) => {
+          this.user = user;
+        });
       } else {
         this.createMode = true;
         this.user.credentialsNonExpired = true;
@@ -77,24 +75,34 @@ export class UserDetailComponent implements OnInit {
 
     if (this.createMode) {
       observable = this.userService.save(this.user);
-      
     } else {
       observable = this.userService.update(this.user);
     }
 
     observable.subscribe(
-        ((user: User) => {
-          if (this.createMode) {
-            this.router.navigate(['/main/users', user.id]);
-          } else {
-            this.user = user;
-          }
-          
-          this.toastr.success(this.translate.instant('toast.success-saving', this.translate.instant('toast.success')));
-        }), (error => {
-          console.error(error);
-          this.toastr.error(this.translate.instant('toast.error-saving', this.translate.instant('toast.error')));
-        })
-      );
+      (user: User) => {
+        if (this.createMode) {
+          this.router.navigate(['/main/users', user.id]);
+        } else {
+          this.user = user;
+        }
+
+        this.toastr.success(
+          this.translate.instant(
+            'toast.success-saving',
+            this.translate.instant('toast.success')
+          )
+        );
+      },
+      (error) => {
+        console.error(error);
+        this.toastr.error(
+          this.translate.instant(
+            'toast.error-saving',
+            this.translate.instant('toast.error')
+          )
+        );
+      }
+    );
   }
 }

@@ -1,20 +1,25 @@
-import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.css'],
-  inputs: ['data', 'errorMessage']
+  inputs: ['data', 'errorMessage'],
 })
 export class ResultsComponent implements AfterViewInit, OnChanges {
-
   @ViewChild('resultsTab', { static: false })
   resultsTab: TabsetComponent;
 
   data: any = null;
   errorMessage = null;
-
 
   // Set default values after load the view
   ngAfterViewInit(): void {
@@ -31,7 +36,7 @@ export class ResultsComponent implements AfterViewInit, OnChanges {
     if (!!this.resultsTab) {
       if (!!this.errorMessage || !this.data) {
         this.resultsTab.tabs[0].active = true;
-        this.resultsTab.tabs.forEach(tab => {
+        this.resultsTab.tabs.forEach((tab) => {
           tab.disabled = true;
         });
       } else {
@@ -41,6 +46,4 @@ export class ResultsComponent implements AfterViewInit, OnChanges {
       }
     }
   }
-
-
 }

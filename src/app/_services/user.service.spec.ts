@@ -5,7 +5,7 @@ import { TestingHelper } from '../_helpers/testing.spec';
 
 describe('UserService', () => {
   let service: UserService;
-  
+
   beforeEach(() => {
     TestingHelper.configureTest();
     service = TestBed.inject(UserService);

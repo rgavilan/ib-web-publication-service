@@ -8,8 +8,7 @@ describe('MenuComponent', () => {
   let fixture: ComponentFixture<MenuComponent>;
 
   beforeEach(async(() => {
-    TestingHelper.configureTest()
-    .compileComponents();
+    TestingHelper.configureTest().compileComponents();
   }));
 
   beforeEach(() => {

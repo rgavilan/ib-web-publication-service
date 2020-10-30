@@ -8,12 +8,12 @@ Se trata del arquetipo para Front desarrollado en Angular.
 
 Dentro del proyecto base se integran las siguientes características:
 
-* Frontend Angular 9.1
+- Frontend Angular 9.1
 
 ## Puesta en funcionamiento
 
 npm install -> Descarga las librerías
-npm run start -> lanza el 
+npm run start -> lanza el
 
 ## Yasgui
 

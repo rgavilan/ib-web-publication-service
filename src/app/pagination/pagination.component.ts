@@ -1,4 +1,11 @@
-import { Component, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Output,
+  EventEmitter,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { Page } from '../_helpers/search';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination/pagination.component';
 
@@ -8,10 +15,9 @@ import { PageChangedEvent } from 'ngx-bootstrap/pagination/pagination.component'
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.css']
+  styleUrls: ['./pagination.component.css'],
 })
 export class PaginationComponent implements OnChanges {
-    
   /**
    * Atributo de entrada. Datos de la página actual.
    */
@@ -33,22 +39,24 @@ export class PaginationComponent implements OnChanges {
   currentPage = 1;
   pageSize = 0;
 
-  constructor() { }
+  constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-      if (this.resultObject != null) {
-          this.min = this.resultObject.number * this.resultObject.size + 1;
-          this.max = this.resultObject.number * this.resultObject.size + this.resultObject.numberOfElements;
-          this.totalElements = this.resultObject.totalElements || 0;
-          this.pageSize = this.resultObject.size;
-        }
+    if (this.resultObject != null) {
+      this.min = this.resultObject.number * this.resultObject.size + 1;
+      this.max =
+        this.resultObject.number * this.resultObject.size +
+        this.resultObject.numberOfElements;
+      this.totalElements = this.resultObject.totalElements || 0;
+      this.pageSize = this.resultObject.size;
     }
-  
+  }
+
   /**
    * Se notifica el cambio de página.
    * @param event Datos del evento.
    */
-  showPage(event: PageChangedEvent ) {
+  showPage(event: PageChangedEvent) {
     this.pageChanged.next(event.page);
   }
 

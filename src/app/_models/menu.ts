@@ -2,18 +2,18 @@
  * Definición de un Item del menú.
  */
 export class MenuItem {
-    /**
-     * Título del menú.
-     */
-    title: string;
-    /**
-     * Icono.
-     */
-    icon: string;
-    /**
-     * URL.
-     */
-    url: string;
+  /**
+   * Título del menú.
+   */
+  title: string;
+  /**
+   * Icono.
+   */
+  icon: string;
+  /**
+   * URL.
+   */
+  url: string;
 }
 
 /**
@@ -23,7 +23,7 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     title: 'menu.home',
     icon: 'ion-home',
-    url: '/main/home'
+    url: '/main/home',
   },
   /*
   {
@@ -35,6 +35,11 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     title: 'menu.sparql',
     icon: '',
-    url: '/main/sparql'
-  }
+    url: '/main/sparql',
+  },
+  {
+    title: 'menu.graphics',
+    icon: '',
+    url: '/main/graphics',
+  },
 ];

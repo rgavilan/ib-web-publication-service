@@ -5,11 +5,10 @@ import { MenuItem, MENU_ITEMS } from '../_models/menu';
  * Servicio para gestionar el menú de la aplicación.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MenuService {
-
-  constructor() { }
+  constructor() {}
 
   /**
    * Obtiene los datos del menú de la aplicación.
@@ -19,4 +18,3 @@ export class MenuService {
     return Promise.resolve(MENU_ITEMS);
   }
 }
-

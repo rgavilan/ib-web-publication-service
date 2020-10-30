@@ -5,7 +5,7 @@ import { TestingHelper } from '../_helpers/testing.spec';
 
 describe('MenuService', () => {
   let service: MenuService;
-  
+
   beforeEach(() => {
     TestingHelper.configureTest();
     service = TestBed.inject(MenuService);

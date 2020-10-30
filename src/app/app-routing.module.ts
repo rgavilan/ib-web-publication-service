@@ -8,10 +8,11 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
 import { NoAuthGuard } from './_guards/no-auth.guard';
-import { SPARQLEditorComponent } from './sparqleditor/sparqleditor.component';
 
 /**
- * Rutas securizadas
+ * **********************************************
+ * ************** Rutas securizadas *************
+ * **********************************************
  */
 const secureRoutes: Routes = [
   /**
@@ -19,45 +20,51 @@ const secureRoutes: Routes = [
    */
   {
     path: 'users',
-    component: UserComponent
+    component: UserComponent,
   },
   /**
    * Creación de usuarios.
    */
   {
     path: 'users/create',
-    component: UserDetailComponent
+    component: UserDetailComponent,
   },
   /**
    * Detalle de usuarios.
    */
   {
     path: 'users/:id',
-    component: UserDetailComponent
-  }
+    component: UserDetailComponent,
+  },
 ];
 
 /**
- * Rutas securizadas
+ * *************************************************
+ * ************** Rutas no securizadas *************
+ * *************************************************
  */
 const noSecureRoutes: Routes = [
   {
-  path: 'home',
-  component: HomeComponent
-},
+    path: 'home',
+    component: HomeComponent,
+  },
+
   {
     path: 'sparql',
-    loadChildren: () => import('./sparqleditor/sparqleditor.module').then(m => m.SparqleditorModule)
-  }
+    loadChildren: () =>
+      import('./sparqleditor/sparqleditor.module').then(
+        (m) => m.SparqleditorModule
+      ),
+  },
 ];
 
 const routes: Routes = [
-/**
- * Login
- */
- {
+  /**
+   * Login
+   */
+  {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
 
   /**
@@ -67,7 +74,7 @@ const routes: Routes = [
     path: 'main',
     component: MainComponent,
     canActivate: [AuthGuard],
-    children: secureRoutes
+    children: secureRoutes,
   },
 
   /**
@@ -77,18 +84,18 @@ const routes: Routes = [
     path: 'main',
     component: MainComponent,
     canActivate: [NoAuthGuard],
-    children: noSecureRoutes
+    children: noSecureRoutes,
   },
 
   // otherwhise redirect to main
   {
-      path: '**',
-      redirectTo: 'main/home'
-  }
+    path: '**',
+    redirectTo: 'main/home',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

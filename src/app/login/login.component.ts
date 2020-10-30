@@ -14,7 +14,7 @@ import { map, catchError } from 'rxjs/operators';
  */
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
   /**
@@ -22,31 +22,42 @@ export class LoginComponent implements OnInit {
    */
   model: any = {};
 
-  constructor(private router: Router, 
-              private translate: TranslateService, 
-              private toastr: ToastrService, 
-              private loginService: LoginService,
-              private userService: UserService) { }
+  constructor(
+    private router: Router,
+    private translate: TranslateService,
+    private toastr: ToastrService,
+    private loginService: LoginService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-      this.loginService.logout();
-    }
+    this.loginService.logout();
+  }
 
   /**
    * Realiza el login del usuario.
    */
   login() {
-    this.loginService.login(this.model.username, this.model.password).subscribe((result) => {
-      if (result) {
-        this.userService.getUserData().subscribe((user: User) => {
-          localStorage.setItem('current_user', JSON.stringify(user));
-        });
-        this.router.navigate(['/']);
-      } else {
-        this.toastr.error(this.translate.instant('login.error.invalid-body'), this.translate.instant('login.error.invalid'));
+    this.loginService.login(this.model.username, this.model.password).subscribe(
+      (result) => {
+        if (result) {
+          this.userService.getUserData().subscribe((user: User) => {
+            localStorage.setItem('current_user', JSON.stringify(user));
+          });
+          this.router.navigate(['/']);
+        } else {
+          this.toastr.error(
+            this.translate.instant('login.error.invalid-body'),
+            this.translate.instant('login.error.invalid')
+          );
+        }
+      },
+      (error: Response | any) => {
+        this.toastr.error(
+          this.translate.instant('login.error.invalid-body'),
+          this.translate.instant('login.error.invalid')
+        );
       }
-    }, (error: Response | any) => {
-      this.toastr.error(this.translate.instant('login.error.invalid-body'), this.translate.instant('login.error.invalid'));
-    });
+    );
   }
 }

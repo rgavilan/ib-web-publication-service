@@ -9,22 +9,24 @@ import { Router } from '@angular/router';
  */
 @Component({
   selector: 'app-menu',
-  templateUrl: './menu.component.html'
+  templateUrl: './menu.component.html',
 })
 export class MenuComponent implements OnInit {
-
   /**
    * Items del menú de la aplicación.
    */
   menuItems: MenuItem[];
 
-  constructor(private router: Router, private menuService: MenuService, private loginService: LoginService) { }
+  constructor(
+    private router: Router,
+    private menuService: MenuService,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit() {
-    this.menuService.getMenu()
-      .then((menuItems: MenuItem[]) => {
-        this.menuItems = menuItems;
-      });
+    this.menuService.getMenu().then((menuItems: MenuItem[]) => {
+      this.menuItems = menuItems;
+    });
   }
 
   /**
@@ -34,5 +36,4 @@ export class MenuComponent implements OnInit {
     this.loginService.logout();
     this.router.navigate(['/login']);
   }
-
 }

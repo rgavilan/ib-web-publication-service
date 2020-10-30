@@ -8,8 +8,7 @@ describe('UserComponent', () => {
   let fixture: ComponentFixture<UserComponent>;
 
   beforeEach(async(() => {
-    TestingHelper.configureTest()
-    .compileComponents();
+    TestingHelper.configureTest().compileComponents();
   }));
 
   beforeEach(() => {

@@ -8,8 +8,7 @@ describe('PaginationComponent', () => {
   let fixture: ComponentFixture<PaginationComponent>;
 
   beforeEach(async(() => {
-    TestingHelper.configureTest()
-    .compileComponents();
+    TestingHelper.configureTest().compileComponents();
   }));
 
   beforeEach(() => {

@@ -3,7 +3,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HttpClientModule,
+  HttpClient,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -15,7 +19,7 @@ import { NgProgressRouterModule } from 'ngx-progressbar/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 // -------------- Services --------------
-import { LoginService } from './_services/login.service'; 
+import { LoginService } from './_services/login.service';
 import { MenuService } from './_services/menu.service';
 import { UserService } from './_services/user.service';
 
@@ -37,6 +41,7 @@ import { NoAuthGuard } from './_guards/no-auth.guard';
 import { TokenizedInterceptor } from './_interceptors/tokenized-interceptor';
 import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
 import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
+import { GraphicComponent } from './graphic/graphic.component';
 
 // -------------- Aux functions --------------
 
@@ -49,7 +54,8 @@ import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
     MainComponent,
     MenuComponent,
     HomeComponent,
-    PaginationComponent
+    PaginationComponent,
+    GraphicComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,9 +66,9 @@ import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
     }),
     ToastrModule.forRoot(),
     PaginationModule.forRoot(),
@@ -71,7 +77,7 @@ import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
     NgProgressRouterModule,
     NgSelectModule,
     // Application
-    SparqleditorModule
+    SparqleditorModule,
   ],
   providers: [
     AuthGuard,
@@ -82,17 +88,17 @@ import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenizedInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: OAuthInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
 
 export function createTranslateLoader(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
