@@ -8,6 +8,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
 import { NoAuthGuard } from './_guards/no-auth.guard';
+import { GraphicComponent } from './graphic/graphic.component';
 
 /**
  * **********************************************
@@ -55,6 +56,11 @@ const noSecureRoutes: Routes = [
       import('./sparqleditor/sparqleditor.module').then(
         (m) => m.SparqleditorModule
       ),
+  },
+  /* Graphics path */
+  {
+    path: 'graphics',
+    component: GraphicComponent,
   },
 ];
 

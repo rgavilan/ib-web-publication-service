@@ -35,6 +35,7 @@
     "home": "Welcome",
     "users": "Users",
     "sparql": "SPARQL",
+    "graphics": "Graphics",
     "logout": "Log out"
   },
   "login": {
