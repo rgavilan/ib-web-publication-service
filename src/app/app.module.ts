@@ -18,6 +18,9 @@ import { NgProgressHttpModule } from 'ngx-progressbar/http';
 import { NgProgressRouterModule } from 'ngx-progressbar/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 
+// -------------- Third party --------------
+import { NgxEchartsModule } from 'ngx-echarts';
+
 // -------------- Services --------------
 import { LoginService } from './_services/login.service';
 import { MenuService } from './_services/menu.service';
@@ -76,6 +79,9 @@ import { GraphicComponent } from './graphic/graphic.component';
     NgProgressHttpModule,
     NgProgressRouterModule,
     NgSelectModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    }),
     // Application
     SparqleditorModule,
   ],
