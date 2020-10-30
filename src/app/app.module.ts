@@ -20,6 +20,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 
 // -------------- Third party --------------
 import { NgxEchartsModule } from 'ngx-echarts';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 // -------------- Services --------------
 import { LoginService } from './_services/login.service';
@@ -82,6 +83,7 @@ import { GraphicComponent } from './graphic/graphic.component';
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),
+    LeafletModule,
     // Application
     SparqleditorModule,
   ],

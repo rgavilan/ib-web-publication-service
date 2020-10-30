@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { latLng, tileLayer } from 'leaflet';
 
 @Component({
   selector: 'app-graphic',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./graphic.component.css'],
 })
 export class GraphicComponent implements OnInit {
+  echartOptions: any;
   options: any;
   constructor() {}
 
@@ -20,7 +22,7 @@ export class GraphicComponent implements OnInit {
       data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
     }
 
-    this.options = {
+    this.echartOptions = {
       legend: {
         data: ['bar', 'bar2'],
         align: 'left',
@@ -50,6 +52,18 @@ export class GraphicComponent implements OnInit {
       ],
       animationEasing: 'elasticOut',
       animationDelayUpdate: (idx) => idx * 5,
+    };
+
+    this.options = {
+      layers: [
+        tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }),
+      ],
+      zoom: 5,
+      center: latLng(46.879966, -121.726909),
     };
   }
 }
