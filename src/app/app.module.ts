@@ -26,6 +26,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { LoginService } from './_services/login.service';
 import { MenuService } from './_services/menu.service';
 import { UserService } from './_services/user.service';
+import { ResearchmentStructuresService } from './_services/researchment.structures.service';
 
 // -------------- Components --------------
 import { AppComponent } from './app.component';
@@ -94,6 +95,7 @@ import { ResearchmentStructuresComponent } from './cartegories/researchment-stru
     NoAuthGuard,
     LoginService,
     MenuService,
+    ResearchmentStructuresService,
     UserService,
     {
       provide: HTTP_INTERCEPTORS,

@@ -12,7 +12,7 @@ import {
   Direction,
 } from '../../_helpers/search';
 import { User } from '../../_models/user';
-import { UserService } from '../../_services/user.service';
+import { ResearchmentStructuresService } from '../../_services/researchment.structures.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -33,7 +33,7 @@ export class ResearchmentStructuresComponent extends PaginatedSearchComponent<
     router: Router,
     translate: TranslateService,
     toastr: ToastrService,
-    private userService: UserService
+    private userService: ResearchmentStructuresService
   ) {
     super(router, translate, toastr);
   }

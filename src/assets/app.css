@@ -30,3 +30,18 @@ table thead sortable:hover {
 .actions {
   margin-top: 20px;
 }
+
+.btn-outline-primary {
+  color: white;
+  border-color: white;
+  background-color: black;
+}
+/*
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fff;
+  background-color: black;
+  border-color: black;
+}
+*/
