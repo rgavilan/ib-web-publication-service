@@ -22,7 +22,7 @@ export class MenuItem {
 export const MENU_ITEMS: MenuItem[] = [
   {
     title: 'menu.home',
-    icon: 'ion-home',
+    icon: 'oi-home',
     url: '/main/home',
   },
   /*
@@ -34,12 +34,12 @@ export const MENU_ITEMS: MenuItem[] = [
   */
   {
     title: 'menu.sparql',
-    icon: '',
+    icon: 'oi-terminal',
     url: '/main/sparql',
   },
   {
     title: 'menu.graphics',
-    icon: '',
+    icon: 'oi-bar-chart',
     url: '/main/graphics',
   },
 ];
