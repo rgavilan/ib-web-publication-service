@@ -9,6 +9,7 @@ import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
 import { NoAuthGuard } from './_guards/no-auth.guard';
 import { GraphicComponent } from './graphic/graphic.component';
+import { ResearchmentStructuresComponent } from './cartegories/researchment-structures/researchment-structures.component';
 
 /**
  * **********************************************
@@ -62,12 +63,16 @@ const noSecureRoutes: Routes = [
     path: 'graphics',
     component: GraphicComponent,
   },
+  /***************** Categories *******************/
+  /* researchmentStructures */
+  {
+    path: 'categories/researchmentStructures',
+    component: ResearchmentStructuresComponent,
+  },
 ];
 
 const routes: Routes = [
-  /**
-   * Login
-   */
+  /* Login */
   {
     path: 'login',
     component: LoginComponent,

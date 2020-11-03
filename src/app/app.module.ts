@@ -46,6 +46,7 @@ import { TokenizedInterceptor } from './_interceptors/tokenized-interceptor';
 import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
 import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
 import { GraphicComponent } from './graphic/graphic.component';
+import { ResearchmentStructuresComponent } from './cartegories/researchment-structures/researchment-structures.component';
 
 // -------------- Aux functions --------------
 
@@ -60,6 +61,7 @@ import { GraphicComponent } from './graphic/graphic.component';
     HomeComponent,
     PaginationComponent,
     GraphicComponent,
+    ResearchmentStructuresComponent,
   ],
   imports: [
     BrowserModule,
