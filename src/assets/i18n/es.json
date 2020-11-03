@@ -74,5 +74,17 @@
       "map": "mapa",
       "chart": "gráfica"
     }
+  },
+  "researchmentStructure": {
+    "title": "Estructuras de investigación",
+    "type": "Tipo",
+    "financing": "Financiación",
+    "name": "Nombre",
+    "publications": "Publicaciones",
+    "top-structures": "Top de Estructuras",
+    "top": "Top",
+    "qa": "Sello de calidad",
+    "num-qa": "Número de universidades por Sello de Calidad",
+    "num-financing": "Número de universidades por Financiación"
   }
 }

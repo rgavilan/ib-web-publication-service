@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewContainerRef,
-  AfterContentInit,
-} from '@angular/core';
+import { Component } from '@angular/core';
 import {
   PaginatedSearchComponent,
   FindRequest,
@@ -11,7 +6,7 @@ import {
   Order,
   Direction,
 } from '../../_helpers/search';
-import { User } from '../../_models/user';
+import { ResearchmentStructure } from '../../_models/researchmentStructure';
 import { ResearchmentStructuresService } from '../../_services/researchment.structures.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -19,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
 /**
- * Componente para la búsqueda de usuarios.
+ * Rearchment Structure component
  */
 @Component({
   selector: 'app-researchment-structures',
@@ -27,28 +22,31 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./researchment-structures.component.css'],
 })
 export class ResearchmentStructuresComponent extends PaginatedSearchComponent<
-  User
+  ResearchmentStructure
 > {
+  protected removeInternal(
+    entity: ResearchmentStructure
+  ): Observable<{} | Response> {
+    throw new Error('Method not implemented.');
+  }
   constructor(
     router: Router,
     translate: TranslateService,
     toastr: ToastrService,
-    private userService: ResearchmentStructuresService
+    private researchmentStructureService: ResearchmentStructuresService
   ) {
     super(router, translate, toastr);
   }
 
-  protected findInternal(findRequest: FindRequest): Observable<Page<User>> {
-    return this.userService.findUsers(findRequest);
-  }
-
-  protected removeInternal(entity: User): Observable<any> {
-    return this.userService.toggle(entity);
+  protected findInternal(
+    findRequest: FindRequest
+  ): Observable<Page<ResearchmentStructure>> {
+    return this.researchmentStructureService.findUsers(findRequest);
   }
 
   protected getDefaultOrder(): Order {
     return {
-      property: 'id',
+      property: 'name',
       direction: Direction.ASC,
     };
   }

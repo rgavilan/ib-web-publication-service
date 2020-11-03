@@ -33,15 +33,29 @@ table thead sortable:hover {
 
 .btn-outline-primary {
   color: white;
-  border-color: white;
   background-color: black;
+  border-color: white;
 }
-/*
-.btn-outline-primary:not(:disabled):not(.disabled).active,
-.btn-outline-primary:not(:disabled):not(.disabled):active,
-.show > .btn-outline-primary.dropdown-toggle {
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+  color: white;
+  background-color: #999;
+  border-color: black;
+}
+.page-item.active .page-link {
   color: #fff;
   background-color: black;
   border-color: black;
 }
-*/
+
+.legend {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: inherit;
+  color: #333;
+  border-bottom: 1px solid #e5e5e5;
+}

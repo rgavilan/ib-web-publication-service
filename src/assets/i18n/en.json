@@ -74,5 +74,17 @@
       "map": "map",
       "chart": "chart"
     }
+  },
+  "researchmentStructure": {
+    "title": "Researchment Structures",
+    "type": "Type",
+    "financing": "Financing",
+    "name": "Name",
+    "publications": "Publications",
+    "top-structures": "Top Structures",
+    "top": "Top",
+    "qa": "Quality Assurance",
+    "num-qa": "Number of Universities by Q&A",
+    "num-financing": "Number of Universities by Financing"
   }
 }

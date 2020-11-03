@@ -1,64 +1,52 @@
 <div class="row">
-  <div class="col-lg-10">
-    <h2>{{ "user.title" | translate }}</h2>
-  </div>
-  <div class="col-lg-2 text-right actions">
-    <a routerLink="create" class="btn btn-primary"
-      ><em class="oi oi-plus"></em> {{ "user.create" | translate }}</a
-    >
+  <div class="col-lg-12">
+    <h2>{{ "researchmentStructure.title" | translate }}</h2>
   </div>
 </div>
 
-<fieldset>
-  <legend>
-    {{ "form.search-form" | translate }}
-  </legend>
+<fieldset class="panel-default">
+  <legend></legend>
   <form class="form-horizontal" (ngSubmit)="f.form.valid && find()" #f="ngForm">
     <div class="row">
-      <div class="form-group col-lg-4">
-        <label for="email" class="col-sm-3 control-label">{{
-          "user.email" | translate
-        }}</label>
-        <div class="col-sm-9">
-          <input
-            type="text"
-            class="form-control"
-            name="email"
-            placeholder="{{ 'user.email' | translate }}"
-            [(ngModel)]="findRequest.filter.email"
-            #email="ngModel"
-          />
-        </div>
-      </div>
-      <div class="form-group col-lg-4">
-        <label for="name" class="col-sm-3 control-label">{{
-          "user.name" | translate
-        }}</label>
-        <div class="col-sm-9">
-          <input
-            type="text"
-            class="form-control"
-            name="name"
-            placeholder="{{ 'user.name' | translate }}"
-            [(ngModel)]="findRequest.filter.name"
-            #name="ngModel"
-          />
-        </div>
-      </div>
-      <div class="form-group col-lg-4">
+      <!-- type -->
+      <div class="form-group col-lg-6">
         <label for="activo" class="col-sm-3 control-label">{{
-          "user.enabled" | translate
+          "researchmentStructure.type" | translate
         }}</label>
         <div class="col-sm-9">
           <select
             name="activo"
             class="form-control"
-            [(ngModel)]="findRequest.filter.enabled"
+            [(ngModel)]="findRequest.filter.type"
             #enabled="ngModel"
           >
             <option value="">{{ "form.select" | translate }}</option>
-            <option value="true">{{ "form.yes" | translate }}</option>
-            <option value="false">{{ "form.no" | translate }}</option>
+            <option value="Universidad">Universidad</option>
+            <option value="Centro">Centro</option>
+            <option value="Organizacion">Organización</option>
+            <option value="Fundación">Fundación</option>
+            <option value="Otras estructuras">Otras estructuras</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- financing -->
+      <div class="form-group col-lg-6">
+        <label for="activo" class="col-sm-3 control-label">{{
+          "researchmentStructure.financing" | translate
+        }}</label>
+        <div class="col-sm-9">
+          <select
+            name="activo"
+            class="form-control"
+            [(ngModel)]="findRequest.filter.financing"
+            #enabled="ngModel"
+          >
+            <option value="">{{ "form.select" | translate }}</option>
+            <option value="Proyectos H2020">Proyectos H2020</option>
+            <option value="Proyecto del Plan Estatal">
+              Proyecto del Plan Estatal
+            </option>
           </select>
         </div>
       </div>
@@ -82,39 +70,104 @@
   <table class="table table-users table-hover">
     <thead>
       <tr>
-        <th class="sortable" (click)="sort('id')">
-          ID <em class="float-right" [ngClass]="getSortIcon('id')"></em>
-        </th>
         <th class="sortable" (click)="sort('name')">
-          {{ "user.name" | translate }}
-          <em class="float-right" [ngClass]="getSortIcon('name')"></em>
+          {{ "researchmentStructure.name" | translate
+          }}<em class="float-right" [ngClass]="getSortIcon('name')"></em>
         </th>
-        <th class="sortable" (click)="sort('email')">
-          {{ "user.email" | translate }}
-          <em class="float-right" [ngClass]="getSortIcon('email')"></em>
+        <th class="sortable" (click)="sort('type')">
+          {{ "researchmentStructure.type" | translate }}
+          <em class="float-right" [ngClass]="getSortIcon('type')"></em>
         </th>
-        <th></th>
+        <th class="sortable" (click)="sort('publications')">
+          {{ "researchmentStructure.publications" | translate }}
+          <em class="float-right" [ngClass]="getSortIcon('publications')"></em>
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of searchResult">
-        <td>{{ user.id }}</td>
-        <td>{{ user.name }}</td>
-        <td>{{ user.email }}</td>
-        <td class="actions">
-          <a class="btn btn-light" [routerLink]="['.', user.id]">
-            <em class="oi oi-pencil"></em>
-          </a>
-          <a class="btn btn-light" (click)="remove(user)" href="javascript:;">
-            <em
-              class="oi"
-              [ngClass]="{
-                'oi-trash': user.accountNonLocked,
-                'oi-check': !user.accountNonLocked
-              }"
-            ></em>
-          </a>
-        </td>
+      <tr *ngFor="let item of searchResult">
+        <td>{{ item.name }}</td>
+        <td>{{ item.type }}</td>
+        <td>{{ item.publications }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <app-pagination
+    [resultObject]="resultObject"
+    (pageChanged)="showPage($event)"
+    (sizeChanged)="changeSize($event)"
+  ></app-pagination>
+</fieldset>
+
+<fieldset>
+  <legend class="legend">Top de Estructuras</legend>
+  <div class="row">
+    <!-- top -->
+    <div class="form-group col-lg-6">
+      <label for="activo" class="col-sm-3 control-label">{{
+        "researchmentStructure.top" | translate
+      }}</label>
+      <div class="col-sm-9">
+        <select
+          name="activo"
+          class="form-control"
+          [(ngModel)]="findRequest.filter.top"
+          #enabled="ngModel"
+        >
+          <option value="">{{ "form.select" | translate }}</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- q&a -->
+    <div class="form-group col-lg-6">
+      <label for="activo" class="col-sm-4 control-label">{{
+        "researchmentStructure.qa" | translate
+      }}</label>
+      <div class="col-sm-8">
+        <select
+          name="activo"
+          class="form-control"
+          [(ngModel)]="findRequest.filter.qa"
+          #enabled="ngModel"
+        >
+          <option value="">{{ "form.select" | translate }}</option>
+          <option value="Severo Ochoa">Severo Ochoa</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend></legend>
+
+  <table class="table table-users table-hover">
+    <thead>
+      <tr>
+        <th class="sortable" (click)="sort('name')">
+          {{ "researchmentStructure.name" | translate
+          }}<em class="float-right" [ngClass]="getSortIcon('name')"></em>
+        </th>
+        <th class="sortable" (click)="sort('type')">
+          {{ "researchmentStructure.type" | translate }}
+          <em class="float-right" [ngClass]="getSortIcon('type')"></em>
+        </th>
+        <th class="sortable" (click)="sort('publications')">
+          {{ "researchmentStructure.publications" | translate }}
+          <em class="float-right" [ngClass]="getSortIcon('publications')"></em>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of searchResult">
+        <td>{{ item.name }}</td>
+        <td>{{ item.type }}</td>
+        <td>{{ item.publications }}</td>
       </tr>
     </tbody>
   </table>
