@@ -81,6 +81,26 @@
             "date" : "Fecha"
         }
     },
+    "home":{
+        "search": "Buscador global",
+        "service": "Servicios",
+        "sparql": "Consultas SPARQL",
+        "users": "Gestión usuarios",
+        "category": "Categorías",
+        "university": "Estructuras de investigación",
+        "scientist": "Personal investigador",
+        "category-inves": "Categorias de investigación",
+        "prod-scientist": "Producción cientifica",
+        "acction-inves": "Acciones de investigación",
+        "stats": "Estadisticas e indicadores",
+        "info": "Información",
+        "info-URI": "Información del contrato URIs",
+        "validators": "Validadores",
+        "sgi": "Backends SGI",
+        "graphs": "Renderización de metadatos de Named Graphs",
+        "info-hercules": "Información sobre Hercules",
+        "contact": "Datos de contacto"
+    },
     "links" : {
         "title": "Links GitHub",
         "principal": "Principal",
