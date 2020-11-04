@@ -75,6 +75,31 @@
       "chart": "chart"
     }
   },
+  "home": {
+    "search": "Global search",
+    "service": "Services",
+    "sparql": "Queries SPARQL",
+    "users": "User management",
+    "category": "Categories",
+    "university": "Researchment Structures",
+    "scientist": "Research staff",
+    "category-inves": "Research categories",
+    "prod-scientist": "Scientific production",
+    "acction-inves": "Investigation actions",
+    "stats": "Statistics and indicators",
+    "info": "Information",
+    "info-URI": "URIs contract information",
+    "validators": "Validators",
+    "sgi": "Backends SGI",
+    "graphs": "Named Graphs metadata rendering",
+    "info-hercules": "Information about Hercules",
+    "contact": "Contact information"
+  },
+  "links": {
+    "title": "Links GitHub",
+    "principal": "Principal",
+    "repository": "Respositorios"
+  },
   "researchmentStructure": {
     "title": "Researchment Structures",
     "type": "Type",
