@@ -59,3 +59,8 @@ table thead sortable:hover {
   color: #333;
   border-bottom: 1px solid #e5e5e5;
 }
+.sector-chart {
+  width: 50%;
+  margin-left: 21%;
+  margin-top: 3%;
+}
