@@ -36,7 +36,13 @@
     "users": "Users",
     "sparql": "SPARQL",
     "graphics": "Graphics",
-    "logout": "Log out"
+    "logout": "Log out",
+    "university": "Structures",
+    "scientist": "Research staff",
+    "category-inves": "Research categories",
+    "prod-scientist": "Scientific production",
+    "acction-inves": "Investigation actions",
+    "stats": "Stats and indicators"
   },
   "login": {
     "form": {
