@@ -54,6 +54,15 @@ export class ResearchmentStructuresComponent extends PaginatedSearchComponent<
   }
 
   ngOnInit(): void {
+    // TODO
+    const page = this.researchmentStructureService.findResearchmentStructures(
+      null
+    );
+
+    this.searchResult = page.content;
+    page.uibPage = page.number + 1;
+    this.resultObject = page;
+
     const xAxisData = [];
     const data1 = [];
     const data2 = [];

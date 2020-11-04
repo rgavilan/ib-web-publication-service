@@ -17,6 +17,12 @@ export class ResearchmentStructuresService extends AbstractService {
   }
 
   findUsers(findRequest: FindRequest): Observable<Page<ResearchmentStructure>> {
+    return of(this.findResearchmentStructures(findRequest));
+  }
+
+  findResearchmentStructures(
+    findRequest: FindRequest
+  ): Page<ResearchmentStructure> {
     const DUMMY_DATA: ResearchmentStructure[] = [
       {
         name: 'Universidad de Murcia',
@@ -46,6 +52,6 @@ export class ResearchmentStructuresService extends AbstractService {
     page.totalElements = 1;
     page.totalPages = 1;
 
-    return of(page);
+    return page;
   }
 }
