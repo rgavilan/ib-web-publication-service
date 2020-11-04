@@ -34,27 +34,27 @@ export const MENU_ITEMS: MenuItem[] = [
   */
   {
     title: 'menu.university',
-    icon: 'oi-bar-chart',
+    icon: 'oi-home',
     url: '/main/home',
   },
   {
     title: 'menu.scientist',
-    icon: 'oi-bar-chart',
+    icon: 'oi oi-person',
     url: '/main/home',
   },
   {
     title: 'menu.category-inves',
-    icon: 'oi-bar-chart',
+    icon: 'oi oi-folder',
     url: '/main/home',
   },
   {
     title: 'menu.prod-scientist',
-    icon: 'oi-bar-chart',
+    icon: 'oi oi-box',
     url: '/main/home',
   },
   {
     title: 'menu.acction-inves',
-    icon: 'oi-bar-chart',
+    icon: 'oi oi-pencil',
     url: '/main/home',
   },
   {
