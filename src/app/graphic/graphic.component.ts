@@ -57,13 +57,13 @@ export class GraphicComponent implements OnInit {
     this.options = {
       layers: [
         tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 18,
+          maxZoom: 19,
           attribution:
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         }),
       ],
-      zoom: 5,
-      center: latLng(46.879966, -121.726909),
+      zoom: 16,
+      center: latLng(43.53573, -5.66152),
     };
   }
 }
