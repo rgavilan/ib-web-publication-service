@@ -9,9 +9,9 @@ import { SparqleditorRoutingModule } from './sparqleditor-routing.module';
 // -------------- Components --------------
 import { SPARQLEditorComponent } from './sparqleditor.component';
 import { ResultsComponent } from './results/results.component';
-import { TableResultsComponent } from './table-results/table-results.component';
 import { JsonResultsComponent } from './json-results/json-results.component';
 import { ErrorResultsComponent } from './error-results/error-results.component';
+import { CommonDisplayDataModule } from '../common-display-data/common-display-data.module';
 
 // -------------- Aux functions --------------
 
@@ -19,7 +19,6 @@ import { ErrorResultsComponent } from './error-results/error-results.component';
   declarations: [
     SPARQLEditorComponent,
     ResultsComponent,
-    TableResultsComponent,
     JsonResultsComponent,
     ErrorResultsComponent,
   ],
@@ -29,6 +28,7 @@ import { ErrorResultsComponent } from './error-results/error-results.component';
     CommonModule,
     TabsModule.forRoot(),
     AlertModule.forRoot(),
+    CommonDisplayDataModule,
   ],
 })
 export class SparqleditorModule {}
