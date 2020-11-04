@@ -67,14 +67,48 @@
     "edit-user-title": "Editar usuario: {{name}}",
     "create-user-title": "Crear nuevo usuario"
   },
-  "sparql": {
-    "results": {
-      "table": "tabla",
-      "response": "response",
-      "map": "mapa",
-      "chart": "gráfica"
-    }
-  },
+  
+    "sparql" : {
+        "results" : {
+            "table" : "tabla",
+            "response" : "response",
+            "map" : "mapa",
+            "chart" : "gráfica"
+        }
+    },
+    "proyect" : {
+        "title": "Proyectos",
+        "detail" :{
+            "name" : "Nombre",
+            "date" : "Fecha"
+        }
+    },
+    "home":{
+        "search": "Buscador global",
+        "service": "Servicios",
+        "sparql": "Consultas SPARQL",
+        "users": "Gestión usuarios",
+        "category": "Categorías",
+        "university": "Estructuras de investigación",
+        "scientist": "Personal investigador",
+        "category-inves": "Categorias de investigación",
+        "prod-scientist": "Producción cientifica",
+        "acction-inves": "Acciones de investigación",
+        "stats": "Estadisticas e indicadores",
+        "info": "Información",
+        "info-URI": "Información del contrato URIs",
+        "validators": "Validadores",
+        "sgi": "Backends SGI",
+        "graphs": "Renderización de metadatos de Named Graphs",
+        "info-hercules": "Información sobre Hercules",
+        "contact": "Datos de contacto"
+    },
+    "links" : {
+        "title": "Links GitHub",
+        "principal": "Principal",
+        "repository": "Respositorios"
+    },
+  
   "researchmentStructure": {
     "title": "Estructuras de investigación",
     "type": "Tipo",

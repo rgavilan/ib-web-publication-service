@@ -8,7 +8,15 @@ export const environment = {
 
 // default settings for how to query the endpoint
 export const yasgui = {
+<<<<<<< HEAD
   // Fuseki
   endpoint: 'https://query.wikidata.org/sparql',
   method: 'POST',
 };
+=======
+
+  // Fuseki
+  endpoint: 'https://query.wikidata.org/sparql',
+  method: 'POST'
+}
+>>>>>>> feature/SEMANTMURC-334

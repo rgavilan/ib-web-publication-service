@@ -37,6 +37,8 @@ import { MainComponent } from './main/main.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { ProyectsComponent } from './proyects/proyects.component';
+import { UniversidadesComponent } from './universidades/universidades.component';
 
 // -------------- Guards --------------
 import { AuthGuard } from './_guards/auth.guard';
@@ -48,8 +50,10 @@ import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
 import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
 import { GraphicComponent } from './graphic/graphic.component';
 import { ResearchmentStructuresComponent } from './cartegories/researchment-structures/researchment-structures.component';
+import { LinksComponent } from './links/links.component';
 
 // -------------- Aux functions --------------
+
 
 @NgModule({
   declarations: [
@@ -63,6 +67,9 @@ import { ResearchmentStructuresComponent } from './cartegories/researchment-stru
     PaginationComponent,
     GraphicComponent,
     ResearchmentStructuresComponent,
+    ProyectsComponent,
+    UniversidadesComponent,
+    LinksComponent
   ],
   imports: [
     BrowserModule,
