@@ -2,11 +2,16 @@
   <div class="col-lg-12">
     <p></p>
     <h3>{{ "home.search" | translate }}</h3>
-    <input
-      type="text"
-      placeholder="Buscador global de datos..."
-      style="width: 60%; height: 50px; font-size: 20px"
-    />
+    <ng-select
+      id="categories"
+      name="categories"
+      [multiple]="false"
+      [items]="categories"
+      [closeOnSelect]="true"
+      placeholder="Búsqueda global ..."
+      [(ngModel)]="category"
+    >
+    </ng-select>
   </div>
 </div>
 <p></p>

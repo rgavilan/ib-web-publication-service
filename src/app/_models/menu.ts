@@ -33,6 +33,36 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   */
   {
+    title: 'menu.university',
+    icon: 'oi-bar-chart',
+    url: '/main/home',
+  },
+  {
+    title: 'menu.scientist',
+    icon: 'oi-bar-chart',
+    url: '/main/home',
+  },
+  {
+    title: 'menu.category-inves',
+    icon: 'oi-bar-chart',
+    url: '/main/home',
+  },
+  {
+    title: 'menu.prod-scientist',
+    icon: 'oi-bar-chart',
+    url: '/main/home',
+  },
+  {
+    title: 'menu.acction-inves',
+    icon: 'oi-bar-chart',
+    url: '/main/home',
+  },
+  {
+    title: 'menu.stats',
+    icon: 'oi-bar-chart',
+    url: '/main/home',
+  },
+  {
     title: 'menu.sparql',
     icon: 'oi-terminal',
     url: '/main/sparql',
