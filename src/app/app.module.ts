@@ -37,8 +37,6 @@ import { MainComponent } from './main/main.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { PaginationComponent } from './pagination/pagination.component';
-import { ProyectsComponent } from './proyects/proyects.component';
-import { UniversidadesComponent } from './universidades/universidades.component';
 
 // -------------- Guards --------------
 import { AuthGuard } from './_guards/auth.guard';
@@ -54,7 +52,6 @@ import { LinksComponent } from './links/links.component';
 
 // -------------- Aux functions --------------
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,9 +64,7 @@ import { LinksComponent } from './links/links.component';
     PaginationComponent,
     GraphicComponent,
     ResearchmentStructuresComponent,
-    ProyectsComponent,
-    UniversidadesComponent,
-    LinksComponent
+    LinksComponent,
   ],
   imports: [
     BrowserModule,

@@ -35,7 +35,7 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     title: 'menu.university',
     icon: 'oi-home',
-    url: '/main/home',
+    url: '/main/categories/researchmentStructures',
   },
   {
     title: 'menu.scientist',
