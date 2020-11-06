@@ -30,13 +30,9 @@ import { ResearchmentStructuresService } from './_services/researchment.structur
 
 // -------------- Components --------------
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { UserComponent } from './user/user.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MainComponent } from './main/main.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
-import { PaginationComponent } from './pagination/pagination.component';
 
 // -------------- Guards --------------
 import { AuthGuard } from './_guards/auth.guard';
@@ -47,8 +43,9 @@ import { TokenizedInterceptor } from './_interceptors/tokenized-interceptor';
 import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
 import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
 import { GraphicComponent } from './graphic/graphic.component';
-import { ResearchmentStructuresComponent } from './cartegories/researchment-structures/researchment-structures.component';
 import { LinksComponent } from './links/links.component';
+import { CategoriesModule } from './categories/categories.module';
+import { LoginComponent } from './login/login.component';
 
 // -------------- Aux functions --------------
 
@@ -56,14 +53,10 @@ import { LinksComponent } from './links/links.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    UserComponent,
-    UserDetailComponent,
     MainComponent,
     MenuComponent,
     HomeComponent,
-    PaginationComponent,
     GraphicComponent,
-    ResearchmentStructuresComponent,
     LinksComponent,
   ],
   imports: [
@@ -91,6 +84,7 @@ import { LinksComponent } from './links/links.component';
     LeafletModule,
     // Application
     SparqleditorModule,
+    CategoriesModule,
   ],
   providers: [
     AuthGuard,

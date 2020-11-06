@@ -10,9 +10,9 @@ import {
   Page,
   Order,
   Direction,
-} from '../_helpers/search';
-import { User } from '../_models/user';
-import { UserService } from '../_services/user.service';
+} from '../../_helpers/search';
+import { User } from '../../_models/user';
+import { UserService } from '../../_services/user.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';

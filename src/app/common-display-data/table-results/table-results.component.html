@@ -2,27 +2,36 @@
   <div class="row">
     <div class="col">
       <table class="table table-bordered" *ngIf="!!_data">
-        <tr>
-          <th class="first-header"></th>
-          <th *ngFor="let header of _data.head.vars">{{ header }}</th>
-        </tr>
-        <tr
-          *ngFor="let item of _dataToShow; index as i"
-          [ngClass]="{ 'table-secondary': i % 2 == 1 }"
-        >
-          <td>{{ i }}</td>
-          <td *ngFor="let header of _data.head.vars">
-            <a
-              href="{{ item[header].value }}"
-              *ngIf="item[header].type == 'uri'"
-              >{{ item[header].value }}</a
-            >
-            <ng-container *ngIf="item[header].type != 'uri'">{{
-              item[header].value
-            }}</ng-container>
-          </td>
-        </tr>
+        <thead>
+          <tr>
+            <th class="first-header"></th>
+            <th *ngFor="let header of _data.head.vars">{{ header }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let item of _dataToShow; index as i"
+            [ngClass]="{ 'table-secondary': i % 2 == 1 }"
+          >
+            <td>{{ i }}</td>
+            <td *ngFor="let header of _data.head.vars">
+              <a
+                href="{{ item[header].value }}"
+                *ngIf="item[header].type == 'uri'"
+                >{{ item[header].value }}</a
+              >
+              <ng-container *ngIf="item[header].type != 'uri'">{{
+                item[header].value
+              }}</ng-container>
+            </td>
+          </tr>
+        </tbody>
       </table>
+      <app-pagination
+        [resultObject]="resultObject"
+        (pageChanged)="showPage($event)"
+        (sizeChanged)="changeSize($event)"
+      ></app-pagination>
     </div>
   </div>
 </div>

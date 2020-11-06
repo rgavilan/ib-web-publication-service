@@ -1,19 +1,24 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import {
+  FindRequest,
+  Order,
+  Page,
+  PaginatedSearchComponent,
+} from 'src/app/_helpers/search';
 
 @Component({
   selector: 'app-table-results',
   templateUrl: './table-results.component.html',
   styleUrls: ['./table-results.component.css'],
 })
-export class TableResultsComponent implements OnInit {
+export class TableResultsComponent
+  extends PaginatedSearchComponent<any>
+  implements OnInit {
   _data; // private property _data
   _dataToShow;
 
   // use getter setter to define the property
-  get data(): any {
-    return this._data;
-  }
-
   @Input()
   set data(val: any) {
     this._data = val;
@@ -24,14 +29,26 @@ export class TableResultsComponent implements OnInit {
     }
   }
 
+  get data(): any {
+    return this._data;
+  }
+
   pageSize = 10;
   numPages = 1;
   actualPage = 1;
 
-  constructor() {}
-
   ngOnInit(): void {
     console.log(this.data);
+  }
+
+  protected findInternal(findRequest: FindRequest): Observable<Page<any>> {
+    return of(this.data);
+  }
+  protected removeInternal(entity: any): Observable<{} | Response> {
+    throw new Error('Method not implemented.');
+  }
+  protected getDefaultOrder(): Order {
+    throw new Error('Method not implemented.');
   }
 
   showPage(i: number): void {
