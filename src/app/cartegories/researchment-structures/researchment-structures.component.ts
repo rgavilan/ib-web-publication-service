@@ -76,9 +76,11 @@ export class ResearchmentStructuresComponent extends PaginatedSearchComponent<
       null
     );
 
-    this.searchResult = this.topSearchResult = page.content;
+    this.searchResult = page.content;
+    this.topSearchResult = page.content.slice(0, 10);
     page.uibPage = page.number + 1;
     this.resultObject = page;
+    this.findRequest.filter.top = 10;
 
     const xAxisData = [];
     const data1 = [];

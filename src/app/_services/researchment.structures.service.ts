@@ -15,6 +15,30 @@ export class ResearchmentStructuresService extends AbstractService {
   // mock data
   readonly DUMMY_DATA: ResearchmentStructure[] = [
     {
+      name: 'Universidad Pompeu Fabra',
+      type: 'Universidad',
+      publications: '1420',
+      qa: [],
+    },
+    {
+      name: 'Universidad Politécnica de Cataluña',
+      type: 'Universidad',
+      publications: '1389',
+      qa: [],
+    },
+    {
+      name: 'Universidad Carlos III',
+      type: 'Universidad',
+      publications: '924',
+      qa: [],
+    },
+    {
+      name: 'Universidad Politécnica de Valencia',
+      type: 'Universidad',
+      publications: '878',
+      qa: [],
+    },
+    {
       name: 'Universidad de Murcia',
       type: 'Universidad',
       publications: '306',
@@ -42,6 +66,18 @@ export class ResearchmentStructuresService extends AbstractService {
       name: 'Universidad nacional de educación a distancia',
       type: 'Universidad',
       publications: '409',
+      qa: [],
+    },
+    {
+      name: 'Universidad de Cantabria',
+      type: 'Universidad',
+      publications: '408',
+      qa: [],
+    },
+    {
+      name: 'Universidad País Vasco',
+      type: 'Universidad',
+      publications: '399',
       qa: [],
     },
   ];
@@ -88,7 +124,7 @@ export class ResearchmentStructuresService extends AbstractService {
     filters: Map<String, String>
   ): Page<ResearchmentStructure> {
     var page: Page<ResearchmentStructure> = new Page<ResearchmentStructure>();
-    page.content = this.DUMMY_DATA;
+    page.content = this.DUMMY_DATA.slice(0, 10);
     filters.forEach((valueFilter: string, keyFilter: string) => {
       if (!!valueFilter) {
         page.content = page.content.filter((researchmentStructure) => {

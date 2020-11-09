@@ -21,7 +21,9 @@
             #enabled="ngModel"
             (change)="filterResearchmentStructures('type')"
           >
-            <option value="">{{ "form.select" | translate }}</option>
+            <option value="">
+              {{ "form.select" | translate }}
+            </option>
             <option value="Universidad">Universidad</option>
             <option value="Centro">Centro</option>
             <option value="Organizacion">Organización</option>
@@ -102,7 +104,7 @@
 </fieldset>
 
 <fieldset>
-  <legend class="legend">Top de Estructuras</legend>
+  <legend class="legend margin-top">Top de Estructuras</legend>
   <div class="row">
     <!-- top -->
     <div class="form-group col-lg-6">
@@ -116,7 +118,6 @@
           [(ngModel)]="findRequest.filter.top"
           #enabled="ngModel"
         >
-          <option value="">{{ "form.select" | translate }}</option>
           <option value="10">10</option>
           <option value="20">20</option>
           <option value="50">50</option>
