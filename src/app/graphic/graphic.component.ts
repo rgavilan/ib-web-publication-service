@@ -9,7 +9,8 @@ import { latLng, tileLayer } from 'leaflet';
 export class GraphicComponent implements OnInit {
   echartOptions: any;
   options: any;
-  hierarchyOptions: any;
+
+  data: any;
 
   constructor() {}
 
@@ -70,7 +71,7 @@ export class GraphicComponent implements OnInit {
       center: latLng(43.53573, -5.66152),
     };
 
-    const data = {
+    this.data = {
       name: 'categoria',
       children: [
         {
@@ -137,56 +138,5 @@ export class GraphicComponent implements OnInit {
         },
       ],
     };
-
-    // hierarchy chart
-    this.hierarchyOptions = {
-      tooltip: {
-        trigger: 'item',
-        triggerOn: 'mousemove',
-      },
-      series: [
-        {
-          type: 'tree',
-
-          data: [data],
-
-          top: '1%',
-          left: '7%',
-          bottom: '1%',
-          right: '20%',
-
-          symbolSize: 7,
-
-          label: {
-            position: 'left',
-            verticalAlign: 'middle',
-            align: 'right',
-            fontSize: 9,
-          },
-
-          leaves: {
-            label: {
-              position: 'right',
-              verticalAlign: 'middle',
-              align: 'left',
-            },
-          },
-
-          expandAndCollapse: true,
-          animationDuration: 550,
-          animationDurationUpdate: 750,
-        },
-      ],
-    };
-  }
-
-  /**
-   * Method invoked when the chart is initialized
-   * @param e
-   */
-  onChartInit(chartInstance: any) {
-    chartInstance.on('click', function (event) {
-      console.error('Clicking on: ' + event.name);
-    });
   }
 }

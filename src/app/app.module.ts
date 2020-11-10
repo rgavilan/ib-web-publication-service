@@ -49,6 +49,7 @@ import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
 import { GraphicComponent } from './graphic/graphic.component';
 import { ResearchmentStructuresComponent } from './cartegories/researchment-structures/researchment-structures.component';
 import { LinksComponent } from './links/links.component';
+import { TreeComponent } from './graphic/tree/tree.component';
 
 // -------------- Aux functions --------------
 
@@ -65,6 +66,7 @@ import { LinksComponent } from './links/links.component';
     GraphicComponent,
     ResearchmentStructuresComponent,
     LinksComponent,
+    TreeComponent,
   ],
   imports: [
     BrowserModule,
