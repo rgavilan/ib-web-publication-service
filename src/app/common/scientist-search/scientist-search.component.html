@@ -1,0 +1,62 @@
+<fieldset>
+    <form class="form-horizontal " (ngSubmit)="f.form.valid && find()" #f="ngForm">
+        <div class="row mt-20">
+            <!-- top -->
+            <div class="form-group col-lg-6">
+                <label for="area" class="col-sm-3 control-label">{{  "scientist.area" | translate }}</label>
+                <div class="col-sm-9">
+                    <select (change)="filterTopResearchmentStructures('area')" name="area" class="form-control"
+                        [(ngModel)]="findRequest.filter.area" #area="ngModel">
+                        <option [value]="undefined">{{ "form.select" | translate }}</option>
+                        <option [value]="'Filologia, lengua y literatura'">Filologia, lengua y literatura</option>
+                        <option [value]="'Filosofia'">Filosofia</option>
+                        <option [value]="'Historia'">Historia</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- q&a -->
+            <div class="form-group col-lg-6">
+                <label for="type" class="col-sm-4 control-label">{{  "scientist.type" | translate }}</label>
+                <div class="col-sm-8">
+                    <select (change)="filterTopResearchmentStructures('type')" name="type" class="form-control"
+                        [(ngModel)]="findRequest.filter.type" #type="ngModel">
+                        <option [value]="undefined">{{ "form.select" | translate }}</option>
+                        <option [value]="'Docente'">Docente</option>
+                        <option [value]="'Personal Investigador'">Personal Investigador</option>
+                        <option [value]="'Investigador'">Investigador</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</fieldset>
+<fieldset>
+    <div class="mt-40">
+        <table class="table table-users table-hover">
+            <thead>
+                <tr>
+                    <th class="sortable" (click)="sort('name')"> {{ "researchmentStructure.name" | translate }}
+                        <em class="float-right" [ngClass]="getSortIcon('name')"></em>
+                    </th>
+                    <th class="sortable" (click)="sort('type')"> {{ "researchmentStructure.type" | translate }}
+                        <em class="float-right" [ngClass]="getSortIcon('type')"></em>
+                    </th>
+                    <th class="sortable" (click)="sort('publications')">
+                        {{ "researchmentStructure.publications" | translate }}
+                        <em class="float-right" [ngClass]="getSortIcon('publications')"></em>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of searchResult">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.type }}</td>
+                    <td>{{ item.publications }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)" (sizeChanged)="changeSize($event)">
+    </app-pagination>
+</fieldset>

@@ -59,7 +59,7 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     GraphicComponent,
     LinksComponent,
-    TreeComponent,
+    TreeComponent
   ],
   imports: [
     BrowserModule,
@@ -106,7 +106,7 @@ import { LoginComponent } from './login/login.component';
       multi: true,
     },
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
 

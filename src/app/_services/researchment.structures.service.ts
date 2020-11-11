@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AbstractService } from '../_helpers/abstract';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { of } from 'rxjs';
+import { Scientist } from '../_models/scientist';
 
 @Injectable({
   providedIn: 'root',
@@ -78,6 +79,23 @@ export class ResearchmentStructuresService extends AbstractService {
       publications: '399',
       qa: [],
     },
+  ];
+
+  readonly DUMMY_DATA_SCIENTIST: Scientist[] = [
+    {
+      id: '4343434',
+      name: 'María Hernandez Reyes Mora',
+      type: 'Docente',
+      publications: 8,
+      area: ''
+    },
+    {
+      id: 'f445344',
+      name: 'Jesualdo Tomás Fernandes Breis',
+      type: 'Docente',
+      publications: 14,
+      area: ''
+    }
   ];
   constructor(private httpClient: HttpClient) {
     super();
@@ -155,6 +173,64 @@ export class ResearchmentStructuresService extends AbstractService {
     const page = new Page<ResearchmentStructure>();
 
     page.content = this.DUMMY_DATA;
+    page.first = true;
+    page.last = false;
+    page.number = 1;
+    page.numberOfElements = 1;
+    page.size = 1;
+    page.totalElements = 1;
+    page.totalPages = 1;
+
+    return page;
+  }
+
+  
+  getById(id: string): Observable<any> {
+    const DUMMY_DATA_ID = {
+      name: 'Universidad Pompeu Fabra',
+      type: 'Universidad',
+      publications: '1420',
+      address: 'Avenida. Teniente Flomesta, 5, 30003. Murcia',
+      tel: '+34 868 88 3000 (centralita) / +34 868 88 8888 (centralita)'
+    };
+    return of(DUMMY_DATA_ID);
+  }
+
+  findResearchmentScientist(findRequest: FindRequest): Page<Scientist> {
+    const page = new Page<Scientist>();
+
+    page.content = this.DUMMY_DATA_SCIENTIST;
+    page.first = true;
+    page.last = false;
+    page.number = 1;
+    page.numberOfElements = 1;
+    page.size = 1;
+    page.totalElements = 1;
+    page.totalPages = 1;
+
+    return page;
+  }
+
+  findTopResearchmentStructuresScientistByFilters(
+    filters: Map<string, string>
+  ): Page<Scientist> {
+    const page: Page<Scientist> = new Page<Scientist>();
+    page.content = this.DUMMY_DATA_SCIENTIST.slice(0, 10);
+    filters.forEach((valueFilter: string, keyFilter: string) => {
+      if (!!valueFilter) {
+        page.content = page.content.filter((researchmentStructure) => {
+          for (const keyObject of Object.keys(researchmentStructure)) {
+            if (
+              keyObject === keyFilter &&
+              researchmentStructure[keyObject].indexOf(valueFilter) > -1
+            ) {
+              return true;
+            }
+          }
+        });
+      }
+    });
+
     page.first = true;
     page.last = false;
     page.number = 1;

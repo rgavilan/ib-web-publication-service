@@ -116,6 +116,15 @@
     "top": "Top",
     "qa": "Quality Assurance",
     "num-qa": "Number of Universities by Q&A",
-    "num-financing": "Number of Universities by Financing"
+    "num-financing": "Number of Universities by Financing",
+    "scientist": "Research staff",
+    "prod-scientist": "Scientific production",
+    "projects": "Projects",
+    "patents": "Patentes"
+  },
+  "scientist" : {
+    "title": "Research staff",
+    "area": "Area",
+    "type":"Type"
   }
 }

@@ -125,6 +125,15 @@
     "top": "Top",
     "qa": "Sello de calidad",
     "num-qa": "Número de universidades por Sello de Calidad",
-    "num-financing": "Número de universidades por Financiación"
+    "num-financing": "Número de universidades por Financiación",
+    "scientist": "Personal investigador",
+    "prod-scientist": "Producción cientifica",
+    "projects": "Proyectos",
+    "patents": "Patentes"
+  },
+  "scientist" : {
+    "title": "Personal investigador",
+    "area": "Área",
+    "type":"Tipo"
   }
 }
