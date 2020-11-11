@@ -6,7 +6,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { Page } from '../_helpers/search';
+import { Page } from '../../_helpers/search';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination/pagination.component';
 
 /**

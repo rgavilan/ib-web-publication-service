@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { User, Authority } from '../_models/user';
-import { UserService } from '../_services/user.service';
+import { User, Authority } from '../../_models/user';
+import { UserService } from '../../_services/user.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
