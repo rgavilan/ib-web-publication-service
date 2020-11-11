@@ -8,10 +8,11 @@ import {
 } from '../../_helpers/search';
 import { ResearchmentStructure } from '../../_models/researchmentStructure';
 import { ResearchmentStructuresService } from '../../_services/researchment.structures.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import * as R from 'ramda';
 
 /**
  * Rearchment Structure component
@@ -25,6 +26,10 @@ export class ResearchmentStructuresComponent extends PaginatedSearchComponent<
   ResearchmentStructure
 > {
   echartOptions: any;
+  filters: Map<String, String> = new Map();
+
+  filtersTop: Map<String, String> = new Map();
+  topSearchResult: any[];
 
   protected removeInternal(
     entity: ResearchmentStructure
@@ -43,7 +48,19 @@ export class ResearchmentStructuresComponent extends PaginatedSearchComponent<
   protected findInternal(
     findRequest: FindRequest
   ): Observable<Page<ResearchmentStructure>> {
-    return this.researchmentStructureService.findUsers(findRequest);
+    const page = this.researchmentStructureService.findResearchmentStructures(
+      null
+    );
+
+    this.searchResult = page.content;
+    page.uibPage = page.number + 1;
+    this.resultObject = page;
+    this.findRequest.setOrder(
+      findRequest.pageRequest.direction,
+      findRequest.pageRequest.property
+    );
+
+    return of(this.resultObject);
   }
 
   protected getDefaultOrder(): Order {
@@ -60,8 +77,10 @@ export class ResearchmentStructuresComponent extends PaginatedSearchComponent<
     );
 
     this.searchResult = page.content;
+    this.topSearchResult = page.content.slice(0, 10);
     page.uibPage = page.number + 1;
     this.resultObject = page;
+    this.findRequest.filter.top = 10;
 
     const xAxisData = [];
     const data1 = [];
@@ -146,4 +165,58 @@ export class ResearchmentStructuresComponent extends PaginatedSearchComponent<
       selected: selected,
     };
   }
+
+  /*
+   * Filter researchment structures
+   */
+  filterResearchmentStructures(filterName: String) {
+    switch (filterName) {
+      case 'type':
+        this.filters.set(filterName, this.findRequest.filter.type);
+
+        break;
+
+      default:
+        break;
+    }
+
+    // Call service to load data filtered
+    const page = this.researchmentStructureService.findResearchmentStructuresByFilters(
+      this.filters
+    );
+
+    this.searchResult = page.content;
+    page.uibPage = page.number + 1;
+    this.resultObject = page;
+  }
+
+  /*
+   * Filter researchment structures
+   */
+  filterTopResearchmentStructures(filterName: String) {
+    switch (filterName) {
+      case 'qa':
+        this.filtersTop.set(filterName, this.findRequest.filter.qa);
+
+        break;
+
+      default:
+        break;
+    }
+
+    // Call service to load data filtered
+    const page = this.researchmentStructureService.findTopResearchmentStructuresByFilters(
+      this.filtersTop
+    );
+
+    this.topSearchResult = page.content;
+    page.uibPage = page.number + 1;
+    this.resultObject = page;
+  }
+
+  /*
+  **************************************************************
+  PRIVATE FUNCTIONS
+  **************************************************************
+  */
 }
