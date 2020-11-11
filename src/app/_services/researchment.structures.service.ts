@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { FindRequest, Page, Direction } from '../_helpers/search';
+import { FindRequest, Page } from '../_helpers/search';
 import { ResearchmentStructure } from '../_models/researchmentStructure';
-import { Helper } from '../_helpers/utils';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { AbstractService } from '../_helpers/abstract';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { of } from 'rxjs';
@@ -90,14 +88,14 @@ export class ResearchmentStructuresService extends AbstractService {
   }
 
   findResearchmentStructuresByFilters(
-    filters: Map<String, String>
+    filters: Map<string, string>
   ): Page<ResearchmentStructure> {
-    var page: Page<ResearchmentStructure> = new Page<ResearchmentStructure>();
+    const page: Page<ResearchmentStructure> = new Page<ResearchmentStructure>();
     page.content = this.DUMMY_DATA;
     filters.forEach((valueFilter: string, keyFilter: string) => {
       if (!!valueFilter) {
         page.content = page.content.filter((researchmentStructure) => {
-          for (let keyObject of Object.keys(researchmentStructure)) {
+          for (const keyObject of Object.keys(researchmentStructure)) {
             if (
               keyObject === keyFilter &&
               researchmentStructure[keyObject] === valueFilter
@@ -121,14 +119,14 @@ export class ResearchmentStructuresService extends AbstractService {
   }
 
   findTopResearchmentStructuresByFilters(
-    filters: Map<String, String>
+    filters: Map<string, string>
   ): Page<ResearchmentStructure> {
-    var page: Page<ResearchmentStructure> = new Page<ResearchmentStructure>();
+    const page: Page<ResearchmentStructure> = new Page<ResearchmentStructure>();
     page.content = this.DUMMY_DATA.slice(0, 10);
     filters.forEach((valueFilter: string, keyFilter: string) => {
       if (!!valueFilter) {
         page.content = page.content.filter((researchmentStructure) => {
-          for (let keyObject of Object.keys(researchmentStructure)) {
+          for (const keyObject of Object.keys(researchmentStructure)) {
             if (
               keyObject === keyFilter &&
               researchmentStructure[keyObject].indexOf(valueFilter) > -1
