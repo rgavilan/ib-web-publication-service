@@ -10,20 +10,11 @@
     <div class="row">
       <!-- type -->
       <div class="form-group col-lg-6">
-        <label for="activo" class="col-sm-3 control-label">{{
-          "researchmentStructure.type" | translate
-        }}</label>
+        <label for="activo" class="col-sm-3 control-label">{{ "researchmentStructure.type" | translate }}</label>
         <div class="col-sm-9">
-          <select
-            name="activo"
-            class="form-control"
-            [(ngModel)]="findRequest.filter.type"
-            #enabled="ngModel"
-            (change)="filterResearchmentStructures('type')"
-          >
-            <option value="">
-              {{ "form.select" | translate }}
-            </option>
+          <select name="type" class="form-control" [(ngModel)]="findRequest.filter.type" #type="ngModel"
+            (change)="filterResearchmentStructures('type')">
+            <option value="undefined"> {{ "form.select" | translate }}</option>
             <option value="Universidad">Universidad</option>
             <option value="Centro">Centro</option>
             <option value="Organizacion">Organización</option>
@@ -35,17 +26,10 @@
 
       <!-- financing -->
       <div class="form-group col-lg-6">
-        <label for="activo" class="col-sm-3 control-label">{{
-          "researchmentStructure.financing" | translate
-        }}</label>
+        <label for="activo" class="col-sm-3 control-label">{{ "researchmentStructure.financing" | translate }}</label>
         <div class="col-sm-9">
-          <select
-            name="activo"
-            class="form-control"
-            [(ngModel)]="findRequest.filter.financing"
-            #enabled="ngModel"
-          >
-            <option value="">{{ "form.select" | translate }}</option>
+          <select name="financing" class="form-control" [(ngModel)]="findRequest.filter.financing" #financing="ngModel">
+            <option value="undefined">{{ "form.select" | translate }}</option>
             <option value="Proyectos H2020">Proyectos H2020</option>
             <option value="Proyecto del Plan Estatal">
               Proyecto del Plan Estatal
@@ -73,16 +57,13 @@
   <table class="table table-users table-hover">
     <thead>
       <tr>
-        <th class="sortable" (click)="sort('name')">
-          {{ "researchmentStructure.name" | translate
-          }}<em class="float-right" [ngClass]="getSortIcon('name')"></em>
+        <th class="sortable" (click)="sort('name')"> {{ "researchmentStructure.name" | translate }}
+          <em class="float-right" [ngClass]="getSortIcon('name')"></em>
         </th>
-        <th class="sortable" (click)="sort('type')">
-          {{ "researchmentStructure.type" | translate }}
+        <th class="sortable" (click)="sort('type')"> {{ "researchmentStructure.type" | translate }}
           <em class="float-right" [ngClass]="getSortIcon('type')"></em>
         </th>
-        <th class="sortable" (click)="sort('publications')">
-          {{ "researchmentStructure.publications" | translate }}
+        <th class="sortable" (click)="sort('publications')"> {{ "researchmentStructure.publications" | translate }}
           <em class="float-right" [ngClass]="getSortIcon('publications')"></em>
         </th>
       </tr>
@@ -96,11 +77,8 @@
     </tbody>
   </table>
 
-  <app-pagination
-    [resultObject]="resultObject"
-    (pageChanged)="showPage($event)"
-    (sizeChanged)="changeSize($event)"
-  ></app-pagination>
+  <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)" (sizeChanged)="changeSize($event)">
+  </app-pagination>
 </fieldset>
 
 <fieldset>
@@ -108,38 +86,25 @@
   <div class="row">
     <!-- top -->
     <div class="form-group col-lg-6">
-      <label for="activo" class="col-sm-3 control-label">{{
-        "researchmentStructure.top" | translate
-      }}</label>
+      <label for="top" class="col-sm-3 control-label">{{  "researchmentStructure.top" | translate }}</label>
       <div class="col-sm-9">
-        <select
-          name="activo"
-          class="form-control"
-          [(ngModel)]="findRequest.filter.top"
-          #enabled="ngModel"
-        >
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="50">50</option>
+        <select name="top" class="form-control" [(ngModel)]="findRequest.filter.top" #top="ngModel">
+          <option [value]="undefined">{{ "form.select" | translate }}</option>
+          <option [value]="10">10</option>
+          <option [value]="20">20</option>
+          <option [value]="50">50</option>
         </select>
       </div>
     </div>
 
     <!-- q&a -->
     <div class="form-group col-lg-6">
-      <label for="activo" class="col-sm-4 control-label">{{
-        "researchmentStructure.qa" | translate
-      }}</label>
+      <label for="activo" class="col-sm-4 control-label">{{  "researchmentStructure.qa" | translate }}</label>
       <div class="col-sm-8">
-        <select
-          name="activo"
-          class="form-control"
-          [(ngModel)]="findRequest.filter.qa"
-          #enabled="ngModel"
-          (change)="filterTopResearchmentStructures('qa')"
-        >
-          <option value="">{{ "form.select" | translate }}</option>
-          <option value="Severo Ochoa">Severo Ochoa</option>
+        <select name="qa" class="form-control" [(ngModel)]="findRequest.filter.qa" #qa="ngModel"
+          (change)="filterTopResearchmentStructures('qa')">
+          <option [value]="undefined">{{ "form.select" | translate }}</option>
+          <option [value]="'Severo Ochoa'">Severo Ochoa</option>
         </select>
       </div>
     </div>
@@ -152,16 +117,13 @@
   <table class="table table-users table-hover">
     <thead>
       <tr>
-        <th class="sortable" (click)="sort('name')">
-          {{ "researchmentStructure.name" | translate
-          }}<em class="float-right" [ngClass]="getSortIcon('name')"></em>
+        <th class="sortable" (click)="sort('name')"> {{ "researchmentStructure.name" | translate }}
+          <em class="float-right" [ngClass]="getSortIcon('name')"></em>
         </th>
-        <th class="sortable" (click)="sort('type')">
-          {{ "researchmentStructure.type" | translate }}
+        <th class="sortable" (click)="sort('type')"> {{ "researchmentStructure.type" | translate }}
           <em class="float-right" [ngClass]="getSortIcon('type')"></em>
         </th>
-        <th class="sortable" (click)="sort('publications')">
-          {{ "researchmentStructure.publications" | translate }}
+        <th class="sortable" (click)="sort('publications')">{{ "researchmentStructure.publications" | translate }}
           <em class="float-right" [ngClass]="getSortIcon('publications')"></em>
         </th>
       </tr>
@@ -175,11 +137,8 @@
     </tbody>
   </table>
 
-  <app-pagination
-    [resultObject]="resultObject"
-    (pageChanged)="showPage($event)"
-    (sizeChanged)="changeSize($event)"
-  ></app-pagination>
+  <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)" (sizeChanged)="changeSize($event)">
+  </app-pagination>
 </fieldset>
 
 <div echarts [options]="echartOptions" class="sector-chart"></div>

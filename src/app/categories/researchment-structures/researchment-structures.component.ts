@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   PaginatedSearchComponent,
   FindRequest,
@@ -22,13 +22,11 @@ import * as R from 'ramda';
   templateUrl: './researchment-structures.component.html',
   styleUrls: ['./researchment-structures.component.css'],
 })
-export class ResearchmentStructuresComponent extends PaginatedSearchComponent<
-  ResearchmentStructure
-> {
+export class ResearchmentStructuresComponent extends PaginatedSearchComponent<ResearchmentStructure> implements OnInit {
   echartOptions: any;
-  filters: Map<String, String> = new Map();
+  filters: Map<string, string> = new Map();
 
-  filtersTop: Map<String, String> = new Map();
+  filtersTop: Map<string, string> = new Map();
   topSearchResult: any[];
 
   protected removeInternal(
@@ -134,45 +132,46 @@ export class ResearchmentStructuresComponent extends PaginatedSearchComponent<
 
   /**
    *
-   * @param count
+   * param count
    */
   genData(count) {
-    var nameList = [
+    const nameList = [
       'Verificación',
       'Acreditación',
       'Acreditación de las dimensiones adicionales',
       'Certificación del sistema de garantía interna de la calidad (SGIC) de centro',
       'Centro acreditado institucionalmente',
     ];
-    var legendData = [];
-    var seriesData = [];
-    var selected = {};
-    var name;
+    const legendData = [];
+    const seriesData = [];
+    const selected = {};
+    let name;
 
-    for (var i = 0; i < count; i++) {
+    for (let i = 0; i < count; i++) {
       name = nameList[i];
       legendData.push(name);
       seriesData.push({
-        name: name,
+        name,
         value: Math.round(Math.random() * 100000),
       });
       selected[name] = i < 6;
     }
-
     return {
-      legendData: legendData,
-      seriesData: seriesData,
-      selected: selected,
+      legendData,
+      seriesData,
+      selected,
     };
   }
 
   /*
    * Filter researchment structures
    */
-  filterResearchmentStructures(filterName: String) {
+  filterResearchmentStructures(filterName: string) {
     switch (filterName) {
       case 'type':
-        this.filters.set(filterName, this.findRequest.filter.type);
+        // si el valor viene undefined debería "resetar el valor para mostrar todo"
+        this.findRequest.filter.type !== 'undefined' ? this.filters.set(filterName, this.findRequest.filter.type) :
+        this.filters.set(filterName, '');
 
         break;
 
@@ -193,11 +192,12 @@ export class ResearchmentStructuresComponent extends PaginatedSearchComponent<
   /*
    * Filter researchment structures
    */
-  filterTopResearchmentStructures(filterName: String) {
+  filterTopResearchmentStructures(filterName: string) {
     switch (filterName) {
       case 'qa':
-        this.filtersTop.set(filterName, this.findRequest.filter.qa);
-
+        // si el valor viene undefined debería "resetar el valor para mostrar todo"
+        this.findRequest.filter.qa !== 'undefined' ? this.filtersTop.set(filterName, this.findRequest.filter.qa) 
+        : this.filtersTop.set(filterName, '');
         break;
 
       default:
