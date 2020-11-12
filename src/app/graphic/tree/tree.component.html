@@ -1,7 +1,6 @@
-<h1>Echarts Tree</h1>
-<div
-  echarts
-  [options]="options"
-  class="demo-chart"
-  (chartInit)="onChartInit($event)"
-></div>
+<div  echarts [options]="options"
+ class="demo-chart" 
+ (chartInit)="onChartInit($event)"
+ (chartClick)="chartClick($event)"
+ ></div>
+ <!--(chartClick)="charClick($event)" -->
