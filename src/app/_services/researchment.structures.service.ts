@@ -87,7 +87,7 @@ export class ResearchmentStructuresService extends AbstractService {
       name: 'María Hernandez Reyes Mora',
       type: 'Docente',
       publications: 8,
-      area: ''
+      area: 'Filosofia'
     },
     {
       id: 'f445344',

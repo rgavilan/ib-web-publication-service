@@ -1,21 +1,11 @@
 <fieldset>
     <form class="form-horizontal " (ngSubmit)="f.form.valid && find()" #f="ngForm">
         <div class="row mt-20">
-            <!-- top -->
-            <div class="form-group col-lg-6">
-                <label for="area" class="col-sm-3 control-label">{{  "scientist.area" | translate }}</label>
-                <div class="col-sm-9">
-                    <select (change)="filterTopResearchmentStructures('area')" name="area" class="form-control"
-                        [(ngModel)]="findRequest.filter.area" #area="ngModel">
-                        <option [value]="undefined">{{ "form.select" | translate }}</option>
-                        <option [value]="'Filologia, lengua y literatura'">Filologia, lengua y literatura</option>
-                        <option [value]="'Filosofia'">Filosofia</option>
-                        <option [value]="'Historia'">Historia</option>
-                    </select>
-                </div>
+            <!-- categorias tree -->
+            <div class="col-12">
+                <app-tree [data]="data"></app-tree>
             </div>
-
-            <!-- q&a -->
+            <!-- type -->
             <div class="form-group col-lg-6">
                 <label for="type" class="col-sm-4 control-label">{{  "scientist.type" | translate }}</label>
                 <div class="col-sm-8">

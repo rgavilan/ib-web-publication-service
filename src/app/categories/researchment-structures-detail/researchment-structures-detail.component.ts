@@ -20,10 +20,6 @@ export class ResearchmentStructuresDetailComponent implements OnInit {
    * researchment
    */
   researchment: any;
-
-
-
-
   constructor(private router: Router,
               private translate: TranslateService,
               private toastr: ToastrService,
