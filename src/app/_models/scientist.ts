@@ -18,5 +18,5 @@ export class Scientist {
     /**
      * area
      */
-    area: string;
+    area: Array<string>;
 }

@@ -16,6 +16,7 @@ import { ResearchmentStructuresService } from 'src/app/_services/researchment.st
 export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist> implements OnInit,  AfterContentInit {
   @Input() universityId: string;
   filtersTop: Map<string, string> = new Map();
+  filtersArea: Map<string, Array<string>> = new Map();
   data: any;
   constructor(router: Router,
               translate: TranslateService,
@@ -94,7 +95,14 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
   }
 
   filterArea(event) {
-    console.log(event);
+    this.findRequest.filter.area = event;
+    this.filtersArea.set('area', this.findRequest.filter.area);
+    const page = this.researchmentStructureService.filterArea(
+      this.filtersArea
+    );
+    this.searchResult = page.content;
+    page.uibPage = page.number + 1;
+    this.resultObject = page;
   }
 
 }

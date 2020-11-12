@@ -89,10 +89,13 @@ export class TreeComponent implements OnInit {
   onChartInit(chartInstance: any) {
   }
 
+  
+
   chartClick(event) {
+    this.filter = [];
     const dataTofilter = [];
     let keyToFilter = null;
-    console.log(event.value);
+    const keysToRemove = [];
     this.data.children.forEach((element, key) => {
         if (element.value === event.value) {
           keyToFilter = key;
@@ -112,16 +115,13 @@ export class TreeComponent implements OnInit {
     this.filterDate = this.data;
     this.filterDate.children.forEach((element, key) => {
       if (key !== keyToFilter) {
-        this.filter.push(event.value);
-        element.children.forEach(element2 => {
-          if (element2.value === event.value) {
-            this.filter.push(element2.value);
-          }
-        });
+        // añado solo el emento padre
+        this.filter.push(element.value);
       } else {
-        this.filter.push(event.value);
         element.children.forEach(element2 => {
-          if (element2.value === event.value) {
+          if (event.value !== element2.value) {
+            keysToRemove.push(element2.value);
+          } else {
             this.filter.push(element2.value);
           }
         });
@@ -129,4 +129,5 @@ export class TreeComponent implements OnInit {
     });
     this.filterChanged.emit(this.filter.filter((v, i, a) => a.indexOf(v) === i));
   }
+  
 }

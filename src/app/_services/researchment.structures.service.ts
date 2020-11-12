@@ -6,6 +6,7 @@ import { AbstractService } from '../_helpers/abstract';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { of } from 'rxjs';
 import { Scientist } from '../_models/scientist';
+import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -85,16 +86,16 @@ export class ResearchmentStructuresService extends AbstractService {
     {
       id: '4343434',
       name: 'María Hernandez Reyes Mora',
-      type: 'Docente',
+      type: 'Docente EYT ENE',
       publications: 8,
-      area: 'Filosofia'
+      area: ['EYT', 'ENE']
     },
     {
       id: 'f445344',
       name: 'Jesualdo Tomás Fernandes Breis',
-      type: 'Docente',
+      type: 'Docente CTQ IQM',
       publications: 14,
-      area: ''
+      area: ['CTQ', 'IQM']
     }
   ];
   constructor(private httpClient: HttpClient) {
@@ -224,6 +225,33 @@ export class ResearchmentStructuresService extends AbstractService {
               keyObject === keyFilter &&
               researchmentStructure[keyObject].indexOf(valueFilter) > -1
             ) {
+              return true;
+            }
+          }
+        });
+      }
+    });
+
+    page.first = true;
+    page.last = false;
+    page.number = 1;
+    page.numberOfElements = 1;
+    page.size = 1;
+    page.totalElements = 1;
+    page.totalPages = 1;
+
+    return page;
+  }
+
+  filterArea(filters: Map<string, Array<string>>): Page<Scientist> {
+    const page: Page<Scientist> = new Page<Scientist>();
+    page.content = this.DUMMY_DATA_SCIENTIST.slice(0, 10);
+   
+    filters.forEach((valueFilter, keyFilter) => {
+      if (!!valueFilter) {
+        page.content = page.content.filter((researchmentStructure) => {
+          for (const keyObject of Object.keys(researchmentStructure)) {
+            if ( keyObject === keyFilter && researchmentStructure.area.some((val) => valueFilter.indexOf(val) !== -1)) {
               return true;
             }
           }
