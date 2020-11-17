@@ -22,7 +22,9 @@ import * as R from 'ramda';
   templateUrl: './researchment-structures.component.html',
   styleUrls: ['./researchment-structures.component.css'],
 })
-export class ResearchmentStructuresComponent extends PaginatedSearchComponent<ResearchmentStructure> implements OnInit {
+export class ResearchmentStructuresComponent
+  extends PaginatedSearchComponent<ResearchmentStructure>
+  implements OnInit {
   echartOptions: any;
   filters: Map<string, string> = new Map();
 
@@ -69,7 +71,7 @@ export class ResearchmentStructuresComponent extends PaginatedSearchComponent<Re
   }
 
   ngOnInit(): void {
-    // TODO
+    // Tabla
     const page = this.researchmentStructureService.findResearchmentStructures(
       null
     );
@@ -80,6 +82,7 @@ export class ResearchmentStructuresComponent extends PaginatedSearchComponent<Re
     this.resultObject = page;
     this.findRequest.filter.top = 10;
 
+    // Gráficas
     const xAxisData = [];
     const data1 = [];
     const data2 = [];
@@ -169,8 +172,9 @@ export class ResearchmentStructuresComponent extends PaginatedSearchComponent<Re
   filterResearchmentStructures(filterName: string) {
     switch (filterName) {
       case 'type':
-        this.findRequest.filter.type !== 'undefined' ? this.filters.set(filterName, this.findRequest.filter.type) :
-        this.filters.set(filterName, '');
+        this.findRequest.filter.type !== 'undefined'
+          ? this.filters.set(filterName, this.findRequest.filter.type)
+          : this.filters.set(filterName, '');
 
         break;
 
@@ -195,8 +199,9 @@ export class ResearchmentStructuresComponent extends PaginatedSearchComponent<Re
     switch (filterName) {
       case 'qa':
         // si el valor viene undefined debería "resetar el valor "
-        this.findRequest.filter.qa !== 'undefined' ? this.filtersTop.set(filterName, this.findRequest.filter.qa) 
-        : this.filtersTop.set(filterName, '');
+        this.findRequest.filter.qa !== 'undefined'
+          ? this.filtersTop.set(filterName, this.findRequest.filter.qa)
+          : this.filtersTop.set(filterName, '');
         break;
 
       default:

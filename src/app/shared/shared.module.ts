@@ -12,11 +12,13 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
-  declarations: [PaginationComponent, 
-    TopSearchComponent, 
-    ScientistSearchComponent, 
-    TreeComponent, 
-    GraphicComponent],
+  declarations: [
+    PaginationComponent,
+    TopSearchComponent,
+    ScientistSearchComponent,
+    TreeComponent,
+    GraphicComponent,
+  ],
   imports: [
     CommonModule,
     TranslateModule.forChild(),
@@ -27,12 +29,14 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
       echarts: () => import('echarts'),
     }),
   ],
-  exports: [PaginationComponent, 
-    TranslateModule, 
-    CommonModule, 
-    TopSearchComponent, 
-    ScientistSearchComponent, 
-    TreeComponent, 
-    GraphicComponent]
+  exports: [
+    PaginationComponent,
+    TranslateModule,
+    CommonModule,
+    TopSearchComponent,
+    ScientistSearchComponent,
+    TreeComponent,
+    GraphicComponent,
+  ],
 })
 export class SharedModule {}

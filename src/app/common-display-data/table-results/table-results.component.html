@@ -27,6 +27,7 @@
           </tr>
         </tbody>
       </table>
+      res {{ resultObject.numberOfElements }}
       <app-pagination
         [resultObject]="resultObject"
         (pageChanged)="showPage($event)"
@@ -36,6 +37,40 @@
   </div>
 </div>
 
+/***********************************/
+
+<div class="container-fluid app-table-results">
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered" *ngIf="!!_data">
+        <thead>
+          <tr>
+            <th class="first-header"></th>
+            <th *ngFor="let header of _data.head.vars">{{ header }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let item of _dataToShow; index as i"
+            [ngClass]="{ 'table-secondary': i % 2 == 1 }"
+          >
+            <td>{{ i }}</td>
+            <td *ngFor="let header of _data.head.vars">
+              <a
+                href="{{ item[header].value }}"
+                *ngIf="item[header].type == 'uri'"
+                >{{ item[header].value }}</a
+              >
+              <ng-container *ngIf="item[header].type != 'uri'">{{
+                item[header].value
+              }}</ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 <div class="container-fluid">
   <div class="row">
     <div class="col">

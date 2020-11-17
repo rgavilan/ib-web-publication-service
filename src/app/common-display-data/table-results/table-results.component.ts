@@ -1,11 +1,19 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
 import {
+  Direction,
   FindRequest,
   Order,
   Page,
   PaginatedSearchComponent,
 } from 'src/app/_helpers/search';
+import { Helper } from 'src/app/_helpers/utils';
+import { User } from 'src/app/_models/user';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-table-results',
@@ -37,18 +45,74 @@ export class TableResultsComponent
   numPages = 1;
   actualPage = 1;
 
+  constructor(
+    router: Router,
+    translate: TranslateService,
+    toastr: ToastrService,
+    private userService: UserService
+  ) {
+    super(router, translate, toastr);
+  }
+
   ngOnInit(): void {
-    console.log(this.data);
+    console.log('ngOnInit ' + this.data);
+    this.find();
+    let page: Page<any> = new Page<any>();
+
+    page.content = this._data.results;
+
+    page.first = true;
+    page.last = false;
+
+    page.number = 1;
+    page.numberOfElements = this.pageSize;
+    page.size = this.pageSize;
+    page.totalElements = 3;
+    page.uibPage = page.number + 1;
+    page.totalPages = this.numPages;
+    this.findRequest.filter.top = 10;
+
+    this.searchResult = page.content;
+    this.resultObject = page;
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<any>> {
-    return of(this.data);
+    console.log('findInternal ' + this.data);
+    // TODO Tiene q devolver un Page, cambiarlo como el oninit
+    let page: Page<any> = new Page<any>();
+
+    page.content = this._data.results;
+
+    page.first = true;
+    page.last = false;
+
+    page.number = 1;
+    page.numberOfElements = this.pageSize;
+    page.size = this.pageSize;
+    page.totalElements = 3;
+    page.uibPage = page.number + 1;
+    page.totalPages = this.numPages;
+    // Modificar
+    let parameters = new HttpParams();
+    this._data.head.vars.forEach((head) => {
+      parameters = Helper.addParam(parameters, head, null);
+    });
+    parameters = Helper.addPaginationParams(
+      parameters,
+      findRequest.pageRequest
+    );
+
+    return of(page);
   }
   protected removeInternal(entity: any): Observable<{} | Response> {
     throw new Error('Method not implemented.');
   }
+
   protected getDefaultOrder(): Order {
-    throw new Error('Method not implemented.');
+    return {
+      property: 'id',
+      direction: Direction.ASC,
+    };
   }
 
   showPage(i: number): void {
@@ -56,5 +120,14 @@ export class TableResultsComponent
     var init = (i - 1) * 10;
     var end = i * 10;
     this._dataToShow = this._data.results.bindings.slice(init, end);
+  }
+
+  createParams(data: any): HttpParams {
+    let parameters = new HttpParams();
+    this._data.head.vars.forEach((head) => {
+      parameters = Helper.addParam(parameters, head, null);
+    });
+
+    return parameters;
   }
 }
