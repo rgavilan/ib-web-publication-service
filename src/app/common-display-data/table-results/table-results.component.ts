@@ -1,11 +1,10 @@
 import { HttpParams } from '@angular/common/http';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
 import {
-  Direction,
   FindRequest,
   Order,
   Page,
@@ -21,6 +20,38 @@ import { Helper } from 'src/app/_helpers/utils';
 export class TableResultsComponent
   extends PaginatedSearchComponent<any>
   implements OnInit {
+  // use getter setter to define the property
+  @Input()
+  set data(val: any) {
+    this._data = val;
+    if (val != null) {
+      // this._data.results.bindings = this._data.results.bindings.concat(
+      //   this._data.results.bindings
+      // );
+      this.totalItems = this._data.results.bindings.length;
+      this.showPage(1);
+    }
+  }
+
+  get data(): any {
+    return this._data;
+  }
+
+  @Input()
+  page: number;
+
+  @Input()
+  totalItems: number;
+
+  @Input()
+  orderBy: Order;
+
+  @Output()
+  callShowPage: EventEmitter<number> = new EventEmitter<number>();
+
+  @Output()
+  callChangeSize: EventEmitter<number> = new EventEmitter<number>();
+
   /*
    * Initial data
    */
@@ -30,29 +61,8 @@ export class TableResultsComponent
    */
   _dataToShow;
 
-  pageSize = 7;
+  pageSize = 10;
   numPages = 1;
-  totalItems;
-
-  // use getter setter to define the property
-  @Input()
-  set data(val: any) {
-    this._data = val;
-    if (val != null) {
-      this._data.results.bindings = this._data.results.bindings.concat(
-        this._data.results.bindings
-      );
-      this._data.results.bindings = this._data.results.bindings.concat(
-        this._data.results.bindings
-      );
-      this.totalItems = this._data.results.bindings.length;
-      this.showPage(1);
-    }
-  }
-
-  get data(): any {
-    return this._data;
-  }
 
   constructor(
     router: Router,
@@ -120,20 +130,39 @@ export class TableResultsComponent
     return of(page);
   }
   protected removeInternal(entity: any): Observable<{} | Response> {
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
+    return;
   }
 
   protected getDefaultOrder(): Order {
-    return {
-      property: 'id',
-      direction: Direction.ASC,
-    };
+    // return {
+    //   property: 'id',
+    //   direction: Direction.ASC,
+    // };
+    // TODO set default order? Get input value for order?
+    return new Order();
   }
 
   showPage(i: number): void {
     const init = (i - 1) * this.pageSize;
     const end = i * this.pageSize;
     this._dataToShow = this._data.results.bindings.slice(init, end);
+  }
+
+  callShowPageWhenPageChanges(i: number): void {
+    // const init = (i - 1) * this.pageSize;
+    // const end = i * this.pageSize;
+    // this._dataToShow = this._data.results.bindings.slice(init, end);
+    console.log('callShowPageWhenPageChanges' + i);
+    this.callShowPage.next(i);
+  }
+
+  callShowPageWhenSizeChanges(i: number): void {
+    // const init = (i - 1) * this.pageSize;
+    // const end = i * this.pageSize;
+    // this._dataToShow = this._data.results.bindings.slice(init, end);
+    console.log('callShowPageWhenSizeChanges' + i);
+    this.callChangeSize.next(i);
   }
 
   createParams(data: any): HttpParams {

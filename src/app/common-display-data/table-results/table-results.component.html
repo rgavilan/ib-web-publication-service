@@ -5,7 +5,9 @@
         <thead>
           <tr>
             <th class="first-header"></th>
-            <th *ngFor="let header of _data.head.vars">{{ header }}</th>
+            <th class="sortable" *ngFor="let header of _data.head.vars">
+              {{ header }}
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -29,7 +31,7 @@
       </table>
       <app-pagination
         [resultObject]="resultObject"
-        (pageChanged)="showPage($event)"
+        (pageChanged)="callShowPageWhenPageChanges($event)"
         (sizeChanged)="changeSize($event)"
       ></app-pagination>
     </div>
