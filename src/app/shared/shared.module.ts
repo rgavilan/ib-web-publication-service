@@ -10,13 +10,15 @@ import { TreeComponent } from '../graphic/tree/tree.component';
 import { GraphicComponent } from '../graphic/graphic.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { NewTreeComponent } from '../graphic/new-tree/new-tree.component';
 
 @NgModule({
   declarations: [PaginationComponent, 
     TopSearchComponent, 
     ScientistSearchComponent, 
     TreeComponent, 
-    GraphicComponent],
+    GraphicComponent,
+    NewTreeComponent],
   imports: [
     CommonModule,
     TranslateModule.forChild(),
@@ -33,6 +35,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     TopSearchComponent, 
     ScientistSearchComponent, 
     TreeComponent, 
-    GraphicComponent]
+    GraphicComponent,
+    NewTreeComponent]
 })
 export class SharedModule {}

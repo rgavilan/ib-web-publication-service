@@ -1,5 +1,6 @@
 <div #echarts="echarts" echarts [options]="options"
  class="demo-chart" 
+ [merge]="filter"
  (chartInit)="onChartInit($event)"
  ></div>
  <!--(chartClick)="charClick($event)" -->

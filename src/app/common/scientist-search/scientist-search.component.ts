@@ -106,4 +106,12 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
     
   }
 
+  returnAreaString(area) {
+    let result = '';
+    area.forEach(element => {
+      result += element + ', ';
+    });
+    return  result;
+  }
+
 }

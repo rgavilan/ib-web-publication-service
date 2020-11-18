@@ -38,6 +38,7 @@ export class TreeComponent implements OnInit {
           { name: 'Astonomía y astrofísica', value: 'AYA' },
           { name: 'Investigación espacial', value: 'ESP' },
           { name: 'Física fundamenta y de partículas', value: 'FFP' },
+          { name: 'Física y sus aplicaciones', value: 'FYA' }
         ]
       }
     ],
@@ -47,8 +48,16 @@ export class TreeComponent implements OnInit {
   filter = [];
   dataTofilter = [];
   hoverStyle = { lineStyle: { color: 'black' } };
+  hoverStyleGrey = { lineStyle: { color: 'grey' } };
+  selected = {selected: true};
   level = 0;
-  constructor() { }
+  constructor() {
+    this.data.children.forEach(element => {
+      this.dataTofilter.push(element.value);
+    });
+    this.dataTofilter = this.dataTofilter.filter((v, i, a) => a.indexOf(v) === i);
+    this.filterChanged.emit(this.dataTofilter);
+   }
 
   ngOnInit(): void {
     this.filterDate = this.data;
@@ -110,10 +119,23 @@ export class TreeComponent implements OnInit {
           delete e.data.lineStyle;
           !e.data.hasOwnProperty('lineStyle') ? Object.assign(e.data, this.hoverStyle) : e.data.lineStyle.color = 'black';
         } else {
-          e.data.children.forEach(element => {
-            this.dataTofilter.push(element.value); 
-            !element.hasOwnProperty('lineStyle') ? Object.assign(element, this.hoverStyle) : element.lineStyle.color = 'black';
-          });
+          if (e.data.selected) {
+            e.data.selected = false;
+            !e.data.hasOwnProperty('lineStyle') ? Object.assign(e.data, this.hoverStyleGrey) : e.data.lineStyle.color = 'grey';
+            e.data.children.forEach(element => {
+              this.dataTofilter.splice(this.dataTofilter.indexOf(element.value), 1);
+              !element.hasOwnProperty('lineStyle') ? Object.assign(element, this.hoverStyleGrey) : element.lineStyle.color = 'grey';
+            });
+          } else {
+            this.dataTofilter.splice(this.dataTofilter.indexOf(e.value), 1);
+            !e.data.hasOwnProperty('lineStyle') ? Object.assign(e.data, this.hoverStyle) : e.data.lineStyle.color = 'black';
+            !e.data.hasOwnProperty('selected') ? Object.assign(e.data, this.selected) : e.data.selected = 'true';
+            e.data.children.forEach(element => {
+              this.dataTofilter.push(element.value); 
+              !element.hasOwnProperty('lineStyle') ? Object.assign(element, this.hoverStyle) : element.lineStyle.color = 'black';
+            });
+          }
+          
         }
         
       }
@@ -168,7 +190,6 @@ export class TreeComponent implements OnInit {
 
   cleanNode(subnode, nodeName) {
     subnode.children.forEach(subNode => { 
-      console.log(subNode);
       !subNode.hasOwnProperty('lineStyle') ? Object.assign(subNode, { lineStyle: { color: 'grey' } }) : subNode.lineStyle.color = 'grey';
     });
   }
