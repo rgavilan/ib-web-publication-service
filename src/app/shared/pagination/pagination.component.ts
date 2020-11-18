@@ -38,6 +38,7 @@ export class PaginationComponent implements OnChanges {
   totalElements = 0;
   currentPage = 1;
   pageSize = 0;
+  maxSize = 6;
 
   constructor() {}
 
