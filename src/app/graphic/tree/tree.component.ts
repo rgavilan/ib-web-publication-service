@@ -15,27 +15,30 @@ export class TreeComponent implements OnInit {
       {
         name: 'Ciencias y tecnologías quimicas',
         value: 'CTQ',
+        lineStyle: { color: 'black' },
         children: [
-          {name: 'Ingeniería Química', value: 'IQM'},
-          {name: 'Química', value: 'QMC'}
+          { name: 'Ingeniería Química', value: 'IQM' },
+          { name: 'Química', value: 'QMC' }
         ]
       },
       {
         name: 'Energía y transporte',
         value: 'EYT',
+        lineStyle: { color: 'black' },
         children: [
-          {name: 'Energía', value: 'ENE'},
-          {name: 'Transporte', value: 'TRA'}
+          { name: 'Energía', value: 'ENE' },
+          { name: 'Transporte', value: 'TRA' }
         ]
       },
       {
         name: 'Ciencias físicas',
         value: 'FIS',
+        lineStyle: { color: 'black' },
         children: [
-          {name: 'Astonomía y astrofísica', value: 'AYA'},
-          {name: 'Investigación espacial', value: 'ESP'},
-          {name: 'Física fundamenta y de partículas', value: 'FFP'},
-          {name: 'Física y sus aplicaciones', value: 'FYA'}
+          { name: 'Astonomía y astrofísica', value: 'AYA' },
+          { name: 'Investigación espacial', value: 'ESP' },
+          { name: 'Física fundamenta y de partículas', value: 'FFP' },
+          { name: 'Física y sus aplicaciones', value: 'FYA' }
         ]
       }
     ],
@@ -44,8 +47,9 @@ export class TreeComponent implements OnInit {
   options: any;
   filter = [];
   dataTofilter = [];
+  hoverStyle = { lineStyle: { color: 'black' } };
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     this.filterDate = this.data;
@@ -71,7 +75,8 @@ export class TreeComponent implements OnInit {
           },
           lineStyle: {
             width: 3,
-            curveness: 0.3
+            curveness: 0.3,
+            color: 'grey'
           },
           leaves: {
             label: {
@@ -94,153 +99,49 @@ export class TreeComponent implements OnInit {
    */
   onChartInit(chartInstance: any) {
     chartInstance.on('click', (e) => {
-      const chartTree = this.echarts.options.series[0].data[0];
+      const chartTree = chartInstance.getOption().series[0].data[0];
       const nodeSelected = this.isNodeSelected(chartTree, e.name);
-      if (nodeSelected){
-        this.cleanTree(this.echarts);
+      if (nodeSelected) {
+        this.dataTofilter.splice(this.dataTofilter.indexOf(e.value), 1);
+        e.data.lineStyle.color = 'grey';
       } else {
-        this.paintBranch(this.echarts, e.name);
+        this.dataTofilter.push(e.value);
+        delete e.data.lineStyle;
+        !e.data.hasOwnProperty('lineStyle') ? Object.assign(e.data, this.hoverStyle) : e.data.lineStyle.color = 'black';
       }
-    });
-  }
-
-  cleanTree(chartInstance){
-    const clonedData = this.cloneDeepObjects(this.data);
-    chartInstance.setOption({
-      series: [{ type: 'tree', id: '0', data: clonedData }]
-    }, false);
-  }
-
-  paintBranch(chartInstance, nodeName){
-    const nodesForPaint = [];
-    let newSeries     = null;
-    const mainOption    = null;
-  
-    this.traverseFrom({
-      nodeName,
-      callback: node => nodesForPaint.push(node.name),
-      skipStartNode: true
-    });
-  
-    if (nodesForPaint){
-      const hoverStyle = { lineStyle: { color: 'black' }};
-      newSeries = this.buildSeriesConfig(nodesForPaint, hoverStyle);
-    } else {
-      // throw 'Nodes for paint is not exists';
-    }
-  
-    if (newSeries){
+      this.filter = chartInstance.getOption().series[0].data[0];
+      // chequear primero si ya existe
       chartInstance.setOption({
-        series: [{ type: 'tree', id: '0', data: newSeries }]
+        series: [{ data: [this.filter] }]
       }, false);
-    } else {
-     //  throw 'New series config is not builded'
-    }
-  }
-
-  buildSeriesConfig(nodes, style){
-    const seriesConfig = this.cloneDeepObjects(this.echarts.options.series[0].data[0]);
-    const nodes1 = nodes.flat();
-  
-    this.traverse(seriesConfig, node => {
-      if (nodes1.includes(node.name)){
-        Object.assign(node, style);
-      }
+      this.dataTofilter = this.dataTofilter.filter((v, i, a) => a.indexOf(v) === i);
+      this.filterChanged.emit(this.dataTofilter);
     });
-    return seriesConfig;
   }
 
-  cloneDeepObjects(object: any) {
-    if (object === undefined || object === null) {
-        return object;
-    }
-    return JSON.parse(JSON.stringify(object));
-  }
-
-  isNodeSelected(tree, nodeName){
+  /**
+   * returns if node has been selected
+   * param tree (the full tree)
+   * param nodeName (node name to search)
+   */
+  isNodeSelected(tree, nodeName) {
     let status = false;
-    this.traverseFrom({
-      tree,
-      nodeName,
-      callback: node => {
-        console.log(node.hasOwnProperty('lineStyle'));
-        node.hasOwnProperty('lineStyle') ?  status = true :  status = false;
-      },
-      skipStartNode: true
+    tree.children.forEach(element => {
+      element.children.forEach(subNode => {
+        if (nodeName === subNode.name) {
+          status = this.findStyle(subNode) && subNode.lineStyle?.color === 'black';
+        }
+      });
     });
     return status;
   }
 
-  traverseFrom(opts){
-    const defaults = { tree: this.data, nodeName: null, callback: null, skipStartNode: false };
-    Object.assign(defaults, opts);
-  
-    let targetNode = null;
-  
-    // Find node for start paint
-    this.traverse(defaults.tree, node => {
-      if (node.name === defaults.nodeName){
-        targetNode = node;
-      }
-    });
-    // Find all children of found node
-    this.traverse(targetNode, node => {
-      if (defaults.skipStartNode && node.name === defaults.nodeName){
-        // Skip first because it is start branch
-      } else {
-        defaults.callback(node);
-      }
-    });
+  /**
+   * finds if node has the property lineStyle
+   * param node 
+   */
+  findStyle(node): boolean {
+    return node.hasOwnProperty('lineStyle');
   }
 
-  traverse(node, callback){
-    if (node.children){
-      callback(node);
-      node.children.forEach(subNode => this.traverse(subNode, callback));
-    } else {
-      callback(node);
-    }
-  }
-
-  
-
-  chartClick(event) {
-  /*  this.filter = [];
-    // chequear primero si ya existe
-    this.data.children.forEach((element, key) => {
-        if (element.value === event.value) {
-          // entro en primer nivel agrego el nivel
-          this.dataTofilter.push(event.value);
-          element.children.forEach((element2) => {
-              const indexExist = this.dataTofilter.indexOf(element2.value);
-              console.log(indexExist);
-              if (indexExist !== -1) {
-                this.dataTofilter.splice(indexExist, 1);
-              }
-            });
-        } else {       
-          element.children.forEach((element2) => {
-            if (element2.value === event.value) {
-                const indexExist2 = this.dataTofilter.indexOf(element.value);
-                if (indexExist2 !== -1) {
-                  // elimino el padre
-                  this.dataTofilter.splice(indexExist2, 1);
-                } else {
-                  this.dataTofilter.push(element.value);
-                }
-                // asi el hijo existe lo quito
-                const indexExist = this.dataTofilter.indexOf(element2.value);
-                if (indexExist !== -1) {
-                  this.dataTofilter.splice(indexExist, 1);
-                } else {
-                  this.dataTofilter.push(element2.value);
-                }
-            }
-          });
-    }});
-    this.dataTofilter = this.dataTofilter.filter((v, i, a) => a.indexOf(v) === i);
-    this.filterChanged.emit(this.dataTofilter);*/
-  }
-
-  
 }

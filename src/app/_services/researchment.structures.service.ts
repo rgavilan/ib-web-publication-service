@@ -246,12 +246,11 @@ export class ResearchmentStructuresService extends AbstractService {
   filterArea(filters: Map<string, Array<string>>): Page<Scientist> {
     const page: Page<Scientist> = new Page<Scientist>();
     page.content = this.DUMMY_DATA_SCIENTIST.slice(0, 10);
-   
     filters.forEach((valueFilter, keyFilter) => {
-      if (!!valueFilter) {
+      if (!!valueFilter && valueFilter.length !== 0) {
         page.content = page.content.filter((researchmentStructure) => {
           for (const keyObject of Object.keys(researchmentStructure)) {
-            if ( keyObject === keyFilter && researchmentStructure.area.some((val) => valueFilter.indexOf(val) !== -1)) {
+            if ( keyObject === keyFilter && researchmentStructure[keyObject].some((val) => valueFilter.indexOf(val) !== -1)) {
               return true;
             }
           }

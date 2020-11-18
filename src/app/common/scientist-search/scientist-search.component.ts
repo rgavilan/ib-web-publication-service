@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
+import { AfterContentInit, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
@@ -13,7 +13,7 @@ import { ResearchmentStructuresService } from 'src/app/_services/researchment.st
   templateUrl: './scientist-search.component.html',
   styleUrls: ['./scientist-search.component.css']
 })
-export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist> implements OnInit,  AfterContentInit {
+export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist> implements OnInit, AfterContentInit {
   @Input() universityId: string;
   filtersTop: Map<string, string> = new Map();
   filtersArea: Map<string, Array<string>> = new Map();
@@ -21,9 +21,10 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
   constructor(router: Router,
               translate: TranslateService,
               toastr: ToastrService,
-              private researchmentStructureService: ResearchmentStructuresService) { 
-                super(router, translate, toastr);
-              }
+              private researchmentStructureService: ResearchmentStructuresService,
+              private cdr: ChangeDetectorRef) {
+    super(router, translate, toastr);
+  }
 
   ngOnInit(): void {
     // agregar automatico que filtre por ID
@@ -58,7 +59,7 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
     throw new Error('Method not implemented.');
   }
   protected getDefaultOrder(): Order {
-    return  {
+    return {
       property: 'code',
       direction: Direction.ASC
     };
@@ -71,15 +72,9 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
     switch (filterName) {
       case 'type':
         // si el valor viene undefined debería "resetar el valor para mostrar todo"
-        this.findRequest.filter.type !== 'undefined' ? this.filtersTop.set(filterName, this.findRequest.filter.type) 
-        : this.filtersTop.set(filterName, '');
-        break;
-        case 'area':
-          // si el valor viene undefined debería "resetar el valor para mostrar todo"
-          this.findRequest.filter.area !== 'undefined' ? this.filtersTop.set(filterName, this.findRequest.filter.area) 
+        this.findRequest.filter.type !== 'undefined' ? this.filtersTop.set(filterName, this.findRequest.filter.type)
           : this.filtersTop.set(filterName, '');
-          break;
-
+        break;
       default:
         break;
     }
@@ -100,9 +95,14 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
     const page = this.researchmentStructureService.filterArea(
       this.filtersArea
     );
-    this.searchResult = page.content;
-    page.uibPage = page.number + 1;
-    this.resultObject = page;
+
+    setTimeout(() => {
+      this.searchResult = [...page.content];
+      page.uibPage = page.number + 1;
+      this.resultObject = page;
+      this.cdr.detectChanges();
+    }, 300);
+    
   }
 
 }
