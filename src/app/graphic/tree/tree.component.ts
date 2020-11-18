@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { NgxEchartsDirective, NgxEchartsModule } from 'ngx-echarts';
 
 @Component({
@@ -48,7 +48,7 @@ export class TreeComponent implements OnInit {
   filter = [];
   dataTofilter = [];
   hoverStyle = { lineStyle: { color: 'black' } };
-
+  level = 0;
   constructor() { }
 
   ngOnInit(): void {
@@ -86,7 +86,7 @@ export class TreeComponent implements OnInit {
             },
           },
 
-          expandAndCollapse: true,
+          expandAndCollapse: false,
           animationDuration: 550,
           animationDurationUpdate: 750,
         },
@@ -105,15 +105,25 @@ export class TreeComponent implements OnInit {
         this.dataTofilter.splice(this.dataTofilter.indexOf(e.value), 1);
         e.data.lineStyle.color = 'grey';
       } else {
-        this.dataTofilter.push(e.value);
-        delete e.data.lineStyle;
-        !e.data.hasOwnProperty('lineStyle') ? Object.assign(e.data, this.hoverStyle) : e.data.lineStyle.color = 'black';
+        const fisrt = this.isFirstLine(chartTree, e.name);
+        if (!fisrt) {
+          this.dataTofilter.push(e.value);
+          delete e.data.lineStyle;
+          !e.data.hasOwnProperty('lineStyle') ? Object.assign(e.data, this.hoverStyle) : e.data.lineStyle.color = 'black';
+        } else {
+          e.data.children.forEach(element => {
+            this.dataTofilter.push(element.value); 
+            !element.hasOwnProperty('lineStyle') ? Object.assign(element, this.hoverStyle) : element.lineStyle.color = 'black';
+          });
+        }
+        
       }
       this.filter = chartInstance.getOption().series[0].data[0];
       // chequear primero si ya existe
       chartInstance.setOption({
         series: [{ data: [this.filter] }]
-      }, false);
+      }, false); 
+
       this.dataTofilter = this.dataTofilter.filter((v, i, a) => a.indexOf(v) === i);
       this.filterChanged.emit(this.dataTofilter);
     });
@@ -136,6 +146,14 @@ export class TreeComponent implements OnInit {
     return status;
   }
 
+  isFirstLine(tree, nodeName): boolean {
+    let status = false;
+    tree.children.forEach(element => {
+      if (element.name === nodeName) {  status = true; }
+    });
+    return status;
+  }
+
   /**
    * finds if node has the property lineStyle
    * param node 
@@ -143,5 +161,6 @@ export class TreeComponent implements OnInit {
   findStyle(node): boolean {
     return node.hasOwnProperty('lineStyle');
   }
+
 
 }

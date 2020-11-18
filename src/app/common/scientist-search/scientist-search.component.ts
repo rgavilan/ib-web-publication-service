@@ -90,6 +90,7 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
   }
 
   filterArea(event) {
+    console.log(event);
     this.findRequest.filter.area = event;
     this.filtersArea.set('area', this.findRequest.filter.area);
     const page = this.researchmentStructureService.filterArea(
