@@ -30,9 +30,8 @@ export class TableResultsComponent
    */
   _dataToShow;
 
-  pageSize = 3;
+  pageSize = 7;
   numPages = 1;
-  actualPage = 1;
   totalItems;
 
   // use getter setter to define the property
@@ -43,7 +42,10 @@ export class TableResultsComponent
       this._data.results.bindings = this._data.results.bindings.concat(
         this._data.results.bindings
       );
-
+      this._data.results.bindings = this._data.results.bindings.concat(
+        this._data.results.bindings
+      );
+      this.totalItems = this._data.results.bindings.length;
       this.showPage(1);
     }
   }
@@ -72,6 +74,7 @@ export class TableResultsComponent
     const page: Page<any> = new Page<any>();
     if (findRequest.pageRequest.page === 0) {
       page.content = this._dataToShow;
+      // page.content = this._data.results.bindings;
 
       page.first = true;
       page.last = false;
@@ -128,7 +131,6 @@ export class TableResultsComponent
   }
 
   showPage(i: number): void {
-    this.actualPage = i;
     const init = (i - 1) * this.pageSize;
     const end = i * this.pageSize;
     this._dataToShow = this._data.results.bindings.slice(init, end);
