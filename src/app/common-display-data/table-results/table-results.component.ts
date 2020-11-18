@@ -43,10 +43,7 @@ export class TableResultsComponent
       this._data.results.bindings = this._data.results.bindings.concat(
         this._data.results.bindings
       );
-      this.totalItems = this._data.results.bindings.length;
-      this.numPages = Math.ceil(
-        this._data.results.bindings.length / this.pageSize
-      );
+
       this.showPage(1);
     }
   }
