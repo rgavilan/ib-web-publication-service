@@ -38,7 +38,6 @@ export class TreeComponent implements OnInit {
           { name: 'Astonomía y astrofísica', value: 'AYA' },
           { name: 'Investigación espacial', value: 'ESP' },
           { name: 'Física fundamenta y de partículas', value: 'FFP' },
-          { name: 'Física y sus aplicaciones', value: 'FYA' }
         ]
       }
     ],
@@ -140,10 +139,38 @@ export class TreeComponent implements OnInit {
       element.children.forEach(subNode => {
         if (nodeName === subNode.name) {
           status = this.findStyle(subNode) && subNode.lineStyle?.color === 'black';
+          if (subNode.hasOwnProperty('children')) {
+            this.cleanNode(subNode, nodeName);
+          }
+        } else {
+          if (subNode.hasOwnProperty('children')) {
+            this.searchInsedeNodes(subNode, nodeName);
+          }
         }
       });
     });
     return status;
+  }
+
+  searchInsedeNodes(subnode, nodeName) {
+    let status = false;
+    subnode.children.forEach(subNode => {
+      if (nodeName === subNode.name) {
+        status = this.findStyle(subNode) && subNode.lineStyle?.color === 'black';
+      } else {
+        if (subNode.hasOwnProperty('children')) {
+          this.searchInsedeNodes(subNode, nodeName);
+        }
+      }
+    });
+    return status;
+  }
+
+  cleanNode(subnode, nodeName) {
+    subnode.children.forEach(subNode => { 
+      console.log(subNode);
+      !subNode.hasOwnProperty('lineStyle') ? Object.assign(subNode, { lineStyle: { color: 'grey' } }) : subNode.lineStyle.color = 'grey';
+    });
   }
 
   isFirstLine(tree, nodeName): boolean {
