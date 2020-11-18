@@ -12,8 +12,6 @@ import {
   PaginatedSearchComponent,
 } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
-import { User } from 'src/app/_models/user';
-import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-table-results',
@@ -23,16 +21,32 @@ import { UserService } from 'src/app/_services/user.service';
 export class TableResultsComponent
   extends PaginatedSearchComponent<any>
   implements OnInit {
+  /*
+   * Initial data
+   */
   _data; // private property _data
+  /*
+   * Data that is shown in the actual page
+   */
   _dataToShow;
+
+  pageSize = 3;
+  numPages = 1;
+  actualPage = 1;
+  totalItems;
 
   // use getter setter to define the property
   @Input()
   set data(val: any) {
     this._data = val;
     if (val != null) {
-      this.numPages =
-        Math.trunc(val.results.bindings.length / this.pageSize) + 1;
+      this._data.results.bindings = this._data.results.bindings.concat(
+        this._data.results.bindings
+      );
+      this.totalItems = this._data.results.bindings.length;
+      this.numPages = Math.ceil(
+        this._data.results.bindings.length / this.pageSize
+      );
       this.showPage(1);
     }
   }
@@ -41,66 +55,67 @@ export class TableResultsComponent
     return this._data;
   }
 
-  pageSize = 10;
-  numPages = 1;
-  actualPage = 1;
-
   constructor(
     router: Router,
     translate: TranslateService,
-    toastr: ToastrService,
-    private userService: UserService
+    toastr: ToastrService
   ) {
     super(router, translate, toastr);
   }
 
   ngOnInit(): void {
+    // TODO: Initialize with page, total and number of elements
     console.log('ngOnInit ' + this.data);
     this.find();
-    let page: Page<any> = new Page<any>();
-
-    page.content = this._data.results;
-
-    page.first = true;
-    page.last = false;
-
-    page.number = 1;
-    page.numberOfElements = this.pageSize;
-    page.size = this.pageSize;
-    page.totalElements = 3;
-    page.uibPage = page.number + 1;
-    page.totalPages = this.numPages;
-    this.findRequest.filter.top = 10;
-
-    this.searchResult = page.content;
-    this.resultObject = page;
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<any>> {
     console.log('findInternal ' + this.data);
-    // TODO Tiene q devolver un Page, cambiarlo como el oninit
-    let page: Page<any> = new Page<any>();
 
-    page.content = this._data.results;
+    const page: Page<any> = new Page<any>();
+    if (findRequest.pageRequest.page === 0) {
+      page.content = this._dataToShow;
 
-    page.first = true;
-    page.last = false;
+      page.first = true;
+      page.last = false;
 
-    page.number = 1;
-    page.numberOfElements = this.pageSize;
-    page.size = this.pageSize;
-    page.totalElements = 3;
-    page.uibPage = page.number + 1;
-    page.totalPages = this.numPages;
-    // Modificar
-    let parameters = new HttpParams();
-    this._data.head.vars.forEach((head) => {
-      parameters = Helper.addParam(parameters, head, null);
-    });
-    parameters = Helper.addPaginationParams(
-      parameters,
-      findRequest.pageRequest
-    );
+      page.number = 0;
+      page.numberOfElements = Math.min(page.content.length, this.pageSize);
+      page.size = this.pageSize;
+      page.totalElements = this.totalItems;
+      // page.uibPage = page.number + 1;
+      // page.totalPages = this.numPages;
+
+      this.searchResult = page.content;
+      this.resultObject = page;
+    } else {
+      if (findRequest.pageRequest.page === 1) {
+        page.first = true;
+      }
+      if (findRequest.pageRequest.page === this.numPages) {
+        page.last = true;
+      }
+
+      this.showPage(findRequest.pageRequest.page);
+
+      page.content = this._dataToShow;
+      page.number = findRequest.pageRequest.page - 1;
+
+      // const init = (findRequest.pageRequest.page - 1) * this.pageSize;
+      // const end = findRequest.pageRequest.page * this.pageSize;
+      // this._dataToShow = this._data.results.bindings.slice(init, end);
+      // page.content
+
+      // // Modificar
+      // let parameters = new HttpParams();
+      // this._data.head.vars.forEach((head) => {
+      //   parameters = Helper.addParam(parameters, head, null);
+      // });
+      // parameters = Helper.addPaginationParams(
+      //   parameters,
+      //   findRequest.pageRequest
+      // );
+    }
 
     return of(page);
   }
@@ -117,8 +132,8 @@ export class TableResultsComponent
 
   showPage(i: number): void {
     this.actualPage = i;
-    var init = (i - 1) * 10;
-    var end = i * 10;
+    const init = (i - 1) * this.pageSize;
+    const end = i * this.pageSize;
     this._dataToShow = this._data.results.bindings.slice(init, end);
   }
 
