@@ -29,7 +29,8 @@
     },
     "select": "Selecciona ...",
     "yes": "Sí",
-    "no": "No"
+    "no": "No",
+    "datepicker-placeholder": "DD/MM/YYYY"
   },
   "menu": {
     "home": "Inicio",
@@ -129,11 +130,21 @@
     "scientist": "Personal investigador",
     "prod-scientist": "Producción cientifica",
     "projects": "Proyectos",
-    "patents": "Patentes"
+    "patents": "Patentes",
+    "area": "Área"
   },
   "scientist" : {
     "title": "Personal investigador",
     "area": "Área",
     "type":"Tipo"
+  }, 
+  "scientific-production": {
+    "title": "Producción cientifica",
+    "date-from": "Fecha desde",
+    "date-to": "Fecha hasta",
+    "degree": "Título",
+    "type": "Tipo",
+    "doi": "DOI",
+    "publication-year": "Año de publicación"
   }
 }

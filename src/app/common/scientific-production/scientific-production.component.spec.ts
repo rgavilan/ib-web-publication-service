@@ -1,18 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
 
-import { TableResultsComponent } from './table-results.component';
+import { ScientificProductionComponent } from './scientific-production.component';
 
-describe('TableResultsComponent', () => {
-  let component: TableResultsComponent;
-  let fixture: ComponentFixture<TableResultsComponent>;
+describe('ScientificProductionComponent', () => {
+  let component: ScientificProductionComponent;
+  let fixture: ComponentFixture<ScientificProductionComponent>;
 
   beforeEach(async(() => {
     TestingHelper.configureTest().compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TableResultsComponent);
+    fixture = TestBed.createComponent(ScientificProductionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

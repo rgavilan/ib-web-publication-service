@@ -10,15 +10,22 @@ import { TreeComponent } from '../graphic/tree/tree.component';
 import { GraphicComponent } from '../graphic/graphic.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { NewTreeComponent } from '../graphic/new-tree/new-tree.component';
+import { ScientificProductionComponent } from '../common/scientific-production/scientific-production.component';
+import { ProyectsComponent } from '../common/proyects/proyects.component';
+import { PatentsComponent } from '../common/patents/patents.component';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [
-    PaginationComponent,
-    TopSearchComponent,
-    ScientistSearchComponent,
-    TreeComponent,
+  declarations: [PaginationComponent, 
+    TopSearchComponent, 
+    ScientistSearchComponent, 
+    TreeComponent, 
     GraphicComponent,
-  ],
+    NewTreeComponent,
+    ScientificProductionComponent,
+    ProyectsComponent,
+    PatentsComponent],
   imports: [
     CommonModule,
     TranslateModule.forChild(),
@@ -28,15 +35,19 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),
+    NgbModule
   ],
-  exports: [
-    PaginationComponent,
-    TranslateModule,
-    CommonModule,
-    TopSearchComponent,
-    ScientistSearchComponent,
-    TreeComponent,
+  exports: [PaginationComponent, 
+    TranslateModule, 
+    CommonModule, 
+    TopSearchComponent, 
+    ScientistSearchComponent, 
+    TreeComponent, 
     GraphicComponent,
-  ],
+    NewTreeComponent,
+    ScientificProductionComponent,
+    ProyectsComponent,
+    PatentsComponent,
+    NgbModule]
 })
 export class SharedModule {}

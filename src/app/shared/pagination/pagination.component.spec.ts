@@ -1,14 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestingHelper } from 'src/app/_helpers/testing.spec';
 
 import { PaginationComponent } from './pagination.component';
-import { TestingHelper } from '../_helpers/testing.spec';
 
 describe('PaginationComponent', () => {
   let component: PaginationComponent;
   let fixture: ComponentFixture<PaginationComponent>;
 
   beforeEach(async(() => {
-    TestingHelper.configureTest().compileComponents();
+    TestingHelper.configureTest();
   }));
 
   beforeEach(() => {

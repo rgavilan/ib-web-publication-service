@@ -34,7 +34,7 @@ export class ResearchmentStructuresComponent
   protected removeInternal(
     entity: ResearchmentStructure
   ): Observable<{} | Response> {
-    throw new Error('Method not implemented.');
+    return of({});
   }
   constructor(
     router: Router,

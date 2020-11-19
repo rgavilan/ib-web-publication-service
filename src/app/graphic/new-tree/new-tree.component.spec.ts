@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
 
-import { TreeComponent } from './tree.component';
+import { NewTreeComponent } from './new-tree.component';
 
-describe('TreeComponent', () => {
-  let component: TreeComponent;
-  let fixture: ComponentFixture<TreeComponent>;
+describe('NewTreeComponent', () => {
+  let component: NewTreeComponent;
+  let fixture: ComponentFixture<NewTreeComponent>;
 
   beforeEach(async(() => {
     TestingHelper.configureTest()
@@ -13,7 +13,7 @@ describe('TreeComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TreeComponent);
+    fixture = TestBed.createComponent(NewTreeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

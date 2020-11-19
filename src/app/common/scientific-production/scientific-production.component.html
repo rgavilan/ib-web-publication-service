@@ -1,0 +1,71 @@
+<fieldset>
+    <form class="form-horizontal " (ngSubmit)="f.form.valid && find()" #f="ngForm">
+        <div class="row mt-20">
+            <div class="form-group col-lg-4">
+                <label for="dateFrom" class="control-label">{{'scientific-production.date-from' | translate }}</label>
+                <input class="form-control" name="dateFrom" id="dateFrom" required
+                    placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker
+                    #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();" (keyup)="decisionDate.close()"
+                    #dateFrom="ngModel" [(ngModel)]="findRequest.filter.dateFrom" />
+                <div *ngIf="f.submitted && !dateFrom.valid" class="help-block">
+                    {{'form.validation.required' | translate}}</div>
+            </div>
+            <div class="form-group col-lg-4">
+                <label for="dateTo" class="control-label">{{'scientific-production.date-to' | translate }}</label>
+                <input class="form-control" name="dateTo" id="dateTo" required
+                    placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker
+                    #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();" (keyup)="decisionDate.close()"
+                    #dateTo="ngModel" [(ngModel)]="findRequest.filter.dateTo" />
+                <div *ngIf="f.submitted && !dateTo.valid" class="help-block">
+                    {{'form.validation.required' | translate}}</div>
+            </div>
+        </div>
+    </form>
+</fieldset>
+<fieldset>
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="input-group col-md-4">
+                <input class="form-control py-2 border-right-0 border" type="search" value="search"
+                    id="example-search-input">
+                <span class="input-group-append">
+                    <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                        <em class="oi oi-magnifying-glass "></em>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="mt-40">
+        <table class="table table-users table-hover">
+            <thead>
+                <tr>
+                    <th class="sortable" (click)="sort('name')"> {{ "researchmentStructure.name" | translate }}
+                        <em class="float-right" [ngClass]="getSortIcon('name')"></em>
+                    </th>
+                    <th class="sortable" (click)="sort('type')"> {{ "researchmentStructure.type" | translate }}
+                        <em class="float-right" [ngClass]="getSortIcon('type')"></em>
+                    </th>
+                    <th class="sortable" (click)="sort('area')">
+                        {{ "researchmentStructure.area" | translate }}
+                        <em class="float-right" [ngClass]="getSortIcon('area')"></em>
+                    </th>
+                    <th class="sortable" (click)="sort('publications')">
+                        {{ "researchmentStructure.publications" | translate }}
+                        <em class="float-right" [ngClass]="getSortIcon('publications')"></em>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of searchResult">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.type }}</td>
+                    <td>{{ returnAreaString(item.areaName) }}</td>
+                    <td>{{ item.publications }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)" (sizeChanged)="changeSize($event)">
+    </app-pagination>
+</fieldset>

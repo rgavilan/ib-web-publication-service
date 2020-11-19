@@ -4,6 +4,7 @@
             <!-- categorias tree -->
             <div class="col-12">
                 <app-tree (filterChanged)="filterArea($event)"></app-tree>
+                <app-new-tree (filterChanged)="filterArea($event)"></app-new-tree>
             </div>
             <!-- type -->
             <div class="form-group col-lg-6">
@@ -32,6 +33,10 @@
                     <th class="sortable" (click)="sort('type')"> {{ "researchmentStructure.type" | translate }}
                         <em class="float-right" [ngClass]="getSortIcon('type')"></em>
                     </th>
+                    <th class="sortable" (click)="sort('area')">
+                        {{ "researchmentStructure.area" | translate }}
+                        <em class="float-right" [ngClass]="getSortIcon('area')"></em>
+                    </th>
                     <th class="sortable" (click)="sort('publications')">
                         {{ "researchmentStructure.publications" | translate }}
                         <em class="float-right" [ngClass]="getSortIcon('publications')"></em>
@@ -42,6 +47,7 @@
                 <tr *ngFor="let item of searchResult">
                     <td>{{ item.name }}</td>
                     <td>{{ item.type }}</td>
+                    <td>{{ returnAreaString(item.areaName) }}</td>
                     <td>{{ item.publications }}</td>
                 </tr>
             </tbody>
@@ -49,4 +55,5 @@
     </div>
     <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)" (sizeChanged)="changeSize($event)">
     </app-pagination>
+    <div echarts [options]="echartOptions" class="sector-chart"></div>
 </fieldset>
