@@ -32,7 +32,7 @@ export class ResearchmentStructuresComponent extends PaginatedSearchComponent<Re
   protected removeInternal(
     entity: ResearchmentStructure
   ): Observable<{} | Response> {
-    throw new Error('Method not implemented.');
+    return of({});
   }
   constructor(
     router: Router,

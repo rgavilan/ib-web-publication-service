@@ -55,4 +55,5 @@
     </div>
     <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)" (sizeChanged)="changeSize($event)">
     </app-pagination>
+    <div echarts [options]="echartOptions" class="sector-chart"></div>
 </fieldset>

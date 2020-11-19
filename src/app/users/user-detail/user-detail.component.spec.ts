@@ -1,14 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { TestingHelper } from 'src/app/_helpers/testing.spec';
 
 import { UserDetailComponent } from './user-detail.component';
-import { TestingHelper } from '../_helpers/testing.spec';
+
 
 describe('UserDetailComponent', () => {
   let component: UserDetailComponent;
   let fixture: ComponentFixture<UserDetailComponent>;
 
   beforeEach(async(() => {
-    TestingHelper.configureTest().compileComponents();
+    TestingHelper.configureTest();
   }));
 
   beforeEach(() => {

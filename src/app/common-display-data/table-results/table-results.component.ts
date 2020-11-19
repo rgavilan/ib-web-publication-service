@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import {
+  Direction,
   FindRequest,
   Order,
   Page,
@@ -45,10 +46,13 @@ export class TableResultsComponent
     return of(this.data);
   }
   protected removeInternal(entity: any): Observable<{} | Response> {
-    throw new Error('Method not implemented.');
+    return of({});
   }
   protected getDefaultOrder(): Order {
-    throw new Error('Method not implemented.');
+    return {
+      property: 'name',
+      direction: Direction.ASC,
+    };
   }
 
   showPage(i: number): void {

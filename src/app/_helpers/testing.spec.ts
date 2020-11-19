@@ -11,7 +11,7 @@ import {
 } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { NgProgressModule } from 'ngx-progressbar';
@@ -26,12 +26,9 @@ import { UserService } from '../_services/user.service';
 
 // -------------- Components --------------
 import { LoginComponent } from '../login/login.component';
-import { UserComponent } from '../user/user.component';
-import { UserDetailComponent } from '../user-detail/user-detail.component';
 import { MainComponent } from '../main/main.component';
 import { MenuComponent } from '../menu/menu.component';
 import { HomeComponent } from '../home/home.component';
-import { PaginationComponent } from '../pagination/pagination.component';
 
 // -------------- Guards --------------
 import { AuthGuard } from '../_guards/auth.guard';
@@ -42,22 +39,61 @@ import { OAuthInterceptor } from '../_interceptors/oauth-interceptor';
 
 import { APP_BASE_HREF } from '@angular/common';
 import { SPARQLEditorComponent } from '../sparqleditor/sparqleditor.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TopSearchComponent } from '../common/top-search/top-search.component';
+import { ScientificProductionComponent } from '../common/scientific-production/scientific-production.component';
+import { UserDetailComponent } from '../users/user-detail/user-detail.component';
+import { ScientistSearchComponent } from '../common/scientist-search/scientist-search.component';
+import { UserComponent } from '../users/user/user.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { TreeComponent } from '../graphic/tree/tree.component';
+import { NewTreeComponent } from '../graphic/new-tree/new-tree.component';
+import { Observable, of} from 'rxjs';
+import { EventEmitter, Pipe, PipeTransform } from '@angular/core';
+import { TableResultsComponent } from '../common-display-data/table-results/table-results.component';
+
 
 /**
  * Clase de ayuda para construcción de tests unitarios.
  */
+export class TranslateServiceStub{
+  public onLangChange = new EventEmitter<any>();
+  public onTranslationChange = new EventEmitter<any>();
+  public onDefaultLangChange = new EventEmitter<any>();
+  public addLangs(langs: string[]) { return; }
+  public getLangs() { return ['en-us']; }
+  public getBrowserLang() { return ''; }
+  public getBrowserCultureLang() { return ''; }
+  public use(lang: string) { return null; }
+  // tslint:disable-next-line:no-reserved-keywords
+  public get(key: any): any { return of(key); }
+  instant(): string{
+    return 'some_string';
+  }
+}
+@Pipe({ name: 'translate' })
+export class TranslatePipeStub implements PipeTransform {
+  public transform(key: string, ...args: any[]): any { return key; }
+}
 export class TestingHelper {
   public static configureTest(): typeof TestBed {
     return TestBed.configureTestingModule({
       declarations: [
+        TranslatePipeStub,
         LoginComponent,
-        UserComponent,
-        UserDetailComponent,
         MainComponent,
         MenuComponent,
         HomeComponent,
-        PaginationComponent,
         SPARQLEditorComponent,
+        TopSearchComponent,
+        ScientificProductionComponent,
+        UserDetailComponent,
+        ScientistSearchComponent,
+        UserComponent,
+        TreeComponent,
+        NewTreeComponent,
+        TableResultsComponent
       ],
       imports: [
         BrowserModule,
@@ -65,6 +101,8 @@ export class TestingHelper {
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule,
+        RouterTestingModule,
+        NgbModule,
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,
@@ -78,12 +116,16 @@ export class TestingHelper {
         NgProgressHttpModule,
         NgProgressRouterModule,
         NgSelectModule,
+        NgxEchartsModule.forRoot({
+          echarts: () => import('echarts'),
+        }),
       ],
       providers: [
         AuthGuard,
         LoginService,
         MenuService,
         UserService,
+        { provide: TranslateService, useClass: TranslateServiceStub},
         {
           provide: HTTP_INTERCEPTORS,
           useClass: TokenizedInterceptor,
@@ -97,8 +139,8 @@ export class TestingHelper {
         {
           provide: APP_BASE_HREF,
           useValue: '/',
-        },
-      ],
+        }
+      ]
     });
   }
 

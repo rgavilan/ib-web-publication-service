@@ -45,6 +45,10 @@ import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
 import { LinksComponent } from './links/links.component';
 import { CategoriesModule } from './categories/categories.module';
 import { LoginComponent } from './login/login.component';
+import { NgbModule, NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
+import { CustomNgbDateAdapter } from './_helpers/customNgbDateAdapter';
+import { CustomNgbDateFormatter } from './_helpers/customNgbDateFormatter';
+import { CustomNgbDatepickerI18n } from './_helpers/customNgbDatepickerI18n.provider';
 
 // -------------- Aux functions --------------
 
@@ -83,6 +87,7 @@ import { LoginComponent } from './login/login.component';
     // Application
     SparqleditorModule,
     CategoriesModule,
+    NgbModule,
   ],
   providers: [
     AuthGuard,
@@ -101,6 +106,18 @@ import { LoginComponent } from './login/login.component';
       useClass: OAuthInterceptor,
       multi: true,
     },
+    {
+      provide: NgbDateAdapter,
+      useClass: CustomNgbDateAdapter
+    },
+    {
+      provide: NgbDateParserFormatter,
+      useClass: CustomNgbDateFormatter
+    },
+    {
+      provide: NgbDatepickerI18n,
+      useClass: CustomNgbDatepickerI18n
+    }
   ],
   bootstrap: [AppComponent]
 })

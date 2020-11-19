@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestingHelper } from 'src/app/_helpers/testing.spec';
 
 import { TreeComponent } from './tree.component';
 
@@ -7,9 +8,7 @@ describe('TreeComponent', () => {
   let fixture: ComponentFixture<TreeComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TreeComponent ]
-    })
+    TestingHelper.configureTest()
     .compileComponents();
   }));
 
