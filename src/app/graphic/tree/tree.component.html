@@ -1,6 +1,3 @@
-<div #echarts="echarts" echarts [options]="options"
- class="demo-chart" 
- [merge]="filter"
- (chartInit)="onChartInit($event)"
- ></div>
- <!--(chartClick)="charClick($event)" -->
+<div #echarts="echarts" echarts [options]="options" style="min-height:600px;width: 100%;" class="demo-chart"
+    [merge]="filter" (chartInit)="onChartInit($event)"></div>
+<!--(chartClick)="charClick($event)" -->

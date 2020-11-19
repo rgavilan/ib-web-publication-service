@@ -1,1 +1,55 @@
-<p>proyects works!</p>
+<fieldset>
+    <form class="form-horizontal " (ngSubmit)="f.form.valid && find()" #f="ngForm">
+        <div class="row mt-20">
+            <!-- categorias tree -->
+            <div class="col-12">
+                <app-tree (filterChanged)="filterArea($event)"></app-tree>
+            </div>
+            <!-- type -->
+            <div class="form-group col-lg-6">
+                <label for="year" class="col-sm-4 control-label">{{  "projects.year" | translate }}</label>
+                <div class="col-sm-8">
+                    <select (change)="filterTopResearchmentStructures('year')" name="year" class="form-control"
+                        [(ngModel)]="findRequest.filter.year" #year="ngModel">
+                        <option [value]="undefined">{{ "form.select" | translate }}</option>
+                        <option [value]="2020">2020</option>
+                        <option [value]="2019">2019</option>
+                        <option [value]="2018">2018</option>
+                        <option [value]="2017">2017</option>
+                        <option [value]="2017">2017</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</fieldset>
+<fieldset>
+    <div class="mt-40">
+        <table class="table table-users table-hover">
+            <thead>
+                <tr>
+                    <th>{{ "projects.project-name" | translate }}</th>
+                    <th>{{ "projects.key-words" | translate }}</th>
+                    <th>{{ "projects.participation" | translate }}</th>
+                    <th>{{ "projects.project-type" | translate }}</th>
+                    <th>{{ "projects.financing" | translate }}</th>
+                    <th>{{ "projects.convocation" | translate }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of searchResult">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.type }}</td>
+                    <td>{{ returnAreaString(item.areaName) }}</td>
+                    <td>{{ item.publications }}</td>
+                    <td>{{ item.publications }}</td>
+                    <td>{{ item.publications }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)" (sizeChanged)="changeSize($event)">
+    </app-pagination>
+    <div style="min-width: 600px; width:100%; height:450px" echarts [loading]="loadingData" [options]="echartOptions"
+        class="demo-chart"></div>
+</fieldset>

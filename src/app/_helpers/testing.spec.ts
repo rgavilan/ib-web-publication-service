@@ -49,15 +49,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { TreeComponent } from '../graphic/tree/tree.component';
 import { NewTreeComponent } from '../graphic/new-tree/new-tree.component';
-import { Observable, of} from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { EventEmitter, Pipe, PipeTransform } from '@angular/core';
 import { TableResultsComponent } from '../common-display-data/table-results/table-results.component';
+import { ProyectsComponent } from '../common/proyects/proyects.component';
+import { PatentsComponent } from '../common/patents/patents.component';
 
 
 /**
  * Clase de ayuda para construcción de tests unitarios.
  */
-export class TranslateServiceStub{
+export class TranslateServiceStub {
   public onLangChange = new EventEmitter<any>();
   public onTranslationChange = new EventEmitter<any>();
   public onDefaultLangChange = new EventEmitter<any>();
@@ -68,7 +70,7 @@ export class TranslateServiceStub{
   public use(lang: string) { return null; }
   // tslint:disable-next-line:no-reserved-keywords
   public get(key: any): any { return of(key); }
-  instant(): string{
+  instant(): string {
     return 'some_string';
   }
 }
@@ -93,7 +95,9 @@ export class TestingHelper {
         UserComponent,
         TreeComponent,
         NewTreeComponent,
-        TableResultsComponent
+        TableResultsComponent,
+        ProyectsComponent,
+        PatentsComponent
       ],
       imports: [
         BrowserModule,
@@ -125,7 +129,7 @@ export class TestingHelper {
         LoginService,
         MenuService,
         UserService,
-        { provide: TranslateService, useClass: TranslateServiceStub},
+        { provide: TranslateService, useClass: TranslateServiceStub },
         {
           provide: HTTP_INTERCEPTORS,
           useClass: TokenizedInterceptor,

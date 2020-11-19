@@ -137,5 +137,14 @@
     "type": "Type",
     "doi": "DOI",
     "publication-year": "Publication year"
+  },
+  "projects": {
+    "year": "Year",
+    "project-name": "Project name",
+    "key-words": "Keywords",
+    "participation": "Participation",
+    "project-type": "Project type",
+    "financing": "Financing",
+    "convocation": "Convocation"
   }
 }

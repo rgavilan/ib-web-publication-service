@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestingHelper } from 'src/app/_helpers/testing.spec';
 
 import { ProyectsComponent } from './proyects.component';
 
@@ -7,10 +8,8 @@ describe('ProyectsComponent', () => {
   let fixture: ComponentFixture<ProyectsComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ProyectsComponent ]
-    })
-    .compileComponents();
+    TestingHelper.configureTest()
+      .compileComponents();
   }));
 
   beforeEach(() => {
