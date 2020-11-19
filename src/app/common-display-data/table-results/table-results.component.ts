@@ -1,5 +1,13 @@
 import { HttpParams } from '@angular/common/http';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
@@ -19,17 +27,19 @@ import { Helper } from 'src/app/_helpers/utils';
 })
 export class TableResultsComponent
   extends PaginatedSearchComponent<any>
-  implements OnInit {
+  implements OnInit, OnChanges {
   // use getter setter to define the property
   @Input()
   set data(val: any) {
-    this._data = val;
+    // this._data = Object.assign({}, val);
+    this._data = JSON.parse(JSON.stringify(val));
     if (val != null) {
-      // this._data.results.bindings = this._data.results.bindings
-      //   .concat(this._data.results.bindings)
-      //   .concat(this._data.results.bindings);
+      this._data.results.bindings = this._data.results.bindings
+        .concat(this._data.results.bindings)
+        .concat(this._data.results.bindings);
       this.totalItems = this._data.results.bindings.length;
       this.showPage(1);
+      // this.find();
     }
   }
 
@@ -82,6 +92,10 @@ export class TableResultsComponent
   ngOnInit(): void {
     // TODO: Initialize with page, total and number of elements
     console.log('ngOnInit ' + this.data);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('ngOnChanges ');
     this.find();
   }
 
