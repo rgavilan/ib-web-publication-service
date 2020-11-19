@@ -25,9 +25,9 @@ export class TableResultsComponent
   set data(val: any) {
     this._data = val;
     if (val != null) {
-      // this._data.results.bindings = this._data.results.bindings.concat(
-      //   this._data.results.bindings
-      // );
+      this._data.results.bindings = this._data.results.bindings
+        .concat(this._data.results.bindings)
+        .concat(this._data.results.bindings);
       this.totalItems = this._data.results.bindings.length;
       this.showPage(1);
     }
@@ -36,6 +36,13 @@ export class TableResultsComponent
   get data(): any {
     return this._data;
   }
+
+  /*
+   * paginated is true is the query comes with page attributtes.
+   * paginated is false if the query comes with all the data
+   */
+  @Input()
+  paginated: boolean;
 
   @Input()
   page: number;
@@ -150,11 +157,12 @@ export class TableResultsComponent
   }
 
   callShowPageWhenPageChanges(i: number): void {
-    // const init = (i - 1) * this.pageSize;
-    // const end = i * this.pageSize;
-    // this._dataToShow = this._data.results.bindings.slice(init, end);
     console.log('callShowPageWhenPageChanges' + i);
-    this.callShowPage.next(i);
+    if (!this.paginated) {
+      this.showPage(i);
+    } else {
+      this.callShowPage.next(i);
+    }
   }
 
   callShowPageWhenSizeChanges(i: number): void {

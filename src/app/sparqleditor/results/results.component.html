@@ -8,7 +8,10 @@
             {{ "sparql.results.table" | translate }}
           </ng-template>
           <ng-container *ngIf="!!data">
-            <app-table-results [data]="data"></app-table-results>
+            <app-table-results
+              [data]="data"
+              [paginated]="false"
+            ></app-table-results>
           </ng-container>
           <ng-container *ngIf="!!errorMessage">
             <app-error-results
