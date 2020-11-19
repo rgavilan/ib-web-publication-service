@@ -146,5 +146,14 @@
     "type": "Tipo",
     "doi": "DOI",
     "publication-year": "Año de publicación"
+  },
+  "projects": {
+    "year": "Año",
+    "project-name": "Nombre del proyecto",
+    "key-words": "Palabras claves",
+    "participation": "Participaciones",
+    "project-type": "Tipos de proyecto",
+    "financing": "Financiaciamiento",
+    "convocation": "Convocatoria"
   }
 }

@@ -87,6 +87,7 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
   }
 
   ngAfterContentInit() {
+    this.cdr.detectChanges();
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Scientist>> {
@@ -105,7 +106,7 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
     return of(this.resultObject);
   }
   protected removeInternal(entity: any): Observable<{} | Response> {
-    throw new Error('Method not implemented.');
+    return of({});
   }
   protected getDefaultOrder(): Order {
     return {

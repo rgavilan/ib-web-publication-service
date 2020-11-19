@@ -1,1 +1,72 @@
-<p>patents works!</p>
+<fieldset>
+    <form class="form-horizontal " (ngSubmit)="f.form.valid && find()" #f="ngForm">
+        <div class="row mt-20">
+            <!-- categorias tree -->
+            <div class="col-12">
+                <app-tree (filterChanged)="filterArea($event)"></app-tree>
+            </div>
+            <!-- type -->
+            <div class="form-group col-lg-6">
+                <label for="type" class="col-sm-4 control-label">{{  "scientist.type" | translate }}</label>
+                <div class="col-sm-8">
+                    <select (change)="filterTopResearchmentStructures('type')" name="type" class="form-control"
+                        [(ngModel)]="findRequest.filter.type" #type="ngModel">
+                        <option [value]="undefined">{{ "form.select" | translate }}</option>
+                        <option [value]="'Docente'">Docente</option>
+                        <option [value]="'Personal Investigador'">Personal Investigador</option>
+                        <option [value]="'Investigador'">Investigador</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</fieldset>
+<fieldset>
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="input-group col-md-4">
+                <input class="form-control py-2 border-right-0 border" type="search" value="search"
+                    id="example-search-input">
+                <span class="input-group-append">
+                    <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                        <em class="oi oi-magnifying-glass "></em>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="mt-40">
+        <table class="table table-users table-hover">
+            <thead>
+                <tr>
+                    <th class="sortable" (click)="sort('name')"> {{ "researchmentStructure.name" | translate }}
+                        <em class="float-right" [ngClass]="getSortIcon('name')"></em>
+                    </th>
+                    <th class="sortable" (click)="sort('type')"> {{ "researchmentStructure.type" | translate }}
+                        <em class="float-right" [ngClass]="getSortIcon('type')"></em>
+                    </th>
+                    <th class="sortable" (click)="sort('area')">
+                        {{ "researchmentStructure.area" | translate }}
+                        <em class="float-right" [ngClass]="getSortIcon('area')"></em>
+                    </th>
+                    <th class="sortable" (click)="sort('publications')">
+                        {{ "researchmentStructure.publications" | translate }}
+                        <em class="float-right" [ngClass]="getSortIcon('publications')"></em>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of searchResult">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.type }}</td>
+                    <td>{{ returnAreaString(item.areaName) }}</td>
+                    <td>{{ item.publications }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)" (sizeChanged)="changeSize($event)">
+    </app-pagination>
+    <div style="min-width:600px;width: 100%;" echarts [loading]="loadingData" [options]="echartOptions"
+        class="sector-chart"></div>
+</fieldset>
