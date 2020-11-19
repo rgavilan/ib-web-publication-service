@@ -115,8 +115,8 @@ export class TableResultsComponent
       // page.uibPage = page.number + 1;
       // page.totalPages = this.numPages;
 
-      this.searchResult = page.content;
-      this.resultObject = page;
+      // this.searchResult = page.content;
+      // this.resultObject = page;
     } else {
       if (findRequest.pageRequest.page === 1) {
         page.first = true;
@@ -128,22 +128,12 @@ export class TableResultsComponent
       this.showPage(findRequest.pageRequest.page);
 
       page.content = this._dataToShow;
+
+      page.totalElements = this.totalItems;
+      page.size = this.pageSize;
       page.number = findRequest.pageRequest.page - 1;
+      page.numberOfElements = Math.min(page.content.length, this.pageSize);
 
-      // const init = (findRequest.pageRequest.page - 1) * this.pageSize;
-      // const end = findRequest.pageRequest.page * this.pageSize;
-      // this._dataToShow = this._data.results.bindings.slice(init, end);
-      // page.content
-
-      // // Modificar
-      // let parameters = new HttpParams();
-      // this._data.head.vars.forEach((head) => {
-      //   parameters = Helper.addParam(parameters, head, null);
-      // });
-      // parameters = Helper.addPaginationParams(
-      //   parameters,
-      //   findRequest.pageRequest
-      // );
     }
 
     return of(page);
