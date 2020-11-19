@@ -35,10 +35,10 @@ export class TableResultsComponent
     // this._data = Object.assign({}, val);
     this._data = JSON.parse(JSON.stringify(val));
     if (val != null) {
-      this._data.results.bindings = this._data.results.bindings
-        .concat(this._data.results.bindings)
-        .concat(this._data.results.bindings);
-      this.totalItems = this._data.results.bindings.length;
+      // this._data.results.bindings = this._data.results.bindings
+      //   .concat(this._data.results.bindings)
+      //   .concat(this._data.results.bindings);
+      // this.totalItems = this._data.results.bindings.length;
       //this.showPage(1);
       // this.find();
     }
@@ -109,11 +109,6 @@ export class TableResultsComponent
       page.last = false;
 
       page.number = 0;
-      page.numberOfElements = Math.min(page.content.length, this.pageSize);
-      page.size = this.pageSize;
-      page.totalElements = this.totalItems;
-      // page.uibPage = page.number + 1;
-      // page.totalPages = this.numPages;
 
       // this.searchResult = page.content;
       // this.resultObject = page;
@@ -129,12 +124,14 @@ export class TableResultsComponent
 
       page.content = this._dataToShow;
 
-      page.totalElements = this.totalItems;
-      page.size = this.pageSize;
       page.number = findRequest.pageRequest.page - 1;
-      page.numberOfElements = Math.min(page.content.length, this.pageSize);
 
     }
+
+
+    page.numberOfElements = Math.min(page.content.length, this.pageSize);
+    page.size = this.pageSize;
+    page.totalElements = this.totalItems;
 
     return of(page);
   }
