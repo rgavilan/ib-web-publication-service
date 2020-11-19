@@ -1,4 +1,4 @@
-import { AfterContentInit, Component } from '@angular/core';
+import { AfterContentInit, Component, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -187,11 +187,14 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
    */
   resultObject: Page<T>;
 
+  @Output()
+  sortChanged: EventEmitter<FindRequest> = new EventEmitter<FindRequest>();
+
   constructor(
     private router: Router,
     private translate: TranslateService,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   ngAfterContentInit(): void {
     const lastSearch: FindRequest = JSON.parse(
@@ -230,6 +233,7 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
       page.uibPage = page.number + 1;
       this.resultObject = page;
     });
+
   }
 
   /**
@@ -249,8 +253,8 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
       this.findRequest.pageRequest.property = property;
       this.findRequest.pageRequest.direction = Direction.ASC;
     }
-
     this.find();
+    this.sortChanged.next(this.findRequest);
   }
 
   /**

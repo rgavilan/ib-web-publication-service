@@ -13,6 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
 import {
+  Direction,
   FindRequest,
   Order,
   Page,
@@ -27,7 +28,7 @@ import { Helper } from 'src/app/_helpers/utils';
 })
 export class TableResultsComponent
   extends PaginatedSearchComponent<any>
-  implements OnInit, OnChanges {
+  implements OnChanges {
   // use getter setter to define the property
   @Input()
   set data(val: any) {
@@ -38,7 +39,7 @@ export class TableResultsComponent
         .concat(this._data.results.bindings)
         .concat(this._data.results.bindings);
       this.totalItems = this._data.results.bindings.length;
-      this.showPage(1);
+      //this.showPage(1);
       // this.find();
     }
   }
@@ -89,10 +90,6 @@ export class TableResultsComponent
     super(router, translate, toastr);
   }
 
-  ngOnInit(): void {
-    // TODO: Initialize with page, total and number of elements
-    console.log('ngOnInit ' + this.data);
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log('ngOnChanges ');
@@ -104,6 +101,7 @@ export class TableResultsComponent
 
     const page: Page<any> = new Page<any>();
     if (findRequest.pageRequest.page === 0) {
+      this.showPage(1);
       page.content = this._dataToShow;
       // page.content = this._data.results.bindings;
 
@@ -165,6 +163,15 @@ export class TableResultsComponent
   }
 
   showPage(i: number): void {
+    console.log('ShowPage' + i + " - " + this.findRequest.pageRequest.property + " " + this.findRequest.pageRequest.direction);
+    if (!!this.findRequest.pageRequest.property) {
+      this._data.results.bindings = this._data.results.bindings.sort((a, b) => {
+        if (this.findRequest.pageRequest.direction === Direction.ASC) {
+          return (a[this.findRequest.pageRequest.property].value > b[this.findRequest.pageRequest.property].value) ? 1 : -1;
+        }
+        return (a[this.findRequest.pageRequest.property].value <= b[this.findRequest.pageRequest.property].value) ? 1 : -1;
+      });
+    }
     const init = (i - 1) * this.pageSize;
     const end = i * this.pageSize;
     this._dataToShow = this._data.results.bindings.slice(init, end);
@@ -172,8 +179,9 @@ export class TableResultsComponent
 
   callShowPageWhenPageChanges(i: number): void {
     console.log('callShowPageWhenPageChanges' + i);
+    this.findRequest.pageRequest.page = i;
     if (!this.paginated) {
-      this.showPage(i);
+      this.find();
     } else {
       this.callShowPage.next(i);
     }

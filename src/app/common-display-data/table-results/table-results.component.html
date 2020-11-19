@@ -5,23 +5,16 @@
         <thead>
           <tr>
             <th class="first-header"></th>
-            <th class="sortable" *ngFor="let header of _data.head.vars">
-              {{ header }}
+            <th class="sortable" (click)="sort(header)" *ngFor="let header of _data.head.vars">
+              {{ header }}<em class="float-right" [ngClass]="getSortIcon(header)"></em>
             </th>
           </tr>
         </thead>
         <tbody>
-          <tr
-            *ngFor="let item of _dataToShow; index as i"
-            [ngClass]="{ 'table-secondary': i % 2 == 1 }"
-          >
+          <tr *ngFor="let item of _dataToShow; index as i" [ngClass]="{ 'table-secondary': i % 2 == 1 }">
             <td>{{ i }}</td>
             <td *ngFor="let header of _data.head.vars">
-              <a
-                href="{{ item[header].value }}"
-                *ngIf="item[header].type == 'uri'"
-                >{{ item[header].value }}</a
-              >
+              <a href="{{ item[header].value }}" *ngIf="item[header].type == 'uri'">{{ item[header].value }}</a>
               <ng-container *ngIf="item[header].type != 'uri'">{{
                 item[header].value
               }}</ng-container>
@@ -29,11 +22,8 @@
           </tr>
         </tbody>
       </table>
-      <app-pagination
-        [resultObject]="resultObject"
-        (pageChanged)="callShowPageWhenPageChanges($event)"
-        (sizeChanged)="changeSize($event)"
-      ></app-pagination>
+      <app-pagination [resultObject]="resultObject" (pageChanged)="callShowPageWhenPageChanges($event)"
+        (sizeChanged)="changeSize($event)"></app-pagination>
     </div>
   </div>
 </div>
