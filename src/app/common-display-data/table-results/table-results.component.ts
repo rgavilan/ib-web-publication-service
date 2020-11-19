@@ -25,9 +25,9 @@ export class TableResultsComponent
   set data(val: any) {
     this._data = val;
     if (val != null) {
-      this._data.results.bindings = this._data.results.bindings
-        .concat(this._data.results.bindings)
-        .concat(this._data.results.bindings);
+      // this._data.results.bindings = this._data.results.bindings
+      //   .concat(this._data.results.bindings)
+      //   .concat(this._data.results.bindings);
       this.totalItems = this._data.results.bindings.length;
       this.showPage(1);
     }
