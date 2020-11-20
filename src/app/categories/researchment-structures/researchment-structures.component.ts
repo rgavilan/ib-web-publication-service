@@ -236,6 +236,25 @@ export class ResearchmentStructuresComponent
     this.resultObject = page;
   }
 
+  allResearchmentStructuresFilteredPageChanged(i: number): void {
+    console.log('allResearchmentStructuresFilteredPageChanged');
+
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = i;
+    pageRequest.size = this.allResearchmentStructuresFiltered.size;
+    pageRequest.property = this.allResearchmentStructuresFiltered.sort;
+    pageRequest.direction = this.allResearchmentStructuresFiltered.direction;
+
+    this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters2(
+      null, pageRequest
+    );
+  }
+
+  allResearchmentStructuresFilteredSizeChanged(i: number): void {
+    console.log('allResearchmentStructuresFilteredSizeChanged');
+    this.allResearchmentStructuresFiltered.size = i;
+  }
+
   /*
   **************************************************************
   PRIVATE FUNCTIONS

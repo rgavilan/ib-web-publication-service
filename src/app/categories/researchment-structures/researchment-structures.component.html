@@ -56,7 +56,7 @@
 
   <!-- NEW -->
   <app-table-results [data]="allResearchmentStructuresFiltered.content[0]"
-    [pageInfo]="allResearchmentStructuresFiltered">
+    [pageInfo]="allResearchmentStructuresFiltered" (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)">
   </app-table-results>
 
   <!-- OLD -->

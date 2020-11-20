@@ -352,7 +352,7 @@ export class ResearchmentStructuresService extends AbstractService {
       });
     }
 
-    const min = (!!pageRequest.page) ? pageRequest.page - 1 : 0 * pageRequest.size;
+    const min = ((!!pageRequest.page) ? pageRequest.page - 1 : 0) * pageRequest.size;
     const max = ((!!pageRequest.page) ? pageRequest.page : 1) * pageRequest.size;
     data.results.bindings = data.results.bindings.slice(min, max)
     page.number = pageRequest.page;

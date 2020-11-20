@@ -1,7 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import {
   Component,
-  OnInit,
   Input,
   Output,
   EventEmitter,
@@ -65,10 +64,10 @@ export class TableResultsComponent
 
 
   @Output()
-  callShowPage: EventEmitter<number> = new EventEmitter<number>();
+  pageChanged: EventEmitter<number> = new EventEmitter<number>();
 
   @Output()
-  callChangeSize: EventEmitter<number> = new EventEmitter<number>();
+  sizeChanged: EventEmitter<number> = new EventEmitter<number>();
 
   /*
    * Initial data
@@ -193,7 +192,7 @@ export class TableResultsComponent
     if (!this.pageInfo) {
       this.find();
     } else {
-      this.callShowPage.next(i);
+      this.pageChanged.next(i);
     }
   }
 
@@ -202,7 +201,7 @@ export class TableResultsComponent
     // const end = i * this.pageSize;
     // this._dataToShow = this._data.results.bindings.slice(init, end);
     console.log('callShowPageWhenSizeChanges' + i);
-    this.callChangeSize.next(i);
+    this.sizeChanged.next(i);
   }
 
   createParams(data: any): HttpParams {
