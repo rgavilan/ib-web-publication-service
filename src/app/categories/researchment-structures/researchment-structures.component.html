@@ -54,6 +54,12 @@
     {{ "form.results" | translate }}
   </legend>
 
+  <!-- NEW -->
+  <app-table-results [data]="allResearchmentStructuresFiltered.content[0]"
+    [pageInfo]="allResearchmentStructuresFiltered">
+  </app-table-results>
+
+  <!-- OLD -->
   <table class="table table-users table-hover">
     <thead>
       <tr>

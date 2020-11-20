@@ -123,6 +123,10 @@ export class Page<T> {
    */
   sort: string;
   /**
+   * Dirección de Ordenación.
+   */
+  direction: Direction;
+  /**
    * Número total de elementos.
    */
   totalElements: number;

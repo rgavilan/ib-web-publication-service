@@ -8,6 +8,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { SharedModule } from '../shared/shared.module';
 import { ResearchmentStructuresDetailComponent } from './researchment-structures-detail/researchment-structures-detail.component';
+import { CommonDisplayDataModule } from '../common-display-data/common-display-data.module';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent],
@@ -19,6 +20,7 @@ import { ResearchmentStructuresDetailComponent } from './researchment-structures
     LeafletModule,
     SharedModule,
     TabsModule.forRoot(),
+    CommonDisplayDataModule
   ],
 })
-export class CategoriesModule {}
+export class CategoriesModule { }

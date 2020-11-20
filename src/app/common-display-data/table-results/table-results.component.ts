@@ -20,6 +20,7 @@ import {
   PaginatedSearchComponent,
 } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
+import { SparqlResults } from 'src/app/_models/sparql';
 
 @Component({
   selector: 'app-table-results',
@@ -31,22 +32,26 @@ export class TableResultsComponent
   implements OnChanges {
   // use getter setter to define the property
   @Input()
-  set data(val: any) {
+  set data(val: SparqlResults) {
     // this._data = Object.assign({}, val);
     this._data = JSON.parse(JSON.stringify(val));
     if (val != null) {
-      // this._data.results.bindings = this._data.results.bindings
-      //   .concat(this._data.results.bindings)
-      //   .concat(this._data.results.bindings);
-      // this.totalItems = this._data.results.bindings.length;
+      this._data.results.bindings = this._data.results.bindings
+        .concat(this._data.results.bindings)
+        .concat(this._data.results.bindings);
+      this.totalItems = this._data.results.bindings.length;
       //this.showPage(1);
       // this.find();
     }
   }
 
-  get data(): any {
+  get data(): SparqlResults {
     return this._data;
   }
+
+
+  @Input()
+  pageInfo: Page<any>;
 
   /*
    * paginated is true is the query comes with page attributtes.
@@ -55,14 +60,10 @@ export class TableResultsComponent
   @Input()
   paginated: boolean;
 
-  @Input()
   page: number;
 
-  @Input()
   totalItems: number;
 
-  @Input()
-  orderBy: Order;
 
   @Output()
   callShowPage: EventEmitter<number> = new EventEmitter<number>();
@@ -73,7 +74,7 @@ export class TableResultsComponent
   /*
    * Initial data
    */
-  _data; // private property _data
+  _data: SparqlResults; // private property _data
   /*
    * Data that is shown in the actual page
    */
@@ -93,6 +94,10 @@ export class TableResultsComponent
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log('ngOnChanges ');
+    if (!!this.pageInfo) {
+      this.totalItems = this.pageInfo.totalElements;
+      this.page = this.pageInfo.number;
+    }
     this.find();
   }
 
@@ -150,7 +155,7 @@ export class TableResultsComponent
   }
 
   showPage(i: number): void {
-    console.log('ShowPage' + i + " - " + this.findRequest.pageRequest.property + " " + this.findRequest.pageRequest.direction);
+    console.log('ShowPage' + i + ' - ' + this.findRequest.pageRequest.property + ' ' + this.findRequest.pageRequest.direction);
     if (!!this.findRequest.pageRequest.property) {
       this._data.results.bindings = this._data.results.bindings.sort((a, b) => {
         if (this.findRequest.pageRequest.direction === Direction.ASC) {
@@ -167,7 +172,7 @@ export class TableResultsComponent
   callShowPageWhenPageChanges(i: number): void {
     console.log('callShowPageWhenPageChanges' + i);
     this.findRequest.pageRequest.page = i;
-    if (!this.paginated) {
+    if (!this.pageInfo) {
       this.find();
     } else {
       this.callShowPage.next(i);

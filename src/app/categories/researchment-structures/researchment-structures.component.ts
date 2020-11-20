@@ -5,6 +5,7 @@ import {
   Page,
   Order,
   Direction,
+  PageRequest,
 } from '../../_helpers/search';
 import { ResearchmentStructure } from '../../_models/researchmentStructure';
 import { ResearchmentStructuresService } from '../../_services/researchment.structures.service';
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import * as R from 'ramda';
+import { SparqlResults } from 'src/app/_models/sparql';
 
 /**
  * Rearchment Structure component
@@ -31,11 +33,8 @@ export class ResearchmentStructuresComponent
   filtersTop: Map<string, string> = new Map();
   topSearchResult: any[];
 
-  protected removeInternal(
-    entity: ResearchmentStructure
-  ): Observable<{} | Response> {
-    return of({});
-  }
+  allResearchmentStructuresFiltered: Page<SparqlResults>;
+
   constructor(
     router: Router,
     translate: TranslateService,
@@ -45,35 +44,18 @@ export class ResearchmentStructuresComponent
     super(router, translate, toastr);
   }
 
-  protected findInternal(
-    findRequest: FindRequest
-  ): Observable<Page<ResearchmentStructure>> {
-    const page = this.researchmentStructureService.findResearchmentStructures(
-      null
-    );
-
-    this.searchResult = page.content;
-    page.uibPage = page.number + 1;
-    this.resultObject = page;
-    this.findRequest.setOrder(
-      findRequest.pageRequest.direction,
-      findRequest.pageRequest.property
-    );
-
-    return of(this.resultObject);
-  }
-
-  protected getDefaultOrder(): Order {
-    return {
-      property: 'name',
-      direction: Direction.ASC,
-    };
-  }
-
   ngOnInit(): void {
     // Tabla
     const page = this.researchmentStructureService.findResearchmentStructures(
       null
+    );
+
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = 1;
+    pageRequest.size = 10;
+
+    this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters2(
+      null, pageRequest
     );
 
     this.searchResult = page.content;
@@ -133,6 +115,40 @@ export class ResearchmentStructuresComponent
     };
   }
 
+  protected findInternal(
+    findRequest: FindRequest
+  ): Observable<Page<ResearchmentStructure>> {
+    const page = this.researchmentStructureService.findResearchmentStructures(
+      null
+    );
+
+    this.searchResult = page.content;
+    page.uibPage = page.number + 1;
+    this.resultObject = page;
+    this.findRequest.setOrder(
+      findRequest.pageRequest.direction,
+      findRequest.pageRequest.property
+    );
+
+    return of(this.resultObject);
+  }
+
+  protected getDefaultOrder(): Order {
+    return {
+      property: 'name',
+      direction: Direction.ASC,
+    };
+  }
+
+
+  protected removeInternal(
+    entity: ResearchmentStructure
+  ): Observable<{} | Response> {
+    return of({});
+  }
+
+
+
   /**
    *
    * param count
@@ -182,9 +198,11 @@ export class ResearchmentStructuresComponent
         break;
     }
 
+    const pageRequest: PageRequest = new PageRequest();
+
     // Call service to load data filtered
     const page = this.researchmentStructureService.findResearchmentStructuresByFilters(
-      this.filters
+      this.filters, pageRequest
     );
 
     this.searchResult = page.content;
