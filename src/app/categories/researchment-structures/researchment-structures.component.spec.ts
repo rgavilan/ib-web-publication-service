@@ -14,9 +14,7 @@ describe('ResearchmentStructuresComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule,
         TranslateModule.forRoot(),
-        ToastrModule.forRoot(),
         HttpClientModule,
         FormsModule,
       ],
