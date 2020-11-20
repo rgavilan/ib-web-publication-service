@@ -115,7 +115,7 @@ export class TableResultsComponent
 
 
       page.numberOfElements = Math.min(page.content.length, this.pageSize);
-      page.size = this.pageSize;
+      page.size = this.pageInfo.size;
       page.totalElements = this.pageInfo.totalElements;
 
 
