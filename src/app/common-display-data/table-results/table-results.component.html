@@ -11,15 +11,28 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of _dataToShow; index as i" [ngClass]="{ 'table-secondary': i % 2 == 1 }">
-            <td>{{ i }}</td>
-            <td *ngFor="let header of _data.head.vars">
-              <a href="{{ item[header].value }}" *ngIf="item[header].type == 'uri'">{{ item[header].value }}</a>
-              <ng-container *ngIf="item[header].type != 'uri'">{{
+          <ng-container *ngFor="let item of _dataToShow; index as i">
+            <tr [routerLink]="['.', item[routerField].value]" *ngIf="!!routerField && !!item[routerField]"
+              [ngClass]="{ 'table-secondary': i % 2 == 1 }">
+              <td>{{ i }}</td>
+              <td *ngFor="let header of _data.head.vars">
+                <a href="{{ item[header].value }}" *ngIf="item[header].type == 'uri'">{{ item[header].value }}</a>
+                <ng-container *ngIf="item[header].type != 'uri'">{{
                 item[header].value
               }}</ng-container>
-            </td>
-          </tr>
+              </td>
+            </tr>
+
+            <tr *ngIf="!routerField || !item[routerField]" [ngClass]="{ 'table-secondary': i % 2 == 1 }">
+              <td>{{ i }}</td>
+              <td *ngFor="let header of _data.head.vars">
+                <a href="{{ item[header].value }}" *ngIf="item[header].type == 'uri'">{{ item[header].value }}</a>
+                <ng-container *ngIf="item[header].type != 'uri'">{{
+                item[header].value
+              }}</ng-container>
+              </td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
       <app-pagination [resultObject]="resultObject" (pageChanged)="callShowPageWhenPageChanges($event)"

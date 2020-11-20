@@ -321,54 +321,22 @@ export class ResearchmentStructuresService extends AbstractService {
   findResearchmentStructuresByFilters2(
     filters: Map<string, string>, pageRequest: PageRequest
   ): Page<SparqlResults> {
-    const page: Page<SparqlResults> = new Page<SparqlResults>();
+
     const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA2));
 
-    let dataFiltered: Binding[] = this.DUMMY_DATA2.results.bindings;
-
-    // Filters
-    if (!!filters) {
-      filters.forEach((valueFilter: string, keyFilter: string) => {
-        if (!!valueFilter) {
-          dataFiltered = data.results.bindings = data.results.bindings.filter((binding: Binding) => {
-            for (const keyObject of Object.keys(binding)) {
-              if (
-                keyObject === keyFilter &&
-                binding[keyObject].value === valueFilter
-              ) {
-                return true;
-              }
-            }
-          });
-        }
-      });
-    }
-
-    // Order
-    if (!!pageRequest && !!pageRequest.property) {
-      page.sort = pageRequest.property;
-      page.direction = pageRequest.direction;
-      data.results.bindings = data.results.bindings.sort((a, b) => {
-        if (pageRequest.direction === Direction.ASC) {
-          return (a[pageRequest.property].value > b[pageRequest.property].value) ? 1 : -1;
-        }
-        return (a[pageRequest.property].value <= b[pageRequest.property].value) ? 1 : -1;
-      });
-    }
-
-    const min = ((!!pageRequest.page) ? pageRequest.page - 1 : 0) * pageRequest.size;
-    const max = ((!!pageRequest.page) ? pageRequest.page : 1) * pageRequest.size;
-    data.results.bindings = data.results.bindings.slice(min, max)
-    page.number = pageRequest.page;
-    page.numberOfElements = pageRequest.size;
-    page.size = pageRequest.size;
-    page.totalElements = dataFiltered.length;
-    // TODO sort
-
-    page.content = [data];
-
-    return page;
+    return this.findResearchmentStructuresByFiltersCommon(data, filters, pageRequest);
   }
+
+  findTopResearchmentStructuresByFilters2(
+    filters: Map<string, string>, pageRequest: PageRequest
+  ): Page<SparqlResults> {
+
+    const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA2));
+    data.results.bindings = this.DUMMY_DATA2.results.bindings.slice(0, 10);
+    return this.findResearchmentStructuresByFiltersCommon(data, filters, pageRequest);
+  }
+
+
 
   findTopResearchmentStructuresByFilters(
     filters: Map<string, string>
@@ -498,6 +466,57 @@ export class ResearchmentStructuresService extends AbstractService {
     page.size = 1;
     page.totalElements = 1;
     page.totalPages = 1;
+
+    return page;
+  }
+
+  private findResearchmentStructuresByFiltersCommon(
+    data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest
+  ): Page<SparqlResults> {
+    const page: Page<SparqlResults> = new Page<SparqlResults>();
+
+    let dataFiltered: Binding[] = this.DUMMY_DATA2.results.bindings;
+
+    // Filters
+    if (!!filters) {
+      filters.forEach((valueFilter: string, keyFilter: string) => {
+        if (!!valueFilter) {
+          dataFiltered = data.results.bindings = data.results.bindings.filter((binding: Binding) => {
+            for (const keyObject of Object.keys(binding)) {
+              if (
+                keyObject === keyFilter &&
+                binding[keyObject].value === valueFilter
+              ) {
+                return true;
+              }
+            }
+          });
+        }
+      });
+    }
+
+    // Order
+    if (!!pageRequest && !!pageRequest.property) {
+      page.sort = pageRequest.property;
+      page.direction = pageRequest.direction;
+      data.results.bindings = data.results.bindings.sort((a, b) => {
+        if (pageRequest.direction === Direction.ASC) {
+          return (a[pageRequest.property].value > b[pageRequest.property].value) ? 1 : -1;
+        }
+        return (a[pageRequest.property].value <= b[pageRequest.property].value) ? 1 : -1;
+      });
+    }
+
+    const min = ((!!pageRequest.page) ? pageRequest.page - 1 : 0) * pageRequest.size;
+    const max = ((!!pageRequest.page) ? pageRequest.page : 1) * pageRequest.size;
+    data.results.bindings = data.results.bindings.slice(min, max)
+    page.number = pageRequest.page;
+    page.numberOfElements = pageRequest.size;
+    page.size = pageRequest.size;
+    page.totalElements = dataFiltered.length;
+    // TODO sort
+
+    page.content = [data];
 
     return page;
   }

@@ -18,13 +18,6 @@ import { SparqlResults } from 'src/app/_models/sparql';
 
 /**
  * Rearchment Structure component
- * 
- * Ejemplo de llamada paginando desde cliente
- *  <app-table-results [data]="data"></app-table-results>
- * 
- * Ejemplo de llamada paginando desde servidor
- * 
- * 
  */
 @Component({
   selector: 'app-researchment-structures',

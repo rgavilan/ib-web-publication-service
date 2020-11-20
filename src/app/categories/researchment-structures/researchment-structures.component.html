@@ -56,13 +56,14 @@
 
   <!-- NEW -->
   <app-table-results [data]="allResearchmentStructuresFiltered.content[0]"
-    [pageInfo]="allResearchmentStructuresFiltered" (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)"
+    [pageInfo]="allResearchmentStructuresFiltered" [routerField]="'name'"
+    (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)"
     (sizeChanged)="allResearchmentStructuresFilteredSizeChanged($event)"
     (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
   </app-table-results>
 
   <!-- OLD -->
-  <!-- <table class="table table-users table-hover">
+  <table class="table table-users table-hover">
     <thead>
       <tr>
         <th class="sortable" (click)="sort('name')"> {{ "researchmentStructure.name" | translate }}
@@ -77,16 +78,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr [routerLink]="['.', item.name]" *ngFor="let item of searchResult">
+      <tr [routerLink]="['.', item['name']]" *ngFor="let item of searchResult">
         <td>{{ item.name }}</td>
         <td>{{ item.type }}</td>
         <td>{{ item.publications }}</td>
       </tr>
     </tbody>
-  </table> -->
+  </table>
 
-  <!-- <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)" (sizeChanged)="changeSize($event)">
-  </app-pagination> -->
+  <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)" (sizeChanged)="changeSize($event)">
+  </app-pagination>
 </fieldset>
 
 <fieldset>

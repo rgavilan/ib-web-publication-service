@@ -21,6 +21,21 @@ import {
 import { Helper } from 'src/app/_helpers/utils';
 import { SparqlResults } from 'src/app/_models/sparql';
 
+/*
+ *
+ * Ejemplo de llamada paginando desde cliente
+ *  <app-table-results [data]="data"></app-table-results>
+ * 
+ * Ejemplo de llamada paginando desde servidor
+ * <app-table-results [data]="allResearchmentStructuresFiltered.content[0]"
+ *   [pageInfo]="allResearchmentStructuresFiltered" [routerField]="'name'"
+ *   (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)"
+ *   (sizeChanged)="allResearchmentStructuresFilteredSizeChanged($event)"
+ * (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
+ * </app-table-results>
+ * 
+ *
+*/
 @Component({
   selector: 'app-table-results',
   templateUrl: './table-results.component.html',
@@ -59,6 +74,9 @@ export class TableResultsComponent
    */
   @Input()
   paginated: boolean;
+
+  @Input()
+  routerField: string;
 
 
   @Output()
