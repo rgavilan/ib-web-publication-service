@@ -12,16 +12,27 @@ import { ResearchmentStructuresService } from 'src/app/_services/researchment.st
   styleUrls: ['./scientist-search.component.css']
 })
 export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist> implements OnInit, AfterContentInit {
+  /**
+   * university Id for search filter in case of necessary
+   */
   @Input() universityId: string;
   filtersTop: Map<string, string> = new Map();
   filtersArea: Map<string, Array<string>> = new Map();
   data: any;
   echartOptions: any;
+  /**
+   * Constructor
+   * param router 
+   * param translate 
+   * param toastr 
+   * param researchmentStructureService 
+   * param cdr 
+   */
   constructor(router: Router,
-              translate: TranslateService,
-              toastr: ToastrService,
-              private researchmentStructureService: ResearchmentStructuresService,
-              private cdr: ChangeDetectorRef) {
+    translate: TranslateService,
+    toastr: ToastrService,
+    private researchmentStructureService: ResearchmentStructuresService,
+    private cdr: ChangeDetectorRef) {
     super(router, translate, toastr);
   }
 
@@ -90,6 +101,10 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
     this.cdr.detectChanges();
   }
 
+  /**
+   * api call for finding data
+   * param findRequest 
+   */
   protected findInternal(findRequest: FindRequest): Observable<Page<Scientist>> {
     const page = this.researchmentStructureService.findResearchmentScientist(
       null
@@ -105,9 +120,18 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
 
     return of(this.resultObject);
   }
+
+  /**
+   * Remove entity
+   * param entity 
+   */
   protected removeInternal(entity: any): Observable<{} | Response> {
     return of({});
   }
+
+  /**
+   * default order for search
+   */
   protected getDefaultOrder(): Order {
     return {
       property: 'code',
@@ -115,8 +139,10 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
     };
   }
 
-  /*
-   * Filter researchment structures
+
+  /**
+   * data filter
+   * param filterName 
    */
   filterTopResearchmentStructures(filterName: string) {
     switch (filterName) {
@@ -139,8 +165,12 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
     this.resultObject = page;
   }
 
+
+  /**
+   * filter data for area type
+   * param event 
+   */
   filterArea(event) {
-    console.log(event);
     this.findRequest.filter.area = event;
     this.filtersArea.set('area', this.findRequest.filter.area);
     const page = this.researchmentStructureService.filterArea(
@@ -153,15 +183,20 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
       this.resultObject = page;
       this.cdr.detectChanges();
     }, 300);
-    
+
   }
 
-  returnAreaString(area) {
+  /**
+   * gets all areas from array and make a string from its values
+   * param area 
+   * return string
+   */
+  returnAreaString(area): string {
     let result = '';
     area.forEach(element => {
       result += element + ', ';
     });
-    return  result;
+    return result;
   }
 
   /**
