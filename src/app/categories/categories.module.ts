@@ -11,9 +11,10 @@ import { ResearchmentStructuresDetailComponent } from './researchment-structures
 import { CommonDisplayDataModule } from '../common-display-data/common-display-data.module';
 import { AllResearchmentStructuresComponent } from './researchment-structures/all-researchment-structures/all-researchment-structures.component';
 import { TopResearchmentStructuresComponent } from './researchment-structures/top-researchment-structures/top-researchment-structures.component';
+import { SectorChartComponent } from './researchment-structures/sector-chart/sector-chart.component';
 
 @NgModule({
-  declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent, TopResearchmentStructuresComponent],
+  declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent, TopResearchmentStructuresComponent, SectorChartComponent],
   imports: [
     CommonModule,
     CategoriesRoutingModule,
