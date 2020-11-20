@@ -60,8 +60,6 @@ export class TableResultsComponent
   @Input()
   paginated: boolean;
 
-  page: number;
-
 
   @Output()
   pageChanged: EventEmitter<number> = new EventEmitter<number>();
@@ -78,7 +76,6 @@ export class TableResultsComponent
    */
   _dataToShow;
 
-  pageSize = 10;
   numPages = 1;
 
   constructor(
@@ -93,7 +90,6 @@ export class TableResultsComponent
   ngOnChanges(changes: SimpleChanges): void {
     console.log('ngOnChanges ');
     if (!!this.pageInfo) {
-      this.page = this.pageInfo.number;
       this._dataToShow = this._data.results.bindings;
     }
     this.find();
@@ -114,7 +110,7 @@ export class TableResultsComponent
       }
 
 
-      page.numberOfElements = Math.min(page.content.length, this.pageSize);
+      page.numberOfElements = Math.min(page.content.length, this.pageInfo.size);
       page.size = this.pageInfo.size;
       page.totalElements = this.pageInfo.totalElements;
 
@@ -150,8 +146,8 @@ export class TableResultsComponent
       }
 
 
-      page.numberOfElements = Math.min(page.content.length, this.pageSize);
-      page.size = this.pageSize;
+      page.numberOfElements = Math.min(page.content.length, this.findRequest.pageRequest.size);
+      page.size = this.findRequest.pageRequest.size;
       page.totalElements = this._data.results.bindings.length;
     }
 
@@ -181,8 +177,8 @@ export class TableResultsComponent
         return (a[this.findRequest.pageRequest.property].value <= b[this.findRequest.pageRequest.property].value) ? 1 : -1;
       });
     }
-    const init = (i - 1) * this.pageSize;
-    const end = i * this.pageSize;
+    const init = (i - 1) * this.findRequest.pageRequest.size;
+    const end = i * this.findRequest.pageRequest.size;
     this._dataToShow = this._data.results.bindings.slice(init, end);
   }
 
@@ -197,11 +193,14 @@ export class TableResultsComponent
   }
 
   callShowPageWhenSizeChanges(i: number): void {
-    // const init = (i - 1) * this.pageSize;
-    // const end = i * this.pageSize;
-    // this._dataToShow = this._data.results.bindings.slice(init, end);
+
     console.log('callShowPageWhenSizeChanges' + i);
-    this.sizeChanged.next(i);
+    this.findRequest.pageRequest.size = i;
+    if (!this.pageInfo) {
+      this.find();
+    } else {
+      this.sizeChanged.next(i);
+    }
   }
 
   createParams(data: any): HttpParams {
