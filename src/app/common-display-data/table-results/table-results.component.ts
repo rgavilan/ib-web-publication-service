@@ -36,10 +36,9 @@ export class TableResultsComponent
     // this._data = Object.assign({}, val);
     this._data = JSON.parse(JSON.stringify(val));
     if (val != null) {
-      this._data.results.bindings = this._data.results.bindings
-        .concat(this._data.results.bindings)
-        .concat(this._data.results.bindings);
-      this.totalItems = this._data.results.bindings.length;
+      // this._data.results.bindings = this._data.results.bindings
+      //   .concat(this._data.results.bindings)
+      //   .concat(this._data.results.bindings);
       //this.showPage(1);
       // this.find();
     }
@@ -49,7 +48,9 @@ export class TableResultsComponent
     return this._data;
   }
 
-
+  /*
+  * Data needed to set pagination if we have server pagination
+  */
   @Input()
   pageInfo: Page<any>;
 
@@ -61,8 +62,6 @@ export class TableResultsComponent
   paginated: boolean;
 
   page: number;
-
-  totalItems: number;
 
 
   @Output()
@@ -95,48 +94,67 @@ export class TableResultsComponent
   ngOnChanges(changes: SimpleChanges): void {
     console.log('ngOnChanges ');
     if (!!this.pageInfo) {
-      this.totalItems = this.pageInfo.totalElements;
       this.page = this.pageInfo.number;
+      this._dataToShow = this._data.results.bindings;
     }
     this.find();
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<any>> {
     console.log('findInternal ' + this.data);
-
     const page: Page<any> = new Page<any>();
-    if (findRequest.pageRequest.page === 0) {
-      this.showPage(1);
+    if (!!this.pageInfo) {
+
       page.content = this._dataToShow;
-      // page.content = this._data.results.bindings;
-
-      page.first = true;
-      page.last = false;
-
-      page.number = 0;
-
-      // this.searchResult = page.content;
-      // this.resultObject = page;
-    } else {
-      if (findRequest.pageRequest.page === 1) {
+      page.number = this.pageInfo.number - 1;
+      if (this.pageInfo.number === 1) {
         page.first = true;
       }
-      if (findRequest.pageRequest.page === this.numPages) {
+      if (this.pageInfo.number === this.numPages) {
         page.last = true;
       }
 
-      this.showPage(findRequest.pageRequest.page);
 
-      page.content = this._dataToShow;
+      page.numberOfElements = Math.min(page.content.length, this.pageSize);
+      page.size = this.pageSize;
+      page.totalElements = this.pageInfo.totalElements;
 
-      page.number = findRequest.pageRequest.page - 1;
 
+    } else {
+      if (findRequest.pageRequest.page === 0) {
+        this.showPage(1);
+        page.content = this._dataToShow;
+        // page.content = this._data.results.bindings;
+
+        page.first = true;
+        page.last = false;
+
+        page.number = 0;
+        page.content = this._dataToShow;
+
+        // this.searchResult = page.content;
+        // this.resultObject = page;
+      } else {
+        if (findRequest.pageRequest.page === 1) {
+          page.first = true;
+        }
+        if (findRequest.pageRequest.page === this.numPages) {
+          page.last = true;
+        }
+
+        this.showPage(findRequest.pageRequest.page);
+
+        page.content = this._dataToShow;
+
+        page.number = findRequest.pageRequest.page - 1;
+
+      }
+
+
+      page.numberOfElements = Math.min(page.content.length, this.pageSize);
+      page.size = this.pageSize;
+      page.totalElements = this._data.results.bindings.length;
     }
-
-
-    page.numberOfElements = Math.min(page.content.length, this.pageSize);
-    page.size = this.pageSize;
-    page.totalElements = this.totalItems;
 
     return of(page);
   }
