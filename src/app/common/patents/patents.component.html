@@ -2,8 +2,9 @@
     <form class="form-horizontal " (ngSubmit)="f.form.valid && find()" #f="ngForm">
         <div class="row mt-20">
             <!-- categorias tree -->
-            <div class="col-12">
-                <app-tree (filterChanged)="filterArea($event)"></app-tree>
+            <div class="col-lg-6">
+                <label for="type" class="col-sm-4 control-label">{{  "scientist.area" | translate }}</label>
+                <app-new-tree (filterChanged)="filterArea($event)"></app-new-tree>
             </div>
             <!-- type -->
             <div class="form-group col-lg-6">

@@ -97,7 +97,9 @@ export class TestingHelper {
         NewTreeComponent,
         TableResultsComponent,
         ProyectsComponent,
-        PatentsComponent
+        PatentsComponent,
+        TreeComponent,
+        NewTreeComponent
       ],
       imports: [
         BrowserModule,
