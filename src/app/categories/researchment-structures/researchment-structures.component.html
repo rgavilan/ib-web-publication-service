@@ -56,7 +56,9 @@
 
   <!-- NEW -->
   <app-table-results [data]="allResearchmentStructuresFiltered.content[0]"
-    [pageInfo]="allResearchmentStructuresFiltered" (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)">
+    [pageInfo]="allResearchmentStructuresFiltered" (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)"
+    (sizeChanged)="allResearchmentStructuresFilteredSizeChanged($event)"
+    (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
   </app-table-results>
 
   <!-- OLD -->

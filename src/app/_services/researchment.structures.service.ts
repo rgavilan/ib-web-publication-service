@@ -324,11 +324,13 @@ export class ResearchmentStructuresService extends AbstractService {
     const page: Page<SparqlResults> = new Page<SparqlResults>();
     const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA2));
 
+    let dataFiltered: Binding[] = this.DUMMY_DATA2.results.bindings;
+
     // Filters
     if (!!filters) {
       filters.forEach((valueFilter: string, keyFilter: string) => {
         if (!!valueFilter) {
-          data.results.bindings = data.results.bindings.filter((binding: Binding) => {
+          dataFiltered = data.results.bindings = data.results.bindings.filter((binding: Binding) => {
             for (const keyObject of Object.keys(binding)) {
               if (
                 keyObject === keyFilter &&
@@ -344,6 +346,8 @@ export class ResearchmentStructuresService extends AbstractService {
 
     // Order
     if (!!pageRequest && !!pageRequest.property) {
+      page.sort = pageRequest.property;
+      page.direction = pageRequest.direction;
       data.results.bindings = data.results.bindings.sort((a, b) => {
         if (pageRequest.direction === Direction.ASC) {
           return (a[pageRequest.property].value > b[pageRequest.property].value) ? 1 : -1;
@@ -358,7 +362,7 @@ export class ResearchmentStructuresService extends AbstractService {
     page.number = pageRequest.page;
     page.numberOfElements = pageRequest.size;
     page.size = pageRequest.size;
-    page.totalElements = this.DUMMY_DATA2.results.bindings.length;
+    page.totalElements = dataFiltered.length;
     // TODO sort
 
     page.content = [data];

@@ -23,7 +23,7 @@
         </tbody>
       </table>
       <app-pagination [resultObject]="resultObject" (pageChanged)="callShowPageWhenPageChanges($event)"
-        (sizeChanged)="changeSize($event)"></app-pagination>
+        (sizeChanged)="callShowPageWhenSizeChanges($event)"></app-pagination>
     </div>
   </div>
 </div>

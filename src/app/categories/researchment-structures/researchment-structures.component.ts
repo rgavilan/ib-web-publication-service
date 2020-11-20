@@ -18,6 +18,13 @@ import { SparqlResults } from 'src/app/_models/sparql';
 
 /**
  * Rearchment Structure component
+ * 
+ * Ejemplo de llamada paginando desde cliente
+ *  <app-table-results [data]="data"></app-table-results>
+ * 
+ * Ejemplo de llamada paginando desde servidor
+ * 
+ * 
  */
 @Component({
   selector: 'app-researchment-structures',
@@ -199,8 +206,16 @@ export class ResearchmentStructuresComponent
     }
 
     const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = 1;
+    pageRequest.size = this.allResearchmentStructuresFiltered.size;
+    pageRequest.property = this.allResearchmentStructuresFiltered.sort;
+    pageRequest.direction = this.allResearchmentStructuresFiltered.direction;
 
     // Call service to load data filtered
+    this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters2(
+      this.filters, pageRequest
+    );
+
     const page = this.researchmentStructureService.findResearchmentStructuresByFilters(
       this.filters, pageRequest
     );
@@ -236,6 +251,8 @@ export class ResearchmentStructuresComponent
     this.resultObject = page;
   }
 
+
+
   allResearchmentStructuresFilteredPageChanged(i: number): void {
     console.log('allResearchmentStructuresFilteredPageChanged');
 
@@ -245,14 +262,40 @@ export class ResearchmentStructuresComponent
     pageRequest.property = this.allResearchmentStructuresFiltered.sort;
     pageRequest.direction = this.allResearchmentStructuresFiltered.direction;
 
+    //  const map: Map<string, string> = new Map(Object.entries(this.findRequest.filter));
+
     this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters2(
-      null, pageRequest
+      this.filters, pageRequest
     );
   }
 
   allResearchmentStructuresFilteredSizeChanged(i: number): void {
     console.log('allResearchmentStructuresFilteredSizeChanged');
-    this.allResearchmentStructuresFiltered.size = i;
+
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = this.allResearchmentStructuresFiltered.number;
+    pageRequest.size = i;
+    pageRequest.property = this.allResearchmentStructuresFiltered.sort;
+    pageRequest.direction = this.allResearchmentStructuresFiltered.direction;
+
+    this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters2(
+      this.filters, pageRequest
+    );
+  }
+
+
+  allResearchmentStructuresFilteredSortChanged(pageRequest: PageRequest): void {
+    console.log('allResearchmentStructuresFilteredSortChanged');
+
+    const newPageRequest: PageRequest = new PageRequest();
+    newPageRequest.page = this.allResearchmentStructuresFiltered.number;
+    newPageRequest.size = this.allResearchmentStructuresFiltered.size;
+    newPageRequest.property = pageRequest.property;
+    newPageRequest.direction = pageRequest.direction;
+
+    this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters2(
+      this.filters, pageRequest
+    );
   }
 
   /*

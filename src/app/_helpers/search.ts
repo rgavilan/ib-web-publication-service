@@ -192,7 +192,7 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
   resultObject: Page<T>;
 
   @Output()
-  sortChanged: EventEmitter<FindRequest> = new EventEmitter<FindRequest>();
+  sortChanged: EventEmitter<PageRequest> = new EventEmitter<PageRequest>();
 
   constructor(
     private router: Router,
@@ -258,7 +258,7 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
       this.findRequest.pageRequest.direction = Direction.ASC;
     }
     this.find();
-    this.sortChanged.next(this.findRequest);
+    this.sortChanged.next(this.findRequest.pageRequest);
   }
 
   /**
