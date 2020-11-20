@@ -9,9 +9,11 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { SharedModule } from '../shared/shared.module';
 import { ResearchmentStructuresDetailComponent } from './researchment-structures-detail/researchment-structures-detail.component';
 import { CommonDisplayDataModule } from '../common-display-data/common-display-data.module';
+import { AllResearchmentStructuresComponent } from './researchment-structures/all-researchment-structures/all-researchment-structures.component';
+import { TopResearchmentStructuresComponent } from './researchment-structures/top-researchment-structures/top-researchment-structures.component';
 
 @NgModule({
-  declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent],
+  declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent, TopResearchmentStructuresComponent],
   imports: [
     CommonModule,
     CategoriesRoutingModule,

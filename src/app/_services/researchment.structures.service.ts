@@ -475,7 +475,7 @@ export class ResearchmentStructuresService extends AbstractService {
   ): Page<SparqlResults> {
     const page: Page<SparqlResults> = new Page<SparqlResults>();
 
-    let dataFiltered: Binding[] = this.DUMMY_DATA2.results.bindings;
+    let dataFiltered: Binding[] = data.results.bindings;
 
     // Filters
     if (!!filters) {
