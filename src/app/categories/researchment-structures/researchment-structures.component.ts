@@ -1,9 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  Page,
-} from '../../_helpers/search';
-import { ResearchmentStructuresService } from '../../_services/researchment.structures.service';
-import { SparqlResults } from 'src/app/_models/sparql';
 
 /**
  * Rearchment Structure component
