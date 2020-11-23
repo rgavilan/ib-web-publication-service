@@ -43,7 +43,7 @@ import { SparqlResults } from 'src/app/_models/sparql';
  * </app-table-results>
  * 
  *
-*/
+ */
 @Component({
   selector: 'app-table-results',
   templateUrl: './table-results.component.html',
