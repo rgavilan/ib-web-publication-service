@@ -12,43 +12,71 @@ export class ScientificProductionService extends AbstractService {
     readonly DUMMY_DATA: SparqlResults = {
         head: {
             vars: [
-                'name',
+                'title',
                 'type',
-                'publications'
+                'doi',
+                'releaseYear'
             ]
         },
         results: {
             bindings: [
                 // 1
                 {
-                    name: {
+                    title: {
                         type: 'literal',
-                        value: 'María Hernandez Reyes Mora'
+                        value: 'Guía practica para la realización de trabajos de fin de grado y trabajos fin de master'
                     },
                     type: {
                         type: 'literal',
-                        value: 'Docente'
+                        value: 'Libro'
                     },
-                    publications: {
+                    doi: {
                         type: 'literal',
-                        value: '8'
+                        value: 'xxxxx'
+                    },
+                    releaseYear: {
+                        type: 'literal',
+                        value: '2012'
                     }
                 },
                 // 2
                 {
-                    name: {
+                    title: {
                         type: 'literal',
-                        value: 'Jesualdo Tomás Fernandes Breis'
+                        value: 'Buenas prácticas para la docencia del derecho adaptado al ECTS'
                     },
                     type: {
                         type: 'literal',
-                        value: 'Docente'
+                        value: 'Guía'
                     },
-                    publications: {
+                    doi: {
                         type: 'literal',
-                        value: 'a4'
+                        value: 'xxxxx'
+                    },
+                    releaseYear: {
+                        type: 'literal',
+                        value: '2010'
                     }
                 },
+                // 3
+                {
+                    title: {
+                        type: 'literal',
+                        value: 'Dimensión social de la conservación de la fauna silvestre'
+                    },
+                    type: {
+                        type: 'literal',
+                        value: 'Guía'
+                    },
+                    doi: {
+                        type: 'literal',
+                        value: 'xxxxx'
+                    },
+                    releaseYear: {
+                        type: 'literal',
+                        value: '2013'
+                    }
+                }
             ]
         }
     };
