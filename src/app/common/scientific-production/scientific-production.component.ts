@@ -1,20 +1,23 @@
-import { AfterContentInit, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { ToastrService } from 'ngx-toastr';
-import { Observable, of } from 'rxjs';
-import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
-import { Scientist } from 'src/app/_models/scientist';
+import { Component, Input, OnInit } from '@angular/core';
+import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
-import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
 import { ScientificProductionService } from 'src/app/_services/scientificProduction.service';
+import { Helper } from 'src/app/_helpers/utils';
 
+/**
+ *
+ *
+ * @export
+ * @class ScientificProductionComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-scientific-production',
   templateUrl: './scientific-production.component.html',
   styleUrls: ['./scientific-production.component.css']
 })
-export class ScientificProductionComponent implements OnInit, AfterContentInit {
+
+export class ScientificProductionComponent implements OnInit {
   @Input() universityId: string;
   allResearchmentStructuresFiltered: Page<SparqlResults>;
 
@@ -22,8 +25,7 @@ export class ScientificProductionComponent implements OnInit, AfterContentInit {
 
   findRequest: FindRequest = new FindRequest();
   constructor(
-    private scientificProductionService: ScientificProductionService,
-    private cdr: ChangeDetectorRef) {
+    private scientificProductionService: ScientificProductionService) {
   }
 
   ngOnInit(): void {
@@ -36,8 +38,6 @@ export class ScientificProductionComponent implements OnInit, AfterContentInit {
     );
 
     console.log(this.allResearchmentStructuresFiltered);
-
-
     const xAxisData = [];
     const data1 = [];
     const data2 = [];
@@ -47,30 +47,58 @@ export class ScientificProductionComponent implements OnInit, AfterContentInit {
       data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
       data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
     }
-
-
-
-
   }
 
-  ngAfterContentInit() {
-  }
-
-
+  /**
+   *
+   *
+   * @param {number} i
+   * @memberof ScientificProductionComponent
+   */
   allScientificProductionFilteredPageChanged(i: number): void {
     console.log('allResearchmentStructuresFilteredPageChanged');
-
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = i;
     pageRequest.size = this.allResearchmentStructuresFiltered.size;
     pageRequest.property = this.allResearchmentStructuresFiltered.sort;
     pageRequest.direction = this.allResearchmentStructuresFiltered.direction;
-
-    //  const map: Map<string, string> = new Map(Object.entries(this.findRequest.filter));
-
     this.allResearchmentStructuresFiltered = this.scientificProductionService.findScientificProductionByFilters(
       this.filters, pageRequest
     );
+  }
+
+
+  /**
+   *
+   *
+   * @param {*} event
+   * @param {string} filterName
+   * @memberof ScientificProductionComponent
+   */
+  filterResearchmentStructures(event, filterName: string) {
+    const currentSelectedDate = Helper.fromModel(event);
+    switch (filterName) {
+      case 'releaseYear':
+        this.findRequest.filter.releaseYear !== 'undefined'
+          ? this.filters.set(filterName, String(currentSelectedDate.year))
+          : this.filters.set(filterName, '');
+
+        break;
+
+      default:
+        break;
+    }
+
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = 1;
+    pageRequest.size = this.allResearchmentStructuresFiltered.size;
+    pageRequest.property = this.allResearchmentStructuresFiltered.sort;
+    pageRequest.direction = this.allResearchmentStructuresFiltered.direction;
+    // Call service to load data filtered
+    this.allResearchmentStructuresFiltered = this.scientificProductionService.findScientificProductionByFilters(
+      this.filters, pageRequest
+    );
+
   }
 
 
@@ -92,11 +120,4 @@ export class ScientificProductionComponent implements OnInit, AfterContentInit {
 
   }
 
-  returnAreaString(area) {
-    let result = '';
-    area.forEach(element => {
-      result += element + ', ';
-    });
-    return result;
-  }
 }

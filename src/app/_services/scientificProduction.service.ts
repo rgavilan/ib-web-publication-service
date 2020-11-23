@@ -88,7 +88,7 @@ export class ScientificProductionService extends AbstractService {
     findScientificProductionByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
 
         const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
-
+        console.log(filters, pageRequest);
         return this.findScientifiProductionByFiltersCommon(data, filters, pageRequest);
     }
 

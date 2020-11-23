@@ -4,17 +4,19 @@
             <div class="form-group col-lg-4">
                 <label for="dateFrom" class="control-label">{{'scientific-production.date-from' | translate }}</label>
                 <input class="form-control" name="dateFrom" id="dateFrom" required
+                    (ngModelChange)="filterResearchmentStructures($event, 'releaseYear')"
                     placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker
                     #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();" (keyup)="decisionDate.close()"
-                    #dateFrom="ngModel" [(ngModel)]="findRequest.filter.dateFrom" />
+                    #dateFrom="ngModel" [(ngModel)]="findRequest.filter.releaseYear" />
                 <div *ngIf="f.submitted && !dateFrom.valid" class="help-block">
                     {{'form.validation.required' | translate}}</div>
             </div>
             <div class="form-group col-lg-4">
                 <label for="dateTo" class="control-label">{{'scientific-production.date-to' | translate }}</label>
                 <input class="form-control" name="dateTo" id="dateTo" required
+                    (change)="filterResearchmentStructures($event, 'releaseYear')"
                     placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker
-                    #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();" (keyup)="decisionDate.close()"
+                    #dateToDate="ngbDatepicker" (click)="dateToDate.toggle();" (keyup)="dateToDate.close()"
                     #dateTo="ngModel" [(ngModel)]="findRequest.filter.dateTo" />
                 <div *ngIf="f.submitted && !dateTo.valid" class="help-block">
                     {{'form.validation.required' | translate}}</div>

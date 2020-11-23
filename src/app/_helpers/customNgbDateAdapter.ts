@@ -3,7 +3,6 @@ import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 import * as moment from 'moment';
-import { Helper } from './utils';
 
 @Injectable()
 export class CustomNgbDateAdapter extends NgbDateAdapter<number> {
