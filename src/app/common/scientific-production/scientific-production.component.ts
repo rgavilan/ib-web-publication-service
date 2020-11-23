@@ -3,36 +3,39 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
-import { Direction, FindRequest, Order, Page, PaginatedSearchComponent } from 'src/app/_helpers/search';
+import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Scientist } from 'src/app/_models/scientist';
+import { SparqlResults } from 'src/app/_models/sparql';
 import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
+import { ScientificProductionService } from 'src/app/_services/scientificProduction.service';
 
 @Component({
   selector: 'app-scientific-production',
   templateUrl: './scientific-production.component.html',
   styleUrls: ['./scientific-production.component.css']
 })
-export class ScientificProductionComponent extends PaginatedSearchComponent<Scientist> implements OnInit, AfterContentInit {
+export class ScientificProductionComponent implements OnInit, AfterContentInit {
   @Input() universityId: string;
-  filtersTop: Map<string, string> = new Map();
-  filtersArea: Map<string, Array<string>> = new Map();
-  constructor(router: Router,
-              translate: TranslateService,
-              toastr: ToastrService,
-              private researchmentStructureService: ResearchmentStructuresService,
-              private cdr: ChangeDetectorRef) {
-    super(router, translate, toastr);
+  allResearchmentStructuresFiltered: Page<SparqlResults>;
+
+  filters: Map<string, string> = new Map();
+
+  findRequest: FindRequest = new FindRequest();
+  constructor(
+    private scientificProductionService: ScientificProductionService,
+    private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
-    // agregar automatico que filtre por ID
-    const page = this.researchmentStructureService.findResearchmentScientist(
-      null
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = 1;
+    pageRequest.size = 10;
+
+    this.allResearchmentStructuresFiltered = this.scientificProductionService.findScientificProductionByFilters(
+      null, pageRequest
     );
-    this.searchResult = page.content;
-    page.uibPage = page.number + 1;
-    this.resultObject = page;
-    this.filterTopResearchmentStructures('type');
+
+    console.log(this.allResearchmentStructuresFiltered);
 
 
     const xAxisData = [];
@@ -53,59 +56,29 @@ export class ScientificProductionComponent extends PaginatedSearchComponent<Scie
   ngAfterContentInit() {
   }
 
-  protected findInternal(findRequest: FindRequest): Observable<Page<Scientist>> {
-    const page = this.researchmentStructureService.findResearchmentScientist(
-      null
+
+  allScientificProductionFilteredPageChanged(i: number): void {
+    console.log('allResearchmentStructuresFilteredPageChanged');
+
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = i;
+    pageRequest.size = this.allResearchmentStructuresFiltered.size;
+    pageRequest.property = this.allResearchmentStructuresFiltered.sort;
+    pageRequest.direction = this.allResearchmentStructuresFiltered.direction;
+
+    //  const map: Map<string, string> = new Map(Object.entries(this.findRequest.filter));
+
+    this.allResearchmentStructuresFiltered = this.scientificProductionService.findScientificProductionByFilters(
+      this.filters, pageRequest
     );
-
-    this.searchResult = page.content;
-    page.uibPage = page.number + 1;
-    this.resultObject = page;
-    this.findRequest.setOrder(
-      findRequest.pageRequest.direction,
-      findRequest.pageRequest.property
-    );
-
-    return of(this.resultObject);
-  }
-  protected removeInternal(entity: any): Observable<{} | Response> {
-    throw new Error('Method not implemented.');
-  }
-  protected getDefaultOrder(): Order {
-    return {
-      property: 'code',
-      direction: Direction.ASC
-    };
   }
 
-  /*
-   * Filter researchment structures
-   */
-  filterTopResearchmentStructures(filterName: string) {
-    switch (filterName) {
-      case 'type':
-        // si el valor viene undefined debería "resetar el valor para mostrar todo"
-        this.findRequest.filter.type !== 'undefined' ? this.filtersTop.set(filterName, this.findRequest.filter.type)
-          : this.filtersTop.set(filterName, '');
-        break;
-      default:
-        break;
-    }
 
-    // Call service to load data filtered
-    const page = this.researchmentStructureService.findTopResearchmentStructuresScientistByFilters(
-      this.filtersTop
-    );
-
-    this.searchResult = page.content;
-    page.uibPage = page.number + 1;
-    this.resultObject = page;
-  }
 
   filterArea(event) {
     console.log(event);
     this.findRequest.filter.area = event;
-    this.filtersArea.set('area', this.findRequest.filter.area);
+    /*this.filtersArea.set('area', this.findRequest.filter.area);
     const page = this.researchmentStructureService.filterArea(
       this.filtersArea
     );
@@ -115,8 +88,8 @@ export class ScientificProductionComponent extends PaginatedSearchComponent<Scie
       page.uibPage = page.number + 1;
       this.resultObject = page;
       this.cdr.detectChanges();
-    }, 300);
-    
+    }, 300);*/
+
   }
 
   returnAreaString(area) {
@@ -124,6 +97,6 @@ export class ScientificProductionComponent extends PaginatedSearchComponent<Scie
     area.forEach(element => {
       result += element + ', ';
     });
-    return  result;
+    return result;
   }
 }

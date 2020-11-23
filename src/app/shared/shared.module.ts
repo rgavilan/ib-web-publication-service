@@ -14,20 +14,24 @@ import { NewTreeComponent } from '../graphic/new-tree/new-tree.component';
 import { ScientificProductionComponent } from '../common/scientific-production/scientific-production.component';
 import { ProyectsComponent } from '../common/proyects/proyects.component';
 import { PatentsComponent } from '../common/patents/patents.component';
-import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ScientificProductionService } from '../_services/scientificProduction.service';
+import { TableResultsComponent } from '../common-display-data/table-results/table-results.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [PaginationComponent, 
-    TopSearchComponent, 
-    ScientistSearchComponent, 
-    TreeComponent, 
+  declarations: [PaginationComponent,
+    TopSearchComponent,
+    ScientistSearchComponent,
+    TreeComponent,
     GraphicComponent,
     NewTreeComponent,
     ScientificProductionComponent,
     ProyectsComponent,
-    PatentsComponent],
+    PatentsComponent, TableResultsComponent],
   imports: [
     CommonModule,
+    RouterModule,
     TranslateModule.forChild(),
     PaginationModule,
     FormsModule,
@@ -37,17 +41,21 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
     }),
     NgbModule
   ],
-  exports: [PaginationComponent, 
-    TranslateModule, 
-    CommonModule, 
-    TopSearchComponent, 
-    ScientistSearchComponent, 
-    TreeComponent, 
+  exports: [PaginationComponent,
+    RouterModule,
+    TranslateModule,
+    CommonModule,
+    TopSearchComponent,
+    ScientistSearchComponent,
+    TreeComponent,
     GraphicComponent,
     NewTreeComponent,
     ScientificProductionComponent,
     ProyectsComponent,
     PatentsComponent,
-    NgbModule]
+    NgbModule, TableResultsComponent],
+  providers: [
+    ScientificProductionService
+  ]
 })
-export class SharedModule {}
+export class SharedModule { }

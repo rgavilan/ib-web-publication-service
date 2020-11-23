@@ -1,5 +1,5 @@
 <fieldset>
-    <form class="form-horizontal " (ngSubmit)="f.form.valid && find()" #f="ngForm">
+    <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm">
         <div class="row mt-20">
             <div class="form-group col-lg-4">
                 <label for="dateFrom" class="control-label">{{'scientific-production.date-from' | translate }}</label>
@@ -37,35 +37,11 @@
         </div>
     </div>
     <div class="mt-40">
-        <table class="table table-users table-hover">
-            <thead>
-                <tr>
-                    <th class="sortable" (click)="sort('name')"> {{ "researchmentStructure.name" | translate }}
-                        <em class="float-right" [ngClass]="getSortIcon('name')"></em>
-                    </th>
-                    <th class="sortable" (click)="sort('type')"> {{ "researchmentStructure.type" | translate }}
-                        <em class="float-right" [ngClass]="getSortIcon('type')"></em>
-                    </th>
-                    <th class="sortable" (click)="sort('area')">
-                        {{ "researchmentStructure.area" | translate }}
-                        <em class="float-right" [ngClass]="getSortIcon('area')"></em>
-                    </th>
-                    <th class="sortable" (click)="sort('publications')">
-                        {{ "researchmentStructure.publications" | translate }}
-                        <em class="float-right" [ngClass]="getSortIcon('publications')"></em>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of searchResult">
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.type }}</td>
-                    <td>{{ returnAreaString(item.areaName) }}</td>
-                    <td>{{ item.publications }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <app-table-results [data]="allResearchmentStructuresFiltered.content[0]"
+            [pageInfo]="allResearchmentStructuresFiltered" [routerField]="'name'"
+            (pageChanged)="allScientificProductionFilteredPageChanged($event)"
+            (sizeChanged)="allScientificProductionFilteredPageChanged($event)"
+            (sortChanged)="allScientificProductionFilteredPageChanged($event)">
+        </app-table-results>
     </div>
-    <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)" (sizeChanged)="changeSize($event)">
-    </app-pagination>
 </fieldset>

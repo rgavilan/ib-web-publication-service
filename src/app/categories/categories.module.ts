@@ -14,7 +14,8 @@ import { TopResearchmentStructuresComponent } from './researchment-structures/to
 import { SectorChartComponent } from './researchment-structures/sector-chart/sector-chart.component';
 
 @NgModule({
-  declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent, TopResearchmentStructuresComponent, SectorChartComponent],
+  declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
+    TopResearchmentStructuresComponent, SectorChartComponent],
   imports: [
     CommonModule,
     CategoriesRoutingModule,
@@ -22,8 +23,7 @@ import { SectorChartComponent } from './researchment-structures/sector-chart/sec
     NgxEchartsModule,
     LeafletModule,
     SharedModule,
-    TabsModule.forRoot(),
-    CommonDisplayDataModule
+    TabsModule.forRoot()
   ],
 })
 export class CategoriesModule { }
