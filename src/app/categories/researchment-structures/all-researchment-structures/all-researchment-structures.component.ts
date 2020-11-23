@@ -3,6 +3,13 @@ import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
 
+/**
+ *
+ *
+ * @export
+ * @class AllResearchmentStructuresComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-all-researchment-structures',
   templateUrl: './all-researchment-structures.component.html',
@@ -31,9 +38,12 @@ export class AllResearchmentStructuresComponent implements OnInit {
     );
   }
 
-  /*
-  * Filter researchment structures
-  */
+  /**
+   * Filter researchment structures
+   *
+   * @param {string} filterName
+   * @memberof AllResearchmentStructuresComponent
+   */
   filterResearchmentStructures(filterName: string) {
     switch (filterName) {
       case 'type':
@@ -62,6 +72,12 @@ export class AllResearchmentStructuresComponent implements OnInit {
 
 
 
+  /**
+   * Function called on pageChanged event of TableResultsComponent
+   *
+   * @param {number} i
+   * @memberof AllResearchmentStructuresComponent
+   */
   allResearchmentStructuresFilteredPageChanged(i: number): void {
     console.log('allResearchmentStructuresFilteredPageChanged');
 
@@ -78,6 +94,12 @@ export class AllResearchmentStructuresComponent implements OnInit {
     );
   }
 
+  /**
+   * Function called on sizeChanged event of TableResultsComponent
+   *
+   * @param {number} i
+   * @memberof AllResearchmentStructuresComponent
+   */
   allResearchmentStructuresFilteredSizeChanged(i: number): void {
     console.log('allResearchmentStructuresFilteredSizeChanged');
 
@@ -93,6 +115,12 @@ export class AllResearchmentStructuresComponent implements OnInit {
   }
 
 
+  /**
+   * Function called on sortChanged event of TableResultsComponent
+   *
+   * @param {PageRequest} pageRequest
+   * @memberof AllResearchmentStructuresComponent
+   */
   allResearchmentStructuresFilteredSortChanged(pageRequest: PageRequest): void {
     console.log('allResearchmentStructuresFilteredSortChanged');
 

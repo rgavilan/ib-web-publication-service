@@ -21,8 +21,16 @@ import {
 import { Helper } from 'src/app/_helpers/utils';
 import { SparqlResults } from 'src/app/_models/sparql';
 
-/*
+
+/**
+ * Class that draw a table
  *
+ * @export
+ * @class TableResultsComponent
+ * @extends {PaginatedSearchComponent<any>}
+ * @implements {OnChanges}
+ * 
+ * 
  * Ejemplo de llamada paginando desde cliente
  *  <app-table-results [data]="data"></app-table-results>
  * 
@@ -35,7 +43,7 @@ import { SparqlResults } from 'src/app/_models/sparql';
  * </app-table-results>
  * 
  *
-*/
+ */
 @Component({
   selector: 'app-table-results',
   templateUrl: './table-results.component.html',
@@ -44,55 +52,76 @@ import { SparqlResults } from 'src/app/_models/sparql';
 export class TableResultsComponent
   extends PaginatedSearchComponent<any>
   implements OnChanges {
-  // use getter setter to define the property
+
+  /**
+   * Mandatory to show the data in the table
+   *
+   * @memberof TableResultsComponent
+   */
   @Input()
   set data(val: SparqlResults) {
-    // this._data = Object.assign({}, val);
-    this._data = JSON.parse(JSON.stringify(val));
+    // this.dataComplete = Object.assign({}, val);
+    this.dataComplete = JSON.parse(JSON.stringify(val));
     if (val != null) {
-      // this._data.results.bindings = this._data.results.bindings
-      //   .concat(this._data.results.bindings)
-      //   .concat(this._data.results.bindings);
-      //this.showPage(1);
+      // this.dataComplete.results.bindings = this.dataComplete.results.bindings
+      //   .concat(this.dataComplete.results.bindings)
+      //   .concat(this.dataComplete.results.bindings);
+      // this.showPage(1);
       // this.find();
     }
   }
 
   get data(): SparqlResults {
-    return this._data;
+    return this.dataComplete;
   }
 
-  /*
-  * Data needed to set pagination if we have server pagination
-  */
+  /**
+   * Data needed to set pagination if we have server pagination
+   * Data used of Page (mandatory) in this case:
+   * 
+   *
+   * @type {Page<any>}
+   * @memberof TableResultsComponent
+   */
   @Input()
   pageInfo: Page<any>;
 
-  /*
-   * paginated is true is the query comes with page attributtes.
-   * paginated is false if the query comes with all the data
+  /**
+   * reouterField sets a link on the row
+   *
+   * @type {string}
+   * @memberof TableResultsComponent
    */
-  @Input()
-  paginated: boolean;
-
   @Input()
   routerField: string;
 
 
+  /**
+   * Send the event when page is changed
+   *
+   * @type {EventEmitter<number>}
+   * @memberof TableResultsComponent
+   */
   @Output()
   pageChanged: EventEmitter<number> = new EventEmitter<number>();
 
+  /**
+   * Send the event when page is changed
+   *
+   * @type {EventEmitter<number>}
+   * @memberof TableResultsComponent
+   */
   @Output()
   sizeChanged: EventEmitter<number> = new EventEmitter<number>();
 
   /*
    * Initial data
    */
-  _data: SparqlResults; // private property _data
+  dataComplete: SparqlResults; // private property dataComplete
   /*
    * Data that is shown in the actual page
    */
-  _dataToShow;
+  dataCompleteToShow;
 
   numPages = 1;
 
@@ -108,7 +137,7 @@ export class TableResultsComponent
   ngOnChanges(changes: SimpleChanges): void {
     console.log('ngOnChanges ');
     if (!!this.pageInfo) {
-      this._dataToShow = this._data.results.bindings;
+      this.dataCompleteToShow = this.dataComplete.results.bindings;
     }
     this.find();
   }
@@ -118,7 +147,7 @@ export class TableResultsComponent
     const page: Page<any> = new Page<any>();
     if (!!this.pageInfo) {
 
-      page.content = this._dataToShow;
+      page.content = this.dataCompleteToShow;
       page.number = this.pageInfo.number - 1;
       if (this.pageInfo.number === 1) {
         page.first = true;
@@ -136,14 +165,14 @@ export class TableResultsComponent
     } else {
       if (findRequest.pageRequest.page === 0) {
         this.showPage(1);
-        page.content = this._dataToShow;
-        // page.content = this._data.results.bindings;
+        page.content = this.dataCompleteToShow;
+        // page.content = this.dataComplete.results.bindings;
 
         page.first = true;
         page.last = false;
 
         page.number = 0;
-        page.content = this._dataToShow;
+        page.content = this.dataCompleteToShow;
 
         // this.searchResult = page.content;
         // this.resultObject = page;
@@ -157,7 +186,7 @@ export class TableResultsComponent
 
         this.showPage(findRequest.pageRequest.page);
 
-        page.content = this._dataToShow;
+        page.content = this.dataCompleteToShow;
 
         page.number = findRequest.pageRequest.page - 1;
 
@@ -166,7 +195,7 @@ export class TableResultsComponent
 
       page.numberOfElements = Math.min(page.content.length, this.findRequest.pageRequest.size);
       page.size = this.findRequest.pageRequest.size;
-      page.totalElements = this._data.results.bindings.length;
+      page.totalElements = this.dataComplete.results.bindings.length;
     }
 
     return of(page);
@@ -181,14 +210,13 @@ export class TableResultsComponent
     //   property: 'id',
     //   direction: Direction.ASC,
     // };
-    // TODO set default order? Get input value for order?
     return new Order();
   }
 
   showPage(i: number): void {
     console.log('ShowPage' + i + ' - ' + this.findRequest.pageRequest.property + ' ' + this.findRequest.pageRequest.direction);
     if (!!this.findRequest.pageRequest.property) {
-      this._data.results.bindings = this._data.results.bindings.sort((a, b) => {
+      this.dataComplete.results.bindings = this.dataComplete.results.bindings.sort((a, b) => {
         if (this.findRequest.pageRequest.direction === Direction.ASC) {
           return (a[this.findRequest.pageRequest.property].value > b[this.findRequest.pageRequest.property].value) ? 1 : -1;
         }
@@ -197,7 +225,7 @@ export class TableResultsComponent
     }
     const init = (i - 1) * this.findRequest.pageRequest.size;
     const end = i * this.findRequest.pageRequest.size;
-    this._dataToShow = this._data.results.bindings.slice(init, end);
+    this.dataCompleteToShow = this.dataComplete.results.bindings.slice(init, end);
   }
 
   callShowPageWhenPageChanges(i: number): void {
@@ -223,7 +251,7 @@ export class TableResultsComponent
 
   createParams(data: any): HttpParams {
     let parameters = new HttpParams();
-    this._data.head.vars.forEach((head) => {
+    this.dataComplete.head.vars.forEach((head) => {
       parameters = Helper.addParam(parameters, head, null);
     });
 

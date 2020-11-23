@@ -514,7 +514,6 @@ export class ResearchmentStructuresService extends AbstractService {
     page.numberOfElements = pageRequest.size;
     page.size = pageRequest.size;
     page.totalElements = dataFiltered.length;
-    // TODO sort
 
     page.content = [data];
 
