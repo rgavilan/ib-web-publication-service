@@ -19,11 +19,16 @@ import { Helper } from 'src/app/_helpers/utils';
 
 export class ScientificProductionComponent implements OnInit {
   @Input() universityId: string;
-  allResearchmentStructuresFiltered: Page<SparqlResults>;
+  allScientificProductionFiltered: Page<SparqlResults>;
 
   filters: Map<string, string> = new Map();
 
   findRequest: FindRequest = new FindRequest();
+  /**
+   * Creates an instance of ScientificProductionComponent.
+   * @param {ScientificProductionService} scientificProductionService
+   * @memberof ScientificProductionComponent
+   */
   constructor(
     private scientificProductionService: ScientificProductionService) {
   }
@@ -33,20 +38,9 @@ export class ScientificProductionComponent implements OnInit {
     pageRequest.page = 1;
     pageRequest.size = 10;
 
-    this.allResearchmentStructuresFiltered = this.scientificProductionService.findScientificProductionByFilters(
+    this.allScientificProductionFiltered = this.scientificProductionService.findScientificProductionByFilters(
       null, pageRequest
     );
-
-    console.log(this.allResearchmentStructuresFiltered);
-    const xAxisData = [];
-    const data1 = [];
-    const data2 = [];
-
-    for (let i = 0; i < 100; i++) {
-      xAxisData.push('category' + i);
-      data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
-      data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
-    }
   }
 
   /**
@@ -56,13 +50,12 @@ export class ScientificProductionComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   allScientificProductionFilteredPageChanged(i: number): void {
-    console.log('allResearchmentStructuresFilteredPageChanged');
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = i;
-    pageRequest.size = this.allResearchmentStructuresFiltered.size;
-    pageRequest.property = this.allResearchmentStructuresFiltered.sort;
-    pageRequest.direction = this.allResearchmentStructuresFiltered.direction;
-    this.allResearchmentStructuresFiltered = this.scientificProductionService.findScientificProductionByFilters(
+    pageRequest.size = this.allScientificProductionFiltered.size;
+    pageRequest.property = this.allScientificProductionFiltered.sort;
+    pageRequest.direction = this.allScientificProductionFiltered.direction;
+    this.allScientificProductionFiltered = this.scientificProductionService.findScientificProductionByFilters(
       this.filters, pageRequest
     );
   }
@@ -91,32 +84,13 @@ export class ScientificProductionComponent implements OnInit {
 
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
-    pageRequest.size = this.allResearchmentStructuresFiltered.size;
-    pageRequest.property = this.allResearchmentStructuresFiltered.sort;
-    pageRequest.direction = this.allResearchmentStructuresFiltered.direction;
+    pageRequest.size = this.allScientificProductionFiltered.size;
+    pageRequest.property = this.allScientificProductionFiltered.sort;
+    pageRequest.direction = this.allScientificProductionFiltered.direction;
     // Call service to load data filtered
-    this.allResearchmentStructuresFiltered = this.scientificProductionService.findScientificProductionByFilters(
+    this.allScientificProductionFiltered = this.scientificProductionService.findScientificProductionByFilters(
       this.filters, pageRequest
     );
-
-  }
-
-
-
-  filterArea(event) {
-    console.log(event);
-    this.findRequest.filter.area = event;
-    /*this.filtersArea.set('area', this.findRequest.filter.area);
-    const page = this.researchmentStructureService.filterArea(
-      this.filtersArea
-    );
-
-    setTimeout(() => {
-      this.searchResult = [...page.content];
-      page.uibPage = page.number + 1;
-      this.resultObject = page;
-      this.cdr.detectChanges();
-    }, 300);*/
 
   }
 

@@ -13,74 +13,81 @@ import { Binding, SparqlResults } from '../_models/sparql';
 @Injectable({
     providedIn: 'root',
 })
-export class ScientificProductionService extends AbstractService {
+export class ProjectService extends AbstractService {
     // mock data
     readonly DUMMY_DATA: SparqlResults = {
         head: {
             vars: [
-                'title',
+                'name',
+                'keywords',
+                'participation',
                 'type',
-                'doi',
-                'releaseYear'
+                'financing',
+                'convocation'
             ]
         },
         results: {
             bindings: [
                 // 1
                 {
-                    title: {
+                    name: {
                         type: 'literal',
-                        value: 'Guía practica para la realización de trabajos de fin de grado y trabajos fin de master'
+                        value: 'HERCULES'
+                    },
+                    keywords: {
+                        type: 'literal',
+                        value: 'Semantica'
+                    },
+                    participation: {
+                        type: 'literal',
+                        value: 'Participante'
                     },
                     type: {
                         type: 'literal',
-                        value: 'Libro'
+                        value: 'No competitivo'
                     },
-                    doi: {
+                    financing: {
                         type: 'literal',
-                        value: 'xxxxx'
+                        value: 'Publico'
                     },
-                    releaseYear: {
+                    convocation: {
                         type: 'literal',
-                        value: '2012'
+                        value: 'H2020'
+                    },
+                    year: {
+                        type: 'literal',
+                        value: '2020'
                     }
                 },
                 // 2
                 {
-                    title: {
+                    name: {
                         type: 'literal',
-                        value: 'Buenas prácticas para la docencia del derecho adaptado al ECTS'
+                        value: 'ASIO'
+                    },
+                    keywords: {
+                        type: 'literal',
+                        value: 'Semantica'
+                    },
+                    participation: {
+                        type: 'literal',
+                        value: 'Participante'
                     },
                     type: {
                         type: 'literal',
-                        value: 'Guía'
+                        value: 'No competitivo'
                     },
-                    doi: {
+                    financing: {
                         type: 'literal',
-                        value: 'xxxxx'
+                        value: 'Publico'
                     },
-                    releaseYear: {
+                    convocation: {
                         type: 'literal',
-                        value: '2010'
-                    }
-                },
-                // 3
-                {
-                    title: {
-                        type: 'literal',
-                        value: 'Dimensión social de la conservación de la fauna silvestre'
+                        value: 'A2019'
                     },
-                    type: {
+                    year: {
                         type: 'literal',
-                        value: 'Guía'
-                    },
-                    doi: {
-                        type: 'literal',
-                        value: 'xxxxx'
-                    },
-                    releaseYear: {
-                        type: 'literal',
-                        value: '2013'
+                        value: '2019'
                     }
                 }
             ]
@@ -88,9 +95,9 @@ export class ScientificProductionService extends AbstractService {
     };
 
     /**
-     * Creates an instance of ScientificProductionService.
+     * Creates an instance of ProjectService.
      * param {HttpClient} httpClient
-     * memberof ScientificProductionService
+     * memberof ProjectService
      */
     constructor(private httpClient: HttpClient) {
         super();
@@ -103,9 +110,9 @@ export class ScientificProductionService extends AbstractService {
      * @param {Map<string, string>} filters
      * @param {PageRequest} pageRequest
      * @return {*}  {Page<SparqlResults>}
-     * @memberof ScientificProductionService
+     * @memberof ProjectService
      */
-    findScientificProductionByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
+    findProjectByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
         const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
         return this.findScientifiProductionByFiltersCommon(data, filters, pageRequest);
     }
@@ -119,7 +126,7 @@ export class ScientificProductionService extends AbstractService {
      * @param {Map<string, string>} filters data to filter
      * @param {PageRequest} pageRequest page request
      * @return {*}  {Page<SparqlResults>} page results
-     * @memberof ScientificProductionService
+     * @memberof ProjectService
      */
     private findScientifiProductionByFiltersCommon(data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest
     ): Page<SparqlResults> {
