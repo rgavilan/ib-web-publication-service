@@ -1,21 +1,21 @@
 <div class="container-fluid app-table-results">
   <div class="row">
     <div class="col">
-      <table class="table table-bordered" *ngIf="!!_data">
+      <table class="table table-bordered" *ngIf="!!dataComplete">
         <thead>
           <tr>
             <th class="first-header"></th>
-            <th class="sortable" (click)="sort(header)" *ngFor="let header of _data.head.vars">
+            <th class="sortable" (click)="sort(header)" *ngFor="let header of dataComplete.head.vars">
               {{ header }}<em class="float-right" [ngClass]="getSortIcon(header)"></em>
             </th>
           </tr>
         </thead>
         <tbody>
-          <ng-container *ngFor="let item of _dataToShow; index as i">
-            <tr [routerLink]="['.', item[routerField].value]" *ngIf="!!routerField && !!item[routerField]"
-              [ngClass]="{ 'table-secondary': i % 2 == 1 }">
+          <ng-container *ngFor="let item of dataCompleteToShow; index as i">
+            <tr [routerLink]="['.', item[routerField].value]" class="cursor"
+              *ngIf="!!routerField && !!item[routerField]" [ngClass]="{ 'table-secondary': i % 2 == 1 }">
               <td>{{ i }}</td>
-              <td *ngFor="let header of _data.head.vars">
+              <td *ngFor="let header of dataComplete.head.vars">
                 <a href="{{ item[header].value }}" *ngIf="item[header].type == 'uri'">{{ item[header].value }}</a>
                 <ng-container *ngIf="item[header].type != 'uri'">{{
                 item[header].value
@@ -25,7 +25,7 @@
 
             <tr *ngIf="!routerField || !item[routerField]" [ngClass]="{ 'table-secondary': i % 2 == 1 }">
               <td>{{ i }}</td>
-              <td *ngFor="let header of _data.head.vars">
+              <td *ngFor="let header of dataComplete.head.vars">
                 <a href="{{ item[header].value }}" *ngIf="item[header].type == 'uri'">{{ item[header].value }}</a>
                 <ng-container *ngIf="item[header].type != 'uri'">{{
                 item[header].value
@@ -46,20 +46,20 @@
 <div class="container-fluid app-table-results">
   <div class="row">
     <div class="col">
-      <table class="table table-bordered" *ngIf="!!_data">
+      <table class="table table-bordered" *ngIf="!!dataComplete">
         <thead>
           <tr>
             <th class="first-header"></th>
-            <th *ngFor="let header of _data.head.vars">{{ header }}</th>
+            <th *ngFor="let header of dataComplete.head.vars">{{ header }}</th>
           </tr>
         </thead>
         <tbody>
           <tr
-            *ngFor="let item of _dataToShow; index as i"
+            *ngFor="let item of dataCompleteToShow; index as i"
             [ngClass]="{ 'table-secondary': i % 2 == 1 }"
           >
             <td>{{ i }}</td>
-            <td *ngFor="let header of _data.head.vars">
+            <td *ngFor="let header of dataComplete.head.vars">
               <a
                 href="{{ item[header].value }}"
                 *ngIf="item[header].type == 'uri'"
@@ -78,7 +78,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col">
-      <nav aria-label="Page navigation example" *ngIf="!!_data">
+      <nav aria-label="Page navigation example" *ngIf="!!dataComplete">
         <ul class="pagination justify-content-center">
           <li class="page-item" [ngClass]="{ disabled: actualPage == 1 }">
             <a
