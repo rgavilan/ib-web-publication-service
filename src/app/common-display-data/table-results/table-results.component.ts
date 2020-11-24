@@ -62,13 +62,13 @@ export class TableResultsComponent
   set data(val: SparqlResults) {
     // this.dataComplete = Object.assign({}, val);
     this.dataComplete = JSON.parse(JSON.stringify(val));
-    if (val != null) {
-      // this.dataComplete.results.bindings = this.dataComplete.results.bindings
-      //   .concat(this.dataComplete.results.bindings)
-      //   .concat(this.dataComplete.results.bindings);
-      // this.showPage(1);
-      // this.find();
-    }
+    // if (val != null) {
+    // this.dataComplete.results.bindings = this.dataComplete.results.bindings
+    //   .concat(this.dataComplete.results.bindings)
+    //   .concat(this.dataComplete.results.bindings);
+    // this.showPage(1);
+    // this.find();
+    // }
   }
 
   get data(): SparqlResults {
