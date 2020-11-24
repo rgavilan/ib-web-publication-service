@@ -3,6 +3,13 @@ import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { ProjectService } from 'src/app/_services/project.service';
 
+/**
+ *
+ *
+ * @export
+ * @class ProyectsComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-proyects',
   templateUrl: './proyects.component.html',
@@ -16,11 +23,21 @@ export class ProyectsComponent implements OnInit {
   echartOptions: any;
   loadingData = false;
 
+  /**
+   * Creates an instance of ProyectsComponent.
+   * @param {ProjectService} projectService
+   * @memberof ProyectsComponent
+   */
   constructor(
     private projectService: ProjectService
   ) {
   }
 
+  /**
+   *
+   *
+   * @memberof ProyectsComponent
+   */
   ngOnInit(): void {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
@@ -72,16 +89,14 @@ export class ProyectsComponent implements OnInit {
       animationEasing: 'elasticOut',
       animationDelayUpdate: (idx) => idx * 5,
     };
-
-
   }
-
-
-
 
   /**
    *
-   * param count
+   *
+   * @param {*} count
+   * @return {*} 
+   * @memberof ProyectsComponent
    */
   genData(count) {
     const nameList = [
@@ -112,6 +127,11 @@ export class ProyectsComponent implements OnInit {
     };
   }
 
+  /**
+   *
+   *
+   * @memberof ProyectsComponent
+   */
   onChartInit() {
     this.loadingData = true;
     console.log('chart init');
@@ -143,18 +163,7 @@ export class ProyectsComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   filterProjects(event, filterName: string) {
-    switch (filterName) {
-      case 'year':
-        event !== 'undefined'
-          ? this.filters.set(filterName, event)
-          : this.filters.set(filterName, '');
-
-        break;
-
-      default:
-        break;
-    }
-
+    event !== 'undefined' ? this.filters.set(filterName, event) : this.filters.set(filterName, '');
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
     pageRequest.size = this.allProjectFiltered.size;

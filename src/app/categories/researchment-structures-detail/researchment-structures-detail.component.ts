@@ -4,6 +4,13 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
+/**
+ *
+ *
+ * @export
+ * @class ResearchmentStructuresDetailComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-researchment-structures-detail',
   templateUrl: './researchment-structures-detail.component.html',
@@ -20,12 +27,21 @@ export class ResearchmentStructuresDetailComponent implements OnInit {
    * researchment
    */
   researchment: any;
-  constructor(private router: Router,
-              private translate: TranslateService,
-              private toastr: ToastrService,
-              private route: ActivatedRoute,
-              private researchmentStructureService: ResearchmentStructuresService) { }
+  /**
+   * Creates an instance of ResearchmentStructuresDetailComponent.
+   * @param {ActivatedRoute} route
+   * @param {ResearchmentStructuresService} researchmentStructureService
+   * @memberof ResearchmentStructuresDetailComponent
+   */
+  constructor(
+    private route: ActivatedRoute,
+    private researchmentStructureService: ResearchmentStructuresService) { }
 
+  /**
+   *
+   *
+   * @memberof ResearchmentStructuresDetailComponent
+   */
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.researchmentId = params.id; // (+) converts string 'id' to a number

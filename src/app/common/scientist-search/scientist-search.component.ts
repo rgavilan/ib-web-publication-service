@@ -1,13 +1,14 @@
-import { AfterContentInit, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { ToastrService } from 'ngx-toastr';
-import { Observable, of } from 'rxjs';
-import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
-import { Scientist } from 'src/app/_models/scientist';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
-import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
 import { ScientistService } from 'src/app/_services/scientist.service';
+/**
+ *
+ *
+ * @export
+ * @class ScientistSearchComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-scientist-search',
   templateUrl: './scientist-search.component.html',
@@ -35,6 +36,11 @@ export class ScientistSearchComponent implements OnInit {
     private cdr: ChangeDetectorRef) {
   }
 
+  /**
+   *
+   *
+   * @memberof ScientistSearchComponent
+   */
   ngOnInit(): void {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
@@ -120,7 +126,6 @@ export class ScientistSearchComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   filterTop(event, filterName: string) {
-
     event !== 'undefined' ? this.filters.set(filterName, event) : this.filters.set(filterName, '');
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
@@ -131,11 +136,14 @@ export class ScientistSearchComponent implements OnInit {
     this.allScientificsFiltered = this.scientificsService.findTopByFilters(
       this.filters, pageRequest
     );
-
   }
+
   /**
    *
-   * param count
+   *
+   * @param {*} count
+   * @return {*} 
+   * @memberof ScientistSearchComponent
    */
   genData(count) {
     const nameList = [

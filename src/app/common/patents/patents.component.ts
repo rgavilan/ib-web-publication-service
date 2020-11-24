@@ -3,6 +3,13 @@ import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { PatentService } from 'src/app/_services/patent.service';
 
+/**
+ *
+ *
+ * @export
+ * @class PatentsComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-patents',
   templateUrl: './patents.component.html',
@@ -15,10 +22,20 @@ export class PatentsComponent implements OnInit {
   findRequest: FindRequest = new FindRequest();
   echartOptions: any;
   loadingData = false;
+  /**
+   * Creates an instance of PatentsComponent.
+   * @param {PatentService} patentService
+   * @memberof PatentsComponent
+   */
   constructor(
     private patentService: PatentService) {
   }
 
+  /**
+   *
+   *
+   * @memberof PatentsComponent
+   */
   ngOnInit(): void {
 
     const pageRequest: PageRequest = new PageRequest();
@@ -103,18 +120,7 @@ export class PatentsComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   filterProjects(event, filterName: string) {
-    switch (filterName) {
-      case 'year':
-        event !== 'undefined'
-          ? this.filters.set(filterName, event)
-          : this.filters.set(filterName, '');
-
-        break;
-
-      default:
-        break;
-    }
-
+    event !== 'undefined' ? this.filters.set(filterName, event) : this.filters.set(filterName, '');
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
     pageRequest.size = this.allPatentFiltered.size;
@@ -127,13 +133,12 @@ export class PatentsComponent implements OnInit {
 
   }
 
-
-
-
-
   /**
    *
-   * param count
+   *
+   * @param {*} count
+   * @return {*} 
+   * @memberof PatentsComponent
    */
   genData(count) {
     const nameList = [
@@ -164,6 +169,11 @@ export class PatentsComponent implements OnInit {
     };
   }
 
+  /**
+   *
+   *
+   * @memberof PatentsComponent
+   */
   onChartInit() {
     this.loadingData = true;
     console.log('chart init');

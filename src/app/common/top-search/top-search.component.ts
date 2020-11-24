@@ -3,6 +3,13 @@ import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { ScientistService } from 'src/app/_services/scientist.service';
 
+/**
+ *
+ *
+ * @export
+ * @class TopSearchComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-top-search',
   templateUrl: './top-search.component.html',
@@ -13,21 +20,29 @@ export class TopSearchComponent implements OnInit {
   allTopFiltered: Page<SparqlResults>;
   filters: Map<string, string> = new Map();
   findRequest: FindRequest = new FindRequest();
+  /**
+   * Creates an instance of TopSearchComponent.
+   * @param {ScientistService} scientificService
+   * @memberof TopSearchComponent
+   */
   constructor(
     private scientificService: ScientistService) {
 
   }
 
+  /**
+   *
+   *
+   * @memberof TopSearchComponent
+   */
   ngOnInit(): void {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
     pageRequest.size = 10;
-
     this.allTopFiltered = this.scientificService.findTopByFilters(
       null, pageRequest
     );
   }
-
 
   /**
    *
@@ -54,24 +69,7 @@ export class TopSearchComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   filterTop(event, filterName: string) {
-    switch (filterName) {
-      case 'publications':
-        event !== 'undefined'
-          ? this.filters.set(filterName, event)
-          : this.filters.set(filterName, '');
-
-        break;
-      case 'qa':
-        event !== 'undefined'
-          ? this.filters.set(filterName, event)
-          : this.filters.set(filterName, '');
-
-        break;
-
-      default:
-        break;
-    }
-
+    event !== 'undefined' ? this.filters.set(filterName, event) : this.filters.set(filterName, '');
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
     pageRequest.size = this.allTopFiltered.size;
@@ -81,6 +79,5 @@ export class TopSearchComponent implements OnInit {
     this.allTopFiltered = this.scientificService.findTopByFilters(
       this.filters, pageRequest
     );
-
   }
 }
