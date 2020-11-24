@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AbstractService } from '../_helpers/abstract';
-import { Direction, Page, PageRequest } from '../_helpers/search';
-import { Binding, SparqlResults } from '../_models/sparql';
+import { Direction, Page, PageRequest } from 'src/app/_helpers/search';
+import { Binding, SparqlResults } from 'src/app/_models/sparql';
 
 /**
- *  Service for patent production
+ *  Service for scientific production
  *
  * @export
  * @extends {AbstractService}
@@ -13,96 +12,87 @@ import { Binding, SparqlResults } from '../_models/sparql';
 @Injectable({
     providedIn: 'root',
 })
-export class PatentService extends AbstractService {
+export class MockScientificProductionService extends MockScientificProductionService {
     // mock data
     readonly DUMMY_DATA: SparqlResults = {
         head: {
             vars: [
-                'name',
-                'area',
-                'organisation',
-                'id'
+                'title',
+                'type',
+                'doi',
+                'releaseYear'
             ]
         },
         results: {
             bindings: [
                 // 1
                 {
-                    name: {
+                    title: {
                         type: 'literal',
-                        value: 'Patente 1'
+                        value: 'Guía practica para la realización de trabajos de fin de grado y trabajos fin de master'
                     },
-                    area: {
+                    type: {
                         type: 'literal',
-                        value: 'Derecho'
+                        value: 'Libro'
                     },
-                    organisation: {
+                    doi: {
                         type: 'literal',
-                        value: 'red.es'
+                        value: 'xxxxx'
                     },
-                    id: {
+                    releaseYear: {
                         type: 'literal',
-                        value: 'xxxxxx'
+                        value: '2012'
                     }
                 },
                 // 2
                 {
-                    name: {
+                    title: {
                         type: 'literal',
-                        value: 'Patente 2'
+                        value: 'Buenas prácticas para la docencia del derecho adaptado al ECTS'
                     },
-                    area: {
+                    type: {
                         type: 'literal',
-                        value: 'Historia'
+                        value: 'Guía'
                     },
-                    organisation: {
+                    doi: {
                         type: 'literal',
-                        value: 'Fondos europeos'
+                        value: 'xxxxx'
                     },
-                    id: {
+                    releaseYear: {
                         type: 'literal',
-                        value: 'xxxxxx'
+                        value: '2010'
+                    }
+                },
+                // 3
+                {
+                    title: {
+                        type: 'literal',
+                        value: 'Dimensión social de la conservación de la fauna silvestre'
+                    },
+                    type: {
+                        type: 'literal',
+                        value: 'Guía'
+                    },
+                    doi: {
+                        type: 'literal',
+                        value: 'xxxxx'
+                    },
+                    releaseYear: {
+                        type: 'literal',
+                        value: '2013'
                     }
                 }
-
             ]
         }
     };
 
-    /**
-     * Creates an instance of ProjectService.
-     * param {HttpClient} httpClient
-     * memberof ProjectService
-     */
-    constructor(private httpClient: HttpClient) {
-        super();
-    }
 
-
-    /**
-     *
-     *
-     * @param {Map<string, string>} filters
-     * @param {PageRequest} pageRequest
-     * @return {*}  {Page<SparqlResults>}
-     * @memberof ProjectService
-     */
-    findProjectByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
+    findScientificProductionByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
         const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
         return this.findScientifiProductionByFiltersCommon(data, filters, pageRequest);
     }
 
 
-    /**
-     *
-     *
-     * @private
-     * @param {SparqlResults} data data to find
-     * @param {Map<string, string>} filters data to filter
-     * @param {PageRequest} pageRequest page request
-     * @return {*}  {Page<SparqlResults>} page results
-     * @memberof ProjectService
-     */
     findScientifiProductionByFiltersCommon(data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest
     ): Page<SparqlResults> {
         const page: Page<SparqlResults> = new Page<SparqlResults>();
