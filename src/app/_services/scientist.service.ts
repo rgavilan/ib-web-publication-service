@@ -134,7 +134,7 @@ export class ScientistService extends AbstractService {
      * @return {*}  {Page<SparqlResults>} page results
      * @memberof ProjectService
      */
-    private findByFiltersCommon(data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest
+    findByFiltersCommon(data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest
     ): Page<SparqlResults> {
         const page: Page<SparqlResults> = new Page<SparqlResults>();
 

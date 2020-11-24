@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Direction, Page, PageRequest } from 'src/app/_helpers/search';
 import { Binding, SparqlResults } from 'src/app/_models/sparql';
-import { ScientificProductionService } from '../scientificProduction.service';
-
+import { ScientistService } from '../scientist.service';
 /**
- *  Service for scientific production
+ *  Testing Service for scientist
  *
  * @export
  * @extends {AbstractService}
@@ -12,88 +11,92 @@ import { ScientificProductionService } from '../scientificProduction.service';
 @Injectable({
     providedIn: 'root',
 })
-export class MockScientificProductionService extends ScientificProductionService {
+export class MockScientistService extends ScientistService {
     // mock data
-    readonly DUMMY_DATA: SparqlResults = {
+    readonly DUMMY_DATA_TOP: SparqlResults = {
         head: {
             vars: [
-                'title',
+                'name',
+                'area',
                 'type',
-                'doi',
-                'releaseYear'
+                'appointments',
+                'hIndex',
+                'publications'
             ]
         },
         results: {
             bindings: [
                 // 1
                 {
-                    title: {
+                    name: {
                         type: 'literal',
-                        value: 'Guía practica para la realización de trabajos de fin de grado y trabajos fin de master'
+                        value: 'Maria Hernandez Reyes Mora'
+                    },
+                    area: {
+                        type: 'literal',
+                        value: 'Área de gestión'
                     },
                     type: {
                         type: 'literal',
-                        value: 'Libro'
+                        value: 'Docente'
                     },
-                    doi: {
+                    appointments: {
                         type: 'literal',
-                        value: 'xxxxx'
+                        value: '85'
                     },
-                    releaseYear: {
+                    hIndex: {
                         type: 'literal',
-                        value: '2012'
+                        value: '0'
+                    },
+                    publications: {
+                        type: 'literal',
+                        value: '8'
                     }
                 },
-                // 2
+                // 1
                 {
-                    title: {
+                    name: {
                         type: 'literal',
-                        value: 'Buenas prácticas para la docencia del derecho adaptado al ECTS'
+                        value: 'Jesualdo Tomás Fernández Breis'
+                    },
+                    area: {
+                        type: 'literal',
+                        value: 'Área de informática'
                     },
                     type: {
                         type: 'literal',
-                        value: 'Guía'
+                        value: 'Docente'
                     },
-                    doi: {
+                    appointments: {
                         type: 'literal',
-                        value: 'xxxxx'
+                        value: '74'
                     },
-                    releaseYear: {
+                    hIndex: {
                         type: 'literal',
-                        value: '2010'
-                    }
-                },
-                // 3
-                {
-                    title: {
-                        type: 'literal',
-                        value: 'Dimensión social de la conservación de la fauna silvestre'
+                        value: '1'
                     },
-                    type: {
+                    publications: {
                         type: 'literal',
-                        value: 'Guía'
-                    },
-                    doi: {
-                        type: 'literal',
-                        value: 'xxxxx'
-                    },
-                    releaseYear: {
-                        type: 'literal',
-                        value: '2013'
+                        value: '14'
                     }
                 }
             ]
         }
     };
 
-
-    findScientificProductionByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
-        const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
-        return this.findScientifiProductionByFiltersCommon(data, filters, pageRequest);
+    findTopByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
+        const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA_TOP));
+        return this.findByFiltersCommon(data, filters, pageRequest);
     }
 
 
-    findScientifiProductionByFiltersCommon(data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest
+    findResearchStuffByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
+        const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA_TOP));
+        return this.findByFiltersCommon(data, filters, pageRequest);
+    }
+
+
+    findByFiltersCommon(data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest
     ): Page<SparqlResults> {
         const page: Page<SparqlResults> = new Page<SparqlResults>();
 

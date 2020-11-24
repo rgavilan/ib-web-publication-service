@@ -94,3 +94,29 @@ table thead sortable:hover {
 .nav-item a{
  color: #999;
 }
+.logos{
+  margin: auto;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  margin-top: 10px;
+  max-height: 50px;
+}
+
+.logo2 {
+  max-height: 70px;
+  margin-top: 10px;
+}
+
+.logoText {
+  width: 100%;
+  text-align: center;
+}
+
+.logoText p {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
