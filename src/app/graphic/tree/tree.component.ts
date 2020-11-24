@@ -26,10 +26,12 @@ export class TreeComponent implements OnInit {
         value: 'EYT',
         selected: false,
         children: [
-          { name: 'Energía', value: 'ENE', selected: false, children: [
-            { name: 'Energía 1', value: 'ENE1', selected: false, children: [] },
-            { name: 'Transporte 1', value: 'TRA1', selected: false, children: [] }
-          ] },
+          {
+            name: 'Energía', value: 'ENE', selected: false, children: [
+              { name: 'Energía 1', value: 'ENE1', selected: false, children: [] },
+              { name: 'Transporte 1', value: 'TRA1', selected: false, children: [] }
+            ]
+          },
           { name: 'Transporte', value: 'TRA', selected: false, children: [] }
         ]
       },
@@ -69,7 +71,7 @@ export class TreeComponent implements OnInit {
   dataTofilter = [];
   hoverStyle = { lineStyle: { color: 'black' } };
   hoverStyleGrey = { lineStyle: { color: 'grey' } };
-  selected = {selected: true};
+  selected = { selected: true };
   level = 0;
   constructor() {
     this.data.children.forEach(element => {
@@ -77,7 +79,7 @@ export class TreeComponent implements OnInit {
     });
     this.dataTofilter = this.dataTofilter.filter((v, i, a) => a.indexOf(v) === i);
     this.filterChanged.emit(this.dataTofilter);
-   }
+  }
 
   ngOnInit(): void {
     this.filterDate = this.data;
@@ -101,11 +103,6 @@ export class TreeComponent implements OnInit {
             align: 'right',
             fontSize: 9,
           },
-          lineStyle: {
-            width: 3,
-            curveness: 0.3,
-            color: 'grey'
-          },
           leaves: {
             label: {
               position: 'right',
@@ -113,8 +110,7 @@ export class TreeComponent implements OnInit {
               align: 'left',
             },
           },
-
-          expandAndCollapse: false,
+          expandAndCollapse: true,
           animationDuration: 550,
           animationDurationUpdate: 750,
         },
@@ -126,48 +122,48 @@ export class TreeComponent implements OnInit {
    * param e
    */
   onChartInit(chartInstance: any) {
-    chartInstance.on('click', (e) => {
-      const chartTree = chartInstance.getOption().series[0].data[0];
-      const nodeSelected = this.isNodeSelected(chartTree, e.name);
-      if (nodeSelected) {
-        this.dataTofilter.splice(this.dataTofilter.indexOf(e.value), 1);
-        e.data.lineStyle.color = 'grey';
-      } else {
-        const fisrt = this.isFirstLine(chartTree, e.name);
-        if (!fisrt) {
-          this.dataTofilter.push(e.value);
-          delete e.data.lineStyle;
-          !e.data.hasOwnProperty('lineStyle') ? Object.assign(e.data, this.hoverStyle) : e.data.lineStyle.color = 'black';
+    /*  chartInstance.on('click', (e) => {
+        const chartTree = chartInstance.getOption().series[0].data[0];
+        const nodeSelected = this.isNodeSelected(chartTree, e.name);
+        if (nodeSelected) {
+          this.dataTofilter.splice(this.dataTofilter.indexOf(e.value), 1);
+          e.data.lineStyle.color = 'grey';
         } else {
-          if (e.data.selected) {
-            e.data.selected = false;
-            !e.data.hasOwnProperty('lineStyle') ? Object.assign(e.data, this.hoverStyleGrey) : e.data.lineStyle.color = 'grey';
-            e.data.children.forEach(element => {
-              this.dataTofilter.splice(this.dataTofilter.indexOf(element.value), 1);
-              !element.hasOwnProperty('lineStyle') ? Object.assign(element, this.hoverStyleGrey) : element.lineStyle.color = 'grey';
-            });
-          } else {
-            this.dataTofilter.splice(this.dataTofilter.indexOf(e.value), 1);
+          const fisrt = this.isFirstLine(chartTree, e.name);
+          if (!fisrt) {
+            this.dataTofilter.push(e.value);
+            delete e.data.lineStyle;
             !e.data.hasOwnProperty('lineStyle') ? Object.assign(e.data, this.hoverStyle) : e.data.lineStyle.color = 'black';
-            !e.data.hasOwnProperty('selected') ? Object.assign(e.data, this.selected) : e.data.selected = 'true';
-            e.data.children.forEach(element => {
-              this.dataTofilter.push(element.value); 
-              !element.hasOwnProperty('lineStyle') ? Object.assign(element, this.hoverStyle) : element.lineStyle.color = 'black';
-            });
+          } else {
+            if (e.data.selected) {
+              e.data.selected = false;
+              !e.data.hasOwnProperty('lineStyle') ? Object.assign(e.data, this.hoverStyleGrey) : e.data.lineStyle.color = 'grey';
+              e.data.children.forEach(element => {
+                this.dataTofilter.splice(this.dataTofilter.indexOf(element.value), 1);
+                !element.hasOwnProperty('lineStyle') ? Object.assign(element, this.hoverStyleGrey) : element.lineStyle.color = 'grey';
+              });
+            } else {
+              this.dataTofilter.splice(this.dataTofilter.indexOf(e.value), 1);
+              !e.data.hasOwnProperty('lineStyle') ? Object.assign(e.data, this.hoverStyle) : e.data.lineStyle.color = 'black';
+              !e.data.hasOwnProperty('selected') ? Object.assign(e.data, this.selected) : e.data.selected = 'true';
+              e.data.children.forEach(element => {
+                this.dataTofilter.push(element.value); 
+                !element.hasOwnProperty('lineStyle') ? Object.assign(element, this.hoverStyle) : element.lineStyle.color = 'black';
+              });
+            }
+            
           }
           
         }
-        
-      }
-      this.filter = chartInstance.getOption().series[0].data[0];
-      // chequear primero si ya existe
-      chartInstance.setOption({
-        series: [{ data: [this.filter] }]
-      }, false); 
-
-      this.dataTofilter = this.dataTofilter.filter((v, i, a) => a.indexOf(v) === i);
-      this.filterChanged.emit(this.dataTofilter);
-    });
+        this.filter = chartInstance.getOption().series[0].data[0];
+        // chequear primero si ya existe
+        chartInstance.setOption({
+          series: [{ data: [this.filter] }]
+        }, false); 
+  
+        this.dataTofilter = this.dataTofilter.filter((v, i, a) => a.indexOf(v) === i);
+        this.filterChanged.emit(this.dataTofilter);
+      });*/
   }
 
   /**
@@ -209,7 +205,7 @@ export class TreeComponent implements OnInit {
   }
 
   cleanNode(subnode, nodeName) {
-    subnode.children.forEach(subNode => { 
+    subnode.children.forEach(subNode => {
       !subNode.hasOwnProperty('lineStyle') ? Object.assign(subNode, { lineStyle: { color: 'grey' } }) : subNode.lineStyle.color = 'grey';
     });
   }
@@ -217,7 +213,7 @@ export class TreeComponent implements OnInit {
   isFirstLine(tree, nodeName): boolean {
     let status = false;
     tree.children.forEach(element => {
-      if (element.name === nodeName) {  status = true; }
+      if (element.name === nodeName) { status = true; }
     });
     return status;
   }

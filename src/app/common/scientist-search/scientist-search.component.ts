@@ -3,22 +3,24 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
-import { Direction, FindRequest, Order, Page, PaginatedSearchComponent } from 'src/app/_helpers/search';
+import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Scientist } from 'src/app/_models/scientist';
+import { SparqlResults } from 'src/app/_models/sparql';
 import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
+import { ScientistService } from 'src/app/_services/scientist.service';
 @Component({
   selector: 'app-scientist-search',
   templateUrl: './scientist-search.component.html',
   styleUrls: ['./scientist-search.component.css']
 })
-export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist> implements OnInit, AfterContentInit {
+export class ScientistSearchComponent implements OnInit {
   /**
    * university Id for search filter in case of necessary
    */
   @Input() universityId: string;
-  filtersTop: Map<string, string> = new Map();
-  filtersArea: Map<string, Array<string>> = new Map();
-  data: any;
+  allScientificsFiltered: Page<SparqlResults>;
+  filters: Map<string, string> = new Map();
+  findRequest: FindRequest = new FindRequest();
   echartOptions: any;
   /**
    * Constructor
@@ -28,23 +30,19 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
    * param researchmentStructureService 
    * param cdr 
    */
-  constructor(router: Router,
-    translate: TranslateService,
-    toastr: ToastrService,
-    private researchmentStructureService: ResearchmentStructuresService,
+  constructor(
+    private scientificsService: ScientistService,
     private cdr: ChangeDetectorRef) {
-    super(router, translate, toastr);
   }
 
   ngOnInit(): void {
-    // agregar automatico que filtre por ID
-    const page = this.researchmentStructureService.findResearchmentScientist(
-      null
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = 1;
+    pageRequest.size = 10;
+
+    this.allScientificsFiltered = this.scientificsService.findTopByFilters(
+      null, pageRequest
     );
-    this.searchResult = page.content;
-    page.uibPage = page.number + 1;
-    this.resultObject = page;
-    this.filterTopResearchmentStructures('type');
 
 
     const xAxisData = [];
@@ -97,108 +95,44 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Scientist
     };
   }
 
-  ngAfterContentInit() {
-    this.cdr.detectChanges();
-  }
-
   /**
-   * api call for finding data
-   * param findRequest 
+   *
+   *
+   * @param {number} i
+   * @memberof ScientificProductionComponent
    */
-  protected findInternal(findRequest: FindRequest): Observable<Page<Scientist>> {
-    const page = this.researchmentStructureService.findResearchmentScientist(
-      null
+  allScientistsFilteredPageChanged(i: number): void {
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = i;
+    pageRequest.size = this.allScientificsFiltered.size;
+    pageRequest.property = this.allScientificsFiltered.sort;
+    pageRequest.direction = this.allScientificsFiltered.direction;
+    this.allScientificsFiltered = this.scientificsService.findTopByFilters(
+      this.filters, pageRequest
     );
-
-    this.searchResult = page.content;
-    page.uibPage = page.number + 1;
-    this.resultObject = page;
-    this.findRequest.setOrder(
-      findRequest.pageRequest.direction,
-      findRequest.pageRequest.property
-    );
-
-    return of(this.resultObject);
   }
 
   /**
-   * Remove entity
-   * param entity 
+   *
+   *
+   * @param {*} event
+   * @param {string} filterName
+   * @memberof ScientificProductionComponent
    */
-  protected removeInternal(entity: any): Observable<{} | Response> {
-    return of({});
-  }
+  filterTop(event, filterName: string) {
 
-  /**
-   * default order for search
-   */
-  protected getDefaultOrder(): Order {
-    return {
-      property: 'code',
-      direction: Direction.ASC
-    };
-  }
-
-
-  /**
-   * data filter
-   * param filterName 
-   */
-  filterTopResearchmentStructures(filterName: string) {
-    switch (filterName) {
-      case 'type':
-        // si el valor viene undefined debería "resetar el valor para mostrar todo"
-        this.findRequest.filter.type !== 'undefined' ? this.filtersTop.set(filterName, this.findRequest.filter.type)
-          : this.filtersTop.set(filterName, '');
-        break;
-      default:
-        break;
-    }
-
+    event !== 'undefined' ? this.filters.set(filterName, event) : this.filters.set(filterName, '');
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = 1;
+    pageRequest.size = this.allScientificsFiltered.size;
+    pageRequest.property = this.allScientificsFiltered.sort;
+    pageRequest.direction = this.allScientificsFiltered.direction;
     // Call service to load data filtered
-    const page = this.researchmentStructureService.findTopResearchmentStructuresScientistByFilters(
-      this.filtersTop
+    this.allScientificsFiltered = this.scientificsService.findTopByFilters(
+      this.filters, pageRequest
     );
 
-    this.searchResult = page.content;
-    page.uibPage = page.number + 1;
-    this.resultObject = page;
   }
-
-
-  /**
-   * filter data for area type
-   * param event 
-   */
-  filterArea(event) {
-    this.findRequest.filter.area = event;
-    this.filtersArea.set('area', this.findRequest.filter.area);
-    const page = this.researchmentStructureService.filterArea(
-      this.filtersArea
-    );
-
-    setTimeout(() => {
-      this.searchResult = [...page.content];
-      page.uibPage = page.number + 1;
-      this.resultObject = page;
-      this.cdr.detectChanges();
-    }, 300);
-
-  }
-
-  /**
-   * gets all areas from array and make a string from its values
-   * param area 
-   * return string
-   */
-  returnAreaString(area): string {
-    let result = '';
-    area.forEach(element => {
-      result += element + ', ';
-    });
-    return result;
-  }
-
   /**
    *
    * param count

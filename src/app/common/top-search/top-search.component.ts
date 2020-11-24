@@ -1,90 +1,86 @@
-import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { ToastrService } from 'ngx-toastr';
-import { Observable, of } from 'rxjs';
-import { Direction, FindRequest, Order, Page, PaginatedSearchComponent } from 'src/app/_helpers/search';
-import { ResearchmentStructure } from 'src/app/_models/researchmentStructure';
-import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { SparqlResults } from 'src/app/_models/sparql';
+import { ScientistService } from 'src/app/_services/scientist.service';
 
 @Component({
   selector: 'app-top-search',
   templateUrl: './top-search.component.html',
   styleUrls: ['./top-search.component.css']
 })
-export class TopSearchComponent extends PaginatedSearchComponent<ResearchmentStructure> implements OnInit,  AfterContentInit {
+export class TopSearchComponent implements OnInit {
   @Input() universityId: string;
-  filtersTop: Map<string, string> = new Map();
-  constructor(router: Router,
-              translate: TranslateService,
-              toastr: ToastrService,
-              private researchmentStructureService: ResearchmentStructuresService) { 
-                super(router, translate, toastr);
-              }
+  allTopFiltered: Page<SparqlResults>;
+  filters: Map<string, string> = new Map();
+  findRequest: FindRequest = new FindRequest();
+  constructor(
+    private scientificService: ScientistService) {
+
+  }
 
   ngOnInit(): void {
-    // agregar automatico que filtre por ID
-    const page = this.researchmentStructureService.findResearchmentStructures(
-      null
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = 1;
+    pageRequest.size = 10;
+
+    this.allTopFiltered = this.scientificService.findTopByFilters(
+      null, pageRequest
     );
-
-    this.searchResult = page.content;
-    page.uibPage = page.number + 1;
-    this.resultObject = page;
-    this.filterTopResearchmentStructures('qa');
   }
 
-  ngAfterContentInit() {
-  }
 
-  protected findInternal(findRequest: FindRequest): Observable<Page<ResearchmentStructure>> {
-    const page = this.researchmentStructureService.findResearchmentStructures(
-      null
-    );
-
-    this.searchResult = page.content;
-    page.uibPage = page.number + 1;
-    this.resultObject = page;
-    this.findRequest.setOrder(
-      findRequest.pageRequest.direction,
-      findRequest.pageRequest.property
-    );
-
-    return of(this.resultObject);
-  }
-  protected removeInternal(entity: any): Observable<{} | Response> {
-    throw new Error('Method not implemented.');
-  }
-  protected getDefaultOrder(): Order {
-    return  {
-      property: 'code',
-      direction: Direction.ASC
-    };
-  }
-
-  /*
-   * Filter researchment structures
+  /**
+   *
+   *
+   * @param {number} i
+   * @memberof ScientificProductionComponent
    */
-  filterTopResearchmentStructures(filterName: string) {
+  allTopsFilteredPageChanged(i: number): void {
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = i;
+    pageRequest.size = this.allTopFiltered.size;
+    pageRequest.property = this.allTopFiltered.sort;
+    pageRequest.direction = this.allTopFiltered.direction;
+    this.allTopFiltered = this.scientificService.findTopByFilters(
+      this.filters, pageRequest
+    );
+  }
+
+  /**
+   *
+   *
+   * @param {*} event
+   * @param {string} filterName
+   * @memberof ScientificProductionComponent
+   */
+  filterTop(event, filterName: string) {
     switch (filterName) {
+      case 'publications':
+        event !== 'undefined'
+          ? this.filters.set(filterName, event)
+          : this.filters.set(filterName, '');
+
+        break;
       case 'qa':
-        // si el valor viene undefined debería "resetar el valor para mostrar todo"
-        this.findRequest.filter.qa !== 'undefined' ? this.filtersTop.set(filterName, this.findRequest.filter.qa) 
-        : this.filtersTop.set(filterName, '');
+        event !== 'undefined'
+          ? this.filters.set(filterName, event)
+          : this.filters.set(filterName, '');
+
         break;
 
       default:
         break;
     }
 
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = 1;
+    pageRequest.size = this.allTopFiltered.size;
+    pageRequest.property = this.allTopFiltered.sort;
+    pageRequest.direction = this.allTopFiltered.direction;
     // Call service to load data filtered
-    const page = this.researchmentStructureService.findTopResearchmentStructuresByFilters(
-      this.filtersTop
+    this.allTopFiltered = this.scientificService.findTopByFilters(
+      this.filters, pageRequest
     );
 
-    this.searchResult = page.content;
-    page.uibPage = page.number + 1;
-    this.resultObject = page;
   }
-
 }
