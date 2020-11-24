@@ -1,5 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+/**
+ *
+ *
+ * @export
+ * @class NewTreeComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-new-tree',
   templateUrl: './new-tree.component.html',
@@ -95,11 +102,22 @@ export class NewTreeComponent implements OnInit {
     ],
   };
   filter = [];
+  /**
+   * Creates an instance of NewTreeComponent.
+   * @memberof NewTreeComponent
+   */
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  /**
+   *
+   *
+   * @param {*} area
+   * @param {*} parentToRemove
+   * @memberof NewTreeComponent
+   */
   areaClicked(area, parentToRemove) {
     // si selecciono un hijo el padre se tiene que ir
     if (parentToRemove && !parentToRemove.selected) {
@@ -128,6 +146,13 @@ export class NewTreeComponent implements OnInit {
     this.filterChanged.emit(this.filter);
   }
 
+  /**
+   *
+   *
+   * @param {*} area
+   * @param {*} parentToRemove
+   * @memberof NewTreeComponent
+   */
   removeInsedeObject(area, parentToRemove) {
     const indexToRemove1 = this.filter.indexOf(area.value);
     if (indexToRemove1 !== -1) {
@@ -150,8 +175,5 @@ export class NewTreeComponent implements OnInit {
       }
     });
   }
-
-
-
 
 }

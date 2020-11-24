@@ -1,8 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { ToastrService } from 'ngx-toastr';
-import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
+import { ActivatedRoute, Params } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 /**
  *
@@ -34,8 +31,7 @@ export class ResearchmentStructuresDetailComponent implements OnInit {
    * @memberof ResearchmentStructuresDetailComponent
    */
   constructor(
-    private route: ActivatedRoute,
-    private researchmentStructureService: ResearchmentStructuresService) { }
+    private route: ActivatedRoute) { }
 
   /**
    *
@@ -46,9 +42,6 @@ export class ResearchmentStructuresDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.researchmentId = params.id; // (+) converts string 'id' to a number
       if (this.researchmentId) {
-        this.researchmentStructureService.getById(this.researchmentId).subscribe(data => {
-          this.researchment = data;
-        });
 
       }
     });
