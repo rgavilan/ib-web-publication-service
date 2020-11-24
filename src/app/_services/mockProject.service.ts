@@ -1,19 +1,17 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AbstractService } from '../_helpers/abstract';
 import { Direction, Page, PageRequest } from '../_helpers/search';
 import { Binding, SparqlResults } from '../_models/sparql';
+import { ProjectService } from './project.service';
+
 
 /**
- *  Service for scientific production
- *
- * @export
- * @extends {AbstractService}
+ * 
+ * Class used for testing purpose
  */
 @Injectable({
     providedIn: 'root',
 })
-export class ProjectService extends AbstractService {
+export class MockProjectService extends ProjectService {
     // mock data
     readonly DUMMY_DATA: SparqlResults = {
         head: {
@@ -94,40 +92,12 @@ export class ProjectService extends AbstractService {
         }
     };
 
-    /**
-     * Creates an instance of ProjectService.
-     * param {HttpClient} httpClient
-     * memberof ProjectService
-     */
-    constructor(private httpClient: HttpClient) {
-        super();
-    }
 
-
-    /**
-     *
-     *
-     * @param {Map<string, string>} filters
-     * @param {PageRequest} pageRequest
-     * @return {*}  {Page<SparqlResults>}
-     * @memberof ProjectService
-     */
     findProjectByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
         const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
         return this.findScientifiProductionByFiltersCommon(data, filters, pageRequest);
     }
 
-
-    /**
-     *
-     *
-     * @private
-     * @param {SparqlResults} data data to find
-     * @param {Map<string, string>} filters data to filter
-     * @param {PageRequest} pageRequest page request
-     * @return {*}  {Page<SparqlResults>} page results
-     * @memberof ProjectService
-     */
     findScientifiProductionByFiltersCommon(data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest
     ): Page<SparqlResults> {
         const page: Page<SparqlResults> = new Page<SparqlResults>();
