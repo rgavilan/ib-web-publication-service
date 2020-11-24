@@ -1,17 +1,16 @@
 <fieldset>
-    <form class="form-horizontal " (ngSubmit)="f.form.valid && find()" #f="ngForm">
+    <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm">
         <div class="row mt-20">
             <!-- categorias tree -->
             <div class="col-lg-6">
                 <label for="type" class="col-sm-4 control-label">{{  "scientist.area" | translate }}</label>
-                <app-new-tree (filterChanged)="filterArea($event)"></app-new-tree>
+                <app-new-tree></app-new-tree>
             </div>
             <!-- type -->
             <div class="form-group col-lg-6">
                 <label for="type" class="col-sm-4 control-label">{{  "scientist.type" | translate }}</label>
                 <div class="col-sm-8">
-                    <select (change)="filterTopResearchmentStructures('type')" name="type" class="form-control"
-                        [(ngModel)]="findRequest.filter.type" #type="ngModel">
+                    <select name="type" class="form-control" [(ngModel)]="findRequest.filter.type" #type="ngModel">
                         <option [value]="undefined">{{ "form.select" | translate }}</option>
                         <option [value]="'Docente'">Docente</option>
                         <option [value]="'Personal Investigador'">Personal Investigador</option>
@@ -36,38 +35,10 @@
             </div>
         </div>
     </div>
-    <div class="mt-40">
-        <table class="table table-users table-hover">
-            <thead>
-                <tr>
-                    <th class="sortable" (click)="sort('name')"> {{ "researchmentStructure.name" | translate }}
-                        <em class="float-right" [ngClass]="getSortIcon('name')"></em>
-                    </th>
-                    <th class="sortable" (click)="sort('type')"> {{ "researchmentStructure.type" | translate }}
-                        <em class="float-right" [ngClass]="getSortIcon('type')"></em>
-                    </th>
-                    <th class="sortable" (click)="sort('area')">
-                        {{ "researchmentStructure.area" | translate }}
-                        <em class="float-right" [ngClass]="getSortIcon('area')"></em>
-                    </th>
-                    <th class="sortable" (click)="sort('publications')">
-                        {{ "researchmentStructure.publications" | translate }}
-                        <em class="float-right" [ngClass]="getSortIcon('publications')"></em>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of searchResult">
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.type }}</td>
-                    <td>{{ returnAreaString(item.areaName) }}</td>
-                    <td>{{ item.publications }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)" (sizeChanged)="changeSize($event)">
-    </app-pagination>
+    <app-table-results [data]="allPatentFiltered.content[0]" [pageInfo]="allPatentFiltered"
+        (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredPageChanged($event)"
+        (sortChanged)="allprojectsFilteredPageChanged($event)">
+    </app-table-results>
     <div style="min-width:600px;width: 100%;" echarts [loading]="loadingData" [options]="echartOptions"
         class="sector-chart"></div>
 </fieldset>

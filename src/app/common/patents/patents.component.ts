@@ -1,42 +1,26 @@
-import { AfterContentInit, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { ToastrService } from 'ngx-toastr';
-import { Observable, of } from 'rxjs';
-import { Direction, FindRequest, Order, Page, PaginatedSearchComponent } from 'src/app/_helpers/search';
-import { Scientist } from 'src/app/_models/scientist';
-import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { SparqlResults } from 'src/app/_models/sparql';
+import { PatentService } from 'src/app/_services/patent.service';
 
 @Component({
   selector: 'app-patents',
   templateUrl: './patents.component.html',
   styleUrls: ['./patents.component.css']
 })
-export class PatentsComponent extends PaginatedSearchComponent<Scientist> implements OnInit, AfterContentInit {
+export class PatentsComponent implements OnInit {
   @Input() universityId: string;
-  filtersTop: Map<string, string> = new Map();
-  filtersArea: Map<string, Array<string>> = new Map();
-  data: any;
+  allPatentFiltered: Page<SparqlResults>;
+  filters: Map<string, string> = new Map();
+  findRequest: FindRequest = new FindRequest();
   echartOptions: any;
   loadingData = false;
   constructor(
-    router: Router,
-    translate: TranslateService,
-    toastr: ToastrService,
-    private researchmentStructureService: ResearchmentStructuresService,
+    private patentService: PatentService,
     private cdr: ChangeDetectorRef) {
-    super(router, translate, toastr);
   }
 
   ngOnInit(): void {
-    // agregar automatico que filtre por ID
-    const page = this.researchmentStructureService.findResearchmentScientist(
-      null
-    );
-    this.searchResult = page.content;
-    page.uibPage = page.number + 1;
-    this.resultObject = page;
-    this.filterTopResearchmentStructures('type');
 
 
     const xAxisData = [];
@@ -89,83 +73,59 @@ export class PatentsComponent extends PaginatedSearchComponent<Scientist> implem
     };
   }
 
-  ngAfterContentInit() {
-    this.cdr.detectChanges();
-  }
-
-  protected findInternal(findRequest: FindRequest): Observable<Page<Scientist>> {
-    const page = this.researchmentStructureService.findResearchmentScientist(
-      null
-    );
-
-    this.searchResult = page.content;
-    page.uibPage = page.number + 1;
-    this.resultObject = page;
-    this.findRequest.setOrder(
-      findRequest.pageRequest.direction,
-      findRequest.pageRequest.property
-    );
-
-    return of(this.resultObject);
-  }
-  protected removeInternal(entity: any): Observable<{} | Response> {
-    return of({});
-  }
-  protected getDefaultOrder(): Order {
-    return {
-      property: 'code',
-      direction: Direction.ASC
-    };
-  }
-
-  /*
-   * Filter researchment structures
+  /**
+   *
+   *
+   * @param {number} i
+   * @memberof ScientificProductionComponent
    */
-  filterTopResearchmentStructures(filterName: string) {
+  allprojectsFilteredPageChanged(i: number): void {
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = i;
+    pageRequest.size = this.allPatentFiltered.size;
+    pageRequest.property = this.allPatentFiltered.sort;
+    pageRequest.direction = this.allPatentFiltered.direction;
+    this.allPatentFiltered = this.patentService.findProjectByFilters(
+      this.filters, pageRequest
+    );
+  }
+
+
+  /**
+   *
+   *
+   * @param {*} event
+   * @param {string} filterName
+   * @memberof ScientificProductionComponent
+   */
+  filterProjects(event, filterName: string) {
     switch (filterName) {
-      case 'type':
-        // si el valor viene undefined debería "resetar el valor para mostrar todo"
-        this.findRequest.filter.type !== 'undefined' ? this.filtersTop.set(filterName, this.findRequest.filter.type)
-          : this.filtersTop.set(filterName, '');
+      case 'year':
+        event !== 'undefined'
+          ? this.filters.set(filterName, event)
+          : this.filters.set(filterName, '');
+
         break;
+
       default:
         break;
     }
 
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = 1;
+    pageRequest.size = this.allPatentFiltered.size;
+    pageRequest.property = this.allPatentFiltered.sort;
+    pageRequest.direction = this.allPatentFiltered.direction;
     // Call service to load data filtered
-    const page = this.researchmentStructureService.findTopResearchmentStructuresScientistByFilters(
-      this.filtersTop
+    this.allPatentFiltered = this.patentService.findProjectByFilters(
+      this.filters, pageRequest
     );
 
-    this.searchResult = page.content;
-    page.uibPage = page.number + 1;
-    this.resultObject = page;
   }
 
-  filterArea(event) {
-    console.log(event);
-    this.findRequest.filter.area = event;
-    this.filtersArea.set('area', this.findRequest.filter.area);
-    const page = this.researchmentStructureService.filterArea(
-      this.filtersArea
-    );
 
-    setTimeout(() => {
-      this.searchResult = [...page.content];
-      page.uibPage = page.number + 1;
-      this.resultObject = page;
-      this.cdr.detectChanges();
-    }, 300);
 
-  }
 
-  returnAreaString(area) {
-    let result = '';
-    area.forEach(element => {
-      result += element + ', ';
-    });
-    return result;
-  }
 
   /**
    *

@@ -18,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ScientificProductionService } from '../_services/scientificProduction.service';
 import { TableResultsComponent } from '../common-display-data/table-results/table-results.component';
 import { RouterModule } from '@angular/router';
+import { PatentService } from '../_services/patent.service';
 
 @NgModule({
   declarations: [PaginationComponent,
@@ -53,9 +54,11 @@ import { RouterModule } from '@angular/router';
     ScientificProductionComponent,
     ProyectsComponent,
     PatentsComponent,
-    NgbModule, TableResultsComponent],
+    NgbModule,
+    TableResultsComponent],
   providers: [
-    ScientificProductionService
+    ScientificProductionService,
+    PatentService
   ]
 })
 export class SharedModule { }
