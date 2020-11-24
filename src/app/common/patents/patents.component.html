@@ -12,9 +12,7 @@
                 <div class="col-sm-8">
                     <select name="type" class="form-control" [(ngModel)]="findRequest.filter.type" #type="ngModel">
                         <option [value]="undefined">{{ "form.select" | translate }}</option>
-                        <option [value]="'Docente'">Docente</option>
-                        <option [value]="'Personal Investigador'">Personal Investigador</option>
-                        <option [value]="'Investigador'">Investigador</option>
+                        <option [value]="'Diseño industrial'">Diseño industrial</option>
                     </select>
                 </div>
             </div>
@@ -39,6 +37,5 @@
         (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredPageChanged($event)"
         (sortChanged)="allprojectsFilteredPageChanged($event)">
     </app-table-results>
-    <div style="min-width:600px;width: 100%;" echarts [loading]="loadingData" [options]="echartOptions"
-        class="sector-chart"></div>
+    <div style="min-width:600px;height: 450px" echarts [options]="echartOptions" class="sector-chart"></div>
 </fieldset>

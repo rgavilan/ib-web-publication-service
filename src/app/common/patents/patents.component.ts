@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { PatentService } from 'src/app/_services/patent.service';
@@ -16,13 +16,18 @@ export class PatentsComponent implements OnInit {
   echartOptions: any;
   loadingData = false;
   constructor(
-    private patentService: PatentService,
-    private cdr: ChangeDetectorRef) {
+    private patentService: PatentService) {
   }
 
   ngOnInit(): void {
 
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = 1;
+    pageRequest.size = 10;
 
+    this.allPatentFiltered = this.patentService.findProjectByFilters(
+      null, pageRequest
+    );
     const xAxisData = [];
     const data1 = [];
     const data2 = [];
@@ -34,7 +39,6 @@ export class PatentsComponent implements OnInit {
     }
 
     const data = this.genData(5);
-
     this.echartOptions = {
       title: {
         text: 'Personal por tipo filtrado por area',
@@ -135,8 +139,8 @@ export class PatentsComponent implements OnInit {
     const nameList = [
       'Verificación',
       'Acreditación',
-      'Acreditación de las dimensiones adicionales',
-      'Certificación del sistema de garantía interna de la calidad (SGIC) de centro',
+      'Acreditación de ',
+      'Certificación del ',
       'Centro acreditado institucionalmente',
     ];
     const legendData = [];
