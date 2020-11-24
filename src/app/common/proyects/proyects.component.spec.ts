@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
-import { MockProjectService } from 'src/app/_services/mockProject.service';
+import { MockProjectService } from 'src/app/_services/_testingServices/mockProject.service';
 import { ProjectService } from 'src/app/_services/project.service';
 
 import { ProyectsComponent } from './proyects.component';
