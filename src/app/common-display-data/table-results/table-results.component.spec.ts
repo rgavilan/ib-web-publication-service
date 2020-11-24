@@ -72,8 +72,9 @@ describe('TableResultsComponent', () => {
 
     beforeEach(() => {
 
-      spyOn(component.pageChanged, 'next').and.callThrough();
+      spyOn(component.pageChanged, 'emit');
       fixture.detectChanges();
+      component.pageChanged.next(1);
       component.findRequest = new FindRequest();
       component.findRequest.pageRequest = {
         size: 3,
@@ -82,11 +83,12 @@ describe('TableResultsComponent', () => {
         property: 'name'
       };
 
-      component.callShowPageWhenPageChanges(1);
     });
 
     it('without pageInfo', () => {
+      component.callShowPageWhenPageChanges(1);
       expect(component.findRequest.pageRequest.page).toEqual(1);
+      expect(component.resultObject.uibPage).toEqual(component.findRequest.pageRequest.page);
 
     });
 
@@ -95,8 +97,11 @@ describe('TableResultsComponent', () => {
       component.pageInfo.content = [];
       component.pageInfo.size = 10;
       component.pageInfo.number = 5;
+
+      component.callShowPageWhenPageChanges(1);
+
       expect(component.findRequest.pageRequest.page).toEqual(1);
-      expect(component.pageChanged.next).toHaveBeenCalled();
+      expect(component.pageChanged.emit).toHaveBeenCalled();
     });
   });
 });

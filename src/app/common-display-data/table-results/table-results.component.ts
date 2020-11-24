@@ -234,7 +234,7 @@ export class TableResultsComponent
     if (!this.pageInfo) {
       this.find();
     } else {
-      this.pageChanged.next(i);
+      this.pageChanged.emit(i);
     }
   }
 
