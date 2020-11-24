@@ -57,7 +57,6 @@ describe('TableResultsComponent', () => {
       component.dataCompleteToShow = [];
       component.dataCompleteToShow.length = 12;
       fixture.detectChanges();
-
     });
 
     it('test', () => {
@@ -74,7 +73,6 @@ describe('TableResultsComponent', () => {
 
       spyOn(component.pageChanged, 'emit');
       fixture.detectChanges();
-      component.pageChanged.next(1);
       component.findRequest = new FindRequest();
       component.findRequest.pageRequest = {
         size: 3,
@@ -102,6 +100,42 @@ describe('TableResultsComponent', () => {
 
       expect(component.findRequest.pageRequest.page).toEqual(1);
       expect(component.pageChanged.emit).toHaveBeenCalled();
+    });
+  });
+
+  describe('callShowPageWhenSizeChanges', () => {
+
+    beforeEach(() => {
+
+      spyOn(component.sizeChanged, 'emit');
+      fixture.detectChanges();
+      component.findRequest = new FindRequest();
+      component.findRequest.pageRequest = {
+        size: 3,
+        page: 5,
+        direction: Direction.ASC,
+        property: 'name'
+      };
+
+    });
+
+    it('without pageInfo', () => {
+      component.callShowPageWhenSizeChanges(5);
+      expect(component.findRequest.pageRequest.size).toEqual(5);
+      expect(component.resultObject.uibPage).toEqual(component.findRequest.pageRequest.page);
+
+    });
+
+    it('with pageInfo', () => {
+      component.pageInfo = new Page();
+      component.pageInfo.content = [];
+      component.pageInfo.size = 10;
+      component.pageInfo.number = 5;
+
+      component.callShowPageWhenSizeChanges(5);
+
+      expect(component.findRequest.pageRequest.size).toEqual(5);
+      expect(component.sizeChanged.emit).toHaveBeenCalled();
     });
   });
 });
