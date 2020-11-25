@@ -121,3 +121,8 @@ table thead sortable:hover {
   padding: 0;
   line-height: 1;
 }
+
+.table td, .table th{
+  padding: .5rem;
+  font-size: smaller;
+}
