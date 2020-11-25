@@ -87,6 +87,37 @@ export class MockProjectService extends ProjectService {
                         type: 'literal',
                         value: '2019'
                     }
+                },
+                // 2
+                {
+                    name: {
+                        type: 'literal',
+                        value: 'ASIO'
+                    },
+                    keywords: {
+                        type: 'literal',
+                        value: 'Semantica'
+                    },
+                    participation: {
+                        type: 'literal',
+                        value: 'Participante'
+                    },
+                    type: {
+                        type: 'literal',
+                        value: 'No competitivo'
+                    },
+                    financing: {
+                        type: 'literal',
+                        value: 'Publico'
+                    },
+                    convocation: {
+                        type: 'literal',
+                        value: 'A2019'
+                    },
+                    year: {
+                        type: 'literal',
+                        value: '2019'
+                    }
                 }
             ]
         }

@@ -49,11 +49,10 @@ describe('ProyectsComponent', () => {
       const pageRequest: PageRequest = new PageRequest();
       pageRequest.page = 1;
       pageRequest.size = 10;
-      spyOn(projectService, 'findProjectByFilters').withArgs(null, pageRequest).and.callThrough();
       component.ngOnInit();
       fixture.detectChanges();
-      projectService.findProjectByFilters(null, pageRequest);
-      expect(projectService.findProjectByFilters).toHaveBeenCalledWith(null, pageRequest);
+      console.log('all', component.allProjectFiltered);
+      expect(component.allProjectFiltered.totalElements).toBe(3);
     });
   });
 
@@ -74,7 +73,7 @@ describe('ProyectsComponent', () => {
     it('should return all values by filtering by empty filter', () => {
       component.filterProjects('undefined', 'type');
       spyOn(projectService, 'findProjectByFilters').and.callThrough();
-      expect(component.allProjectFiltered.totalElements).toBe(2);
+      expect(component.allProjectFiltered.totalElements).toBe(3);
     });
   });
 
