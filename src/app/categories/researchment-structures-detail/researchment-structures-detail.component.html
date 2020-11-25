@@ -15,45 +15,49 @@
         </div>
     </div>
 </div>
-<tabset #resultsTab [justified]="true">
-    <tab>
-        <ng-template tabHeading>
-            {{'researchmentStructure.scientist' | translate}}
-        </ng-template>
-        <ng-container>
-            <app-scientist-search></app-scientist-search>
-        </ng-container>
-    </tab>
-    <tab>
-        <ng-template tabHeading>
-            {{'researchmentStructure.top' | translate}}
-        </ng-template>
-        <ng-container>
-            <app-top-search></app-top-search>
-        </ng-container>
-    </tab>
-    <tab>
-        <ng-template tabHeading>
-            {{'researchmentStructure.prod-scientist' | translate}}
-        </ng-template>
-        <ng-container>
-            <app-scientific-production></app-scientific-production>
-        </ng-container>
-    </tab>
-    <tab>
-        <ng-template tabHeading>
-            {{'researchmentStructure.projects' | translate}}
-        </ng-template>
-        <ng-container>
-            <app-proyects></app-proyects>
-        </ng-container>
-    </tab>
-    <tab>
-        <ng-template tabHeading>
-            {{'researchmentStructure.patents' | translate}}
-        </ng-template>
-        <ng-container>
-            <app-patents></app-patents>
-        </ng-container>
-    </tab>
-</tabset>
+<div class="row">
+    <div class="col-12 mt-40">
+        <tabset #resultsTab [justified]="true">
+            <tab>
+                <ng-template tabHeading>
+                    {{'researchmentStructure.scientist' | translate}}
+                </ng-template>
+                <ng-container>
+                    <app-scientist-search></app-scientist-search>
+                </ng-container>
+            </tab>
+            <tab>
+                <ng-template tabHeading>
+                    {{'researchmentStructure.top' | translate}}
+                </ng-template>
+                <ng-container>
+                    <app-top-search></app-top-search>
+                </ng-container>
+            </tab>
+            <tab>
+                <ng-template tabHeading>
+                    {{'researchmentStructure.prod-scientist' | translate}}
+                </ng-template>
+                <ng-container>
+                    <app-scientific-production></app-scientific-production>
+                </ng-container>
+            </tab>
+            <tab>
+                <ng-template tabHeading>
+                    {{'researchmentStructure.projects' | translate}}
+                </ng-template>
+                <ng-container>
+                    <app-proyects></app-proyects>
+                </ng-container>
+            </tab>
+            <tab>
+                <ng-template tabHeading>
+                    {{'researchmentStructure.patents' | translate}}
+                </ng-template>
+                <ng-container>
+                    <app-patents></app-patents>
+                </ng-container>
+            </tab>
+        </tabset>
+    </div>
+</div>
