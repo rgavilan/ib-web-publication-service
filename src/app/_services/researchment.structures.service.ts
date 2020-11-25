@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Direction, FindRequest, Page, PageRequest } from '../_helpers/search';
-import { ResearchmentStructure } from '../_models/researchmentStructure';
 import { Observable } from 'rxjs';
 import { AbstractService } from '../_helpers/abstract';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { of } from 'rxjs';
-import { Scientist } from '../_models/scientist';
 import { Binding, SparqlResults } from '../_models/sparql';
 
 @Injectable({
@@ -13,7 +11,7 @@ import { Binding, SparqlResults } from '../_models/sparql';
 })
 export class ResearchmentStructuresService extends AbstractService {
   // mock data
-  readonly DUMMY_DATA2: SparqlResults = {
+  readonly DUMMY_DATA: SparqlResults = {
     head: {
       vars: [
         'name',
@@ -198,26 +196,27 @@ export class ResearchmentStructuresService extends AbstractService {
   }
 
 
-  findResearchmentStructuresByFilters2(
+  findResearchmentStructuresByFilters(
     filters: Map<string, string>, pageRequest: PageRequest
   ): Page<SparqlResults> {
 
-    const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA2));
+    const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
 
     return this.findResearchmentStructuresByFiltersCommon(data, filters, pageRequest);
   }
 
-  findTopResearchmentStructuresByFilters2(
+  findTopResearchmentStructuresByFilters(
     filters: Map<string, string>, pageRequest: PageRequest
   ): Page<SparqlResults> {
 
-    const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA2));
-    data.results.bindings = this.DUMMY_DATA2.results.bindings.slice(0, 10);
+    const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
+    data.results.bindings = this.DUMMY_DATA.results.bindings.slice(0, 10);
     return this.findResearchmentStructuresByFiltersCommon(data, filters, pageRequest);
   }
 
 
-  private findResearchmentStructuresByFiltersCommon(
+  // private 
+  findResearchmentStructuresByFiltersCommon(
     data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest
   ): Page<SparqlResults> {
     const page: Page<SparqlResults> = new Page<SparqlResults>();

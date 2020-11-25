@@ -33,7 +33,7 @@ export class AllResearchmentStructuresComponent implements OnInit {
     pageRequest.page = 1;
     pageRequest.size = 10;
 
-    this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters2(
+    this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters(
       null, pageRequest
     );
   }
@@ -64,7 +64,7 @@ export class AllResearchmentStructuresComponent implements OnInit {
     pageRequest.direction = this.allResearchmentStructuresFiltered.direction;
 
     // Call service to load data filtered
-    this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters2(
+    this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters(
       this.filters, pageRequest
     );
 
@@ -89,7 +89,7 @@ export class AllResearchmentStructuresComponent implements OnInit {
 
     //  const map: Map<string, string> = new Map(Object.entries(this.findRequest.filter));
 
-    this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters2(
+    this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters(
       this.filters, pageRequest
     );
   }
@@ -109,7 +109,7 @@ export class AllResearchmentStructuresComponent implements OnInit {
     pageRequest.property = this.allResearchmentStructuresFiltered.sort;
     pageRequest.direction = this.allResearchmentStructuresFiltered.direction;
 
-    this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters2(
+    this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters(
       this.filters, pageRequest
     );
   }
@@ -130,7 +130,7 @@ export class AllResearchmentStructuresComponent implements OnInit {
     newPageRequest.property = pageRequest.property;
     newPageRequest.direction = pageRequest.direction;
 
-    this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters2(
+    this.allResearchmentStructuresFiltered = this.researchmentStructureService.findResearchmentStructuresByFilters(
       this.filters, pageRequest
     );
   }
