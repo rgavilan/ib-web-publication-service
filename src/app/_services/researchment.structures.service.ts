@@ -215,7 +215,8 @@ export class ResearchmentStructuresService extends AbstractService {
   }
 
 
-  private findResearchmentStructuresByFiltersCommon(
+  // private 
+  findResearchmentStructuresByFiltersCommon(
     data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest
   ): Page<SparqlResults> {
     const page: Page<SparqlResults> = new Page<SparqlResults>();
