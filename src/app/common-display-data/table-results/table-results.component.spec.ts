@@ -38,7 +38,6 @@ describe('TableResultsComponent', () => {
       component.pageInfo.size = 10;
       component.pageInfo.number = 5;
       fixture.detectChanges();
-
     });
 
     it('test', () => {
@@ -46,7 +45,6 @@ describe('TableResultsComponent', () => {
       expect(component.searchResult.length).toEqual(12);
 
       expect(component.resultObject.uibPage).toEqual(component.pageInfo.number);
-
     });
 
   });
@@ -64,7 +62,6 @@ describe('TableResultsComponent', () => {
       expect(component.searchResult.length).toEqual(10);
       expect(component.resultObject.uibPage).toEqual(1);
     });
-
   });
 
   describe('callShowPageWhenPageChanges', () => {

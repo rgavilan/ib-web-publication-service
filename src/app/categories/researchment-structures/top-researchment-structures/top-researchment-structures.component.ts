@@ -27,7 +27,7 @@ export class TopResearchmentStructuresComponent implements OnInit {
     pageRequest.page = 1;
     pageRequest.size = 10;
 
-    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters2(
+    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters(
       null, pageRequest
     );
   }
@@ -55,7 +55,7 @@ export class TopResearchmentStructuresComponent implements OnInit {
     pageRequest.direction = this.topResearchmentStructuresFiltered.direction;
 
     // Call service to load data filtered
-    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters2(
+    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters(
       this.filters, pageRequest
     );
 
@@ -85,7 +85,7 @@ export class TopResearchmentStructuresComponent implements OnInit {
     pageRequest.direction = this.topResearchmentStructuresFiltered.direction;
 
     // Call service to load data filtered
-    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters2(
+    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters(
       this.filters, pageRequest
     );
   }
@@ -102,7 +102,7 @@ export class TopResearchmentStructuresComponent implements OnInit {
 
     //  const map: Map<string, string> = new Map(Object.entries(this.findRequest.filter));
 
-    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters2(
+    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters(
       this.filters, pageRequest
     );
   }
@@ -116,7 +116,7 @@ export class TopResearchmentStructuresComponent implements OnInit {
     pageRequest.property = this.topResearchmentStructuresFiltered.sort;
     pageRequest.direction = this.topResearchmentStructuresFiltered.direction;
 
-    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters2(
+    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters(
       this.filters, pageRequest
     );
   }
@@ -131,7 +131,7 @@ export class TopResearchmentStructuresComponent implements OnInit {
     newPageRequest.property = pageRequest.property;
     newPageRequest.direction = pageRequest.direction;
 
-    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters2(
+    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters(
       this.filters, pageRequest
     );
   }
