@@ -249,12 +249,4 @@ export class TableResultsComponent
     }
   }
 
-  createParams(data: any): HttpParams {
-    let parameters = new HttpParams();
-    this.dataComplete.head.vars.forEach((head) => {
-      parameters = Helper.addParam(parameters, head, null);
-    });
-
-    return parameters;
-  }
 }

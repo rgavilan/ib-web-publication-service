@@ -258,7 +258,7 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
       this.findRequest.pageRequest.direction = Direction.ASC;
     }
     this.find();
-    this.sortChanged.next(this.findRequest.pageRequest);
+    this.sortChanged.emit(this.findRequest.pageRequest);
   }
 
   /**
