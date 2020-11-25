@@ -138,4 +138,29 @@ describe('TableResultsComponent', () => {
       expect(component.sizeChanged.emit).toHaveBeenCalled();
     });
   });
+
+  describe('sort', () => {
+
+    beforeEach(() => {
+
+      spyOn(component.sortChanged, 'emit');
+      fixture.detectChanges();
+      component.findRequest = new FindRequest();
+      component.findRequest.pageRequest = {
+        size: 3,
+        page: 5,
+        direction: Direction.ASC,
+        property: 'name'
+      };
+
+    });
+
+    it('test', () => {
+      const newSort = 'id';
+      component.sort(newSort);
+      expect(component.findRequest.pageRequest.property).toEqual(newSort);
+      expect(component.sortChanged.emit).toHaveBeenCalled();
+
+    });
+  });
 });
