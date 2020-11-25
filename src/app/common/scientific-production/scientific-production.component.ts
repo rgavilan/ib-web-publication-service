@@ -77,9 +77,6 @@ export class ScientificProductionComponent implements OnInit {
           : this.filters.set(filterName, '');
 
         break;
-
-      default:
-        break;
     }
 
     const pageRequest: PageRequest = new PageRequest();
