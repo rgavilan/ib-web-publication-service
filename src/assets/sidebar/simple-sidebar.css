@@ -65,9 +65,12 @@
 }
 
 .sidebar-nav li a {
-  display: block;
+ /* display: block;
   text-decoration: none;
-  color: #999999;
+  color: #999999;*/
+  display: flex;
+  color: white;
+  align-items: center;
 }
 
 .sidebar-nav li a:hover {

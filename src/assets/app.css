@@ -113,6 +113,7 @@ table thead sortable:hover {
 .logoText {
   width: 100%;
   text-align: center;
+  font-size: small;
 }
 
 .logoText p {
