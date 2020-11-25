@@ -117,7 +117,6 @@ describe('ScientificProductionComponent', () => {
   it('should execute ngOnInit', () => {
     spyOn(component, 'ngOnInit');
     spyOn(scientificProductionService, 'findScientificProductionByFilters').and.returnValues();
-    console.log('hello', component.allScientificProductionFiltered);
     expect(component.allScientificProductionFiltered.numberOfElements).toBe(10);
     expect(component.allScientificProductionFiltered.content.length).toBe(1);
   });
