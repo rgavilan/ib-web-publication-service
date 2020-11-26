@@ -35,21 +35,35 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
+        <div class="row">
+            <!-- q&a -->
+            <div class="form-group col-lg-6">
+                <label for="activo" class="col-sm-3 control-label">{{ "researchmentStructure.qa" | translate }}</label>
+                <div class="col-sm-9">
+                    <select name="qa" class="form-control" [(ngModel)]="findRequest.filter.qa" #qa="ngModel"
+                        (change)="filterResearchmentStructures('qa')">
+                        <option [value]="undefined">{{ "form.select" | translate }}</option>
+                        <option [value]="'Severo Ochoa'">Severo Ochoa</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- SEARCH BUTTON -->
+        <!-- <div class="form-group">
             <div class="offset-sm-2 col-sm-10 text-right">
                 <button type="submit" class="btn btn-outline-primary">
                     <em class="oi oi-magnifying-glass"></em>
                     {{ "form.search" | translate }}
                 </button>
             </div>
-        </div>
+        </div> -->
     </form>
 </fieldset>
 
 <fieldset>
-    <legend>
+    <!-- <legend>
         {{ "form.results" | translate }}
-    </legend>
+    </legend> -->
 
     <app-table-results [data]="allResearchmentStructuresFiltered.content[0]"
         [pageInfo]="allResearchmentStructuresFiltered" [routerField]="'name'"
