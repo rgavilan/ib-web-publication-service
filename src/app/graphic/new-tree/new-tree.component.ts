@@ -20,7 +20,7 @@ export class NewTreeComponent implements OnInit {
       {
         name: 'Ciencias matemáticas, físicas, químicas e ingenierías',
         value: 'CMIFQ',
-        selected: false,
+        selected: true,
         children: [
           {
             name: 'Ciencias y tecnologías quimicas',
@@ -73,7 +73,7 @@ export class NewTreeComponent implements OnInit {
       {
         name: 'Ciencias sociales y humanidades',
         value: 'CSH',
-        selected: false,
+        selected: true,
         children: [
           {
             name: 'Ciencias sociales',
