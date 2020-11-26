@@ -1,7 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { AbstractService } from '../_helpers/abstract';
-import { Direction, Page, PageRequest } from '../_helpers/search';
+import { Direction, FindRequest, Page, PageRequest } from '../_helpers/search';
+import { Helper } from '../_helpers/utils';
 import { Binding, SparqlResults } from '../_models/sparql';
 
 /**
@@ -112,9 +115,24 @@ export class ProjectService extends AbstractService {
      * @return {*}  {Page<SparqlResults>}
      * @memberof ProjectService
      */
-    findProjectByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
+    /*findProjectByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
         const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
         return this.findScientifiProductionByFiltersCommon(data, filters, pageRequest);
+    }*/
+
+    findProjectByFiltersfindProjectByFilters(findRequest: FindRequest): Observable<Page<SparqlResults>> {
+        // Filter params
+        let parameters = new HttpParams();
+        parameters = Helper.addParam(parameters, 'year', findRequest.filter.year);
+        // Pagination params
+        parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
+
+        return this.httpClient
+            .get(Helper.getUrl('/project/search'), {
+                params: parameters
+            }).pipe(
+                catchError(this.handleError)
+            );
     }
 
 

@@ -22,6 +22,7 @@ export class ProyectsComponent implements OnInit {
   findRequest: FindRequest = new FindRequest();
   echartOptions: any;
   loadingData = false;
+  loadedProjects = false;
 
   /**
    * Creates an instance of ProyectsComponent.
@@ -39,13 +40,20 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   ngOnInit(): void {
+    this.allProjectFiltered = new Page();
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
     pageRequest.size = 10;
+    this.findRequest.pageRequest = pageRequest;
+    this.projectService.findProjectByFiltersfindProjectByFilters(this.findRequest).subscribe((data: Page<SparqlResults>) => {
+      this.allProjectFiltered = data;
+      this.loadedProjects = true;
+    });
 
-    this.allProjectFiltered = this.projectService.findProjectByFilters(
+
+    /*this.allProjectFiltered = this.projectService.findProjectByFilters(
       null, pageRequest
-    );
+    );*/
 
 
     const xAxisData = [];
@@ -149,9 +157,9 @@ export class ProyectsComponent implements OnInit {
     pageRequest.size = this.allProjectFiltered.size;
     pageRequest.property = this.allProjectFiltered.sort;
     pageRequest.direction = this.allProjectFiltered.direction;
-    this.allProjectFiltered = this.projectService.findProjectByFilters(
+    /*this.allProjectFiltered = this.projectService.findProjectByFilters(
       this.filters, pageRequest
-    );
+    );*/
   }
 
 
@@ -170,9 +178,9 @@ export class ProyectsComponent implements OnInit {
     pageRequest.property = this.allProjectFiltered.sort;
     pageRequest.direction = this.allProjectFiltered.direction;
     // Call service to load data filtered
-    this.allProjectFiltered = this.projectService.findProjectByFilters(
+    /*this.allProjectFiltered = this.projectService.findProjectByFilters(
       this.filters, pageRequest
-    );
+    );*/
 
   }
 
