@@ -170,18 +170,16 @@ export class ProyectsComponent implements OnInit {
    * @param {string} filterName
    * @memberof ScientificProductionComponent
    */
-  filterProjects(event, filterName: string) {
-    event !== 'undefined' ? this.filters.set(filterName, event) : this.filters.set(filterName, '');
+  filterProjects() {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
     pageRequest.size = this.allProjectFiltered.size;
     pageRequest.property = this.allProjectFiltered.sort;
     pageRequest.direction = this.allProjectFiltered.direction;
-    // Call service to load data filtered
-    /*this.allProjectFiltered = this.projectService.findProjectByFilters(
-      this.filters, pageRequest
-    );*/
-
+    this.projectService.findProjectByFiltersfindProjectByFilters(this.findRequest).subscribe((data: Page<SparqlResults>) => {
+      this.allProjectFiltered = data;
+      this.loadedProjects = true;
+    });
   }
 
 }

@@ -11,7 +11,7 @@
             <div class="form-group col-lg-6">
                 <label for="year" class="col-sm-4 control-label">{{  "projects.year" | translate }}</label>
                 <div class="col-sm-8">
-                    <select name="year" (ngModelChange)="filterProjects($event, 'year')" class="form-control"
+                    <select name="year" (change)="filterProjects()" class="form-control"
                         [(ngModel)]="findRequest.filter.year" #year="ngModel">
                         <option [value]="undefined">{{ "form.select" | translate }}</option>
                         <option [value]="2020">2020</option>
