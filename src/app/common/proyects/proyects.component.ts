@@ -23,7 +23,7 @@ export class ProyectsComponent implements OnInit {
   echartOptions: any;
   loadingData = false;
   loadedProjects = false;
-
+  res: SparqlResults;
   /**
    * Creates an instance of ProyectsComponent.
    * @param {ProjectService} projectService
@@ -40,13 +40,15 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   ngOnInit(): void {
-    this.allProjectFiltered = new Page();
     const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 1;
+    pageRequest.page = 0;
     pageRequest.size = 10;
     this.findRequest.pageRequest = pageRequest;
-    this.projectService.findProjectByFiltersfindProjectByFilters(this.findRequest).subscribe((data: Page<SparqlResults>) => {
+    this.res = new SparqlResults();
+    this.projectService.findProjectByFiltersfindProjectByFilters(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
+      this.res.head = data.content[0].head;
+      this.res.results = data.content[1].results;
       this.loadedProjects = true;
     });
 
