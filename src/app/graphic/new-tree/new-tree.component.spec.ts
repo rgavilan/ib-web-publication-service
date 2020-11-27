@@ -68,7 +68,7 @@ describe('NewTreeComponent', () => {
       const area = { name: 'Ingeniería Química', value: 'IQM', selected: true, children: [] };
       spyOn(component.filterChanged, 'emit');
       component.areaClicked(area, parent);
-      // expect(component.filterChanged.emit).toHaveBeenCalledWith(['IQM']);
+      expect(component.filterChanged.emit).toHaveBeenCalledWith(['IQM']);
     });
   });
 });

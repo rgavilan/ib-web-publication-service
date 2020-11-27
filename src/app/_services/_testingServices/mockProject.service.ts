@@ -1,5 +1,8 @@
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Direction, Page, PageRequest } from '../../_helpers/search';
+import { Observable, of } from 'rxjs';
+import { Helper } from 'src/app/_helpers/utils';
+import { Direction, FindRequest, Page, PageRequest } from '../../_helpers/search';
 import { Binding, SparqlResults } from '../../_models/sparql';
 import { ProjectService } from '../project.service';
 
@@ -124,9 +127,25 @@ export class MockProjectService extends ProjectService {
     };
 
 
-    findProjectByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
+    /*findProjectByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
         const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
         return this.findScientifiProductionByFiltersCommon(data, filters, pageRequest);
+    }*/
+
+    findProjectByFilters(findRequest: FindRequest): Observable<Page<SparqlResults>> {
+        // Filter params
+        const page: Page<SparqlResults> = new Page<SparqlResults>();
+        let results: SparqlResults = new SparqlResults();
+        results = this.DUMMY_DATA;
+        page.number = 0;
+        page.numberOfElements = 10;
+        page.size = 10;
+        page.totalElements = 10;
+        // TODO sort
+
+        page.content = [results];
+        console.log('paggee', page);
+        return of(page);
     }
 
     findScientifiProductionByFiltersCommon(data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest

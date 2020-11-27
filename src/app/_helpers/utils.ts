@@ -30,7 +30,7 @@ export class Helper {
     if (value) {
       const strValue = String(value);
 
-      if (strValue !== '') {
+      if (strValue !== '' && strValue !== 'undefined') {
         params = params.append(name, strValue);
       }
     }

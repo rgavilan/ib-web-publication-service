@@ -26,7 +26,7 @@
     </form>
 </fieldset>
 <fieldset>
-    <app-table-results *ngIf="loadedProjects" [data]="res" [pageInfo]="allProjectFiltered"
+    <app-table-results *ngIf="loadedProjects" [data]="allProjectFiltered.content[0]" [pageInfo]="allProjectFiltered"
         (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredPageChanged($event)"
         (sortChanged)="allprojectsFilteredPageChanged($event)">
     </app-table-results>

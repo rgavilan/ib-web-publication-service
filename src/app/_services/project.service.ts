@@ -120,7 +120,7 @@ export class ProjectService extends AbstractService {
         return this.findScientifiProductionByFiltersCommon(data, filters, pageRequest);
     }*/
 
-    findProjectByFiltersfindProjectByFilters(findRequest: FindRequest): Observable<Page<SparqlResults>> {
+    findProjectByFilters(findRequest: FindRequest): Observable<Page<SparqlResults>> {
         // Filter params
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'ini', findRequest.filter.ini);

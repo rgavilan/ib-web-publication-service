@@ -45,18 +45,10 @@ export class ProyectsComponent implements OnInit {
     pageRequest.size = 10;
     this.findRequest.pageRequest = pageRequest;
     this.res = new SparqlResults();
-    this.projectService.findProjectByFiltersfindProjectByFilters(this.findRequest).subscribe((data) => {
+    this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
-      this.res.head = data.content[0].head;
-      this.res.results = data.content[1].results;
       this.loadedProjects = true;
     });
-
-
-    /*this.allProjectFiltered = this.projectService.findProjectByFilters(
-      null, pageRequest
-    );*/
-
 
     const xAxisData = [];
     const data1 = [];
@@ -157,12 +149,8 @@ export class ProyectsComponent implements OnInit {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = i;
     pageRequest.size = this.allProjectFiltered.size;
-    pageRequest.property = this.allProjectFiltered.sort;
-    pageRequest.direction = this.allProjectFiltered.direction;
-    this.projectService.findProjectByFiltersfindProjectByFilters(this.findRequest).subscribe((data) => {
+    this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
-      this.res.head = data.content[0].head;
-      this.res.results = data.content[1].results;
       this.loadedProjects = true;
     });
   }
@@ -181,10 +169,9 @@ export class ProyectsComponent implements OnInit {
     pageRequest.size = this.allProjectFiltered.size;
     pageRequest.property = this.allProjectFiltered.sort;
     pageRequest.direction = this.allProjectFiltered.direction;
-    this.projectService.findProjectByFiltersfindProjectByFilters(this.findRequest).subscribe((data) => {
+    this.findRequest.pageRequest = pageRequest;
+    this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
-      this.res.head = data.content[0].head;
-      this.res.results = data.content[1].results;
       this.loadedProjects = true;
     });
   }

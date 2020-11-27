@@ -19,7 +19,7 @@ table thead sortable:hover {
 
 .sidebar-toggle {
   position: fixed;
-  background: black;
+  background: #19222a;
   padding: 10px;
   border-bottom-right-radius: 5px;
   z-index: 1;

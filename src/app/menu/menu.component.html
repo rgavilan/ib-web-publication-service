@@ -2,13 +2,13 @@
   <!-- menu entries -->
   <li *ngFor="let item of menuItems" class="sidebar-brand">
     <a [routerLink]="[item.url]">
-      <em style="font-size: x-small" class="oi" [ngClass]="[item.icon]"></em>
-      {{ item.title | translate }}</a
-    >
+      <em style="font-size: 18px" class="oi" [ngClass]="[item.icon]"></em>
+      {{ item.title | translate }}
+    </a>
   </li>
 
   <!-- logout button -->
-  <li class="sidebar-brand">
+  <li class=" sidebar-brand">
     <a (click)="logout()">
       <em style="font-size: x-small" class="oi oi-account-logout"></em>
       {{ "menu.logout" | translate }}
