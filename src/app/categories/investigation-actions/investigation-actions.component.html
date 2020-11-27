@@ -1,1 +1,22 @@
-<p>investigation-actions works!</p>
+<div class="row">
+    <div class="col-12 mt-40">
+        <tabset #resultsTab [justified]="true">
+            <tab>
+                <ng-template tabHeading>
+                    {{'investigation-actions.documents' | translate}}
+                </ng-template>
+                <ng-container>
+                    <p>Documentos</p>
+                </ng-container>
+            </tab>
+            <tab>
+                <ng-template tabHeading>
+                    {{'investigation-actions.projects' | translate}}
+                </ng-template>
+                <ng-container>
+                    <p>proyectos</p>
+                </ng-container>
+            </tab>
+        </tabset>
+    </div>
+</div>

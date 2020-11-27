@@ -146,5 +146,9 @@
     "project-type": "Project type",
     "financing": "Financing",
     "convocation": "Convocation"
+  },
+  "investigation-actions": {
+    "documents": "Documents",
+    "projects": "Projects"
   }
 }

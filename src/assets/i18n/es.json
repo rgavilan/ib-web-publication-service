@@ -155,5 +155,9 @@
     "project-type": "Tipos de proyecto",
     "financing": "Financiaciamiento",
     "convocation": "Convocatoria"
+  },
+  "investigation-actions": {
+    "documents": "Documentos",
+    "projects": "Proyectos"
   }
 }

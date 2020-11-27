@@ -55,7 +55,7 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     title: 'menu.acction-inves',
     icon: 'oi oi-pencil',
-    url: '/main/home',
+    url: '/main/categories/investigation-actions',
   },
   {
     title: 'menu.stats',
