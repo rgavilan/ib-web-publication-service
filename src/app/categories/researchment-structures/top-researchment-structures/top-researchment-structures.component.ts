@@ -3,6 +3,13 @@ import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
 
+/**
+ *
+ *
+ * @export
+ * @class TopResearchmentStructuresComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-top-researchment-structures',
   templateUrl: './top-researchment-structures.component.html',
@@ -14,7 +21,12 @@ export class TopResearchmentStructuresComponent implements OnInit {
   topResearchmentStructuresFiltered: Page<SparqlResults>;
 
   filters: Map<string, string> = new Map();
-
+  /**
+   *
+   *
+   * @type {FindRequest}
+   * @memberof TopResearchmentStructuresComponent
+   */
   findRequest: FindRequest = new FindRequest();
 
   constructor(
@@ -32,9 +44,12 @@ export class TopResearchmentStructuresComponent implements OnInit {
     );
   }
 
-  /*
-  * Filter researchment structures
-  */
+  /**
+   * Filter researchment structures
+   *
+   * @param {string} filterName
+   * @memberof TopResearchmentStructuresComponent
+   */
   filterResearchmentStructures(filterName: string) {
     switch (filterName) {
       case 'type':
@@ -61,9 +76,12 @@ export class TopResearchmentStructuresComponent implements OnInit {
 
   }
 
-  /*
- * Filter researchment structures
- */
+  /**
+   * Filter researchment structures
+   *
+   * @param {string} filterName
+   * @memberof TopResearchmentStructuresComponent
+   */
   filterTopResearchmentStructures(filterName: string) {
     switch (filterName) {
       case 'qa':
@@ -90,7 +108,12 @@ export class TopResearchmentStructuresComponent implements OnInit {
     );
   }
 
-
+  /**
+   *
+   *
+   * @param {number} i
+   * @memberof TopResearchmentStructuresComponent
+   */
   topResearchmentStructuresFilteredPageChanged(i: number): void {
     console.log('topResearchmentStructuresFilteredPageChanged');
 
@@ -106,7 +129,12 @@ export class TopResearchmentStructuresComponent implements OnInit {
       this.filters, pageRequest
     );
   }
-
+  /**
+   *
+   *
+   * @param {number} i
+   * @memberof TopResearchmentStructuresComponent
+   */
   topResearchmentStructuresFilteredSizeChanged(i: number): void {
     console.log('topResearchmentStructuresFilteredSizeChanged');
 
@@ -121,7 +149,12 @@ export class TopResearchmentStructuresComponent implements OnInit {
     );
   }
 
-
+  /**
+   *
+   *
+   * @param {PageRequest} pageRequest
+   * @memberof TopResearchmentStructuresComponent
+   */
   topResearchmentStructuresFilteredSortChanged(pageRequest: PageRequest): void {
     console.log('topResearchmentStructuresFilteredSortChanged');
 

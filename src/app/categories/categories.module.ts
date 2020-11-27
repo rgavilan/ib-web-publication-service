@@ -13,10 +13,11 @@ import { AllResearchmentStructuresComponent } from './researchment-structures/al
 import { TopResearchmentStructuresComponent } from './researchment-structures/top-researchment-structures/top-researchment-structures.component';
 import { SectorChartComponent } from './researchment-structures/sector-chart/sector-chart.component';
 import { InvestigationActionsComponent } from './investigation-actions/investigation-actions.component';
+import { ResearchmentStructuresByQSComponent } from './researchment-structures/researchment-structures-chart-by-qs/researchment-structures-chart-by-qs.component';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
-    TopResearchmentStructuresComponent, SectorChartComponent, InvestigationActionsComponent],
+    TopResearchmentStructuresComponent, SectorChartComponent, ResearchmentStructuresByQSComponent, InvestigationActionsComponent],
   imports: [
     CommonModule,
     CategoriesRoutingModule,
