@@ -2,10 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sector-chart',
-  templateUrl: './sector-chart.component.html',
-  styleUrls: ['./sector-chart.component.css']
+  templateUrl: './researchment-structures-chart-by-financing.component.html',
+  styleUrls: ['./researchment-structures-chart-by-financing.component.css']
 })
-export class SectorChartComponent implements OnInit {
+export class ResearchmentStructuresByFinancingComponent implements OnInit {
 
   @Input()
   data: any;

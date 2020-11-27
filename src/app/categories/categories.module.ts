@@ -11,13 +11,14 @@ import { ResearchmentStructuresDetailComponent } from './researchment-structures
 import { CommonDisplayDataModule } from '../common-display-data/common-display-data.module';
 import { AllResearchmentStructuresComponent } from './researchment-structures/all-researchment-structures/all-researchment-structures.component';
 import { TopResearchmentStructuresComponent } from './researchment-structures/top-researchment-structures/top-researchment-structures.component';
-import { SectorChartComponent } from './researchment-structures/sector-chart/sector-chart.component';
+import { ResearchmentStructuresByFinancingComponent } from './researchment-structures/researchment-structures-chart-by-financing/researchment-structures-chart-by-financing.component';
 import { InvestigationActionsComponent } from './investigation-actions/investigation-actions.component';
 import { ResearchmentStructuresByQSComponent } from './researchment-structures/researchment-structures-chart-by-qs/researchment-structures-chart-by-qs.component';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
-    TopResearchmentStructuresComponent, SectorChartComponent, ResearchmentStructuresByQSComponent, InvestigationActionsComponent],
+    TopResearchmentStructuresComponent, ResearchmentStructuresByFinancingComponent, ResearchmentStructuresByQSComponent,
+    InvestigationActionsComponent],
   imports: [
     CommonModule,
     CategoriesRoutingModule,
