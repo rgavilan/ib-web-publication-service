@@ -12,7 +12,7 @@
                 <label for="year" class="col-sm-4 control-label">{{  "projects.year" | translate }}</label>
                 <div class="col-sm-8">
                     <select name="year" (change)="filterProjects()" class="form-control"
-                        [(ngModel)]="findRequest.filter.year" #year="ngModel">
+                        [(ngModel)]="findRequest.filter.ini" #year="ngModel">
                         <option [value]="undefined">{{ "form.select" | translate }}</option>
                         <option [value]="2020">2020</option>
                         <option [value]="2019">2019</option>

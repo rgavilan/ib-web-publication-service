@@ -159,9 +159,12 @@ export class ProyectsComponent implements OnInit {
     pageRequest.size = this.allProjectFiltered.size;
     pageRequest.property = this.allProjectFiltered.sort;
     pageRequest.direction = this.allProjectFiltered.direction;
-    /*this.allProjectFiltered = this.projectService.findProjectByFilters(
-      this.filters, pageRequest
-    );*/
+    this.projectService.findProjectByFiltersfindProjectByFilters(this.findRequest).subscribe((data) => {
+      this.allProjectFiltered = data;
+      this.res.head = data.content[0].head;
+      this.res.results = data.content[1].results;
+      this.loadedProjects = true;
+    });
   }
 
 
@@ -174,12 +177,14 @@ export class ProyectsComponent implements OnInit {
    */
   filterProjects() {
     const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 1;
+    pageRequest.page = 0;
     pageRequest.size = this.allProjectFiltered.size;
     pageRequest.property = this.allProjectFiltered.sort;
     pageRequest.direction = this.allProjectFiltered.direction;
-    this.projectService.findProjectByFiltersfindProjectByFilters(this.findRequest).subscribe((data: Page<SparqlResults>) => {
+    this.projectService.findProjectByFiltersfindProjectByFilters(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
+      this.res.head = data.content[0].head;
+      this.res.results = data.content[1].results;
       this.loadedProjects = true;
     });
   }
