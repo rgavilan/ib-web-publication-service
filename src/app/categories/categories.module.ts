@@ -12,10 +12,11 @@ import { CommonDisplayDataModule } from '../common-display-data/common-display-d
 import { AllResearchmentStructuresComponent } from './researchment-structures/all-researchment-structures/all-researchment-structures.component';
 import { TopResearchmentStructuresComponent } from './researchment-structures/top-researchment-structures/top-researchment-structures.component';
 import { SectorChartComponent } from './researchment-structures/sector-chart/sector-chart.component';
+import { InvestigationActionsComponent } from './investigation-actions/investigation-actions.component';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
-    TopResearchmentStructuresComponent, SectorChartComponent],
+    TopResearchmentStructuresComponent, SectorChartComponent, InvestigationActionsComponent],
   imports: [
     CommonModule,
     CategoriesRoutingModule,
