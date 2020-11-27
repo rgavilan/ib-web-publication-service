@@ -5,6 +5,12 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.cursor > *,
+.cursor {
+  cursor: pointer;
+}
+
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 800px) {
   .column {
