@@ -29,7 +29,6 @@ export class Helper {
   ): HttpParams {
     if (value) {
       const strValue = String(value);
-
       if (strValue !== '' && strValue !== 'undefined') {
         params = params.append(name, strValue);
       }
@@ -52,7 +51,7 @@ export class Helper {
       params = params.set('size', String(pageRequest.size));
     }
 
-    if (pageRequest.page) {
+    if (pageRequest.page !== undefined) {
       params = params.set('page', String(pageRequest.page));
     }
 

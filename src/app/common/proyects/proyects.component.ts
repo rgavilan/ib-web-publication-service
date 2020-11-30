@@ -150,9 +150,8 @@ export class ProyectsComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   allprojectsFilteredPageChanged(i: number): void {
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = i;
-    pageRequest.size = this.allProjectFiltered.size;
+    this.findRequest.pageRequest.page = i;
+    this.findRequest.pageRequest.size = this.allProjectFiltered.size;
     this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
       this.loadedProjects = true;
@@ -177,8 +176,6 @@ export class ProyectsComponent implements OnInit {
 
 
     setTimeout(() => {
-      console.log(1, this.dateIni);
-      console.log(2, Helper.parse(this.dateIni));
       if (this.dateIni) {
         const currentDate = Helper.parse(this.dateIni);
         if (currentDate) {
@@ -192,12 +189,11 @@ export class ProyectsComponent implements OnInit {
           this.findRequest.filter.fin = currentDate;
         }
       }
-      console.log(this.findRequest);
       this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
         this.allProjectFiltered = data;
         this.loadedProjects = true;
       });
-    }, 100);
+    }, 0);
   }
 
 }
