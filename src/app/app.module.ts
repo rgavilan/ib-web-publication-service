@@ -18,10 +18,6 @@ import { NgProgressHttpModule } from 'ngx-progressbar/http';
 import { NgProgressRouterModule } from 'ngx-progressbar/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 
-// -------------- Third party --------------
-import { NgxEchartsModule } from 'ngx-echarts';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-
 // -------------- Services --------------
 import { LoginService } from './_services/login.service';
 import { MenuService } from './_services/menu.service';
@@ -43,7 +39,6 @@ import { TokenizedInterceptor } from './_interceptors/tokenized-interceptor';
 import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
 import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
 import { LinksComponent } from './links/links.component';
-import { CategoriesModule } from './categories/categories.module';
 import { LoginComponent } from './login/login.component';
 import { NgbModule, NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
 import { CustomNgbDateAdapter } from './_helpers/customNgbDateAdapter';
@@ -80,13 +75,8 @@ import { CustomNgbDatepickerI18n } from './_helpers/customNgbDatepickerI18n.prov
     NgProgressHttpModule,
     NgProgressRouterModule,
     NgSelectModule,
-    NgxEchartsModule.forRoot({
-      echarts: () => import('echarts'),
-    }),
-    LeafletModule,
     // Application
     SparqleditorModule,
-    CategoriesModule,
     NgbModule,
   ],
   providers: [
@@ -121,7 +111,7 @@ import { CustomNgbDatepickerI18n } from './_helpers/customNgbDatepickerI18n.prov
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
 
 export function createTranslateLoader(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
