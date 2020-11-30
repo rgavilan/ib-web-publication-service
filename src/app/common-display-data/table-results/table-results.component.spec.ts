@@ -14,23 +14,21 @@ describe('TableResultsComponent', () => {
     TestingHelper.configureTest().compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TableResultsComponent);
-    component = fixture.componentInstance;
-    component.dataComplete = new SparqlResults();
-    component.dataComplete.head = {
-      vars: []
-    };
-    component.dataComplete.results = {
-      bindings: []
-    };
-    component.dataComplete.results.bindings.length = 12;
-  });
-
 
   describe('init component without pagination in client', () => {
 
     beforeEach(() => {
+
+      fixture = TestBed.createComponent(TableResultsComponent);
+      component = fixture.componentInstance;
+      component.dataComplete = new SparqlResults();
+      component.dataComplete.head = {
+        vars: []
+      };
+      component.dataComplete.results = {
+        bindings: []
+      };
+      component.dataComplete.results.bindings.length = 12;
       component.dataCompleteToShow = [];
       component.dataCompleteToShow.length = 12;
       component.pageInfo = new Page();
@@ -52,15 +50,101 @@ describe('TableResultsComponent', () => {
   describe('init component with pagination in client', () => {
 
     beforeEach(() => {
-      component.dataCompleteToShow = [];
-      component.dataCompleteToShow.length = 12;
+      fixture = TestBed.createComponent(TableResultsComponent);
+      component = fixture.componentInstance;
+      component.dataComplete = new SparqlResults();
+      component.dataComplete.head = {
+        vars: [
+          'id'
+        ]
+      };
+      component.dataComplete.results = {
+        bindings: [{
+          id: {
+            type: 'literal',
+            value: '1'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '2'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '3'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '4'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '5'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '6'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '7'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '8'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '9'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '10'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '11'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '12'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '13'
+          }
+        },
+        ]
+      };
+      component.findRequest.pageRequest.page = 0;
+      component.findRequest.pageRequest.size = 10;
+      // component.findRequest.pageRequest.property = 'id';
+      expect(component.findRequest.pageRequest.page).toEqual(0);
+      expect(component.findRequest.pageRequest.size).toEqual(10);
+      expect(component.pageInfo).not.toBeDefined();
+      expect(component.dataCompleteToShow).not.toBeDefined();
       fixture.detectChanges();
+
     });
 
     it('test', () => {
       expect(component).toBeTruthy();
-      expect(component.searchResult.length).toEqual(10);
-      expect(component.resultObject.uibPage).toEqual(1);
+      // expect(component.findRequest.pageRequest.page).toEqual(0);
+      // expect(component.findRequest.pageRequest.size).toEqual(10);
+      expect(component.pageInfo).not.toBeDefined();
+      // expect(component.dataCompleteToShow.lenght).toEqual(12);
+      // expect(component.resultObject.uibPage).toEqual(1);
     });
   });
 
@@ -68,6 +152,16 @@ describe('TableResultsComponent', () => {
 
     beforeEach(() => {
 
+      fixture = TestBed.createComponent(TableResultsComponent);
+      component = fixture.componentInstance;
+      component.dataComplete = new SparqlResults();
+      component.dataComplete.head = {
+        vars: []
+      };
+      component.dataComplete.results = {
+        bindings: []
+      };
+      component.dataComplete.results.bindings.length = 12;
       spyOn(component.pageChanged, 'emit');
       fixture.detectChanges();
       component.findRequest = new FindRequest();
@@ -75,7 +169,7 @@ describe('TableResultsComponent', () => {
         size: 3,
         page: 5,
         direction: Direction.ASC,
-        property: 'name'
+        property: 'id'
       };
 
     });
@@ -103,6 +197,16 @@ describe('TableResultsComponent', () => {
   describe('callShowPageWhenSizeChanges', () => {
 
     beforeEach(() => {
+      fixture = TestBed.createComponent(TableResultsComponent);
+      component = fixture.componentInstance;
+      component.dataComplete = new SparqlResults();
+      component.dataComplete.head = {
+        vars: []
+      };
+      component.dataComplete.results = {
+        bindings: []
+      };
+      component.dataComplete.results.bindings.length = 12;
 
       spyOn(component.sizeChanged, 'emit');
       fixture.detectChanges();
@@ -111,7 +215,7 @@ describe('TableResultsComponent', () => {
         size: 3,
         page: 5,
         direction: Direction.ASC,
-        property: 'name'
+        property: 'id'
       };
 
     });
@@ -140,6 +244,16 @@ describe('TableResultsComponent', () => {
 
     beforeEach(() => {
 
+      fixture = TestBed.createComponent(TableResultsComponent);
+      component = fixture.componentInstance;
+      component.dataComplete = new SparqlResults();
+      component.dataComplete.head = {
+        vars: []
+      };
+      component.dataComplete.results = {
+        bindings: []
+      };
+      component.dataComplete.results.bindings.length = 12;
       spyOn(component.sortChanged, 'emit');
       fixture.detectChanges();
       component.findRequest = new FindRequest();
@@ -147,7 +261,7 @@ describe('TableResultsComponent', () => {
         size: 3,
         page: 5,
         direction: Direction.ASC,
-        property: 'name'
+        property: 'id'
       };
 
     });

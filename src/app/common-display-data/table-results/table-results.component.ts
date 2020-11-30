@@ -165,14 +165,11 @@ export class TableResultsComponent
     } else {
       if (findRequest.pageRequest.page === 0) {
         this.showPage(1);
-        page.content = this.dataCompleteToShow;
-        // page.content = this.dataComplete.results.bindings;
 
         page.first = true;
         page.last = false;
 
         page.number = 0;
-        page.content = this.dataCompleteToShow;
 
         // this.searchResult = page.content;
         // this.resultObject = page;
@@ -186,13 +183,13 @@ export class TableResultsComponent
 
         this.showPage(findRequest.pageRequest.page);
 
-        page.content = this.dataCompleteToShow;
-
         page.number = findRequest.pageRequest.page - 1;
 
       }
 
 
+
+      page.content = this.dataCompleteToShow;
       page.numberOfElements = Math.min(page.content.length, this.findRequest.pageRequest.size);
       page.size = this.findRequest.pageRequest.size;
       page.totalElements = this.dataComplete.results.bindings.length;
@@ -215,7 +212,7 @@ export class TableResultsComponent
 
   showPage(i: number): void {
     console.log('ShowPage' + i + ' - ' + this.findRequest.pageRequest.property + ' ' + this.findRequest.pageRequest.direction);
-    if (!!this.findRequest.pageRequest.property) {
+    if (!!this.findRequest.pageRequest.property && this.dataComplete.head.vars.indexOf(this.findRequest.pageRequest.property) > 0) {
       this.dataComplete.results.bindings = this.dataComplete.results.bindings.sort((a, b) => {
         if (this.findRequest.pageRequest.direction === Direction.ASC) {
           return (a[this.findRequest.pageRequest.property].value > b[this.findRequest.pageRequest.property].value) ? 1 : -1;
