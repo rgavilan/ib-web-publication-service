@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-12">
+        <fieldset>
+            <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm">
+                <div class="row mt-20">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="type" class="col-sm-4 control-label">{{  "scientist.area" | translate }}</label>
+                            <app-new-tree></app-new-tree>
+                        </div>
+                        <!-- dates -->
+                        <div class="form-group col-lg-3">
+                            <label for="dateFrom" class="control-label">{{'projects.date-ini' | translate }}</label>
+                            <input class="form-control" name="dateFrom" id="dateFrom" required
+                                (ngModelChange)="filterProjects()"
+                                placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker
+                                [readonly]="true" #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();"
+                                (keyup)="decisionDate.close()" #dateFrom="ngModel" [(ngModel)]="dateIni" />
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="dateTo" class="control-label">{{'projects.date-fin' | translate }}</label>
+                            <input class="form-control" name="dateTo" id="dateTo" required
+                                (ngModelChange)="filterProjects()"
+                                placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker
+                                [readonly]="true" #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();"
+                                (keyup)="decisionTo.close()" #dateTo="ngModel" [(ngModel)]="dateFin" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <app-table-results *ngIf="loadedProjects" [data]="allProjectFiltered.content[0]" [pageInfo]="allProjectFiltered"
+            (pageChanged)="allprojectsFilteredPageChanged($event)"
+            (sizeChanged)="allprojectsFilteredPageChanged($event)"
+            (sortChanged)="allprojectsFilteredPageChanged($event)">
+        </app-table-results>
+    </div>
+</div>

@@ -33,7 +33,7 @@
             </div>
         </div>
     </div>
-    <app-table-results [data]="allPatentFiltered.content[0]" [pageInfo]="allPatentFiltered"
+    <app-table-results *ngIf="loaded" [data]="allPatentFiltered.content[0]" [pageInfo]="allPatentFiltered"
         (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredPageChanged($event)"
         (sortChanged)="allprojectsFilteredPageChanged($event)">
     </app-table-results>

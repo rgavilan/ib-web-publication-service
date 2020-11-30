@@ -54,6 +54,7 @@ import { EventEmitter, Pipe, PipeTransform } from '@angular/core';
 import { TableResultsComponent } from '../common-display-data/table-results/table-results.component';
 import { ProyectsComponent } from '../common/proyects/proyects.component';
 import { PatentsComponent } from '../common/patents/patents.component';
+import { DocumentsComponent } from '../common/documents/documents.component';
 
 
 /**
@@ -99,7 +100,8 @@ export class TestingHelper {
         ProyectsComponent,
         PatentsComponent,
         TreeComponent,
-        NewTreeComponent
+        NewTreeComponent,
+        DocumentsComponent
       ],
       imports: [
         BrowserModule,

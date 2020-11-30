@@ -10,6 +10,8 @@ export class InvestigationActionsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
+
 
 }
