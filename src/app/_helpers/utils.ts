@@ -101,4 +101,16 @@ export class Helper {
 
     return result;
   }
+
+
+
+  static parse(value: number): any {
+    const momentDate = moment.utc(value);
+    console.log(3, momentDate);
+    if (momentDate.isValid()) {
+      return momentDate.format('YYYY-MM-DD');
+    } else {
+      return null;
+    }
+  }
 }

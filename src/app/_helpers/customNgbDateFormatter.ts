@@ -40,7 +40,7 @@ export class CustomNgbDateFormatter extends NgbDateParserFormatter {
       newDate.set('month', date.month - 1);
       newDate.set('date', date.day);
       newDate.startOf('day');
-      result = newDate.format('L');
+      result = newDate.format('YYYY-MM-DD');
     }
 
     return result;

@@ -30,7 +30,7 @@
     "select": "Selecciona ...",
     "yes": "Sí",
     "no": "No",
-    "datepicker-placeholder": "DD/MM/YYYY"
+    "datepicker-placeholder": "YYYY-MM-DD"
   },
   "menu": {
     "home": "Inicio",
@@ -154,7 +154,9 @@
     "participation": "Participaciones",
     "project-type": "Tipos de proyecto",
     "financing": "Financiaciamiento",
-    "convocation": "Convocatoria"
+    "convocation": "Convocatoria",
+    "date-fin": "Fecha Fin",
+    "date-ini": "Fecha Inicio"
   },
   "investigation-actions": {
     "documents": "Documentos",

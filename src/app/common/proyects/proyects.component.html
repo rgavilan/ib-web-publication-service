@@ -8,20 +8,22 @@
                 <app-new-tree></app-new-tree>
             </div>
             <!-- type -->
-            <div class="form-group col-lg-6">
-                <label for="year" class="col-sm-4 control-label">{{  "projects.year" | translate }}</label>
-                <div class="col-sm-8">
-                    <select name="year" (change)="filterProjects()" class="form-control"
-                        [(ngModel)]="findRequest.filter.ini" #year="ngModel">
-                        <option [value]="undefined">{{ "form.select" | translate }}</option>
-                        <option [value]="2020">2020</option>
-                        <option [value]="2019">2019</option>
-                        <option [value]="2018">2018</option>
-                        <option [value]="2017">2017</option>
-                        <option [value]="2017">2017</option>
-                    </select>
-                </div>
+
+            <div class="form-group col-lg-3">
+                <label for="dateFrom" class="control-label">{{'projects.date-ini' | translate }}</label>
+                <input class="form-control" name="dateFrom" id="dateFrom" required (ngModelChange)="filterProjects()"
+                    placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
+                    #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();" (keyup)="decisionDate.close()"
+                    #dateFrom="ngModel" [(ngModel)]="dateIni" />
             </div>
+            <div class="form-group col-lg-3">
+                <label for="dateTo" class="control-label">{{'projects.date-fin' | translate }}</label>
+                <input class="form-control" name="dateTo" id="dateTo" required (ngModelChange)="filterProjects()"
+                    placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
+                    #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();" (keyup)="decisionTo.close()"
+                    #dateTo="ngModel" [(ngModel)]="dateFin" />
+            </div>
+
         </div>
     </form>
 </fieldset>

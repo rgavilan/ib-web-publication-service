@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { ProjectService } from 'src/app/_services/project.service';
+import * as moment from 'moment';
+import { Helper } from 'src/app/_helpers/utils';
 
 /**
  *
@@ -23,6 +25,8 @@ export class ProyectsComponent implements OnInit {
   echartOptions: any;
   loadingData = false;
   loadedProjects = false;
+  dateIni: number;
+  dateFin: number;
   res: SparqlResults;
   /**
    * Creates an instance of ProyectsComponent.
@@ -167,13 +171,33 @@ export class ProyectsComponent implements OnInit {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 0;
     pageRequest.size = this.allProjectFiltered.size;
-    pageRequest.property = this.allProjectFiltered.sort;
-    pageRequest.direction = this.allProjectFiltered.direction;
+    pageRequest.property = 'description';
+    pageRequest.direction = Direction.ASC;
     this.findRequest.pageRequest = pageRequest;
-    this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
-      this.allProjectFiltered = data;
-      this.loadedProjects = true;
-    });
+
+
+    setTimeout(() => {
+      console.log(1, this.dateIni);
+      console.log(2, Helper.parse(this.dateIni));
+      if (this.dateIni) {
+        const currentDate = Helper.parse(this.dateIni);
+        if (currentDate) {
+          this.findRequest.filter.ini = currentDate;
+        }
+      }
+
+      if (this.dateFin) {
+        const currentDate = Helper.parse(this.dateFin);
+        if (currentDate) {
+          this.findRequest.filter.fin = currentDate;
+        }
+      }
+      console.log(this.findRequest);
+      this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
+        this.allProjectFiltered = data;
+        this.loadedProjects = true;
+      });
+    }, 100);
   }
 
 }
