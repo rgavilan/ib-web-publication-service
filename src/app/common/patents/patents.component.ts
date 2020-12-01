@@ -103,7 +103,7 @@ export class PatentsComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   allprojectsFilteredPageChanged(i: number): void {
-    this.findRequest.pageRequest.page = i;
+    this.findRequest.pageRequest.page = i - 1;
     this.findRequest.pageRequest.size = this.allPatentFiltered.size;
     this.patentService.findProjectByFilters(this.findRequest).subscribe((data) => {
       this.allPatentFiltered = data;

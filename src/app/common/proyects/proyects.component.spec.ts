@@ -63,11 +63,10 @@ describe('ProyectsComponent', () => {
   });
 
   describe('all proyects Filtered Page Changed', () => {
-    it('should change to page 2 and a result to show of 5', () => {
+    it('should change to page 1 and a result to show of 5', () => {
       component.allprojectsFilteredPageChanged(2);
       spyOn(projectService, 'findProjectByFilters').and.callThrough();
-      expect(component.findRequest.pageRequest.page).toBe(2);
-      // expect(component.allProjectFiltered.content[0].results.bindings.length).toBe(0);
+      expect(component.findRequest.pageRequest.page).toBe(1);
     });
   });
 
