@@ -76,7 +76,7 @@ export class DocumentsComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   allprojectsFilteredPageChanged(i: number): void {
-    this.findRequest.pageRequest.page = i;
+    this.findRequest.pageRequest.page = i - 1;
     this.findRequest.pageRequest.size = this.allProjectFiltered.size;
     this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
