@@ -40,6 +40,7 @@ export class PatentService extends AbstractService {
         // Filter params
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'type', findRequest.filter.type);
+        parameters = Helper.addParam(parameters, 'name', findRequest.filter.name);
         // Pagination params
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 
