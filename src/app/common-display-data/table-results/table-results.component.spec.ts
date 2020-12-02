@@ -1,4 +1,4 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, SimpleChange, SimpleChanges } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Direction, FindRequest, Page } from 'src/app/_helpers/search';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
@@ -145,6 +145,186 @@ describe('TableResultsComponent', () => {
       expect(component.pageInfo).not.toBeDefined();
       // expect(component.dataCompleteToShow.lenght).toEqual(12);
       // expect(component.resultObject.uibPage).toEqual(1);
+    });
+  });
+
+  describe('test ngOnchanges', () => {
+    it('it should call find function', () => {
+      const changes: SimpleChanges = null;
+      spyOn(component, 'find');
+      component.ngOnChanges(changes);
+      expect(component.find).toHaveBeenCalled();
+    });
+  });
+
+  describe('show Page', () => {
+    it('should show apropiate page and order Id ASC', () => {
+      component.findRequest = new FindRequest();
+      component.findRequest.pageRequest.direction = Direction.ASC;
+      component.findRequest.pageRequest.property = 'id';
+      component.dataComplete.head = {
+        vars: [
+          'name',
+          'id'
+        ]
+      };
+      component.dataComplete.results = {
+        bindings: [{
+          id: {
+            type: 'literal',
+            value: '1'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '2'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '3'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '4'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '5'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '6'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '7'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '8'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '9'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '10'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '11'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '12'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '13'
+          }
+        },
+        ]
+      };
+
+      component.showPage(0);
+      fixture.detectChanges();
+      expect(component.dataComplete.results.bindings[0].id.value).toBe('1');
+    });
+
+    it('should show apropiate page and order Id DESC', () => {
+      component.findRequest = new FindRequest();
+      component.findRequest.pageRequest.direction = Direction.DESC;
+      component.findRequest.pageRequest.property = 'id';
+      component.dataComplete.head = {
+        vars: [
+          'name',
+          'id'
+        ]
+      };
+      component.dataComplete.results = {
+        bindings: [{
+          id: {
+            type: 'literal',
+            value: '1'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '2'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '3'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '4'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '5'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '6'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '7'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '8'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '9'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '10'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '11'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '12'
+          }
+        }, {
+          id: {
+            type: 'literal',
+            value: '13'
+          }
+        },
+        ]
+      };
+      fixture.detectChanges();
+      component.showPage(0);
+      expect(component.dataComplete.results.bindings[0].id.value).toBe('9');
     });
   });
 

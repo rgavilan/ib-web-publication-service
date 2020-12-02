@@ -55,6 +55,19 @@ describe('ProyectsComponent', () => {
     });
   });
 
+  describe('on component Init', () => {
+    it('should change load all elements and start bar graphic', () => {
+      const pageRequest: PageRequest = new PageRequest();
+      pageRequest.page = 1;
+      pageRequest.size = 10;
+      component.chartType = 'bar';
+      component.ngOnInit();
+      fixture.detectChanges();
+      console.log('chart options', component.echartOptions);
+      expect(component.echartOptions.legend.align).toBe('left');
+    });
+  });
+
   describe('on Chart Init', () => {
     it('should change loadingData to true', () => {
       component.onChartInit();
