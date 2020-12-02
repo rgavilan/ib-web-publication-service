@@ -62,7 +62,7 @@ describe('DocumentsComponent', () => {
       component.filterProjects();
       tick(300);
       fixture.detectChanges();
-      expect(component.findRequest.filter.ini).toBe('2013-11-22');
+      expect(component.findRequest.filter.start).toBe('2013-11-22');
     }));
 
     it('should change the fin value sent to the back to corrent form', fakeAsync(() => {
@@ -70,7 +70,7 @@ describe('DocumentsComponent', () => {
       component.filterProjects();
       tick(300);
       fixture.detectChanges();
-      expect(component.findRequest.filter.fin).toBe('2013-11-22');
+      expect(component.findRequest.filter.end).toBe('2013-11-22');
     }));
 
     it('should cnot return a valiu filter fin parse', fakeAsync(() => {
@@ -78,7 +78,7 @@ describe('DocumentsComponent', () => {
       component.filterProjects();
       tick(300);
       fixture.detectChanges();
-      expect(component.findRequest.filter.fin).toBeUndefined();
+      expect(component.findRequest.filter.end).toBeUndefined();
     }));
 
 
@@ -87,7 +87,7 @@ describe('DocumentsComponent', () => {
       component.filterProjects();
       tick(300);
       fixture.detectChanges();
-      expect(component.findRequest.filter.fin).toBeUndefined();
+      expect(component.findRequest.filter.start).toBeUndefined();
     }));
   });
 });

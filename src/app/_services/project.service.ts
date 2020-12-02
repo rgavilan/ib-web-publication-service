@@ -118,8 +118,8 @@ export class ProjectService extends AbstractService {
     findProjectByFilters(findRequest: FindRequest): Observable<Page<SparqlResults>> {
         // Filter params
         let parameters = new HttpParams();
-        parameters = Helper.addParam(parameters, 'ini', findRequest.filter.ini);
-        parameters = Helper.addParam(parameters, 'fin', findRequest.filter.fin);
+        parameters = Helper.addParam(parameters, 'end', findRequest.filter.end);
+        parameters = Helper.addParam(parameters, 'start', findRequest.filter.start);
         // Pagination params
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 

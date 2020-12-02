@@ -52,14 +52,14 @@ export class DocumentsComponent implements OnInit {
       if (this.dateIni) {
         const currentDate = Helper.parse(this.dateIni);
         if (currentDate) {
-          this.findRequest.filter.ini = currentDate;
+          this.findRequest.filter.start = currentDate;
         }
       }
 
       if (this.dateFin) {
         const currentDate = Helper.parse(this.dateFin);
         if (currentDate) {
-          this.findRequest.filter.fin = currentDate;
+          this.findRequest.filter.end = currentDate;
         }
       }
       this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {

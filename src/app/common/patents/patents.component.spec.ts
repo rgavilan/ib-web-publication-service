@@ -1,9 +1,7 @@
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
 import { PatentService } from 'src/app/_services/patent.service';
-import { ProjectService } from 'src/app/_services/project.service';
 import { MockPatentService } from 'src/app/_services/_testingServices/mockPatent.service';
-import { MockProjectService } from 'src/app/_services/_testingServices/mockProject.service';
 
 import { PatentsComponent } from './patents.component';
 
