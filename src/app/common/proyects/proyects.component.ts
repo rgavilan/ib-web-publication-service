@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { ProjectService } from 'src/app/_services/project.service';
-import * as moment from 'moment';
 import { Helper } from 'src/app/_helpers/utils';
 
 /**
@@ -19,6 +18,7 @@ import { Helper } from 'src/app/_helpers/utils';
 })
 export class ProyectsComponent implements OnInit {
   @Input() universityId: string;
+  @Input() chartType: string;
   allProjectFiltered: Page<SparqlResults>;
   filters: Map<string, string> = new Map();
   findRequest: FindRequest = new FindRequest();
@@ -63,38 +63,69 @@ export class ProyectsComponent implements OnInit {
       data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
       data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
     }
+    if (this.chartType === 'bar') {
+      this.echartOptions = {
+        legend: {
+          data: ['bar', 'bar2'],
+          align: 'left',
+        },
+        tooltip: {},
+        xAxis: {
+          data: xAxisData,
+          silent: false,
+          splitLine: {
+            show: false,
+          },
+        },
+        yAxis: {},
+        series: [
+          {
+            name: 'bar',
+            type: 'bar',
+            data: data1,
+            animationDelay: (idx) => idx * 10,
+          },
+          {
+            name: 'bar2',
+            type: 'bar',
+            data: data2,
+            animationDelay: (idx) => idx * 10 + 100,
+          },
+        ],
+        animationEasing: 'elasticOut',
+        animationDelayUpdate: (idx) => idx * 5,
+      };
+    } else {
+      this.echartOptions = {
+        series: [{
+          type: 'treemap',
+          data: [{
+            name: 'nodeA',            // First tree
+            value: 10,
+            children: [{
+              name: 'nodeAa',       // First leaf of first tree
+              value: 4
+            }, {
+              name: 'nodeAb',       // Second leaf of first tree
+              value: 6
+            }]
+          }, {
+            name: 'nodeB',            // Second tree
+            value: 20,
+            children: [{
+              name: 'nodeBa',       // Son of first tree
+              value: 20,
+              children: [{
+                name: 'nodeBa1',  // Granson of first tree
+                value: 20
+              }]
+            }]
+          }]
+        }]
+      };
+    }
 
-    this.echartOptions = {
-      legend: {
-        data: ['bar', 'bar2'],
-        align: 'left',
-      },
-      tooltip: {},
-      xAxis: {
-        data: xAxisData,
-        silent: false,
-        splitLine: {
-          show: false,
-        },
-      },
-      yAxis: {},
-      series: [
-        {
-          name: 'bar',
-          type: 'bar',
-          data: data1,
-          animationDelay: (idx) => idx * 10,
-        },
-        {
-          name: 'bar2',
-          type: 'bar',
-          data: data2,
-          animationDelay: (idx) => idx * 10 + 100,
-        },
-      ],
-      animationEasing: 'elasticOut',
-      animationDelayUpdate: (idx) => idx * 5,
-    };
+
   }
 
   /**
