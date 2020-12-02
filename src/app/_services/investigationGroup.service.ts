@@ -16,7 +16,7 @@ import { Binding, SparqlResults } from '../_models/sparql';
 @Injectable({
     providedIn: 'root',
 })
-export class ProjectService extends AbstractService {
+export class InvestigationGroupService extends AbstractService {
     /**
      * Creates an instance of ProjectService.
      * param {HttpClient} httpClient
@@ -38,13 +38,12 @@ export class ProjectService extends AbstractService {
     findProjectByFilters(findRequest: FindRequest): Observable<Page<SparqlResults>> {
         // Filter params
         let parameters = new HttpParams();
-        parameters = Helper.addParam(parameters, 'end', findRequest.filter.end);
-        parameters = Helper.addParam(parameters, 'start', findRequest.filter.start);
+        parameters = Helper.addParam(parameters, 'description', findRequest.filter.description);
         // Pagination params
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 
         return this.httpClient
-            .get(Helper.getUrl('/investigationgroup/search'), {
+            .get(Helper.getUrl('/project/search'), {
                 params: parameters
             }).pipe(
                 catchError(this.handleError)
