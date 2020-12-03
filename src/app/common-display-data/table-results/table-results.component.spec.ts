@@ -1,5 +1,5 @@
 import { EventEmitter, SimpleChange, SimpleChanges } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { Direction, FindRequest, Page } from 'src/app/_helpers/search';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
 import { SparqlResults } from 'src/app/_models/sparql';
@@ -149,16 +149,17 @@ describe('TableResultsComponent', () => {
   });
 
   describe('test ngOnchanges', () => {
-    it('it should call find function', () => {
+    it('it should call find function', fakeAsync(() => {
       const changes: SimpleChanges = null;
       spyOn(component, 'find');
+      tick(300);
       component.ngOnChanges(changes);
       expect(component.find).toHaveBeenCalled();
-    });
+    }));
   });
 
   describe('show Page', () => {
-    it('should show appropiate page and order Id ASC', () => {
+    it('should show appropiate page and order Id ASC', fakeAsync(() => {
       component.findRequest = new FindRequest();
       component.findRequest.pageRequest.direction = Direction.ASC;
       component.findRequest.pageRequest.property = 'id';
@@ -237,13 +238,13 @@ describe('TableResultsComponent', () => {
         },
         ]
       };
-
+      tick(300);
       component.showPage(0);
       fixture.detectChanges();
       expect(component.dataComplete.results.bindings[0].id.value).toBe('1');
-    });
+    }));
 
-    it('should show appropiate page and order Id DESC', () => {
+    it('should show appropiate page and order Id DESC', fakeAsync(() => {
       component.findRequest = new FindRequest();
       component.findRequest.pageRequest.direction = Direction.DESC;
       component.findRequest.pageRequest.property = 'id';
@@ -322,10 +323,10 @@ describe('TableResultsComponent', () => {
         },
         ]
       };
-      fixture.detectChanges();
+      tick(300);
       component.showPage(0);
       expect(component.dataComplete.results.bindings[0].id.value).toBe('9');
-    });
+    }));
   });
 
   describe('callShowPageWhenPageChanges', () => {

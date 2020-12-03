@@ -38,7 +38,7 @@ describe('PatentsComponent', () => {
 
   describe('test filterProjects', () => {
     it('expect to call filter with property set to description', fakeAsync(() => {
-      component.filterProjects();
+      component.filterPatents();
       tick(300);
       fixture.detectChanges();
       expect(component.findRequest.pageRequest.property).toBe('description');
