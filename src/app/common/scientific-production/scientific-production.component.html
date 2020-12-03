@@ -25,10 +25,11 @@
     </form>
 </fieldset>
 <fieldset>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-end">
             <div class="input-group col-md-4">
-                <input class="form-control py-2 border-right-0 border" type="search" value="search by title"
+                <input class="form-control py-2 border-right-0 border" type="search"
+                    placeholder="{{'form.search-by-title' | translate }}" [(ngModel)]="findRequest.filter.name"
                     id="example-search-input">
                 <span class="input-group-append">
                     <button class="btn btn-outline-secondary border-left-0 border" type="button">
@@ -38,12 +39,9 @@
             </div>
         </div>
     </div>
-    <div class="mt-40">
-        <app-table-results [data]="allScientificProductionFiltered.content[0]"
-            [pageInfo]="allScientificProductionFiltered"
-            (pageChanged)="allScientificProductionFilteredPageChanged($event)"
-            (sizeChanged)="allScientificProductionFilteredPageChanged($event)"
-            (sortChanged)="allScientificProductionFilteredPageChanged($event)">
-        </app-table-results>
-    </div>
+    <app-table-results [data]="allScientificProductionFiltered.content[0]" [pageInfo]="allScientificProductionFiltered"
+        (pageChanged)="allScientificProductionFilteredPageChanged($event)"
+        (sizeChanged)="allScientificProductionFilteredPageChanged($event)"
+        (sortChanged)="allScientificProductionFilteredPageChanged($event)">
+    </app-table-results>
 </fieldset>
