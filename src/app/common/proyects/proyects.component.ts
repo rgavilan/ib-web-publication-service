@@ -135,7 +135,13 @@ export class ProyectsComponent implements OnInit {
           }, {
             name: 'Biología molecular y celular',
             value: 30
-          }]
+          }],
+          label: {
+            show: true
+          },
+          tooltip: {
+            borderWidth: 0.5
+          }
         }]
       };
     }

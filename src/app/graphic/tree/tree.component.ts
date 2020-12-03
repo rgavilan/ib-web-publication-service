@@ -9,6 +9,7 @@ import { NgxEchartsDirective, NgxEchartsModule } from 'ngx-echarts';
 export class TreeComponent implements OnInit {
   @Output() filterChanged: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('echarts') echarts: NgxEchartsDirective;
+  @Input() treeType = 'area';
   @Input() data = {
     name: 'Áreas',
     children: [
@@ -91,7 +92,6 @@ export class TreeComponent implements OnInit {
       series: [
         {
           type: 'tree',
-          data: [this.data],
           top: '1%',
           left: '7%',
           bottom: '1%',
@@ -116,6 +116,7 @@ export class TreeComponent implements OnInit {
         },
       ],
     };
+
   }
   /**
    * Method invoked when the chart is initialized
