@@ -164,12 +164,11 @@ export class PatentsComponent implements OnInit {
     this.findRequest.pageRequest = pageRequest;
 
 
-    setTimeout(() => {
-      this.patentService.findProjectByFilters(this.findRequest).subscribe((data) => {
-        this.allPatentFiltered = data;
-        this.loaded = true;
-      });
-    }, 0);
+    this.patentService.findProjectByFilters(this.findRequest).subscribe((data) => {
+      this.allPatentFiltered = data;
+      this.loaded = true;
+    });
+
   }
 
   /**

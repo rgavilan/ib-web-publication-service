@@ -152,7 +152,8 @@ describe('TableResultsComponent', () => {
     it('it should call find function', fakeAsync(() => {
       const changes: SimpleChanges = null;
       spyOn(component, 'find');
-      tick(300);
+      tick(500);
+      fixture.detectChanges();
       component.ngOnChanges(changes);
       expect(component.find).toHaveBeenCalled();
     }));
@@ -239,8 +240,8 @@ describe('TableResultsComponent', () => {
         ]
       };
       tick(300);
-      component.showPage(0);
       fixture.detectChanges();
+      component.showPage(0);
       expect(component.dataComplete.results.bindings[0].id.value).toBe('1');
     }));
 
@@ -324,6 +325,7 @@ describe('TableResultsComponent', () => {
         ]
       };
       tick(300);
+      fixture.detectChanges();
       component.showPage(0);
       expect(component.dataComplete.results.bindings[0].id.value).toBe('9');
     }));

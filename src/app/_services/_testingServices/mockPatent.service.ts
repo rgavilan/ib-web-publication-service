@@ -13,7 +13,7 @@ import { PatentService } from '../patent.service';
 @Injectable({
     providedIn: 'root',
 })
-export class MockPatentService extends PatentService {
+export class MockPatentService {
     // mock data
     readonly DUMMY_DATA: SparqlResults = {
         head: {
