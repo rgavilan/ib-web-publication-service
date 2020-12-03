@@ -149,6 +149,8 @@ export class ProyectsComponent implements OnInit {
 
   }
 
+
+
   /**
    *
    *
@@ -222,8 +224,6 @@ export class ProyectsComponent implements OnInit {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 0;
     pageRequest.size = this.allProjectFiltered.size;
-    pageRequest.property = 'description';
-    pageRequest.direction = Direction.ASC;
     this.findRequest.pageRequest = pageRequest;
 
 
