@@ -212,6 +212,44 @@ export class ProyectsComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   *
+   * @param {number} i
+   * @memberof PatentsComponent
+   */
+  allprojectsFilteredSizeChanged(i: number): void {
+
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = this.allProjectFiltered.number;
+    pageRequest.size = i;
+    pageRequest.direction = this.allProjectFiltered.direction;
+    this.findRequest.pageRequest = pageRequest;
+    this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
+      this.allProjectFiltered = data;
+      this.loadedProjects = true;
+    });
+  }
+
+  /**
+   *
+   *
+   * @param {PageRequest} pageRequest
+   * @memberof PatentsComponent
+   */
+  allprojectsFilteredSortChanged(pageRequest: PageRequest) {
+    const newPageRequest: PageRequest = new PageRequest();
+    newPageRequest.page = this.allProjectFiltered.number;
+    newPageRequest.size = this.allProjectFiltered.size;
+    newPageRequest.property = pageRequest.property;
+    newPageRequest.direction = pageRequest.direction;
+    this.findRequest.pageRequest = pageRequest;
+    this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
+      this.allProjectFiltered = data;
+      this.loadedProjects = true;
+    });
+  }
+
 
   /**
    *

@@ -12,7 +12,7 @@
         </thead>
         <tbody>
           <ng-container *ngFor="let item of dataCompleteToShow; index as i">
-            <tr [routerLink]="[routerLink, item[routerField].value]" class="cursor"
+            <tr [routerLink]="[routerNameLink, item[routerField].value]" class="cursor"
               *ngIf="!!routerField && !!item[routerField]" [ngClass]="{ 'table-secondary': i % 2 == 1 }">
               <td>{{ i }}</td>
               <td *ngFor="let header of dataComplete.head.vars">

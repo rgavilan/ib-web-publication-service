@@ -101,7 +101,7 @@ export class TableResultsComponent
    * @memberof TableResultsComponent
    */
   @Input()
-  routerLink = './';
+  routerNameLink = './';
 
 
   /**

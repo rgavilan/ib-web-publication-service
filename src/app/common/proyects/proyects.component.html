@@ -41,10 +41,10 @@
             </div>
         </div>
     </div>
-    <app-table-results [routerLink]="'./project/'" *ngIf="loadedProjects" [routerField]="'id'"
+    <app-table-results [routerNameLink]="'./project/'" *ngIf="loadedProjects" [routerField]="'id'"
         [data]="allProjectFiltered.content[0]" [pageInfo]="allProjectFiltered"
-        (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredPageChanged($event)"
-        (sortChanged)="allprojectsFilteredPageChanged($event)">
+        (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
+        (sortChanged)="allprojectsFilteredSortChanged($event)">
     </app-table-results>
     <div style="min-width: 600px; width:100%; height:450px" echarts [loading]="loadingData" [options]="echartOptions"
         class="demo-chart"></div>
