@@ -97,11 +97,6 @@ export class ProyectsComponent implements OnInit {
       };
     } else {
       this.echartOptions = {
-        roam: false,
-        dataZoom: [{
-          type: "inside",
-          zoomOnMouseWheel: false
-        }],
         series: [{
           type: 'treemap',
           data: [{
