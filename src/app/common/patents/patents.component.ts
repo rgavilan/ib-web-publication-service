@@ -119,7 +119,7 @@ export class PatentsComponent implements OnInit {
    * @param {string} filterName
    * @memberof ScientificProductionComponent
    */
-  filterProjects() {
+  filterPatents() {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 0;
     pageRequest.size = this.allPatentFiltered.size;
