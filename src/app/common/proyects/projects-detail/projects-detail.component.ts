@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { FindRequest } from 'src/app/_helpers/search';
+import { ProjectService } from 'src/app/_services/project.service';
 
 @Component({
   selector: 'app-projects-detail',
@@ -6,10 +9,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./projects-detail.component.css']
 })
 export class ProjectsDetailComponent implements OnInit {
-
-  constructor() { }
+  id: string;
+  findRequest: FindRequest = new FindRequest();
+  constructor(
+    private route: ActivatedRoute,
+    private projectService: ProjectService) { }
 
   ngOnInit(): void {
+    this.findRequest.pageRequest.page = 0;
+    this.findRequest.pageRequest.size = 10;
+    this.route.params.subscribe((params: Params) => {
+      this.id = params.id; // (+) converts string 'id' to a number
+      if (this.id) {
+        this.findRequest.filter.id = this.id;
+        this.projectService.findProjectByFilters(this.findRequest).subscribe(data => {
+          console.log(data);
+        });
+      }
+    });
   }
 
 }

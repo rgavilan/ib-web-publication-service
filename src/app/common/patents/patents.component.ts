@@ -111,6 +111,32 @@ export class PatentsComponent implements OnInit {
     });
   }
 
+  allprojectsFilteredSizeChanged(i: number): void {
+
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = this.allPatentFiltered.number;
+    pageRequest.size = i;
+    pageRequest.direction = this.allPatentFiltered.direction;
+    this.findRequest.pageRequest = pageRequest;
+    this.patentService.findProjectByFilters(this.findRequest).subscribe((data) => {
+      this.allPatentFiltered = data;
+      this.loaded = true;
+    });
+  }
+
+  allprojectsFilteredSortChanged(pageRequest: PageRequest) {
+    const newPageRequest: PageRequest = new PageRequest();
+    newPageRequest.page = this.allPatentFiltered.number;
+    newPageRequest.size = this.allPatentFiltered.size;
+    newPageRequest.property = pageRequest.property;
+    newPageRequest.direction = pageRequest.direction;
+    this.findRequest.pageRequest = pageRequest;
+    this.patentService.findProjectByFilters(this.findRequest).subscribe((data) => {
+      this.allPatentFiltered = data;
+      this.loaded = true;
+    });
+  }
+
 
   /**
    *
