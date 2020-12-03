@@ -155,5 +155,10 @@
   "investigation-actions": {
     "documents": "Documents",
     "projects": "Projects"
+  },
+  "documents": {
+    "document": "Documents",
+    "date-fin": "End Date",
+    "date-ini": "Start Date"
   }
 }
