@@ -17,6 +17,10 @@ const routes: Routes = [
     path: 'investigation-actions',
     component: InvestigationActionsComponent,
   },
+  {
+    path: 'investigation-actions/project/:id',
+    component: InvestigationActionsComponent,
+  },
 ];
 
 @NgModule({

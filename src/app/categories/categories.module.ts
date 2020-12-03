@@ -24,12 +24,14 @@ import { ScientistSearchComponent } from '../common/scientist-search/scientist-s
 import { TopSearchComponent } from '../common/top-search/top-search.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { DocumentsComponent } from '../common/documents/documents.component';
+import { ProjectsDetailComponent } from '../common/proyects/projects-detail/projects-detail.component';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
     TopResearchmentStructuresComponent, ResearchmentStructuresByFinancingComponent, ResearchmentStructuresByQSComponent,
     InvestigationActionsComponent, TreeComponent, GraphicComponent, NewTreeComponent, PatentsComponent,
-    ProyectsComponent, ScientificProductionComponent, ScientistSearchComponent, TopSearchComponent, DocumentsComponent
+    ProyectsComponent, ScientificProductionComponent, ScientistSearchComponent, TopSearchComponent, DocumentsComponent,
+    ProjectsDetailComponent
   ],
   imports: [
     CommonModule,
