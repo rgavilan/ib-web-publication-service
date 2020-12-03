@@ -4,6 +4,13 @@ import { Helper } from 'src/app/_helpers/utils';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { ProjectService } from 'src/app/_services/project.service';
 
+/**
+ *
+ *
+ * @export
+ * @class DocumentsComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-documents',
   templateUrl: './documents.component.html',
@@ -82,6 +89,26 @@ export class DocumentsComponent implements OnInit {
       this.allProjectFiltered = data;
       this.loadedProjects = true;
     });
+  }
+
+  /**
+   *
+   *
+   * @memberof DocumentsComponent
+   */
+  filterDocuments() {
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = 0;
+    pageRequest.size = this.allProjectFiltered.size;
+    this.findRequest.pageRequest = pageRequest;
+
+
+    // setTimeout(() => {
+    //   this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
+    //     this.allProjectFiltered = data;
+    //     this.loaded = true;
+    //   });
+    // }, 0);
   }
 
 }

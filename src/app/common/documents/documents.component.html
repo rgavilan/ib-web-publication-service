@@ -23,12 +23,25 @@
         </div>
     </form>
 </fieldset>
-<div class="row">
-    <div class="col-12">
-        <app-table-results *ngIf="loadedProjects" [data]="allProjectFiltered.content[0]" [pageInfo]="allProjectFiltered"
-            (pageChanged)="allprojectsFilteredPageChanged($event)"
-            (sizeChanged)="allprojectsFilteredPageChanged($event)"
-            (sortChanged)="allprojectsFilteredPageChanged($event)">
-        </app-table-results>
+
+<fieldset>
+    <div class="container-fluid">
+        <div class="row justify-content-end">
+            <div class="input-group col-md-4">
+                <input class="form-control py-2 border-right-0 border" type="search"
+                    placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name"
+                    id="example-search-input">
+                <span class="input-group-append">
+                    <button (click)="filterDocuments()" class="btn btn-outline-secondary border-left-0 border"
+                        type="button">
+                        <em class="oi oi-magnifying-glass "></em>
+                    </button>
+                </span>
+            </div>
+        </div>
     </div>
-</div>
+    <app-table-results *ngIf="loadedProjects" [data]="allProjectFiltered.content[0]" [pageInfo]="allProjectFiltered"
+        (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredPageChanged($event)"
+        (sortChanged)="allprojectsFilteredPageChanged($event)">
+    </app-table-results>
+</fieldset>
