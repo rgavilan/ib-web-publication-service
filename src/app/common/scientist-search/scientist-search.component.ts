@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { ScientistService } from 'src/app/_services/scientist.service';
 /**
@@ -23,6 +23,9 @@ export class ScientistSearchComponent implements OnInit {
   filters: Map<string, string> = new Map();
   findRequest: FindRequest = new FindRequest();
   echartOptions: any;
+
+  loaded = false;
+
   /**
    * Constructor
    * param router 
@@ -136,6 +139,23 @@ export class ScientistSearchComponent implements OnInit {
     this.allScientificsFiltered = this.scientificsService.findTopByFilters(
       this.filters, pageRequest
     );
+  }
+
+  filterPersonal() {
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = 0;
+    pageRequest.size = this.allScientificsFiltered.size;
+    pageRequest.property = 'name';
+    pageRequest.direction = Direction.ASC;
+    this.findRequest.pageRequest = pageRequest;
+
+
+    // setTimeout(() => {
+    //   this.personalService.findProjectByFilters(this.findRequest).subscribe((data) => {
+    //     this.allScientificsFiltered = data;
+    //     this.loaded = true;
+    //   });
+    // }, 0);
   }
 
   /**
