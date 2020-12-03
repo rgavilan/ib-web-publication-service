@@ -15,6 +15,9 @@
     "save": "Guardar",
     "cancel": "Cancelar",
     "search": "Buscar",
+    "search-by-name": "Buscar por nombre",
+    "search-by-title": "Buscar por título",
+    "search-by-description": "Buscar por descripción",
     "pagination": "Viendo filas {{min}} a {{max}} de {{total}}",
     "pagination-next": "⟩",
     "pagination-previous": "⟨",
@@ -133,11 +136,11 @@
     "patents": "Patentes",
     "area": "Área"
   },
-  "scientist" : {
+  "scientist": {
     "title": "Personal investigador",
     "area": "Área",
-    "type":"Tipo"
-  }, 
+    "type": "Tipo"
+  },
   "scientific-production": {
     "title": "Producción cientifica",
     "date-from": "Fecha desde",

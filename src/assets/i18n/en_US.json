@@ -15,6 +15,9 @@
     "save": "Save",
     "cancel": "Cancel",
     "search": "Search",
+    "search-by-name": "Search by name",
+    "search-by-title": "Search by title",
+    "search-by-description": "Search by description",
     "pagination": "Displaying results {{min}} accross {{max}} of {{total}}",
     "pagination-next": "⟩",
     "pagination-previous": "⟨",
@@ -124,11 +127,11 @@
     "patents": "Patentes",
     "area": "Area"
   },
-  "scientist" : {
+  "scientist": {
     "title": "Research staff",
     "area": "Area",
-    "type":"Type"
-  }, 
+    "type": "Type"
+  },
   "scientific-production": {
     "title": "Scientific production",
     "date-from": "Date from",
