@@ -44,7 +44,7 @@ export class ProjectService extends AbstractService {
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 
         return this.httpClient
-            .get(Helper.getUrl('/investigationgroup/search'), {
+            .get(Helper.getUrl('/project/search'), {
                 params: parameters
             }).pipe(
                 catchError(this.handleError)

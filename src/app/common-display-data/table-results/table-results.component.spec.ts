@@ -158,7 +158,7 @@ describe('TableResultsComponent', () => {
   });
 
   describe('show Page', () => {
-    it('should show apropiate page and order Id ASC', () => {
+    it('should show appropiate page and order Id ASC', () => {
       component.findRequest = new FindRequest();
       component.findRequest.pageRequest.direction = Direction.ASC;
       component.findRequest.pageRequest.property = 'id';
@@ -243,7 +243,7 @@ describe('TableResultsComponent', () => {
       expect(component.dataComplete.results.bindings[0].id.value).toBe('1');
     });
 
-    it('should show apropiate page and order Id DESC', () => {
+    it('should show appropiate page and order Id DESC', () => {
       component.findRequest = new FindRequest();
       component.findRequest.pageRequest.direction = Direction.DESC;
       component.findRequest.pageRequest.property = 'id';

@@ -100,26 +100,41 @@ export class ProyectsComponent implements OnInit {
         series: [{
           type: 'treemap',
           data: [{
-            name: 'nodeA',            // First tree
-            value: 10,
-            children: [{
-              name: 'nodeAa',       // First leaf of first tree
-              value: 4
-            }, {
-              name: 'nodeAb',       // Second leaf of first tree
-              value: 6
-            }]
+            name: 'Ciencias agrícolas y agroalimentarias',
+            value: 10
           }, {
-            name: 'nodeB',            // Second tree
-            value: 20,
-            children: [{
-              name: 'nodeBa',       // Son of first tree
-              value: 20,
-              children: [{
-                name: 'nodeBa1',  // Granson of first tree
-                value: 20
-              }]
-            }]
+            name: 'Agricultura y Bosques',
+            value: 20
+          }, {
+            name: 'Astronomía y astrofísica',
+            value: 15
+          }, {
+            name: 'Biomedicina',
+            value: 30
+          }, {
+            name: 'Economía',
+            value: 30
+          }, {
+            name: 'Ciencia y tecnología ambiental',
+            value: 30
+          }, {
+            name: 'Ciencia y tecnología de los alimentos',
+            value: 30
+          }, {
+            name: 'Física fundamental y de partículas',
+            value: 30
+          }, {
+            name: 'Producción industrial, ingeniería civil e ingeniería para la sociedad',
+            value: 30
+          }, {
+            name: 'Ciencias de la vida',
+            value: 30
+          }, {
+            name: 'Ciencias matemáticas',
+            value: 30
+          }, {
+            name: 'Biología molecular y celular',
+            value: 30
           }]
         }]
       };
