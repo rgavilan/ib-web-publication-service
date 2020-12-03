@@ -41,9 +41,10 @@
             </div>
         </div>
     </div>
-    <app-table-results *ngIf="loadedProjects" [routerField]="'id'" [data]="allProjectFiltered.content[0]"
-        [pageInfo]="allProjectFiltered" (pageChanged)="allprojectsFilteredPageChanged($event)"
-        (sizeChanged)="allprojectsFilteredPageChanged($event)" (sortChanged)="allprojectsFilteredPageChanged($event)">
+    <app-table-results [routerLink]="'./project/'" *ngIf="loadedProjects" [routerField]="'id'"
+        [data]="allProjectFiltered.content[0]" [pageInfo]="allProjectFiltered"
+        (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredPageChanged($event)"
+        (sortChanged)="allprojectsFilteredPageChanged($event)">
     </app-table-results>
     <div style="min-width: 600px; width:100%; height:450px" echarts [loading]="loadingData" [options]="echartOptions"
         class="demo-chart"></div>

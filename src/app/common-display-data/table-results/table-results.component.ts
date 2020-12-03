@@ -94,6 +94,14 @@ export class TableResultsComponent
    */
   @Input()
   routerField: string;
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof TableResultsComponent
+   */
+  @Input()
+  routerLink = './';
 
 
   /**

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ProjectsDetailComponent } from '../common/proyects/projects-detail/projects-detail.component';
 import { InvestigationActionsComponent } from './investigation-actions/investigation-actions.component';
 import { ResearchmentStructuresDetailComponent } from './researchment-structures-detail/researchment-structures-detail.component';
 import { ResearchmentStructuresComponent } from './researchment-structures/researchment-structures.component';
@@ -19,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'investigation-actions/project/:id',
-    component: InvestigationActionsComponent,
+    component: ProjectsDetailComponent,
   },
 ];
 
