@@ -159,7 +159,14 @@
     "financing": "Financiaciamiento",
     "convocation": "Convocatoria",
     "date-fin": "Fecha Fin",
-    "date-ini": "Fecha Inicio"
+    "date-ini": "Fecha Inicio",
+    "general-info": "Información general",
+    "participants": "Participantes",
+    "deliverables": "Entregables",
+    "financing-type": "Tipo de financiamiento",
+    "call-type": "Tipo de convocatoria",
+    "people-involved": "Personas involucradas en el proyecto",
+    "main-researcher": "Nombre(s) del investigador (s) principal"
   },
   "investigation-actions": {
     "documents": "Documentos",
@@ -169,5 +176,18 @@
     "document": "Documentos",
     "date-fin": "Fecha Fin",
     "date-ini": "Fecha Inicio"
+  },
+  "participant": {
+    "title": "Participantes",
+    "level": "Nivel",
+    "year": "Año",
+    "people-involved": "Personas involucradas en el proyecto",
+    "proyect-participants": "Entidades colaboradores/ participantes"
+  },
+  "deliverable": {
+    "title": "Entregables/ Memoria del proyecto",
+    "level": "Nivel",
+    "year": "Año",
+    "scientific-production-related": "Producción cientifíca relacionada con el proyecto"
   }
 }

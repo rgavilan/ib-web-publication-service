@@ -11,6 +11,7 @@ import { ProjectService } from 'src/app/_services/project.service';
 export class ProjectsDetailComponent implements OnInit {
   id: string;
   findRequest: FindRequest = new FindRequest();
+  proyect: any;
   constructor(
     private route: ActivatedRoute,
     private projectService: ProjectService) { }
@@ -23,7 +24,7 @@ export class ProjectsDetailComponent implements OnInit {
       if (this.id) {
         this.findRequest.filter.id = this.id;
         this.projectService.findProjectByFilters(this.findRequest).subscribe(data => {
-          console.log(data);
+          this.proyect = data.content[0].results.bindings;
         });
       }
     });

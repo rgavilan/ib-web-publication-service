@@ -150,7 +150,14 @@
     "financing": "Financing",
     "convocation": "Convocation",
     "date-fin": "End Date",
-    "date-ini": "Start Date"
+    "date-ini": "Start Date",
+    "general-info": "General info",
+    "participants": "Participants",
+    "deliverables": "Deliverables",
+    "financing-type": "Financing type",
+    "call-type": "Call Type",
+    "people-involved": "People involved in proyect",
+    "main-researcher": "name(s) main  researcher(s)"
   },
   "investigation-actions": {
     "documents": "Documents",
@@ -160,5 +167,12 @@
     "document": "Documents",
     "date-fin": "End Date",
     "date-ini": "Start Date"
+  },
+  "participant": {
+    "title": "Participants",
+    "level": "Level",
+    "year": "Year",
+    "people-involved": "Perople involved in proyect",
+    "proyect-participants": "Collaborating / participating entities"
   }
 }

@@ -194,7 +194,6 @@ export class ProyectsComponent implements OnInit {
    */
   onChartInit() {
     this.loadingData = true;
-    console.log('chart init');
   }
 
   /**

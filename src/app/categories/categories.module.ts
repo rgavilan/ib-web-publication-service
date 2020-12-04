@@ -25,13 +25,15 @@ import { TopSearchComponent } from '../common/top-search/top-search.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { DocumentsComponent } from '../common/documents/documents.component';
 import { ProjectsDetailComponent } from '../common/proyects/projects-detail/projects-detail.component';
+import { ParticipantsComponent } from '../common/participants/participants.component';
+import { DeliverableComponent } from '../common/deliverable/deliverable.component';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
     TopResearchmentStructuresComponent, ResearchmentStructuresByFinancingComponent, ResearchmentStructuresByQSComponent,
     InvestigationActionsComponent, TreeComponent, GraphicComponent, NewTreeComponent, PatentsComponent,
     ProyectsComponent, ScientificProductionComponent, ScientistSearchComponent, TopSearchComponent, DocumentsComponent,
-    ProjectsDetailComponent
+    ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent
   ],
   imports: [
     CommonModule,

@@ -63,7 +63,6 @@ describe('ProyectsComponent', () => {
       component.chartType = 'bar';
       component.ngOnInit();
       fixture.detectChanges();
-      console.log('chart options', component.echartOptions);
       expect(component.echartOptions.legend.align).toBe('left');
     });
   });
