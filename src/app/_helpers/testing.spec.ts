@@ -55,6 +55,9 @@ import { TableResultsComponent } from '../common-display-data/table-results/tabl
 import { ProyectsComponent } from '../common/proyects/proyects.component';
 import { PatentsComponent } from '../common/patents/patents.component';
 import { DocumentsComponent } from '../common/documents/documents.component';
+import { ParticipantsComponent } from '../common/participants/participants.component';
+import { DeliverableComponent } from '../common/deliverable/deliverable.component';
+import { ProjectsDetailComponent } from '../common/proyects/projects-detail/projects-detail.component';
 
 
 /**
@@ -101,7 +104,10 @@ export class TestingHelper {
         PatentsComponent,
         TreeComponent,
         NewTreeComponent,
-        DocumentsComponent
+        DocumentsComponent,
+        ParticipantsComponent,
+        DeliverableComponent,
+        ProjectsDetailComponent
       ],
       imports: [
         BrowserModule,
