@@ -4,6 +4,7 @@ import { ProjectsDetailComponent } from '../common/proyects/projects-detail/proj
 import { InvestigationActionsComponent } from './investigation-actions/investigation-actions.component';
 import { ResearchmentStructuresDetailComponent } from './researchment-structures-detail/researchment-structures-detail.component';
 import { ResearchmentStructuresComponent } from './researchment-structures/researchment-structures.component';
+import { ScientistComponent } from './scientist/scientist.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'investigation-actions/project/:id',
     component: ProjectsDetailComponent,
+  },
+  {
+    path: 'scientist',
+    component: ScientistComponent,
   },
 ];
 

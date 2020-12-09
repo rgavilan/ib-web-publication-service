@@ -20,6 +20,7 @@ import { TableResultsComponent } from '../common-display-data/table-results/tabl
 import { RouterModule } from '@angular/router';
 import { PatentService } from '../_services/patent.service';
 import { ScientistService } from '../_services/scientist.service';
+import { DocumentService } from '../_services/document.service';
 
 @NgModule({
   declarations: [PaginationComponent,
@@ -41,7 +42,8 @@ import { ScientistService } from '../_services/scientist.service';
   providers: [
     ScientificProductionService,
     PatentService,
-    ScientistService
+    ScientistService,
+    DocumentService
   ]
 })
 export class SharedModule { }

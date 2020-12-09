@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { SparqlResults } from 'src/app/_models/sparql';
-import { ProjectService } from 'src/app/_services/project.service';
+import { DocumentService } from 'src/app/_services/document.service';
 
 /**
  *
@@ -17,22 +17,70 @@ import { ProjectService } from 'src/app/_services/project.service';
   styleUrls: ['./documents.component.css']
 })
 export class DocumentsComponent implements OnInit {
-
+  /**
+   *
+   *
+   * @type {Array<string>}
+   * @memberof DocumentsComponent
+   */
+  @Input() filterDocumentType: Array<string> = [];
+  /**
+   *
+   *
+   * @type {number}
+   * @memberof DocumentsComponent
+   */
   dateIni: number;
+  /**
+   *
+   *
+   * @type {number}
+   * @memberof DocumentsComponent
+   */
   dateFin: number;
+  /**
+   *
+   *
+   * @type {FindRequest}
+   * @memberof DocumentsComponent
+   */
   findRequest: FindRequest = new FindRequest();
+  /**
+   *
+   *
+   * @type {SparqlResults}
+   * @memberof DocumentsComponent
+   */
   res: SparqlResults;
+  /**
+   *
+   *
+   * @memberof DocumentsComponent
+   */
   loadedProjects = false;
+  /**
+   *
+   *
+   * @type {Page<SparqlResults>}
+   * @memberof DocumentsComponent
+   */
   allProjectFiltered: Page<SparqlResults>;
-  constructor(private projectService: ProjectService) { }
+  /**
+   * Creates an instance of DocumentsComponent.
+   * @param {ProjectService} projectService
+   * @memberof DocumentsComponent
+   */
+  constructor(private documentService: DocumentService) { }
 
   ngOnInit(): void {
+    console.log('filter types', this.filterDocumentType);
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 0;
     pageRequest.size = 10;
     this.findRequest.pageRequest = pageRequest;
+    this.findRequest.filter.types = this.filterDocumentType;
     this.res = new SparqlResults();
-    this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
+    this.documentService.find(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
       this.loadedProjects = true;
     });
@@ -69,7 +117,7 @@ export class DocumentsComponent implements OnInit {
           this.findRequest.filter.end = currentDate;
         }
       }
-      this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
+      this.documentService.find(this.findRequest).subscribe((data) => {
         this.allProjectFiltered = data;
         this.loadedProjects = true;
       });
@@ -85,7 +133,7 @@ export class DocumentsComponent implements OnInit {
   allprojectsFilteredPageChanged(i: number): void {
     this.findRequest.pageRequest.page = i - 1;
     this.findRequest.pageRequest.size = this.allProjectFiltered.size;
-    this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
+    this.documentService.find(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
       this.loadedProjects = true;
     });

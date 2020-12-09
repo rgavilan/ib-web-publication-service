@@ -40,7 +40,7 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     title: 'menu.scientist',
     icon: 'oi oi-person',
-    url: '/main/home',
+    url: '/main/categories/scientist',
   },
   {
     title: 'menu.category-inves',

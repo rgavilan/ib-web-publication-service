@@ -22,16 +22,22 @@ export class Helper {
    * @param value parameter value.
    * @returns new request params.
    */
-  static addParam(
-    params: HttpParams,
-    name: string,
-    value: string | number
-  ): HttpParams {
+  static addParam(params: HttpParams, name: string, value: string | number | Array<string>): HttpParams {
     if (value) {
-      const strValue = String(value);
-      if (strValue !== '' && strValue !== 'undefined') {
-        params = params.append(name, strValue);
+      if (Array.isArray(value)) {
+        value.forEach(element => {
+          if (element !== '' && element !== 'undefined') {
+            // params = params.append(name, element);
+            params = params.append(`${name.toString()}`, element);
+          }
+        });
+      } else {
+        const strValue = String(value);
+        if (strValue !== '' && strValue !== 'undefined') {
+          params = params.append(name, strValue);
+        }
       }
+
     }
 
     return params;
