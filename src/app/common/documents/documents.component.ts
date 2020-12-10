@@ -27,6 +27,13 @@ export class DocumentsComponent implements OnInit {
   /**
    *
    *
+   * @type {Boolean}
+   * @memberof DocumentsComponent
+   */
+  @Input() isTreeVisible = true;
+  /**
+   *
+   *
    * @type {number}
    * @memberof DocumentsComponent
    */
