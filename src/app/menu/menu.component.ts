@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.css'],
+
 })
 export class MenuComponent implements OnInit {
   /**
@@ -21,7 +23,7 @@ export class MenuComponent implements OnInit {
     private router: Router,
     private menuService: MenuService,
     private loginService: LoginService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.menuService.getMenu().then((menuItems: MenuItem[]) => {

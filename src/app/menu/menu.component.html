@@ -6,7 +6,7 @@
   <!-- menu entries -->
   <li *ngFor="let item of menuItems" class="sidebar-brand">
     <a [routerLink]="[item.url]">
-      <em style="font-size: 18px" class="oi" [ngClass]="[item.icon]"></em>
+      <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
       {{ item.title | translate }}
     </a>
   </li>
