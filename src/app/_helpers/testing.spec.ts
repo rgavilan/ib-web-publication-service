@@ -57,6 +57,7 @@ import { DocumentsComponent } from '../common/documents/documents.component';
 import { ParticipantsComponent } from '../common/participants/participants.component';
 import { DeliverableComponent } from '../common/deliverable/deliverable.component';
 import { ProjectsDetailComponent } from '../common/proyects/projects-detail/projects-detail.component';
+import { ScientistComponent } from '../categories/scientist/scientist.component';
 
 
 /**
@@ -105,7 +106,8 @@ export class TestingHelper {
         DocumentsComponent,
         ParticipantsComponent,
         DeliverableComponent,
-        ProjectsDetailComponent
+        ProjectsDetailComponent,
+        ScientistComponent
       ],
       imports: [
         BrowserModule,

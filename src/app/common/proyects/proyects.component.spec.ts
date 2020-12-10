@@ -116,4 +116,26 @@ describe('ProyectsComponent', () => {
       expect(component.findRequest.filter.fin).toBeUndefined();
     }));
   });
+
+  describe('all proyects Filtered Page Changed', () => {
+    it('should change to page 1 and a result to show of 5', () => {
+      component.allprojectsFilteredSizeChanged(20);
+      spyOn(projectService, 'findProjectByFilters').and.callThrough();
+      expect(component.findRequest.pageRequest.size).toBe(20);
+    });
+  });
+
+  describe('test allprojectsFilteredSortChanged', () => {
+    it('expect to call service function findProjectByFilters', () => {
+      const newPageRequest: PageRequest = new PageRequest();
+      newPageRequest.page = 0;
+      newPageRequest.size = 10;
+      component.findRequest.pageRequest = newPageRequest;
+      const projService = fixture.debugElement.injector.get(ProjectService);
+      const spy = spyOn(projService, 'findProjectByFilters').and.callThrough();
+      fixture.detectChanges();
+      component.allprojectsFilteredSortChanged(component.findRequest.pageRequest);
+      expect(spy).toHaveBeenCalledWith(component.findRequest);
+    });
+  });
 });

@@ -20,4 +20,11 @@ describe('MainComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('toggleMenu', () => {
+    it('should toggle isMenuCollapsed value to true', () => {
+      component.toggleMenu();
+      expect(component.isMenuCollapsed).toBeTruthy();
+    });
+  });
 });

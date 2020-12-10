@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestingHelper } from 'src/app/_helpers/testing.spec';
 
 import { ScientistComponent } from './scientist.component';
 
@@ -7,10 +8,8 @@ describe('ScientistComponent', () => {
   let fixture: ComponentFixture<ScientistComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ScientistComponent ]
-    })
-    .compileComponents();
+    TestingHelper.configureTest()
+      .compileComponents()
   }));
 
   beforeEach(() => {

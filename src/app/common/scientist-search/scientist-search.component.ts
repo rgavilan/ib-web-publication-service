@@ -141,23 +141,6 @@ export class ScientistSearchComponent implements OnInit {
     );
   }
 
-  filterPersonal() {
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 0;
-    pageRequest.size = this.allScientificsFiltered.size;
-    pageRequest.property = 'name';
-    pageRequest.direction = Direction.ASC;
-    this.findRequest.pageRequest = pageRequest;
-
-
-    // setTimeout(() => {
-    //   this.personalService.findProjectByFilters(this.findRequest).subscribe((data) => {
-    //     this.allScientificsFiltered = data;
-    //     this.loaded = true;
-    //   });
-    // }, 0);
-  }
-
   /**
    *
    *
