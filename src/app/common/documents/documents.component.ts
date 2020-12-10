@@ -48,23 +48,16 @@ export class DocumentsComponent implements OnInit {
   /**
    *
    *
-   * @type {SparqlResults}
    * @memberof DocumentsComponent
    */
-  res: SparqlResults;
-  /**
-   *
-   *
-   * @memberof DocumentsComponent
-   */
-  loadedProjects = false;
+  loaded = false;
   /**
    *
    *
    * @type {Page<SparqlResults>}
    * @memberof DocumentsComponent
    */
-  allProjectFiltered: Page<SparqlResults>;
+  allDocumentFiltered: Page<SparqlResults> = new Page();
   /**
    * Creates an instance of DocumentsComponent.
    * @param {ProjectService} projectService
@@ -73,16 +66,14 @@ export class DocumentsComponent implements OnInit {
   constructor(private documentService: DocumentService) { }
 
   ngOnInit(): void {
-    console.log('filter types', this.filterDocumentType);
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 0;
     pageRequest.size = 10;
     this.findRequest.pageRequest = pageRequest;
     this.findRequest.filter.types = this.filterDocumentType;
-    this.res = new SparqlResults();
     this.documentService.find(this.findRequest).subscribe((data) => {
-      this.allProjectFiltered = data;
-      this.loadedProjects = true;
+      this.allDocumentFiltered = data;
+      this.loaded = true;
     });
   }
 
@@ -97,8 +88,7 @@ export class DocumentsComponent implements OnInit {
   filterProjects() {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 0;
-    pageRequest.size = this.allProjectFiltered.size;
-    pageRequest.property = 'description';
+    pageRequest.size = this.allDocumentFiltered.size;
     pageRequest.direction = Direction.ASC;
     this.findRequest.pageRequest = pageRequest;
 
@@ -118,8 +108,8 @@ export class DocumentsComponent implements OnInit {
         }
       }
       this.documentService.find(this.findRequest).subscribe((data) => {
-        this.allProjectFiltered = data;
-        this.loadedProjects = true;
+        this.allDocumentFiltered = data;
+        this.loaded = true;
       });
     }, 0);
   }
@@ -132,10 +122,10 @@ export class DocumentsComponent implements OnInit {
    */
   allprojectsFilteredPageChanged(i: number): void {
     this.findRequest.pageRequest.page = i - 1;
-    this.findRequest.pageRequest.size = this.allProjectFiltered.size;
+    this.findRequest.pageRequest.size = this.allDocumentFiltered.size;
     this.documentService.find(this.findRequest).subscribe((data) => {
-      this.allProjectFiltered = data;
-      this.loadedProjects = true;
+      this.allDocumentFiltered = data;
+      this.loaded = true;
     });
   }
 
@@ -147,16 +137,51 @@ export class DocumentsComponent implements OnInit {
   filterDocuments() {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 0;
-    pageRequest.size = this.allProjectFiltered.size;
+    pageRequest.size = this.allDocumentFiltered.size;
     this.findRequest.pageRequest = pageRequest;
+    this.documentService.find(this.findRequest).subscribe((data) => {
+      this.allDocumentFiltered = data;
+      this.loaded = true;
+    });
 
+  }
 
-    // setTimeout(() => {
-    //   this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
-    //     this.allProjectFiltered = data;
-    //     this.loaded = true;
-    //   });
-    // }, 0);
+  /**
+  *
+  *
+  * @param {number} i
+  * @memberof PatentsComponent
+  */
+  allprojectsFilteredSizeChanged(i: number): void {
+
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = this.allDocumentFiltered.number;
+    pageRequest.size = i;
+    pageRequest.direction = this.allDocumentFiltered.direction;
+    this.findRequest.pageRequest = pageRequest;
+    this.documentService.find(this.findRequest).subscribe((data) => {
+      this.allDocumentFiltered = data;
+      this.loaded = true;
+    });
+  }
+
+  /**
+  *
+  *
+  * @param {PageRequest} pageRequest
+  * @memberof PatentsComponent
+  */
+  allprojectsFilteredSortChanged(pageRequest: PageRequest) {
+    const newPageRequest: PageRequest = new PageRequest();
+    newPageRequest.page = this.allDocumentFiltered.number;
+    newPageRequest.size = this.allDocumentFiltered.size;
+    newPageRequest.property = pageRequest.property;
+    newPageRequest.direction = pageRequest.direction;
+    this.findRequest.pageRequest = pageRequest;
+    this.documentService.find(this.findRequest).subscribe((data) => {
+      this.allDocumentFiltered = data;
+      this.loaded = true;
+    });
   }
 
 }
