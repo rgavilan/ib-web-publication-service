@@ -41,7 +41,6 @@ import { APP_BASE_HREF } from '@angular/common';
 import { SPARQLEditorComponent } from '../sparqleditor/sparqleditor.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TopSearchComponent } from '../common/top-search/top-search.component';
-import { ScientificProductionComponent } from '../common/scientific-production/scientific-production.component';
 import { UserDetailComponent } from '../users/user-detail/user-detail.component';
 import { ScientistSearchComponent } from '../common/scientist-search/scientist-search.component';
 import { UserComponent } from '../users/user/user.component';
@@ -93,7 +92,6 @@ export class TestingHelper {
         HomeComponent,
         SPARQLEditorComponent,
         TopSearchComponent,
-        ScientificProductionComponent,
         UserDetailComponent,
         ScientistSearchComponent,
         UserComponent,
