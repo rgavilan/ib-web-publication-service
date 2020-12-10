@@ -19,7 +19,7 @@ table thead sortable:hover {
 
 .sidebar-toggle {
   position: fixed;
-  background: #19222a;
+  background: #313941;
   padding: 10px;
   border-bottom-right-radius: 5px;
   z-index: 1;
@@ -91,10 +91,10 @@ table thead sortable:hover {
   margin-bottom: 40px;
 }
 
-.nav-item a{
- color: #999;
+.nav-item a {
+  color: #999;
 }
-.logos{
+.logos {
   margin: auto;
   width: 60%;
   display: flex;
@@ -122,7 +122,8 @@ table thead sortable:hover {
   line-height: 1;
 }
 
-.table td, .table th{
-  padding: .5rem;
+.table td,
+.table th {
+  padding: 0.5rem;
   font-size: smaller;
 }
