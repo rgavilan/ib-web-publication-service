@@ -13,6 +13,6 @@ export const yasgui = {
   // method: 'GET'
 
   // Fuseki
-  endpoint: 'http://herc-iz-bd-desa.atica.um.es:3030/trellis/sparql',
+  endpoint: 'http://herc-iz-front-desa.atica.um.es:8080/trellis/sparql',
   method: 'POST',
 };

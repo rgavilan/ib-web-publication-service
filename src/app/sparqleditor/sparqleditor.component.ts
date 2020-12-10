@@ -5,6 +5,7 @@ import Yasr from '@triply/yasr';
 import { yasgui } from '../../environments/environment';
 import * as superagent from 'superagent';
 import { SuperAgentRequest } from 'superagent';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-sparqleditor',
@@ -15,7 +16,10 @@ export class SPARQLEditorComponent implements OnInit {
   jsonData: any = null;
   errorMessage: any;
 
-  constructor() {}
+  constructor(private httpClient: HttpClient) {
+
+
+  }
 
   ngOnInit(): void {
     Yasgui.defaults.requestConfig.endpoint = yasgui.endpoint;
@@ -24,20 +28,14 @@ export class SPARQLEditorComponent implements OnInit {
 
     const yasqe = new Yasgui.Yasqe(document.getElementById('yasgui'));
 
-    yasqe.on('queryResponse', (instance: Yasqe, req: any, duration: number) => {
-      // this.onQueryResponse(instance, req, duration, yasr);
-      console.log('queryResponse');
-      this.onQueryResponse(instance, req, duration);
+    yasqe.on('queryResponse', (instance: Yasqe, req: any) => {
+      this.onQueryResponse(req);
     });
   }
 
+
   // When Yasgui gets the results
-  onQueryResponse(instance: Yasqe, data: any, duration: number) {
-    // const yasr = new Yasr(document.getElementById("yasr"));
-
-    // yasr.setResponse(data);
-
-    /* result parse JSON */
+  onQueryResponse(data: any) {
     if (data.hasOwnProperty('text')) {
       this.errorMessage = null;
       this.jsonData = JSON.parse((data as any).text);
@@ -49,4 +47,5 @@ export class SPARQLEditorComponent implements OnInit {
       }
     }
   }
+
 }

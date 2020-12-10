@@ -9,6 +9,8 @@ export const environment = {
 // default settings for how to query the endpoint
 export const yasgui = {
   // Fuseki
-  endpoint: 'https://query.wikidata.org/sparql',
+  // https://query.wikidata.org/sparql
+  // endpoint: 'http://localhost:3030/trellis/sparql',
+  endpoint: 'http://localhost:8787/trellis/sparql',
   method: 'POST',
 };

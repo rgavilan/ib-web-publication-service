@@ -18,7 +18,7 @@ export const yasgui = {
   // method: 'GET'
 
   // Fuseki
-  endpoint: 'http://localhost:3030/trellis/sparql',
+  endpoint: 'http://localhost:8787/trellis/sparql',
   method: 'POST',
 };
 
