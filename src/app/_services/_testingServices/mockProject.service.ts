@@ -126,7 +126,14 @@ export class MockProjectService extends ProjectService {
         }
     };
 
-    findProjectByFilters(findRequest: FindRequest): Observable<Page<SparqlResults>> {
+    /**
+     *
+     *
+     * @param {FindRequest} findRequest
+     * @return {*}  {Observable<Page<SparqlResults>>}
+     * @memberof MockProjectService
+     */
+    find(findRequest: FindRequest): Observable<Page<SparqlResults>> {
         // Filter params
         const page: Page<SparqlResults> = new Page<SparqlResults>();
         let results: SparqlResults = new SparqlResults();

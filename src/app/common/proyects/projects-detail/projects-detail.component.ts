@@ -23,7 +23,7 @@ export class ProjectsDetailComponent implements OnInit {
       this.id = params.id; // (+) converts string 'id' to a number
       if (this.id) {
         this.findRequest.filter.id = this.id;
-        this.projectService.findProjectByFilters(this.findRequest).subscribe(data => {
+        this.projectService.find(this.findRequest).subscribe(data => {
           this.proyect = data.content[0].results.bindings;
         });
       }

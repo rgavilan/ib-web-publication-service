@@ -36,7 +36,7 @@ export class PatentService extends AbstractService {
      * @return {*}  {Page<SparqlResults>}
      * @memberof ProjectService
      */
-    findProjectByFilters(findRequest: FindRequest): Observable<Page<SparqlResults>> {
+    find(findRequest: FindRequest): Observable<Page<SparqlResults>> {
         // Filter params
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'type', findRequest.filter.type);
@@ -51,9 +51,4 @@ export class PatentService extends AbstractService {
                 catchError(this.handleError)
             );
     }
-
-
-
-
-
 }

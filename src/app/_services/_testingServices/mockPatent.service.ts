@@ -69,7 +69,7 @@ export class MockPatentService {
         }
     };
 
-    findProjectByFilters(findRequest: FindRequest): Observable<Page<SparqlResults>> {
+    find(findRequest: FindRequest): Observable<Page<SparqlResults>> {
         // Filter params
         const page: Page<SparqlResults> = new Page<SparqlResults>();
         let results: SparqlResults = new SparqlResults();

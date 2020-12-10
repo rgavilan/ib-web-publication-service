@@ -4,11 +4,13 @@ import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/sear
 import { Binding, SparqlResults } from 'src/app/_models/sparql';
 import { PatentService } from '../patent.service';
 
+
 /**
- *  Service for testiong patent service
  *
+ * Testing service
  * @export
- * @extends {AbstractService}
+ * @class MockInvestigationGroupService
+ * @extends {PatentService}
  */
 @Injectable({
     providedIn: 'root',
@@ -163,7 +165,7 @@ export class MockInvestigationGroupService extends PatentService {
         }
     };
 
-    findProjectByFilters(findRequest: FindRequest): Observable<Page<SparqlResults>> {
+    find(findRequest: FindRequest): Observable<Page<SparqlResults>> {
         // Filter params
         const page: Page<SparqlResults> = new Page<SparqlResults>();
         let results: SparqlResults = new SparqlResults();
@@ -173,12 +175,7 @@ export class MockInvestigationGroupService extends PatentService {
         page.size = 10;
         page.totalElements = 10;
         // TODO sort
-
         page.content = [results];
         return of(page);
     }
-
-
-
-
 }

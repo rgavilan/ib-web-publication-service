@@ -49,7 +49,7 @@ export class ProyectsComponent implements OnInit {
     pageRequest.size = 10;
     this.findRequest.pageRequest = pageRequest;
     this.res = new SparqlResults();
-    this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
+    this.projectService.find(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
       this.loadedProjects = true;
     });
@@ -205,7 +205,7 @@ export class ProyectsComponent implements OnInit {
   allprojectsFilteredPageChanged(i: number): void {
     this.findRequest.pageRequest.page = i - 1;
     this.findRequest.pageRequest.size = this.allProjectFiltered.size;
-    this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
+    this.projectService.find(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
       this.loadedProjects = true;
     });
@@ -224,7 +224,7 @@ export class ProyectsComponent implements OnInit {
     pageRequest.size = i;
     pageRequest.direction = this.allProjectFiltered.direction;
     this.findRequest.pageRequest = pageRequest;
-    this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
+    this.projectService.find(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
       this.loadedProjects = true;
     });
@@ -243,7 +243,7 @@ export class ProyectsComponent implements OnInit {
     newPageRequest.property = pageRequest.property;
     newPageRequest.direction = pageRequest.direction;
     this.findRequest.pageRequest = pageRequest;
-    this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
+    this.projectService.find(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
       this.loadedProjects = true;
     });
@@ -278,7 +278,7 @@ export class ProyectsComponent implements OnInit {
           this.findRequest.filter.end = currentDate;
         }
       }
-      this.projectService.findProjectByFilters(this.findRequest).subscribe((data) => {
+      this.projectService.find(this.findRequest).subscribe((data) => {
         this.allProjectFiltered = data;
         this.loadedProjects = true;
       });

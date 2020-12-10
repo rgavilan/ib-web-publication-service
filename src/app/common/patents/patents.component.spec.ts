@@ -34,7 +34,7 @@ describe('PatentsComponent', () => {
   describe('all proyects Filtered Page Changed', () => {
     it('should change to page 1 and a result to show of 5', () => {
       component.allPatentsFilteredPageChanged(2);
-      spyOn(patentService, 'findProjectByFilters').and.callThrough();
+      spyOn(patentService, 'find').and.callThrough();
       expect(component.findRequest.pageRequest.page).toBe(1);
     });
   });
@@ -42,7 +42,7 @@ describe('PatentsComponent', () => {
   describe('test filterProjects', () => {
     it('expect to call service function findProjectByFilters', () => {
       const patentService1 = fixture.debugElement.injector.get(PatentService);
-      const spy = spyOn(patentService1, 'findProjectByFilters').and.callThrough();
+      const spy = spyOn(patentService1, 'find').and.callThrough();
       fixture.detectChanges(); // update variables in fixture
       component.filterPatents();
       expect(spy).toHaveBeenCalled();
@@ -57,7 +57,7 @@ describe('PatentsComponent', () => {
       newPageRequest.size = 10;
       component.findRequest.pageRequest = newPageRequest;
       const patentService1 = fixture.debugElement.injector.get(PatentService);
-      const spy = spyOn(patentService1, 'findProjectByFilters').and.callThrough();
+      const spy = spyOn(patentService1, 'find').and.callThrough();
       fixture.detectChanges(); // update variables in fixture
       component.allPatentsFilteredSortChanged(component.findRequest.pageRequest);
       expect(spy).toHaveBeenCalledWith(component.findRequest);
@@ -74,7 +74,7 @@ describe('PatentsComponent', () => {
   describe('all proyects Filtered Page Changed', () => {
     it('should change to page 1 and a result to show of 5', () => {
       component.allPatentsFilteredSizeChanged(20);
-      spyOn(patentService, 'findProjectByFilters').and.callThrough();
+      spyOn(patentService, 'find').and.callThrough();
       expect(component.findRequest.pageRequest.size).toBe(20);
     });
   });

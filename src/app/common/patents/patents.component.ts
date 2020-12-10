@@ -3,6 +3,7 @@ import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/sear
 import { SparqlResults } from 'src/app/_models/sparql';
 import { PatentService } from 'src/app/_services/patent.service';
 
+
 /**
  *
  *
@@ -23,14 +24,11 @@ export class PatentsComponent implements OnInit {
   echartOptions: any;
   loadingData = false;
   loaded = false;
-  /**
-   * Creates an instance of PatentsComponent.
-   * @param {PatentService} patentService
-   * @memberof PatentsComponent
-   */
+
   constructor(
     private patentService: PatentService) {
   }
+
 
   /**
    *
@@ -43,7 +41,7 @@ export class PatentsComponent implements OnInit {
     pageRequest.page = 0;
     pageRequest.size = 10;
     this.findRequest.pageRequest = pageRequest;
-    this.patentService.findProjectByFilters(this.findRequest).subscribe(res => {
+    this.patentService.find(this.findRequest).subscribe(res => {
       this.allPatentFiltered = res;
       this.loaded = true;
     });
@@ -96,20 +94,22 @@ export class PatentsComponent implements OnInit {
     };
   }
 
+
   /**
    *
    *
    * @param {number} i
-   * @memberof ScientificProductionComponent
+   * @memberof PatentsComponent
    */
   allPatentsFilteredPageChanged(i: number): void {
     this.findRequest.pageRequest.page = i - 1;
     this.findRequest.pageRequest.size = this.allPatentFiltered.size;
-    this.patentService.findProjectByFilters(this.findRequest).subscribe((data) => {
+    this.patentService.find(this.findRequest).subscribe((data) => {
       this.allPatentFiltered = data;
       this.loaded = true;
     });
   }
+
 
   /**
    *
@@ -124,11 +124,12 @@ export class PatentsComponent implements OnInit {
     pageRequest.size = i;
     pageRequest.direction = this.allPatentFiltered.direction;
     this.findRequest.pageRequest = pageRequest;
-    this.patentService.findProjectByFilters(this.findRequest).subscribe((data) => {
+    this.patentService.find(this.findRequest).subscribe((data) => {
       this.allPatentFiltered = data;
       this.loaded = true;
     });
   }
+
 
   /**
    *
@@ -143,19 +144,16 @@ export class PatentsComponent implements OnInit {
     newPageRequest.property = pageRequest.property;
     newPageRequest.direction = pageRequest.direction;
     this.findRequest.pageRequest = pageRequest;
-    this.patentService.findProjectByFilters(this.findRequest).subscribe((data) => {
+    this.patentService.find(this.findRequest).subscribe((data) => {
       this.allPatentFiltered = data;
       this.loaded = true;
     });
   }
 
-
   /**
    *
    *
-   * @param {*} event
-   * @param {string} filterName
-   * @memberof ScientificProductionComponent
+   * @memberof PatentsComponent
    */
   filterPatents() {
     const pageRequest: PageRequest = new PageRequest();
@@ -164,7 +162,7 @@ export class PatentsComponent implements OnInit {
     this.findRequest.pageRequest = pageRequest;
 
 
-    this.patentService.findProjectByFilters(this.findRequest).subscribe((data) => {
+    this.patentService.find(this.findRequest).subscribe((data) => {
       this.allPatentFiltered = data;
       this.loaded = true;
     });
@@ -206,6 +204,7 @@ export class PatentsComponent implements OnInit {
       selected,
     };
   }
+
 
   /**
    *

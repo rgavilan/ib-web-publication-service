@@ -7,35 +7,36 @@ import { Direction, FindRequest, Page, PageRequest } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
 import { Binding, SparqlResults } from '../_models/sparql';
 
+
 /**
- *  Service for scientific production
+ *
  *
  * @export
+ * @class InvestigationGroupService
  * @extends {AbstractService}
  */
 @Injectable({
     providedIn: 'root',
 })
 export class InvestigationGroupService extends AbstractService {
+
     /**
-     * Creates an instance of ProjectService.
-     * param {HttpClient} httpClient
-     * memberof ProjectService
+     * Creates an instance of InvestigationGroupService.
+     * @param {HttpClient} httpClient
+     * @memberof InvestigationGroupService
      */
     constructor(private httpClient: HttpClient) {
         super();
     }
 
-
     /**
      *
      *
-     * @param {Map<string, string>} filters
-     * @param {PageRequest} pageRequest
-     * @return {*}  {Page<SparqlResults>}
-     * @memberof ProjectService
+     * @param {FindRequest} findRequest
+     * @return {*}  {Observable<Page<SparqlResults>>}
+     * @memberof InvestigationGroupService
      */
-    findProjectByFilters(findRequest: FindRequest): Observable<Page<SparqlResults>> {
+    find(findRequest: FindRequest): Observable<Page<SparqlResults>> {
         // Filter params
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'description', findRequest.filter.description);

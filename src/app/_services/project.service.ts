@@ -35,7 +35,7 @@ export class ProjectService extends AbstractService {
      * @return {*}  {Page<SparqlResults>}
      * @memberof ProjectService
      */
-    findProjectByFilters(findRequest: FindRequest): Observable<Page<SparqlResults>> {
+    find(findRequest: FindRequest): Observable<Page<SparqlResults>> {
         // Filter params
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'end', findRequest.filter.end);

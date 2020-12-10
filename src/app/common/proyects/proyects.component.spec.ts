@@ -30,7 +30,7 @@ describe('ProyectsComponent', () => {
   });
 
   it('should create execute ngOnInit and populate data table to show', () => {
-    spyOn(projectService, 'findProjectByFilters').and.callThrough();
+    spyOn(projectService, 'find').and.callThrough();
     spyOn(component, 'ngOnInit').and.callThrough();
     fixture.detectChanges();
     expect(component.allProjectFiltered.content[0].head.vars.length).toBe(6);
@@ -77,7 +77,7 @@ describe('ProyectsComponent', () => {
   describe('all proyects Filtered Page Changed', () => {
     it('should change to page 1 and a result to show of 5', () => {
       component.allprojectsFilteredPageChanged(2);
-      spyOn(projectService, 'findProjectByFilters').and.callThrough();
+      spyOn(projectService, 'find').and.callThrough();
       expect(component.findRequest.pageRequest.page).toBe(1);
     });
   });
@@ -120,7 +120,7 @@ describe('ProyectsComponent', () => {
   describe('all proyects Filtered Page Changed', () => {
     it('should change to page 1 and a result to show of 5', () => {
       component.allprojectsFilteredSizeChanged(20);
-      spyOn(projectService, 'findProjectByFilters').and.callThrough();
+      spyOn(projectService, 'find').and.callThrough();
       expect(component.findRequest.pageRequest.size).toBe(20);
     });
   });
@@ -132,7 +132,7 @@ describe('ProyectsComponent', () => {
       newPageRequest.size = 10;
       component.findRequest.pageRequest = newPageRequest;
       const projService = fixture.debugElement.injector.get(ProjectService);
-      const spy = spyOn(projService, 'findProjectByFilters').and.callThrough();
+      const spy = spyOn(projService, 'find').and.callThrough();
       fixture.detectChanges();
       component.allprojectsFilteredSortChanged(component.findRequest.pageRequest);
       expect(spy).toHaveBeenCalledWith(component.findRequest);
