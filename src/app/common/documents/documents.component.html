@@ -40,8 +40,8 @@
             </div>
         </div>
     </div>
-    <app-table-results *ngIf="loaded" [data]="allDocumentFiltered.content[0]" [pageInfo]="allDocumentFiltered"
-        (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
-        (sortChanged)="allprojectsFilteredSortChanged($event)">
+    <app-table-results *ngIf="loaded" [data]="allDocumentFiltered.content[0]" [headerData]="headerData"
+        [pageInfo]="allDocumentFiltered" (pageChanged)="allprojectsFilteredPageChanged($event)"
+        (sizeChanged)="allprojectsFilteredSizeChanged($event)" (sortChanged)="allprojectsFilteredSortChanged($event)">
     </app-table-results>
 </fieldset>

@@ -1,4 +1,3 @@
-
 export class SparqlResults {
     head: {
         vars: string[];

@@ -170,7 +170,12 @@
   },
   "investigation-actions": {
     "documents": "Documentos",
-    "projects": "Proyectos"
+    "projects": "Proyectos",
+    "documents-table": {
+      "id": "id",
+      "name": "nombre",
+      "anyo": "año"
+    }
   },
   "documents": {
     "document": "Documentos",

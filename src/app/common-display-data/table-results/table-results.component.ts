@@ -20,6 +20,7 @@ import {
 } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { SparqlResults } from 'src/app/_models/sparql';
+import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 
 
 /**
@@ -74,6 +75,9 @@ export class TableResultsComponent
   get data(): SparqlResults {
     return this.dataComplete;
   }
+
+  @Input()
+  headerData: TableResultsHeaderItem[];
 
   /**
    * Data needed to set pagination if we have server pagination

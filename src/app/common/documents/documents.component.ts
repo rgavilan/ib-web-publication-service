@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { SparqlResults } from 'src/app/_models/sparql';
+import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { DocumentService } from 'src/app/_services/document.service';
 
 /**
@@ -65,6 +66,21 @@ export class DocumentsComponent implements OnInit {
    * @memberof DocumentsComponent
    */
   allDocumentFiltered: Page<SparqlResults> = new Page();
+
+  headerData: TableResultsHeaderItem[] = [
+    {
+      textToTranslate: 'investigation-actions.documents-table.id',
+      columnName: 'id'
+    },
+    {
+      textToTranslate: 'investigation-actions.documents-table.name',
+      columnName: 'name'
+    },
+    {
+      textToTranslate: 'investigation-actions.documents-table.anyo',
+      columnName: 'anyo'
+    }
+  ];
   /**
    * Creates an instance of DocumentsComponent.
    * @param {ProjectService} projectService
