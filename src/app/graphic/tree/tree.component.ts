@@ -119,6 +119,13 @@ export class TreeComponent implements OnInit {
 
   }
   /**
+   * Method invoked when the chart is initialized
+   * param e
+   */
+  onChartInit(chartInstance: any) {
+  }
+
+  /**
    * returns if node has been selected
    * param tree (the full tree)
    * param nodeName (node name to search)
