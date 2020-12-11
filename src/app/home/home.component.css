@@ -1,3 +1,11 @@
+.home {
+  margin-top: 20px;
+}
+
+.home hr {
+  margin-bottom: 30px;
+}
+
 .imagenes {
   width: 70px;
   height: 80px;
@@ -11,7 +19,12 @@
   cursor: pointer;
 }
 
-.home-disabled {
+.cursor a {
+  color: black;
+}
+
+.home-disabled,
+.home-disabled a {
   color: #aab3bb;
 }
 
