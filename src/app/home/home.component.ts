@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { HomeItem } from '../_models/home';
+import { HomeGroupItem, HomeItem } from '../_models/home';
 import { HomeService } from '../_services/home.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   /**
    * Lista de categorias.
    */
-  categoryItems: HomeItem[];
+  groupItems: HomeGroupItem[];
 
   /**
    * Categoria seleccionada.
@@ -26,8 +26,8 @@ export class HomeComponent implements OnInit {
     private homeService: HomeService) { }
 
   ngOnInit(): void {
-    this.homeService.getCategories().then((categoryItems: HomeItem[]) => {
-      this.categoryItems = categoryItems;
+    this.homeService.getHome().then((groupItems: HomeGroupItem[]) => {
+      this.groupItems = groupItems;
     });
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CATEGORY_ITEMS, HomeItem } from '../_models/home';
+import { HomeGroupItem, HOME_ITEMS } from '../_models/home';
 
 /**
  * Servicio para gestionar el home de la aplicación.
@@ -11,10 +11,10 @@ export class HomeService {
   constructor() { }
 
   /**
-   * Obtiene los datos dela opción categorías del home.
-   * @returns Promesa con las categorías.
+   * Obtiene los datos del home.
+   * @returns Promesa con los items del home.
    */
-  getCategories(): Promise<HomeItem[]> {
-    return Promise.resolve(CATEGORY_ITEMS);
+  getHome(): Promise<HomeGroupItem[]> {
+    return Promise.resolve(HOME_ITEMS);
   }
 }
