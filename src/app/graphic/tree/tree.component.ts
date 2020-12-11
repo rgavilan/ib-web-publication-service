@@ -119,55 +119,6 @@ export class TreeComponent implements OnInit {
 
   }
   /**
-   * Method invoked when the chart is initialized
-   * param e
-   */
-  onChartInit(chartInstance: any) {
-    /*  chartInstance.on('click', (e) => {
-        const chartTree = chartInstance.getOption().series[0].data[0];
-        const nodeSelected = this.isNodeSelected(chartTree, e.name);
-        if (nodeSelected) {
-          this.dataTofilter.splice(this.dataTofilter.indexOf(e.value), 1);
-          e.data.lineStyle.color = 'grey';
-        } else {
-          const fisrt = this.isFirstLine(chartTree, e.name);
-          if (!fisrt) {
-            this.dataTofilter.push(e.value);
-            delete e.data.lineStyle;
-            !e.data.hasOwnProperty('lineStyle') ? Object.assign(e.data, this.hoverStyle) : e.data.lineStyle.color = 'black';
-          } else {
-            if (e.data.selected) {
-              e.data.selected = false;
-              !e.data.hasOwnProperty('lineStyle') ? Object.assign(e.data, this.hoverStyleGrey) : e.data.lineStyle.color = 'grey';
-              e.data.children.forEach(element => {
-                this.dataTofilter.splice(this.dataTofilter.indexOf(element.value), 1);
-                !element.hasOwnProperty('lineStyle') ? Object.assign(element, this.hoverStyleGrey) : element.lineStyle.color = 'grey';
-              });
-            } else {
-              this.dataTofilter.splice(this.dataTofilter.indexOf(e.value), 1);
-              !e.data.hasOwnProperty('lineStyle') ? Object.assign(e.data, this.hoverStyle) : e.data.lineStyle.color = 'black';
-              !e.data.hasOwnProperty('selected') ? Object.assign(e.data, this.selected) : e.data.selected = 'true';
-              e.data.children.forEach(element => {
-                this.dataTofilter.push(element.value); 
-                !element.hasOwnProperty('lineStyle') ? Object.assign(element, this.hoverStyle) : element.lineStyle.color = 'black';
-              });
-            }
-            
-          }
-          
-        }
-        this.filter = chartInstance.getOption().series[0].data[0];
-        // chequear primero si ya existe
-        chartInstance.setOption({
-          series: [{ data: [this.filter] }]
-        }, false); 
-  
-        this.dataTofilter = this.dataTofilter.filter((v, i, a) => a.indexOf(v) === i);
-        this.filterChanged.emit(this.dataTofilter);
-      });*/
-  }
-
-  /**
    * returns if node has been selected
    * param tree (the full tree)
    * param nodeName (node name to search)

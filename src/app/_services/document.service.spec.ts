@@ -80,7 +80,10 @@ describe('DocumentService', () => {
             }
         };
         service.find(findRequest).subscribe(result => {
-            expect(result.content[0].results.bindings.length).toBe(2);
+            if (result.content) {
+                expect(result.content[0].results.bindings.length).toBe(2);
+            }
+
         });
         const request = httpMock.expectOne(Helper.getUrl('/document/search?size=10&page=0'));
         expect(request.request.method).toBe('GET');
