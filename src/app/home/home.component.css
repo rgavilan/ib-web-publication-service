@@ -11,6 +11,10 @@
   cursor: pointer;
 }
 
+.home-disabled {
+  color: #aab3bb;
+}
+
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 800px) {
   .column {
