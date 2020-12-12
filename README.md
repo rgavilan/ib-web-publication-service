@@ -4,7 +4,7 @@
 
 |     | Master |
 | --- | ------ |
-| Quality Gate | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=HerculesCRUE_ib-discovery&metric=alert_status)](https://sonarcloud.io/dashboard?id=HerculesCRUE_ib-discovery) |
+| Quality Gate | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?branch=develop&project=HerculesCRUE_ib-web-publication-service&metric=alert_status)](https://sonarcloud.io/dashboard?id=HerculesCRUE_ib-web-publication-service) |
 
 Se trata del arquetipo para Front desarrollado en Angular.
 
