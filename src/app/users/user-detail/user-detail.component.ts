@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { User, Authority } from '../../_models/user';
+import { Component, OnInit } from '@angular/core';
+import { User } from '../../_models/user';
 import { UserService } from '../../_services/user.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -42,7 +42,7 @@ export class UserDetailComponent implements OnInit {
     private toastr: ToastrService,
     private route: ActivatedRoute,
     private userService: UserService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.userId = null;

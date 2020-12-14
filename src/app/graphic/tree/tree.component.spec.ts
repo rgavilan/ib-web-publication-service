@@ -15,6 +15,41 @@ describe('TreeComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TreeComponent);
     component = fixture.componentInstance;
+    component.data = {
+      name: 'Áreas',
+      children: [
+        {
+          name: 'Abstracts',
+          value: 'ABS',
+          selected: false,
+          children: []
+        },
+        {
+          name: 'Publicación académica',
+          value: 'PUA',
+          selected: true,
+          children: [
+            {
+              name: 'Tesis',
+              value: 'TES',
+              selected: false,
+              children: [{ name: 'Tesis de bachiller', value: 'TEB', selected: false, children: [] },
+              { name: 'Tesis de doctoral', value: 'TED', selected: false, children: [] },
+              { name: 'Tesis de master', value: 'TEM', selected: false, children: [] }]
+            },
+            { name: 'Contenido audiovisual', value: 'COV', selected: false, children: [] },
+            { name: 'Catalogo', value: 'CAT', selected: false, children: [] }
+          ]
+        },
+        {
+          name: 'Artículo', value: 'ART', selected: false, children: [
+            { name: 'Artículo Técnico', value: 'ATE', selected: false, children: [] }
+          ]
+        },
+        { name: 'Publicación científica', value: 'PUC', selected: false, children: [] }
+
+      ],
+    };
     fixture.detectChanges();
   });
 
@@ -33,6 +68,7 @@ describe('TreeComponent', () => {
     const result = component.findStyle(node);
     expect(result).toBeTruthy();
   });
+
 
   describe('is First Line', () => {
     it('is First Line expect to return no, because there is no children', () => {

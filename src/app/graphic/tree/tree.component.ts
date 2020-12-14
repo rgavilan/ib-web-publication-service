@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, Output, EventEmitter, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { NgxEchartsDirective, NgxEchartsModule } from 'ngx-echarts';
+import { Component, Input, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { NgxEchartsDirective } from 'ngx-echarts';
 
 @Component({
   selector: 'app-tree',
@@ -9,7 +9,93 @@ export class TreeComponent implements OnInit {
   @Output() filterChanged: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('echarts') echarts: NgxEchartsDirective;
   @Input() treeType = 'area';
-  @Input() data: any;
+  @Input() data = {
+    name: 'Áreas - ',
+    children: [
+      {
+        name: 'Ciencias matemáticas, físicas, químicas e ingenierías',
+        value: 'CMIFQ',
+        selected: true,
+        children: [
+          {
+            name: 'Ciencias y tecnologías quimicas',
+            value: 'CTQ',
+            selected: false,
+            children: [
+              { name: 'Ingeniería Química', value: 'IQM', selected: false, children: [] },
+              { name: 'Química', value: 'QMC', selected: false, children: [] }
+            ]
+          },
+          {
+            name: 'Energía y transporte',
+            value: 'EYT',
+            selected: false,
+            children: [
+              { name: 'Energía', value: 'ENE', selected: false, children: [] },
+              { name: 'Transporte', value: 'TRA', selected: false, children: [] }
+            ]
+          },
+          {
+            name: 'Ciencias físicas',
+            value: 'FIS',
+            selected: false,
+            children: [
+              { name: 'Astonomía y astrofísica', value: 'AYA', selected: false, children: [] },
+              { name: 'Investigación espacial', value: 'ESP', selected: false, children: [] },
+              { name: 'Física fundamenta y de partículas', value: 'FFP', selected: false, children: [] },
+              { name: 'Física y sus aplicaciones', value: 'FYA', selected: false, children: [] }
+            ]
+          },
+          {
+            name: 'Ciencias y Tecnologías de materiales',
+            value: 'MAT',
+            selected: false,
+            children: [
+              { name: 'Materiales para biomedicia', value: 'MBM', selected: false, children: [] },
+              { name: 'Materiales para la energia y el medioambiente', value: 'MEN', selected: false, children: [] },
+              { name: 'Materiales estructurales', value: 'MES', selected: false, children: [] },
+              { name: 'Materiales con funcionalidad eléctrica, magnética, óptica o térmica', value: 'FYA', selected: false, children: [] }
+            ]
+          },
+          {
+            name: 'Ciencias matematicas',
+            value: 'MTM',
+            selected: false,
+            children: []
+          }
+        ]
+      },
+      {
+        name: 'Ciencias sociales y humanidades',
+        value: 'CSH',
+        selected: true,
+        children: [
+          {
+            name: 'Ciencias sociales',
+            value: 'CSO',
+            selected: false,
+            children: [
+              { name: 'Comunicación', value: 'COM', children: [] },
+              { name: 'Ciencia politica', value: 'CPO', children: [] },
+              { name: 'Estudios feministas, de las mujeres y de genero', value: 'FEM', children: [] },
+              { name: 'Geografía', value: 'GEO', children: [] },
+              { name: 'Sociología y antropología social', value: 'SOC', children: [] },
+
+            ]
+          },
+          { name: 'Derecho', value: 'DER', selected: false, children: [] },
+          {
+            name: 'Economía', value: 'ECO', selected: false, children: [
+              { name: 'Economía y sus aplicaciones', value: 'EYA', selected: false, children: [] },
+              { name: 'Empresas y finanzas', value: 'EYF', selected: false, children: [] },
+              { name: 'Métodos de análisis ecónomico', value: 'MAE', selected: false, children: [] }
+            ]
+          },
+        ]
+      }
+
+    ],
+  };
   filterDate: any;
   options: any;
   filter = [];

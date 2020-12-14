@@ -2,8 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-json-results',
-  templateUrl: './json-results.component.html',
-  styleUrls: ['./json-results.component.css'],
+  templateUrl: './json-results.component.html'
 })
 export class JsonResultsComponent implements OnInit {
   _data; // private property _data
@@ -19,7 +18,7 @@ export class JsonResultsComponent implements OnInit {
     this._data = val;
   }
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     console.log(this.data);

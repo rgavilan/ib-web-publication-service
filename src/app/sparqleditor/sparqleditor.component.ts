@@ -1,25 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import Yasgui from '@triply/yasgui';
 import Yasqe from '@triply/yasqe';
-import Yasr from '@triply/yasr';
 import { yasgui } from '../../environments/environment';
-import * as superagent from 'superagent';
-import { SuperAgentRequest } from 'superagent';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-sparqleditor',
-  templateUrl: './sparqleditor.component.html',
-  styleUrls: ['./sparqleditor.component.css'],
+  templateUrl: './sparqleditor.component.html'
 })
 export class SPARQLEditorComponent implements OnInit {
   jsonData: any = null;
   errorMessage: any;
 
-  constructor(private httpClient: HttpClient) {
-
-
-  }
+  constructor() { }
 
   ngOnInit(): void {
     Yasgui.defaults.requestConfig.endpoint = yasgui.endpoint;

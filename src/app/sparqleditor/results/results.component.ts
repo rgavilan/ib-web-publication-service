@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   Component,
   OnChanges,
-  OnInit,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
@@ -11,7 +10,6 @@ import { TabsetComponent } from 'ngx-bootstrap/tabs';
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
-  styleUrls: ['./results.component.css'],
   inputs: ['data', 'errorMessage'],
 })
 export class ResultsComponent implements AfterViewInit, OnChanges {

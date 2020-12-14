@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { HomeGroupItem, HomeItem } from '../_models/home';
+import { HomeGroupItem } from '../_models/home';
 import { HomeService } from '../_services/home.service';
 
 @Component({
@@ -20,10 +18,7 @@ export class HomeComponent implements OnInit {
    */
   category: string;
 
-  constructor(
-    // private router: Router,
-    // private translate: TranslateService,
-    private homeService: HomeService) { }
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
     this.homeService.getHome().then((groupItems: HomeGroupItem[]) => {

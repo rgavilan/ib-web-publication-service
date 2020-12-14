@@ -1,8 +1,5 @@
 import {
-  Component,
-  OnInit,
-  ViewContainerRef,
-  AfterContentInit,
+  Component
 } from '@angular/core';
 import {
   PaginatedSearchComponent,
