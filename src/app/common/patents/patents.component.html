@@ -9,7 +9,7 @@
         <div class="form-group col-lg-6">
             <label for="type" class="col-sm-4 control-label">{{ "scientist.type" | translate }}</label>
             <div class="col-sm-8">
-                <select (change)="filterProjects()" name="type" class="form-control"
+                <select (change)="filterPatents()" name="type" class="form-control"
                     [(ngModel)]="findRequest.filter.type" #type="ngModel">
                     <option [value]="undefined">{{ "form.select" | translate }}</option>
                     <option [value]="'D'">Diseño industrial</option>

@@ -215,21 +215,4 @@ export class PatentsComponent implements OnInit {
     this.loadingData = true;
   }
 
-  /**
-   *
-   *
-   * @memberof PatentsComponent
-   */
-  filterProjects() {
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 0;
-    pageRequest.size = this.allPatentFiltered.size;
-    this.findRequest.pageRequest = pageRequest;
-    this.patentService.find(this.findRequest).subscribe((data) => {
-      this.allPatentFiltered = data;
-      this.loaded = true;
-    });
-
-  }
-
 }
