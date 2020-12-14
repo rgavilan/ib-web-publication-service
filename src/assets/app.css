@@ -8,7 +8,7 @@ table.table tbody tr:hover button.btn {
   visibility: visible;
 }
 
-table thead sortable:hover {
+table thead .sortable:hover {
   cursor: pointer;
   background-color: #eee;
 }
