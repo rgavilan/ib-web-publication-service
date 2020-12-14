@@ -31,25 +31,25 @@ describe('ScientistSearchComponent', () => {
   });
 
   describe('all Scientists Filtered Page Changed', () => {
-    it('should change to page 2 and a result to show of 5', () => {
+    it('should change to page 2 and a result to show of 0', () => {
       component.allScientistsFilteredPageChanged(2);
       spyOn(scientificsService, 'findTopByFilters').and.callThrough();
       expect(component.allScientificsFiltered.number).toBe(2);
-      expect(component.allScientificsFiltered.content[0].results.bindings.length).toBe(5);
+      expect(component.allScientificsFiltered.content[0].results.bindings.length).toBe(0);
     });
   });
 
   describe('filter Top results', () => {
     it('should filter by type', () => {
-      component.filterTop('Investigador', 'type');
+      component.filterTop('2017', 'anyo');
       spyOn(scientificsService, 'findTopByFilters').and.callThrough();
-      expect(component.allScientificsFiltered.totalElements).toBe(3);
+      expect(component.allScientificsFiltered.totalElements).toBe(1);
     });
 
     it('should return all values by filtering by empty filter', () => {
       component.filterTop('undefined', 'type');
       spyOn(scientificsService, 'findTopByFilters').and.callThrough();
-      expect(component.allScientificsFiltered.totalElements).toBe(15);
+      expect(component.allScientificsFiltered.totalElements).toBe(6);
     });
   });
 

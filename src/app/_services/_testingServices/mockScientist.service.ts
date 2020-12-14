@@ -17,11 +17,8 @@ export class MockScientistService extends ScientistService {
         head: {
             vars: [
                 'name',
-                'area',
-                'type',
-                'appointments',
-                'hIndex',
-                'publications'
+                'id',
+                'anyo',
             ]
         },
         results: {
@@ -32,25 +29,13 @@ export class MockScientistService extends ScientistService {
                         type: 'literal',
                         value: 'Maria Hernandez Reyes Mora'
                     },
-                    area: {
+                    id: {
                         type: 'literal',
-                        value: 'Área de gestión'
+                        value: '123'
                     },
-                    type: {
+                    anyo: {
                         type: 'literal',
-                        value: 'Docente'
-                    },
-                    appointments: {
-                        type: 'literal',
-                        value: '85'
-                    },
-                    hIndex: {
-                        type: 'literal',
-                        value: '0'
-                    },
-                    publications: {
-                        type: 'literal',
-                        value: '8'
+                        value: '2020'
                     }
                 },
                 // 1
@@ -59,25 +44,13 @@ export class MockScientistService extends ScientistService {
                         type: 'literal',
                         value: 'Jesualdo Tomás Fernández Breis'
                     },
-                    area: {
+                    id: {
                         type: 'literal',
-                        value: 'Área de informática'
+                        value: '345'
                     },
-                    type: {
+                    anyo: {
                         type: 'literal',
-                        value: 'Docente'
-                    },
-                    appointments: {
-                        type: 'literal',
-                        value: '74'
-                    },
-                    hIndex: {
-                        type: 'literal',
-                        value: '1'
-                    },
-                    publications: {
-                        type: 'literal',
-                        value: '14'
+                        value: '2019'
                     }
                 },
                 // 1
@@ -86,25 +59,13 @@ export class MockScientistService extends ScientistService {
                         type: 'literal',
                         value: 'Jesualdo Tomás Fernández Breis'
                     },
-                    area: {
+                    id: {
                         type: 'literal',
-                        value: 'Área de informática'
+                        value: '567'
                     },
-                    type: {
+                    anyo: {
                         type: 'literal',
-                        value: 'Docente'
-                    },
-                    appointments: {
-                        type: 'literal',
-                        value: '74'
-                    },
-                    hIndex: {
-                        type: 'literal',
-                        value: '1'
-                    },
-                    publications: {
-                        type: 'literal',
-                        value: '14'
+                        value: '2018'
                     }
                 },
                 // 1
@@ -113,25 +74,13 @@ export class MockScientistService extends ScientistService {
                         type: 'literal',
                         value: 'Jesualdo Tomás Fernández Breis'
                     },
-                    area: {
+                    id: {
                         type: 'literal',
-                        value: 'Área de informática'
+                        value: '233232'
                     },
-                    type: {
+                    anyo: {
                         type: 'literal',
-                        value: 'Docente'
-                    },
-                    appointments: {
-                        type: 'literal',
-                        value: '74'
-                    },
-                    hIndex: {
-                        type: 'literal',
-                        value: '1'
-                    },
-                    publications: {
-                        type: 'literal',
-                        value: '14'
+                        value: '2819'
                     }
                 },
                 // 1
@@ -140,25 +89,13 @@ export class MockScientistService extends ScientistService {
                         type: 'literal',
                         value: 'Jesualdo Tomás Fernández Breis'
                     },
-                    area: {
+                    id: {
                         type: 'literal',
-                        value: 'Área de informática'
+                        value: '333'
                     },
-                    type: {
+                    anyo: {
                         type: 'literal',
-                        value: 'Docente'
-                    },
-                    appointments: {
-                        type: 'literal',
-                        value: '74'
-                    },
-                    hIndex: {
-                        type: 'literal',
-                        value: '1'
-                    },
-                    publications: {
-                        type: 'literal',
-                        value: '14'
+                        value: '1990'
                     }
                 },
                 // 1
@@ -167,270 +104,15 @@ export class MockScientistService extends ScientistService {
                         type: 'literal',
                         value: 'Jesualdo Tomás Fernández Breis'
                     },
-                    area: {
+                    id: {
                         type: 'literal',
-                        value: 'Área de informática'
+                        value: '786'
                     },
-                    type: {
+                    anyo: {
                         type: 'literal',
-                        value: 'Docente'
-                    },
-                    appointments: {
-                        type: 'literal',
-                        value: '74'
-                    },
-                    hIndex: {
-                        type: 'literal',
-                        value: '1'
-                    },
-                    publications: {
-                        type: 'literal',
-                        value: '14'
+                        value: '2017'
                     }
                 },
-                // 1
-                {
-                    name: {
-                        type: 'literal',
-                        value: 'Jesualdo Tomás Fernández Breis'
-                    },
-                    area: {
-                        type: 'literal',
-                        value: 'Área de informática'
-                    },
-                    type: {
-                        type: 'literal',
-                        value: 'Docente'
-                    },
-                    appointments: {
-                        type: 'literal',
-                        value: '74'
-                    },
-                    hIndex: {
-                        type: 'literal',
-                        value: '1'
-                    },
-                    publications: {
-                        type: 'literal',
-                        value: '14'
-                    }
-                },
-                // 1
-                {
-                    name: {
-                        type: 'literal',
-                        value: 'Jesualdo Tomás Fernández Breis'
-                    },
-                    area: {
-                        type: 'literal',
-                        value: 'Área de informática'
-                    },
-                    type: {
-                        type: 'literal',
-                        value: 'Docente'
-                    },
-                    appointments: {
-                        type: 'literal',
-                        value: '74'
-                    },
-                    hIndex: {
-                        type: 'literal',
-                        value: '1'
-                    },
-                    publications: {
-                        type: 'literal',
-                        value: '14'
-                    }
-                },
-                // 1
-                {
-                    name: {
-                        type: 'literal',
-                        value: 'Jesualdo Tomás Fernández Breis'
-                    },
-                    area: {
-                        type: 'literal',
-                        value: 'Área de informática'
-                    },
-                    type: {
-                        type: 'literal',
-                        value: 'Docente'
-                    },
-                    appointments: {
-                        type: 'literal',
-                        value: '74'
-                    },
-                    hIndex: {
-                        type: 'literal',
-                        value: '1'
-                    },
-                    publications: {
-                        type: 'literal',
-                        value: '14'
-                    }
-                },
-                // 1
-                {
-                    name: {
-                        type: 'literal',
-                        value: 'Jesualdo Tomás Fernández Breis'
-                    },
-                    area: {
-                        type: 'literal',
-                        value: 'Área de informática'
-                    },
-                    type: {
-                        type: 'literal',
-                        value: 'Docente'
-                    },
-                    appointments: {
-                        type: 'literal',
-                        value: '74'
-                    },
-                    hIndex: {
-                        type: 'literal',
-                        value: '1'
-                    },
-                    publications: {
-                        type: 'literal',
-                        value: '14'
-                    }
-                },
-                // 1
-                {
-                    name: {
-                        type: 'literal',
-                        value: 'Jesualdo Tomás Fernández Breis'
-                    },
-                    area: {
-                        type: 'literal',
-                        value: 'Área de informática'
-                    },
-                    type: {
-                        type: 'literal',
-                        value: 'Docente'
-                    },
-                    appointments: {
-                        type: 'literal',
-                        value: '74'
-                    },
-                    hIndex: {
-                        type: 'literal',
-                        value: '1'
-                    },
-                    publications: {
-                        type: 'literal',
-                        value: '14'
-                    }
-                },
-                // 1
-                {
-                    name: {
-                        type: 'literal',
-                        value: 'Jesualdo Tomás Fernández Breis'
-                    },
-                    area: {
-                        type: 'literal',
-                        value: 'Área de informática'
-                    },
-                    type: {
-                        type: 'literal',
-                        value: 'Investigador'
-                    },
-                    appointments: {
-                        type: 'literal',
-                        value: '74'
-                    },
-                    hIndex: {
-                        type: 'literal',
-                        value: '1'
-                    },
-                    publications: {
-                        type: 'literal',
-                        value: '14'
-                    }
-                },
-                // 1
-                {
-                    name: {
-                        type: 'literal',
-                        value: 'Jesualdo Tomás Fernández Breis'
-                    },
-                    area: {
-                        type: 'literal',
-                        value: 'Área de informática'
-                    },
-                    type: {
-                        type: 'literal',
-                        value: 'Investigador'
-                    },
-                    appointments: {
-                        type: 'literal',
-                        value: '74'
-                    },
-                    hIndex: {
-                        type: 'literal',
-                        value: '1'
-                    },
-                    publications: {
-                        type: 'literal',
-                        value: '14'
-                    }
-                },
-                // 1
-                {
-                    name: {
-                        type: 'literal',
-                        value: 'Jesualdo Tomás Fernández Breis'
-                    },
-                    area: {
-                        type: 'literal',
-                        value: 'Área de informática'
-                    },
-                    type: {
-                        type: 'literal',
-                        value: 'Investigador'
-                    },
-                    appointments: {
-                        type: 'literal',
-                        value: '74'
-                    },
-                    hIndex: {
-                        type: 'literal',
-                        value: '1'
-                    },
-                    publications: {
-                        type: 'literal',
-                        value: '14'
-                    }
-                },
-                // 1
-                {
-                    name: {
-                        type: 'literal',
-                        value: 'Jesualdo Tomás Fernández Breis'
-                    },
-                    area: {
-                        type: 'literal',
-                        value: 'Área de informática'
-                    },
-                    type: {
-                        type: 'literal',
-                        value: 'Profesional'
-                    },
-                    appointments: {
-                        type: 'literal',
-                        value: '74'
-                    },
-                    hIndex: {
-                        type: 'literal',
-                        value: '1'
-                    },
-                    publications: {
-                        type: 'literal',
-                        value: '14'
-                    }
-                }
             ]
         }
     };
