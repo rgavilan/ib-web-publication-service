@@ -1,5 +1,19 @@
 ![](./images/logos_feder.png)
 
+
+
+| Entregable     | Procesador de datos                                          |
+| -------------- | ------------------------------------------------------------ |
+| Fecha          | 16/12/2020                                                   |
+| Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
+| Módulo         | Servicio de publicación web                                  |
+| Tipo           | Software                                                     |
+| Objetivo       | Servicio web encargado de la consulta de datos por parte de los usuarios |
+| Estado         | **20%** de la pantallas del front.<br />Se han desarrollado las pantallas:<br /><br />**Estructuras de investigación**: Datos mockeados<br />**Detalle de estructuras de investigación**: Se muestran datos reales en las tablas de Producción científica, Proyectos y Patentes.<br />**Acciones de investigación**: Se muestran datos reales en las tablas.<br />**Detalle de proyecto**: Se muestran datos mockeados, aunque algún dato del detalle es real.<br />**Personal investigador**: Se muestran datos mockeados. |
+| Próximos pasos | Se deben completar el resto de pantallas, implementar algunos filtros y conectar con los servicios. |
+
+
+
 # ASIO - Web publication service
 
 Se trata del arquetipo para Front desarrollado en Angular.
@@ -43,7 +57,7 @@ Funciona de dos formas:
     - number -> numero
     - size -> numero de elementos q se muestran en una pagina
     - totalElements -> numero total elementos sin la paginacion
-    
+  
 - pageChanged: Output (Evento) con el nuevo número de página al que se quiere cambiar.
   
 - routerField: Se utiliza para redireccionar una fila de la tabla usando nombre del campo que se envía.
