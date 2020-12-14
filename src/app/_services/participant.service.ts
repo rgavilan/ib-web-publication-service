@@ -4,10 +4,12 @@ import { AbstractService } from '../_helpers/abstract';
 import { Direction, Page, PageRequest } from '../_helpers/search';
 import { Binding, SparqlResults } from '../_models/sparql';
 
+
 /**
- *  Service for participant
+ *
  *
  * @export
+ * @class ParticipantService
  * @extends {AbstractService}
  */
 @Injectable({
@@ -87,14 +89,15 @@ export class ParticipantService extends AbstractService {
         }
     };
 
+
     /**
-     * Creates an instance of ScientificProductionService.
-     * param {HttpClient} httpClient
-     * memberof ScientificProductionService
+     * Creates an instance of ParticipantService.
+     * @memberof ParticipantService
      */
-    constructor(private httpClient: HttpClient) {
+    constructor() {
         super();
     }
+
 
 
     /**
@@ -103,25 +106,25 @@ export class ParticipantService extends AbstractService {
      * @param {Map<string, string>} filters
      * @param {PageRequest} pageRequest
      * @return {*}  {Page<SparqlResults>}
-     * @memberof ScientificProductionService
+     * @memberof ParticipantService
      */
     find(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
         const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
-        return this.findScientifiProductionByFiltersCommon(data, filters, pageRequest);
+        return this.findParticipant(data, filters, pageRequest);
     }
+
 
 
     /**
      *
      *
-     * @private
-     * @param {SparqlResults} data data to find
-     * @param {Map<string, string>} filters data to filter
-     * @param {PageRequest} pageRequest page request
-     * @return {*}  {Page<SparqlResults>} page results
-     * @memberof ScientificProductionService
+     * @param {SparqlResults} data
+     * @param {Map<string, string>} filters
+     * @param {PageRequest} pageRequest
+     * @return {*}  {Page<SparqlResults>}
+     * @memberof ParticipantService
      */
-    findScientifiProductionByFiltersCommon(data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest
+    findParticipant(data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest
     ): Page<SparqlResults> {
         const page: Page<SparqlResults> = new Page<SparqlResults>();
 

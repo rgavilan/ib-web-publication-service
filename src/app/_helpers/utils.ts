@@ -143,12 +143,16 @@ export class Helper {
     const selected = {};
     let name;
 
+
     for (let i = 0; i < count; i++) {
+      const crypto = window.crypto;
+      const array = new Uint32Array(1);
+      const rest = crypto.getRandomValues(array);
       name = nameList[i];
       legendData.push(name);
       seriesData.push({
         name,
-        value: Math.round(Math.random() * 100000),
+        value: Math.round(rest[0]),
       });
       selected[name] = i < 6;
     }

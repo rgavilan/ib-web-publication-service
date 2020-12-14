@@ -9,17 +9,47 @@ import { ParticipantService } from 'src/app/_services/participant.service';
 })
 export class DeliverableComponent implements OnInit {
   /**
-   * university Id for search filter in case of necessary
+   *
+   *
+   * @type {string}
+   * @memberof DeliverableComponent
    */
   @Input() universityId: string;
+  /**
+   *
+   *
+   * @type {Page<SparqlResults>}
+   * @memberof DeliverableComponent
+   */
   allData: Page<SparqlResults> = new Page();
+  /**
+   *
+   *
+   * @type {FindRequest}
+   * @memberof DeliverableComponent
+   */
   findRequest: FindRequest = new FindRequest();
+  /**
+   *
+   *
+   * @memberof DeliverableComponent
+   */
   loaded = false;
 
+  /**
+   * Creates an instance of DeliverableComponent.
+   * @param {ParticipantService} participantService
+   * @memberof DeliverableComponent
+   */
   constructor(private participantService: ParticipantService) {
   }
 
 
+  /**
+   *
+   *
+   * @memberof DeliverableComponent
+   */
   ngOnInit(): void {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
@@ -45,14 +75,28 @@ export class DeliverableComponent implements OnInit {
 
   }
 
-  allprojectsFilteredPageChanged(i: number): void {
+  /**
+   *
+   *
+   * @param {number} i
+   * @memberof DeliverableComponent
+   */
+  allprojectsFilteredPageChanged(i: number): void { }
 
-  }
+  /**
+   *
+   *
+   * @param {number} i
+   * @memberof DeliverableComponent
+   */
+  allprojectsFilteredSizeChanged(i: number): void { }
 
-  allprojectsFilteredSizeChanged(i: number): void {
-
-  }
-
+  /**
+   *
+   *
+   * @param {PageRequest} pageRequest
+   * @memberof DeliverableComponent
+   */
   allprojectsFilteredSortChanged(pageRequest: PageRequest) { }
 
 
