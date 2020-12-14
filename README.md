@@ -27,7 +27,7 @@ Dentro del proyecto base se integran las siguientes características:
 ## Puesta en funcionamiento
 
 npm install -> Descarga las librerías
-npm run start -> lanza el
+npm run start -> pone en funcionamiento el servidor con la aplicación
 
 ## Yasgui
 
