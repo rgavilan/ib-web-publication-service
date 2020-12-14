@@ -12,9 +12,8 @@ export class MockDocumentService {
     readonly DUMMY_DATA: SparqlResults = {
         head: {
             vars: [
+                'anyo',
                 'name',
-                'area',
-                'organisation',
                 'id'
             ]
         },
@@ -26,17 +25,13 @@ export class MockDocumentService {
                         type: 'literal',
                         value: 'Patente 1'
                     },
-                    area: {
+                    id: {
                         type: 'literal',
                         value: 'Derecho'
                     },
-                    organisation: {
+                    anyo: {
                         type: 'literal',
                         value: 'red.es'
-                    },
-                    id: {
-                        type: 'literal',
-                        value: 'xxxxxx'
                     }
                 },
                 // 2
@@ -45,17 +40,13 @@ export class MockDocumentService {
                         type: 'literal',
                         value: 'Patente 2'
                     },
-                    area: {
+                    id: {
                         type: 'literal',
                         value: 'Historia'
                     },
-                    organisation: {
+                    anyo: {
                         type: 'literal',
                         value: 'Fondos europeos'
-                    },
-                    id: {
-                        type: 'literal',
-                        value: 'xxxxxx'
                     }
                 }
 

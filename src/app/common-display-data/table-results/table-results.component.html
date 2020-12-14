@@ -25,18 +25,18 @@
               <ng-container *ngIf="!headerData">
                 <td *ngFor="let header of dataComplete.head.vars">
                   <a href="{{ item[header].value }}" *ngIf="item[header].type == 'uri'">{{ item[header].value }}</a>
-                  <ng-container *ngIf="item[header].type != 'uri'">{{
-                item[header].value
-              }}</ng-container>
+                  <ng-container *ngIf="item[header]?.type != 'uri'">{{
+                    item[header].value
+                    }}</ng-container>
                 </td>
               </ng-container>
               <ng-container *ngIf="!!headerData">
                 <td *ngFor="let header of headerData">
-                  <a href="{{ item[header.columnName].value }}"
-                    *ngIf="item[header.columnName].type == 'uri'">{{ item[header.columnName].value }}</a>
-                  <ng-container *ngIf="item[header.columnName].type != 'uri'">{{
-                item[header.columnName].value
-              }}</ng-container>
+                  <a href="{{ item[header.columnName].value }}" *ngIf="item[header.columnName]?.type == 'uri'">{{
+                    item[header.columnName].value }}</a>
+                  <ng-container *ngIf="item[header.columnName]?.type != 'uri'">{{
+                    item[header.columnName].value
+                    }}</ng-container>
                 </td>
               </ng-container>
             </tr>
@@ -46,18 +46,18 @@
               <ng-container *ngIf="!headerData">
                 <td *ngFor="let header of dataComplete.head.vars">
                   <a href="{{ item[header].value }}" *ngIf="item[header].type == 'uri'">{{ item[header].value }}</a>
-                  <ng-container *ngIf="item[header].type != 'uri'">{{
-                item[header].value
-              }}</ng-container>
+                  <ng-container *ngIf="item[header]?.type != 'uri'">{{
+                    item[header].value
+                    }}</ng-container>
                 </td>
               </ng-container>
               <ng-container *ngIf="!!headerData">
                 <td *ngFor="let header of headerData">
-                  <a href="{{ item[header.columnName].value }}"
-                    *ngIf="item[header.columnName].type == 'uri'">{{ item[header.columnName].value }}</a>
-                  <ng-container *ngIf="item[header.columnName].type != 'uri'">{{
-                item[header.columnName].value
-              }}</ng-container>
+                  <a href="{{ item[header.columnName].value }}" *ngIf="item[header.columnName].type == 'uri'">{{
+                    item[header.columnName].value }}</a>
+                  <ng-container *ngIf="item[header.columnName]?.type != 'uri'">{{
+                    item[header.columnName].value
+                    }}</ng-container>
                 </td>
               </ng-container>
             </tr>
