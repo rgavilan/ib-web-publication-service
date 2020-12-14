@@ -3,7 +3,7 @@
     <div class="row">
         <!-- top -->
         <div class="form-group col-lg-6">
-            <label for="top" class="col-sm-3 control-label">{{  "researchmentStructure.top" | translate }}</label>
+            <label for="top" class="col-sm-3 control-label">{{ "researchmentStructure.top" | translate }}</label>
             <div class="col-sm-9">
                 <select name="top" class="form-control" [(ngModel)]="findRequest.filter.top" #top="ngModel">
                     <option [value]="undefined">{{ "form.select" | translate }}</option>
@@ -16,7 +16,7 @@
 
         <!-- q&a -->
         <div class="form-group col-lg-6">
-            <label for="activo" class="col-sm-4 control-label">{{  "researchmentStructure.qa" | translate }}</label>
+            <label for="activo" class="col-sm-4 control-label">{{ "researchmentStructure.qa" | translate }}</label>
             <div class="col-sm-8">
                 <select name="qa" class="form-control" [(ngModel)]="findRequest.filter.qa" #qa="ngModel"
                     (change)="filterTopResearchmentStructures('qa')">

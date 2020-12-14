@@ -1,51 +1,46 @@
-<fieldset>
-    <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm">
-        <div class="row mt-20">
-            <!-- categorias tree -->
-            <div class="col-lg-6">
-                <label for="type" class="col-sm-4 control-label">{{  "scientist.area" | translate }}</label>
-                <app-new-tree [treeType]="'area'"></app-new-tree>
-            </div>
-            <!-- dates -->
-
-            <div class="form-group col-lg-3">
-                <label for="dateFrom" class="control-label">{{'projects.date-ini' | translate }}</label>
-                <input class="form-control" name="dateFrom" id="dateFrom" required (ngModelChange)="filterProjects()"
-                    placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
-                    #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();" (keyup)="decisionDate.close()"
-                    #dateFrom="ngModel" [(ngModel)]="dateIni" />
-            </div>
-            <div class="form-group col-lg-3">
-                <label for="dateTo" class="control-label">{{'projects.date-fin' | translate }}</label>
-                <input class="form-control" name="dateTo" id="dateTo" required (ngModelChange)="filterProjects()"
-                    placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
-                    #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();" (keyup)="decisionTo.close()"
-                    #dateTo="ngModel" [(ngModel)]="dateFin" />
-            </div>
-
+<form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm">
+    <div class="row mt-20">
+        <!-- categorias tree -->
+        <div class="col-lg-6">
+            <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
+            <app-new-tree [treeType]="'area'"></app-new-tree>
         </div>
-    </form>
-</fieldset>
-<fieldset>
-    <div class="container-fluid">
-        <div class="row justify-content-end">
-            <div class="input-group col-md-4">
-                <input class="form-control py-2 border-right-0 border" type="search"
-                    placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name">
-                <span class="input-group-append">
-                    <button (click)="filterProjects()" class="btn btn-outline-secondary border-left-0 border"
-                        type="button">
-                        <em class="oi oi-magnifying-glass "></em>
-                    </button>
-                </span>
-            </div>
+        <!-- dates -->
+
+        <div class="form-group col-lg-3">
+            <label for="dateFrom" class="control-label">{{'projects.date-ini' | translate }}</label>
+            <input class="form-control" name="dateFrom" id="dateFrom" required (ngModelChange)="filterProjects()"
+                placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
+                #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();" (keyup)="decisionDate.close()"
+                #dateFrom="ngModel" [(ngModel)]="dateIni" />
+        </div>
+        <div class="form-group col-lg-3">
+            <label for="dateTo" class="control-label">{{'projects.date-fin' | translate }}</label>
+            <input class="form-control" name="dateTo" id="dateTo" required (ngModelChange)="filterProjects()"
+                placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
+                #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();" (keyup)="decisionTo.close()"
+                #dateTo="ngModel" [(ngModel)]="dateFin" />
+        </div>
+
+    </div>
+</form>
+<div class="container-fluid">
+    <div class="row justify-content-end">
+        <div class="input-group col-md-4">
+            <input class="form-control py-2 border-right-0 border" type="search"
+                placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name">
+            <span class="input-group-append">
+                <button (click)="filterProjects()" class="btn btn-outline-secondary border-left-0 border" type="button">
+                    <em class="oi oi-magnifying-glass "></em>
+                </button>
+            </span>
         </div>
     </div>
-    <app-table-results [routerNameLink]="'./project/'" *ngIf="loadedProjects" [routerField]="'id'"
-        [data]="allProjectFiltered.content[0]" [pageInfo]="allProjectFiltered"
-        (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
-        (sortChanged)="allprojectsFilteredSortChanged($event)">
-    </app-table-results>
-    <div style="min-width: 600px; width:100%; height:450px" echarts [loading]="loadingData" [options]="echartOptions"
-        class="demo-chart"></div>
-</fieldset>
+</div>
+<app-table-results [routerNameLink]="'./project/'" *ngIf="loadedProjects" [routerField]="'id'"
+    [data]="allProjectFiltered.content[0]" [pageInfo]="allProjectFiltered"
+    (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
+    (sortChanged)="allprojectsFilteredSortChanged($event)">
+</app-table-results>
+<div style="min-width: 600px; width:100%; height:450px" echarts [loading]="loadingData" [options]="echartOptions"
+    class="demo-chart"></div>
