@@ -22,17 +22,14 @@ describe('DocumentsComponent', () => {
     fixture = TestBed.createComponent(DocumentsComponent);
     component = fixture.componentInstance;
     documentService = TestBed.inject(MockDocumentService);
-    component.filterDocumentType = ['Libro', 'Articulo'];
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
 
   it('should create execute ngOnInit and populate data table to show', () => {
-    spyOn(documentService, 'find').and.callThrough();
-    component.filterDocumentType = ['Libro', 'Articulo'];
+    const docService1 = fixture.debugElement.injector.get(DocumentService);
+    const spy = spyOn(docService1, 'find').and.callThrough();
     component.ngOnInit();
     fixture.detectChanges();
     expect(component.allDocumentFiltered.content[0].head.vars.length).toBe(3);
@@ -46,7 +43,6 @@ describe('DocumentsComponent', () => {
       const pageRequest: PageRequest = new PageRequest();
       pageRequest.page = 1;
       pageRequest.size = 10;
-      component.filterDocumentType = ['Libro', 'Articulo'];
       component.ngOnInit();
       fixture.detectChanges();
       expect(component.allDocumentFiltered.totalElements).toBe(10);
