@@ -28,7 +28,7 @@ export class MockResearchmentStructuresService extends ResearchmentStructuresSer
                 {
                     name: {
                         type: 'literal',
-                        value: 'Universidad Pompeu Fabra'
+                        value: 'Universidad Pompeu Fabra 2'
                     },
                     type: {
                         type: 'literal',
@@ -43,7 +43,7 @@ export class MockResearchmentStructuresService extends ResearchmentStructuresSer
                 {
                     name: {
                         type: 'literal',
-                        value: 'Universidad Politécnica de Cataluña'
+                        value: 'Universidad Politécnica de Cataluña 2'
                     },
                     type: {
                         type: 'literal',
@@ -58,7 +58,7 @@ export class MockResearchmentStructuresService extends ResearchmentStructuresSer
                 {
                     name: {
                         type: 'literal',
-                        value: 'Universidad Carlos III'
+                        value: 'Universidad Carlos III 2'
                     },
                     type: {
                         type: 'literal',

@@ -23,30 +23,30 @@ export class MockDocumentService {
                 {
                     name: {
                         type: 'literal',
-                        value: 'Patente 1'
+                        value: 'documento 1'
                     },
                     id: {
                         type: 'literal',
-                        value: 'Derecho'
+                        value: '123'
                     },
                     anyo: {
                         type: 'literal',
-                        value: 'red.es'
+                        value: '2012'
                     }
                 },
                 // 2
                 {
                     name: {
                         type: 'literal',
-                        value: 'Patente 2'
+                        value: 'Documento 2'
                     },
                     id: {
                         type: 'literal',
-                        value: 'Historia'
+                        value: '145'
                     },
                     anyo: {
                         type: 'literal',
-                        value: 'Fondos europeos'
+                        value: '2018'
                     }
                 }
 

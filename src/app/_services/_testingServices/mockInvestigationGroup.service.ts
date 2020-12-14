@@ -36,7 +36,7 @@ export class MockInvestigationGroupService extends PatentService {
                     },
                     id: {
                         type: 'literal',
-                        value: '1'
+                        value: '12'
                     },
                     ini: {
                         type: 'literal',
@@ -44,120 +44,98 @@ export class MockInvestigationGroupService extends PatentService {
                     },
                     name: {
                         type: 'literal',
-
-                        value: 'PROGRAMA DE ORDENADOR PARA LA APLICACION DE LA ISO 9000 EN CENTROS DE HEMODONACIÓN'
+                        value: 'PROGRAMA DE ORDENADOR PARA LA APLICACION DE LA ISO 9000 EN CENTROS DE HEMODONACIÓN 2'
                     },
                     tipo: {
                         type: 'literal',
-
-                        value: 'D'
+                        value: 'C'
                     }
                 },
                 {
                     fin: {
                         type: 'literal',
-
                         value: ''
                     },
                     id: {
                         type: 'literal',
-
-                        value: '12'
+                        value: '123'
                     },
                     ini: {
                         type: 'literal',
-
                         value: '15-05-1997'
                     },
                     name: {
                         type: 'literal',
-
-                        value: 'DISPOSITIVO PARA REALIZAR RADIOGRAFIAS PANORAMICAS DE MUÑECA'
+                        value: 'DISPOSITIVO PARA REALIZAR RADIOGRAFIAS PANORAMICAS DE MUÑECA 2'
                     },
                     tipo: {
                         type: 'literal',
-
                         value: 'P'
                     }
                 },
                 {
                     fin: {
                         type: 'literal',
-
                         value: ''
                     },
                     id: {
                         type: 'literal',
-
-                        value: '13'
+                        value: '132'
                     },
                     ini: {
                         type: 'literal',
-
                         value: ''
                     },
                     name: {
                         type: 'literal',
-
                         value: 'CIRCADIANWARE'
                     },
                     tipo: {
                         type: 'literal',
-
                         value: 'D'
                     }
                 },
                 {
                     fin: {
                         type: 'literal',
-
                         value: ''
                     },
                     id: {
                         type: 'literal',
-
                         value: '48'
                     },
                     ini: {
                         type: 'literal',
-
                         value: ''
                     },
                     name: {
                         type: 'literal',
-
                         value: 'NIP IMPERFECTION PROCESSOR'
                     },
                     tipo: {
                         type: 'literal',
-
                         value: 'D'
                     }
                 },
                 {
                     fin: {
                         type: 'literal',
-
                         value: ''
                     },
                     id: {
                         type: 'literal',
-
                         value: '49'
                     },
                     ini: {
                         type: 'literal',
-
                         value: ''
                     },
                     name: {
                         type: 'literal',
-
                         value: 'PARKINSON-SNM'
                     },
                     tipo: {
                         type: 'literal',
-
                         value: 'D'
                     }
                 }

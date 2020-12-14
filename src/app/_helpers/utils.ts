@@ -75,16 +75,24 @@ export class Helper {
   }
 
   /**
-   * Converts a NgbDateStruct to a native date
+   *
+   *
+   * @static
+   * @param {NgbDateStruct} date
+   * @return {*}  {number}
+   * @memberof Helper
    */
-  static toModel(date: NgbDateStruct): number {
-
+  static toModel(dateSent: NgbDateStruct): number {
     let result = null;
-    if (date && Number.isInteger(date.year) && Number.isInteger(date.month) && Number.isInteger(date.day)) {
+
+    if (dateSent
+      && Number.isInteger(dateSent.year) &&
+      Number.isInteger(dateSent.month) &&
+      Number.isInteger(dateSent.day)) {
       const newDate = moment.utc();
-      newDate.set('year', date.year);
-      newDate.set('month', date.month - 1);
-      newDate.set('date', date.day);
+      newDate.set('year', dateSent.year);
+      newDate.set('month', dateSent.month - 1);
+      newDate.set('date', dateSent.day);
       newDate.startOf('day');
 
       result = newDate.valueOf();

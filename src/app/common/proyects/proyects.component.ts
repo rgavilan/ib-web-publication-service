@@ -160,11 +160,11 @@ export class ProyectsComponent implements OnInit {
    */
   genData(count) {
     const nameList = [
-      'Verificación',
-      'Acreditación',
-      'Acreditación de las dimensiones adicionales',
-      'Certificación del sistema de garantía interna de la calidad (SGIC) de centro',
-      'Centro acreditado institucionalmente',
+      'Verificación 2',
+      'Acreditación 2',
+      'Acreditación de las dimensiones adicionales 2',
+      'Certificación del sistema de garantía interna de la calidad (SGIC) de centro 2',
+      'Centro acreditado institucionalmente 2',
     ];
     const legendData = [];
     const seriesData = [];

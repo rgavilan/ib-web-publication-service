@@ -74,11 +74,11 @@ export class ResearchmentStructuresByFinancingComponent implements OnInit {
    */
   genData(count) {
     const nameList = [
-      'Verificación',
-      'Acreditación',
-      'Acreditación de las dimensiones adicionales',
-      'Certificación del sistema de garantía interna de la calidad (SGIC) de centro',
-      'Centro acreditado institucionalmente',
+      'Verificación 1',
+      'Acreditación 1',
+      'Acreditación de las dimensiones adicionales 1',
+      'Certificación del sistema de garantía interna de la calidad (SGIC) de centro 1',
+      'Centro acreditado institucionalmente 1',
     ];
     const legendData = [];
     const seriesData = [];
