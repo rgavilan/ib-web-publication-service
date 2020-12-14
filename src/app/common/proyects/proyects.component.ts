@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { ProjectService } from 'src/app/_services/project.service';
 import { Helper } from 'src/app/_helpers/utils';
@@ -16,17 +16,67 @@ import { Helper } from 'src/app/_helpers/utils';
   templateUrl: './proyects.component.html'
 })
 export class ProyectsComponent implements OnInit {
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof ProyectsComponent
+   */
   @Input() universityId: string;
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof ProyectsComponent
+   */
   @Input() chartType: string;
+  /**
+   *
+   *
+   * @type {Page<SparqlResults>}
+   * @memberof ProyectsComponent
+   */
   allProjectFiltered: Page<SparqlResults>;
-  filters: Map<string, string> = new Map();
+  /**
+   *
+   *
+   * @type {FindRequest}
+   * @memberof ProyectsComponent
+   */
   findRequest: FindRequest = new FindRequest();
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof ProyectsComponent
+   */
   echartOptions: any;
+  /**
+   *
+   *
+   * @memberof ProyectsComponent
+   */
   loadingData = false;
+  /**
+   *
+   *
+   * @memberof ProyectsComponent
+   */
   loadedProjects = false;
+  /**
+   *
+   *
+   * @type {number}
+   * @memberof ProyectsComponent
+   */
   dateIni: number;
+  /**
+   *
+   *
+   * @type {number}
+   * @memberof ProyectsComponent
+   */
   dateFin: number;
-  res: SparqlResults;
   /**
    * Creates an instance of ProyectsComponent.
    * @param {ProjectService} projectService
@@ -47,15 +97,14 @@ export class ProyectsComponent implements OnInit {
     pageRequest.page = 0;
     pageRequest.size = 10;
     this.findRequest.pageRequest = pageRequest;
-    this.res = new SparqlResults();
     this.projectService.find(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
       this.loadedProjects = true;
     });
 
-    const xAxisData = [];
-    const data1 = [];
-    const data2 = [];
+    let xAxisData: Array<string> = [];
+    let data1: Array<any> = [];
+    let data2: Array<any> = [];
 
     for (let i = 0; i < 100; i++) {
       xAxisData.push('category' + i);
@@ -159,11 +208,12 @@ export class ProyectsComponent implements OnInit {
     this.loadingData = true;
   }
 
+
   /**
    *
    *
    * @param {number} i
-   * @memberof ScientificProductionComponent
+   * @memberof ProyectsComponent
    */
   allprojectsFilteredPageChanged(i: number): void {
     this.findRequest.pageRequest.page = i - 1;
@@ -174,11 +224,12 @@ export class ProyectsComponent implements OnInit {
     });
   }
 
+
   /**
    *
    *
    * @param {number} i
-   * @memberof PatentsComponent
+   * @memberof ProyectsComponent
    */
   allprojectsFilteredSizeChanged(i: number): void {
 
@@ -193,11 +244,12 @@ export class ProyectsComponent implements OnInit {
     });
   }
 
+
   /**
    *
    *
    * @param {PageRequest} pageRequest
-   * @memberof PatentsComponent
+   * @memberof ProyectsComponent
    */
   allprojectsFilteredSortChanged(pageRequest: PageRequest) {
     const newPageRequest: PageRequest = new PageRequest();
@@ -213,12 +265,11 @@ export class ProyectsComponent implements OnInit {
   }
 
 
+
   /**
    *
    *
-   * @param {*} event
-   * @param {string} filterName
-   * @memberof ScientificProductionComponent
+   * @memberof ProyectsComponent
    */
   filterProjects() {
     const pageRequest: PageRequest = new PageRequest();

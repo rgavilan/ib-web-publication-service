@@ -83,9 +83,9 @@ export class PatentsComponent implements OnInit {
       this.allPatentFiltered = res;
       this.loaded = true;
     });
-    const xAxisData = [];
-    const data1 = [];
-    const data2 = [];
+    let xAxisData: Array<string> = [];
+    let data1: Array<any> = [];
+    let data2: Array<any> = [];
 
     for (let i = 0; i < 100; i++) {
       xAxisData.push('category' + i);

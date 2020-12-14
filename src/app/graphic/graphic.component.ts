@@ -12,14 +12,13 @@ export class GraphicComponent implements OnInit {
 
   data: any;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     // bar chart
-    const xAxisData = [];
-    const data1 = [];
-    const data2 = [];
-
+    let xAxisData: Array<string> = [];
+    let data1: Array<any> = [];
+    let data2: Array<any> = [];
     for (let i = 0; i < 100; i++) {
       xAxisData.push('category' + i);
       data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
