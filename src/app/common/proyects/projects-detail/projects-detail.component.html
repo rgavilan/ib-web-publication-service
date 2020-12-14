@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12 margin-bottom">
-        <h2> {{proyect[0]?.name?.value}}</h2>
+        <h2 *ngIf="loaded"> {{proyect[0]?.name?.value}}</h2>
     </div>
 </div>
 
@@ -15,13 +15,13 @@
                 <ng-container>
                     <div class="row">
                         <div class="col-12 mt-40">
-                            <p><strong>{{ 'projects.project-name' | translate}}:</strong><span
-                                    *ngIf="proyect && proyect.length >=0 "> {{proyect[0]?.name?.value}} </span> </p>
+                            <p><strong>{{ 'projects.project-name' | translate}}:</strong><span *ngIf="loaded">
+                                    {{proyect[0]?.name?.value}} </span> </p>
                             <p><strong>{{ 'projects.key-words' | translate}}:</strong>- web, universidades </p>
-                            <p><strong>{{ 'projects.project-type' | translate}}:</strong><span
-                                    *ngIf="proyect && proyect.length >=0 "> {{proyect[0]?.tipo?.value}} </span> </p>
-                            <p><strong>{{ 'projects.financing-type' | translate}}:</strong> <span
-                                    *ngIf="proyect && proyect.length >=0 "> {{proyect[0]?.fund?.value}} </span></p>
+                            <p><strong>{{ 'projects.project-type' | translate}}:</strong><span *ngIf="loaded">
+                                    {{proyect[0]?.tipo?.value}} </span> </p>
+                            <p><strong>{{ 'projects.financing-type' | translate}}:</strong> <span *ngIf="loaded">
+                                    {{proyect[0]?.fund?.value}} </span></p>
                             <p><strong>{{ 'projects.call-type' | translate}}:</strong>- Público </p>
                             <p><strong>{{ 'projects.people-involved' | translate}}:</strong>- 23 </p>
                             <p><strong>{{ 'projects.main-researcher' | translate}}:</strong>- Maria Hernandez Reyes Mora

@@ -11,6 +11,19 @@ export class DeliverableComponent implements OnInit {
   /**
    *
    *
+   * @type {FindRequest}
+   * @memberof DeliverableComponent
+   */
+  findRequest: FindRequest = new FindRequest();
+  /**
+   *
+   *
+   * @memberof DeliverableComponent
+   */
+  loaded = false;
+  /**
+   *
+   *
    * @type {string}
    * @memberof DeliverableComponent
    */
@@ -22,19 +35,7 @@ export class DeliverableComponent implements OnInit {
    * @memberof DeliverableComponent
    */
   allData: Page<SparqlResults> = new Page();
-  /**
-   *
-   *
-   * @type {FindRequest}
-   * @memberof DeliverableComponent
-   */
-  findRequest: FindRequest = new FindRequest();
-  /**
-   *
-   *
-   * @memberof DeliverableComponent
-   */
-  loaded = false;
+
 
   /**
    * Creates an instance of DeliverableComponent.
@@ -66,7 +67,7 @@ export class DeliverableComponent implements OnInit {
    * @param {number} i
    * @memberof ScientificProductionComponent
    */
-  allScientistsFilteredPageChanged(i: number): void {
+  allfilter(i: number): void {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = i;
     pageRequest.size = this.allData.size;

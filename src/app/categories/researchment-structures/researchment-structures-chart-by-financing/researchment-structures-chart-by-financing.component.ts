@@ -3,8 +3,7 @@ import { Helper } from 'src/app/_helpers/utils';
 
 @Component({
   selector: 'app-sector-chart',
-  templateUrl: './researchment-structures-chart-by-financing.component.html',
-  styleUrls: ['./researchment-structures-chart-by-financing.component.css']
+  templateUrl: './researchment-structures-chart-by-financing.component.html'
 })
 export class ResearchmentStructuresByFinancingComponent implements OnInit {
 

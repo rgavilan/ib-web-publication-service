@@ -10,8 +10,7 @@ import { Helper } from 'src/app/_helpers/utils';
  */
 @Component({
   selector: 'app-researchment-structures-chart-by-qs',
-  templateUrl: './researchment-structures-chart-by-qs.component.html',
-  styleUrls: ['./researchment-structures-chart-by-qs.component.css']
+  templateUrl: './researchment-structures-chart-by-qs.component.html'
 })
 export class ResearchmentStructuresByQSComponent implements OnInit {
 

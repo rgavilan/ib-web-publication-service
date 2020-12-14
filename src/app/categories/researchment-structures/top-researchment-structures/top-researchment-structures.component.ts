@@ -12,8 +12,7 @@ import { ResearchmentStructuresService } from 'src/app/_services/researchment.st
  */
 @Component({
   selector: 'app-top-researchment-structures',
-  templateUrl: './top-researchment-structures.component.html',
-  styleUrls: ['./top-researchment-structures.component.css']
+  templateUrl: './top-researchment-structures.component.html'
 })
 export class TopResearchmentStructuresComponent implements OnInit {
 

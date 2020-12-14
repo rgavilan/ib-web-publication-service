@@ -1,8 +1,9 @@
 import { BASE_URL } from '../configuration';
 import { HttpParams } from '@angular/common/http';
-import { PageRequest } from './search';
+import { Direction, Page, PageRequest } from './search';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
+import { Binding, SparqlResults } from '../_models/sparql';
 /**
  * Clase de ayuda para la realización de llamadas HTTP.
  */
@@ -161,5 +162,51 @@ export class Helper {
       seriesData,
       selected,
     };
+  }
+
+  static findInServiceData(data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
+    const page: Page<SparqlResults> = new Page<SparqlResults>();
+    let dataFiltered: Binding[] = data.results.bindings;
+    // Filters
+    if (!!filters) {
+      filters.forEach((valueFilter: string, keyFilter: string) => {
+        if (!!valueFilter) {
+          dataFiltered = data.results.bindings = data.results.bindings.filter((binding: Binding) => {
+            for (const keyObject of Object.keys(binding)) {
+              if (
+                keyObject === keyFilter &&
+                binding[keyObject].value === valueFilter
+              ) {
+                return true;
+              }
+            }
+          });
+        }
+      });
+    }
+
+    // Order
+    if (!!pageRequest && !!pageRequest.property) {
+      page.sort = pageRequest.property;
+      page.direction = pageRequest.direction;
+      data.results.bindings = data.results.bindings.sort((a, b) => {
+        if (pageRequest.direction === Direction.ASC) {
+          return (a[pageRequest.property].value > b[pageRequest.property].value) ? 1 : -1;
+        }
+        return (a[pageRequest.property].value <= b[pageRequest.property].value) ? 1 : -1;
+      });
+    }
+
+    const min = ((!!pageRequest.page) ? pageRequest.page - 1 : 0) * pageRequest.size;
+    const max = ((!!pageRequest.page) ? pageRequest.page : 1) * pageRequest.size;
+    data.results.bindings = data.results.bindings.slice(min, max);
+    page.number = pageRequest.page;
+    page.numberOfElements = pageRequest.size;
+    page.size = pageRequest.size;
+    page.totalElements = dataFiltered.length;
+    // TODO sort
+
+    page.content = [data];
+    return page;
   }
 }

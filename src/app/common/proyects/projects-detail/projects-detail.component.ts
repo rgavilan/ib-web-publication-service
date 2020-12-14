@@ -11,6 +11,7 @@ export class ProjectsDetailComponent implements OnInit {
   id: string;
   findRequest: FindRequest = new FindRequest();
   proyect: any;
+  loaded = false;
   constructor(
     private route: ActivatedRoute,
     private projectService: ProjectService) { }
@@ -23,7 +24,11 @@ export class ProjectsDetailComponent implements OnInit {
       if (this.id) {
         this.findRequest.filter.id = this.id;
         this.projectService.find(this.findRequest).subscribe(data => {
-          this.proyect = data.content[0].results.bindings;
+          if (data.content[0]) {
+            this.proyect = data.content[0].results.bindings;
+            this.loaded = true;
+          }
+
         });
       }
     });

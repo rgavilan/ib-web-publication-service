@@ -1,4 +1,3 @@
-import { HttpParams } from '@angular/common/http';
 import {
   Component,
   Input,
@@ -18,7 +17,6 @@ import {
   Page,
   PaginatedSearchComponent,
 } from 'src/app/_helpers/search';
-import { Helper } from 'src/app/_helpers/utils';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 

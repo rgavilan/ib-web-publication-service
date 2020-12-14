@@ -3,6 +3,7 @@ import { Direction, Page, PageRequest } from '../_helpers/search';
 import { AbstractService } from '../_helpers/abstract';
 import { HttpClient } from '@angular/common/http';
 import { Binding, SparqlResults } from '../_models/sparql';
+import { Helper } from '../_helpers/utils';
 
 @Injectable({
   providedIn: 'root',
@@ -200,7 +201,7 @@ export class ResearchmentStructuresService extends AbstractService {
 
     const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
 
-    return this.findResearchmentStructuresByFiltersCommon(data, filters, pageRequest);
+    return Helper.findInServiceData(data, filters, pageRequest);
   }
 
   findTopResearchmentStructuresByFilters(
@@ -209,59 +210,8 @@ export class ResearchmentStructuresService extends AbstractService {
 
     const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
     data.results.bindings = this.DUMMY_DATA.results.bindings.slice(0, 10);
-    return this.findResearchmentStructuresByFiltersCommon(data, filters, pageRequest);
+    return Helper.findInServiceData(data, filters, pageRequest);
   }
 
-
-  // private 
-  findResearchmentStructuresByFiltersCommon(
-    data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest
-  ): Page<SparqlResults> {
-    const page: Page<SparqlResults> = new Page<SparqlResults>();
-
-    let dataFiltered: Binding[] = data.results.bindings;
-
-    // Filters
-    if (!!filters) {
-      filters.forEach((valueFilter: string, keyFilter: string) => {
-        if (!!valueFilter) {
-          dataFiltered = data.results.bindings = data.results.bindings.filter((binding: Binding) => {
-            for (const keyObject of Object.keys(binding)) {
-              if (
-                keyObject === keyFilter &&
-                binding[keyObject].value === valueFilter
-              ) {
-                return true;
-              }
-            }
-          });
-        }
-      });
-    }
-
-    // Order
-    if (!!pageRequest && !!pageRequest.property) {
-      page.sort = pageRequest.property;
-      page.direction = pageRequest.direction;
-      data.results.bindings = data.results.bindings.sort((a, b) => {
-        if (pageRequest.direction === Direction.ASC) {
-          return (a[pageRequest.property].value > b[pageRequest.property].value) ? 1 : -1;
-        }
-        return (a[pageRequest.property].value <= b[pageRequest.property].value) ? 1 : -1;
-      });
-    }
-
-    const min = ((!!pageRequest.page) ? pageRequest.page - 1 : 0) * pageRequest.size;
-    const max = ((!!pageRequest.page) ? pageRequest.page : 1) * pageRequest.size;
-    data.results.bindings = data.results.bindings.slice(min, max)
-    page.number = pageRequest.page - 1;
-    page.numberOfElements = pageRequest.size;
-    page.size = pageRequest.size;
-    page.totalElements = dataFiltered.length;
-
-    page.content = [data];
-
-    return page;
-  }
 }
 
