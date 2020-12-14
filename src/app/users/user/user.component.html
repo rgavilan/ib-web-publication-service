@@ -3,9 +3,7 @@
     <h2>{{ "user.title" | translate }}</h2>
   </div>
   <div class="col-lg-2 text-right actions">
-    <a routerLink="create" class="btn btn-primary"
-      ><em class="oi oi-plus"></em> {{ "user.create" | translate }}</a
-    >
+    <a routerLink="create" class="btn btn-primary"><em class="oi oi-plus"></em> {{ "user.create" | translate }}</a>
   </div>
 </div>
 
@@ -18,44 +16,27 @@
       <div class="form-group col-lg-4">
         <label for="email" class="col-sm-3 control-label">{{
           "user.email" | translate
-        }}</label>
+          }}</label>
         <div class="col-sm-9">
-          <input
-            type="text"
-            class="form-control"
-            name="email"
-            placeholder="{{ 'user.email' | translate }}"
-            [(ngModel)]="findRequest.filter.email"
-            #email="ngModel"
-          />
+          <input type="text" class="form-control" name="email" placeholder="{{ 'user.email' | translate }}"
+            [(ngModel)]="findRequest.filter.email" #email="ngModel" />
         </div>
       </div>
       <div class="form-group col-lg-4">
         <label for="name" class="col-sm-3 control-label">{{
           "user.name" | translate
-        }}</label>
+          }}</label>
         <div class="col-sm-9">
-          <input
-            type="text"
-            class="form-control"
-            name="name"
-            placeholder="{{ 'user.name' | translate }}"
-            [(ngModel)]="findRequest.filter.name"
-            #name="ngModel"
-          />
+          <input type="text" class="form-control" name="name" placeholder="{{ 'user.name' | translate }}"
+            [(ngModel)]="findRequest.filter.name" #name="ngModel" />
         </div>
       </div>
       <div class="form-group col-lg-4">
         <label for="activo" class="col-sm-3 control-label">{{
           "user.enabled" | translate
-        }}</label>
+          }}</label>
         <div class="col-sm-9">
-          <select
-            name="activo"
-            class="form-control"
-            [(ngModel)]="findRequest.filter.enabled"
-            #enabled="ngModel"
-          >
+          <select name="activo" class="form-control" [(ngModel)]="findRequest.filter.enabled" #enabled="ngModel">
             <option value="">{{ "form.select" | translate }}</option>
             <option value="true">{{ "form.yes" | translate }}</option>
             <option value="false">{{ "form.no" | translate }}</option>
@@ -79,20 +60,21 @@
   </legend>
 
   <table class="table table-users table-hover">
+    <caption>User data</caption>
     <thead>
       <tr>
-        <th class="sortable" (click)="sort('id')">
+        <th scope="col" class="sortable" (click)="sort('id')">
           ID <em class="float-right" [ngClass]="getSortIcon('id')"></em>
         </th>
-        <th class="sortable" (click)="sort('name')">
+        <th scope="col" class="sortable" (click)="sort('name')">
           {{ "user.name" | translate }}
           <em class="float-right" [ngClass]="getSortIcon('name')"></em>
         </th>
-        <th class="sortable" (click)="sort('email')">
+        <th scope="col" class="sortable" (click)="sort('email')">
           {{ "user.email" | translate }}
           <em class="float-right" [ngClass]="getSortIcon('email')"></em>
         </th>
-        <th></th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -105,22 +87,16 @@
             <em class="oi oi-pencil"></em>
           </a>
           <a class="btn btn-light" (click)="remove(user)" href="javascript:;">
-            <em
-              class="oi"
-              [ngClass]="{
+            <em class="oi" [ngClass]="{
                 'oi-trash': user.accountNonLocked,
                 'oi-check': !user.accountNonLocked
-              }"
-            ></em>
+              }"></em>
           </a>
         </td>
       </tr>
     </tbody>
   </table>
 
-  <app-pagination
-    [resultObject]="resultObject"
-    (pageChanged)="showPage($event)"
-    (sizeChanged)="changeSize($event)"
-  ></app-pagination>
+  <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)" (sizeChanged)="changeSize($event)">
+  </app-pagination>
 </fieldset>

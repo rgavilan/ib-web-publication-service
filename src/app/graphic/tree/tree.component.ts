@@ -9,62 +9,7 @@ export class TreeComponent implements OnInit {
   @Output() filterChanged: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('echarts') echarts: NgxEchartsDirective;
   @Input() treeType = 'area';
-  @Input() data = {
-    name: 'Áreas',
-    children: [
-      {
-        name: 'Ciencias y tecnologías quimicas',
-        value: 'CTQ',
-        selected: false,
-        children: [
-          { name: 'Ingeniería Química', value: 'IQM', selected: false, children: [] },
-          { name: 'Química', value: 'QMC', selected: false, children: [] }
-        ]
-      },
-      {
-        name: 'Energía y transporte',
-        value: 'EYT',
-        selected: false,
-        children: [
-          {
-            name: 'Energía', value: 'ENE', selected: false, children: [
-              { name: 'Energía 1', value: 'ENE1', selected: false, children: [] },
-              { name: 'Transporte 1', value: 'TRA1', selected: false, children: [] }
-            ]
-          },
-          { name: 'Transporte', value: 'TRA', selected: false, children: [] }
-        ]
-      },
-      {
-        name: 'Ciencias físicas',
-        value: 'FIS',
-        selected: false,
-        children: [
-          { name: 'Astonomía y astrofísica', value: 'AYA', selected: false, children: [] },
-          { name: 'Investigación espacial', value: 'ESP', selected: false, children: [] },
-          { name: 'Física fundamenta y de partículas', value: 'FFP', selected: false, children: [] },
-          { name: 'Física y sus aplicaciones', value: 'FYA', selected: false, children: [] }
-        ]
-      },
-      {
-        name: 'Ciencias y Tecnologías de materiales',
-        value: 'MAT',
-        selected: false,
-        children: [
-          { name: 'Materiales para biomedicia', value: 'MBM', selected: false, children: [] },
-          { name: 'Materiales para la energia y el medioambiente', value: 'MEN', selected: false, children: [] },
-          { name: 'Materiales estructurales', value: 'MES', selected: false, children: [] },
-          { name: 'Materiales con funcionalidad eléctrica, magnética, óptica o térmica', value: 'FYA', selected: false, children: [] }
-        ]
-      },
-      {
-        name: 'Ciencias matematicas',
-        value: 'MTM',
-        selected: false,
-        children: []
-      }
-    ],
-  };
+  @Input() data: any;
   filterDate: any;
   options: any;
   filter = [];
