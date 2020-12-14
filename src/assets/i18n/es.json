@@ -169,6 +169,7 @@
     "main-researcher": "Nombre(s) del investigador (s) principal"
   },
   "investigation-actions": {
+    "title": "Acciones de investigación",
     "documents": "Documentos",
     "projects": "Proyectos",
     "documents-table": {
