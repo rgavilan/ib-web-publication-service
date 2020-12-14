@@ -24,6 +24,10 @@ const routes: Routes = [
     component: ProjectsDetailComponent,
   },
   {
+    path: 'researchmentStructures/:proyect/project/:id',
+    component: ProjectsDetailComponent,
+  },
+  {
     path: 'scientist',
     component: ScientistComponent,
   },
