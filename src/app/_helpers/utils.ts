@@ -125,4 +125,37 @@ export class Helper {
       return null;
     }
   }
+
+  /**
+   *
+   * param count
+   */
+  static genData(count) {
+    const nameList = [
+      'Verificación 1',
+      'Acreditación 1',
+      'Acreditación de las dimensiones adicionales 1',
+      'Certificación del sistema de garantía interna de la calidad (SGIC) de centro 1',
+      'Centro acreditado institucionalmente 1',
+    ];
+    const legendData = [];
+    const seriesData = [];
+    const selected = {};
+    let name;
+
+    for (let i = 0; i < count; i++) {
+      name = nameList[i];
+      legendData.push(name);
+      seriesData.push({
+        name,
+        value: Math.round(Math.random() * 100000),
+      });
+      selected[name] = i < 6;
+    }
+    return {
+      legendData,
+      seriesData,
+      selected,
+    };
+  }
 }

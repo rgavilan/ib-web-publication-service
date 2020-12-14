@@ -12,8 +12,7 @@ import { ScientistService } from 'src/app/_services/scientist.service';
  */
 @Component({
   selector: 'app-top-search',
-  templateUrl: './top-search.component.html',
-  styleUrls: ['./top-search.component.css']
+  templateUrl: './top-search.component.html'
 })
 export class TopSearchComponent implements OnInit {
   @Input() universityId: string;

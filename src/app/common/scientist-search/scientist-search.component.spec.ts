@@ -51,11 +51,4 @@ describe('ScientistSearchComponent', () => {
     });
   });
 
-  describe('should generate data for graphic', () => {
-    it('should return all values by filtering by empty filter', () => {
-      const result = component.genData(5);
-      expect(result.seriesData.length).toBe(5);
-    });
-  });
-
 });

@@ -13,8 +13,7 @@ import { Helper } from 'src/app/_helpers/utils';
  */
 @Component({
   selector: 'app-proyects',
-  templateUrl: './proyects.component.html',
-  styleUrls: ['./proyects.component.css']
+  templateUrl: './proyects.component.html'
 })
 export class ProyectsComponent implements OnInit {
   @Input() universityId: string;
@@ -66,7 +65,7 @@ export class ProyectsComponent implements OnInit {
     if (this.chartType === 'bar') {
       this.echartOptions = {
         legend: {
-          data: ['bar', 'bar2'],
+          data: ['Proyectos año 2019', 'Proyectos año 2020'],
           align: 'left',
         },
         tooltip: {},
@@ -80,13 +79,13 @@ export class ProyectsComponent implements OnInit {
         yAxis: {},
         series: [
           {
-            name: 'bar',
+            name: 'Proyectos año 2019',
             type: 'bar',
             data: data1,
             animationDelay: (idx) => idx * 10,
           },
           {
-            name: 'bar2',
+            name: 'Proyectos año 2020',
             type: 'bar',
             data: data2,
             animationDelay: (idx) => idx * 10 + 100,
@@ -150,42 +149,6 @@ export class ProyectsComponent implements OnInit {
   }
 
 
-
-  /**
-   *
-   *
-   * @param {*} count
-   * @return {*} 
-   * @memberof ProyectsComponent
-   */
-  genData(count) {
-    const nameList = [
-      'Verificación 2',
-      'Acreditación 2',
-      'Acreditación de las dimensiones adicionales 2',
-      'Certificación del sistema de garantía interna de la calidad (SGIC) de centro 2',
-      'Centro acreditado institucionalmente 2',
-    ];
-    const legendData = [];
-    const seriesData = [];
-    const selected = {};
-    let name;
-
-    for (let i = 0; i < count; i++) {
-      name = nameList[i];
-      legendData.push(name);
-      seriesData.push({
-        name,
-        value: Math.round(Math.random() * 100000),
-      });
-      selected[name] = i < 6;
-    }
-    return {
-      legendData,
-      seriesData,
-      selected,
-    };
-  }
 
   /**
    *

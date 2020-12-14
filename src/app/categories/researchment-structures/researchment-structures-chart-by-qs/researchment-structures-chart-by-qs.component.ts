@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Helper } from 'src/app/_helpers/utils';
 
 /**
  * ResearchmentStructuresComponent
@@ -34,7 +35,7 @@ export class ResearchmentStructuresByQSComponent implements OnInit {
       data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
     }
 
-    const data = this.genData(2);
+    const data = Helper.genData(2);
 
     this.echartOptions = {
       title: {
@@ -71,41 +72,6 @@ export class ResearchmentStructuresByQSComponent implements OnInit {
           },
         },
       ],
-    };
-  }
-
-
-  /**
-   * param count
-   *
-   * @private
-   * @param {*} count
-   * @returns
-   * @memberof ResearchmentStructuresByQSComponent
-   */
-  private genData(count) {
-    const nameList = [
-      'Proyectos H2020',
-      'Proyectos del Plan Estatal'
-    ];
-    const legendData = [];
-    const seriesData = [];
-    const selected = {};
-    let name;
-
-    for (let i = 0; i < count; i++) {
-      name = nameList[i];
-      legendData.push(name);
-      seriesData.push({
-        name,
-        value: Math.round(Math.random() * 100000),
-      });
-      selected[name] = i < 6;
-    }
-    return {
-      legendData,
-      seriesData,
-      selected,
     };
   }
 

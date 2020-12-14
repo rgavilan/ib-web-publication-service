@@ -5,8 +5,7 @@ import { ProjectService } from 'src/app/_services/project.service';
 
 @Component({
   selector: 'app-projects-detail',
-  templateUrl: './projects-detail.component.html',
-  styleUrls: ['./projects-detail.component.css']
+  templateUrl: './projects-detail.component.html'
 })
 export class ProjectsDetailComponent implements OnInit {
   id: string;

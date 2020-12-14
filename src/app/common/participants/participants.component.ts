@@ -5,8 +5,7 @@ import { ParticipantService } from 'src/app/_services/participant.service';
 
 @Component({
   selector: 'app-participants',
-  templateUrl: './participants.component.html',
-  styleUrls: ['./participants.component.css']
+  templateUrl: './participants.component.html'
 })
 export class ParticipantsComponent implements OnInit {
   /**

@@ -37,13 +37,6 @@ describe('ProyectsComponent', () => {
     expect(component.allProjectFiltered.content[0].results.bindings.length).not.toBe(0);
   });
 
-  describe('should generate data for graphic', () => {
-    it('should return all values by filtering by empty filter', () => {
-      const result = component.genData(4);
-      expect(result.seriesData.length).toBe(4);
-    });
-  });
-
   describe('on component Init', () => {
     it('should change load all elements', () => {
       const pageRequest: PageRequest = new PageRequest();

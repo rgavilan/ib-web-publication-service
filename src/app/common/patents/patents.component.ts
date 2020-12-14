@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { Helper } from 'src/app/_helpers/utils';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { PatentService } from 'src/app/_services/patent.service';
 
@@ -13,8 +14,7 @@ import { PatentService } from 'src/app/_services/patent.service';
  */
 @Component({
   selector: 'app-patents',
-  templateUrl: './patents.component.html',
-  styleUrls: ['./patents.component.css']
+  templateUrl: './patents.component.html'
 })
 export class PatentsComponent implements OnInit {
   /**
@@ -93,7 +93,7 @@ export class PatentsComponent implements OnInit {
       data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
     }
 
-    const data = this.genData(5);
+    const data = Helper.genData(3);
     this.echartOptions = {
       title: {
         text: 'Personal por tipo filtrado por area',
@@ -203,42 +203,6 @@ export class PatentsComponent implements OnInit {
       this.loaded = true;
     });
 
-  }
-
-  /**
-   *
-   *
-   * @param {*} count
-   * @return {*} 
-   * @memberof PatentsComponent
-   */
-  genData(count) {
-    const nameList = [
-      'Verificación',
-      'Acreditación',
-      'Acreditación de ',
-      'Certificación del ',
-      'Centro acreditado institucionalmente',
-    ];
-    const legendData = [];
-    const seriesData = [];
-    const selected = {};
-    let name;
-
-    for (let i = 0; i < count; i++) {
-      name = nameList[i];
-      legendData.push(name);
-      seriesData.push({
-        name,
-        value: Math.round(Math.random() * 100000),
-      });
-      selected[name] = i < 6;
-    }
-    return {
-      legendData,
-      seriesData,
-      selected,
-    };
   }
 
 

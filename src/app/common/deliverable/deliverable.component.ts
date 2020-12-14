@@ -5,8 +5,7 @@ import { ParticipantService } from 'src/app/_services/participant.service';
 
 @Component({
   selector: 'app-deliverable',
-  templateUrl: './deliverable.component.html',
-  styleUrls: ['./deliverable.component.css']
+  templateUrl: './deliverable.component.html'
 })
 export class DeliverableComponent implements OnInit {
   /**

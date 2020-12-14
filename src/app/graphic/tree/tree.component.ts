@@ -3,8 +3,7 @@ import { NgxEchartsDirective, NgxEchartsModule } from 'ngx-echarts';
 
 @Component({
   selector: 'app-tree',
-  templateUrl: './tree.component.html',
-  styleUrls: ['./tree.component.css'],
+  templateUrl: './tree.component.html'
 })
 export class TreeComponent implements OnInit {
   @Output() filterChanged: EventEmitter<any> = new EventEmitter<any>();

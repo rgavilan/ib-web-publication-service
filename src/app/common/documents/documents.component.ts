@@ -14,8 +14,7 @@ import { DocumentService } from 'src/app/_services/document.service';
  */
 @Component({
   selector: 'app-documents',
-  templateUrl: './documents.component.html',
-  styleUrls: ['./documents.component.css']
+  templateUrl: './documents.component.html'
 })
 export class DocumentsComponent implements OnInit {
   /**
