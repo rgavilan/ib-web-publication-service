@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AbstractService } from '../_helpers/abstract';
-import { Direction, FindRequest, Page, PageRequest } from '../_helpers/search';
+import { FindRequest, Page } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
-import { Binding, SparqlResults } from '../_models/sparql';
+import { SparqlResults } from '../_models/sparql';
 
 /**
  *  Service for patent production
@@ -39,7 +39,7 @@ export class PatentService extends AbstractService {
     find(findRequest: FindRequest): Observable<Page<SparqlResults>> {
         // Filter params
         let parameters = new HttpParams();
-        parameters = Helper.addParam(parameters, 'type', findRequest.filter.type);
+        parameters = Helper.addParam(parameters, 'tipo', findRequest.filter.type);
         parameters = Helper.addParam(parameters, 'name', findRequest.filter.name);
         // Pagination params
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);

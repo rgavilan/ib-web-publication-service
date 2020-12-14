@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AbstractService } from '../_helpers/abstract';
-import { Direction, FindRequest, Page, PageRequest } from '../_helpers/search';
+import { FindRequest, Page } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
-import { Binding, SparqlResults } from '../_models/sparql';
+import { SparqlResults } from '../_models/sparql';
 
 
 /**

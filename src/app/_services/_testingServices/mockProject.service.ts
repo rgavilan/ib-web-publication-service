@@ -1,9 +1,7 @@
-import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Helper } from 'src/app/_helpers/utils';
-import { Direction, FindRequest, Page, PageRequest } from '../../_helpers/search';
-import { Binding, SparqlResults } from '../../_models/sparql';
+import { FindRequest, Page } from '../../_helpers/search';
+import { SparqlResults } from '../../_models/sparql';
 import { ProjectService } from '../project.service';
 
 

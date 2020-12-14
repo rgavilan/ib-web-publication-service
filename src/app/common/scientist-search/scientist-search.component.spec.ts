@@ -1,6 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { PageRequest } from 'src/app/_helpers/search';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
 import { ScientistService } from 'src/app/_services/scientist.service';
 import { MockScientistService } from 'src/app/_services/_testingServices/mockScientist.service';

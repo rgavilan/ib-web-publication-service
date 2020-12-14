@@ -48,7 +48,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { TreeComponent } from '../graphic/tree/tree.component';
 import { NewTreeComponent } from '../graphic/new-tree/new-tree.component';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 import { EventEmitter, Pipe, PipeTransform } from '@angular/core';
 import { TableResultsComponent } from '../common-display-data/table-results/table-results.component';
 import { ProyectsComponent } from '../common/proyects/proyects.component';
@@ -58,6 +58,7 @@ import { ParticipantsComponent } from '../common/participants/participants.compo
 import { DeliverableComponent } from '../common/deliverable/deliverable.component';
 import { ProjectsDetailComponent } from '../common/proyects/projects-detail/projects-detail.component';
 import { ScientistComponent } from '../categories/scientist/scientist.component';
+import { InvestigationActionsComponent } from '../categories/investigation-actions/investigation-actions.component';
 
 
 /**
@@ -107,7 +108,8 @@ export class TestingHelper {
         ParticipantsComponent,
         DeliverableComponent,
         ProjectsDetailComponent,
-        ScientistComponent
+        ScientistComponent,
+        InvestigationActionsComponent
       ],
       imports: [
         BrowserModule,

@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestingHelper } from 'src/app/_helpers/testing.spec';
 
 import { InvestigationActionsComponent } from './investigation-actions.component';
 
@@ -7,10 +8,8 @@ describe('InvestigationActionsComponent', () => {
   let fixture: ComponentFixture<InvestigationActionsComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ InvestigationActionsComponent ]
-    })
-    .compileComponents();
+    TestingHelper.configureTest()
+      .compileComponents();
   }));
 
   beforeEach(() => {

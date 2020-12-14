@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-
 import { map, catchError } from 'rxjs/operators';
-
 import { Helper } from '../_helpers/utils';
 import { Observable, of } from 'rxjs';
 import { AbstractService } from '../_helpers/abstract';

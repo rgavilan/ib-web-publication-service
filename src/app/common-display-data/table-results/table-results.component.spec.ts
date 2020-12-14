@@ -1,4 +1,4 @@
-import { EventEmitter, SimpleChange, SimpleChanges } from '@angular/core';
+import { SimpleChanges } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { Direction, FindRequest, Page } from 'src/app/_helpers/search';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';

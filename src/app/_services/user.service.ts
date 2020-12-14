@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FindRequest, Page, Direction } from '../_helpers/search';
+import { FindRequest, Page } from '../_helpers/search';
 import { User } from '../_models/user';
 import { Helper } from '../_helpers/utils';
 import { Observable } from 'rxjs';

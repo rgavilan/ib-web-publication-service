@@ -15,16 +15,17 @@
                 <ng-container>
                     <div class="row">
                         <div class="col-12 mt-40">
-                            <p><b>{{ 'projects.project-name' | translate}}:</b><span
+                            <p><strong>{{ 'projects.project-name' | translate}}:</strong><span
                                     *ngIf="proyect && proyect.length >=0 "> {{proyect[0]?.name?.value}} </span> </p>
-                            <p><b>{{ 'projects.key-words' | translate}}:</b>- web, universidades </p>
-                            <p><b>{{ 'projects.project-type' | translate}}:</b><span
+                            <p><strong>{{ 'projects.key-words' | translate}}:</strong>- web, universidades </p>
+                            <p><strong>{{ 'projects.project-type' | translate}}:</strong><span
                                     *ngIf="proyect && proyect.length >=0 "> {{proyect[0]?.tipo?.value}} </span> </p>
-                            <p><b>{{ 'projects.financing-type' | translate}}:</b> <span
+                            <p><strong>{{ 'projects.financing-type' | translate}}:</strong> <span
                                     *ngIf="proyect && proyect.length >=0 "> {{proyect[0]?.fund?.value}} </span></p>
-                            <p><b>{{ 'projects.call-type' | translate}}:</b>- Público </p>
-                            <p><b>{{ 'projects.people-involved' | translate}}:</b>- 23 </p>
-                            <p><b>{{ 'projects.main-researcher' | translate}}:</b>- Maria Hernandez Reyes Mora </p>
+                            <p><strong>{{ 'projects.call-type' | translate}}:</strong>- Público </p>
+                            <p><strong>{{ 'projects.people-involved' | translate}}:</strong>- 23 </p>
+                            <p><strong>{{ 'projects.main-researcher' | translate}}:</strong>- Maria Hernandez Reyes Mora
+                            </p>
                         </div>
                     </div>
                 </ng-container>

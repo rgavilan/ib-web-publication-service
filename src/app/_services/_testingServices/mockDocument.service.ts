@@ -46,7 +46,7 @@ export class MockDocumentService {
                     },
                     anyo: {
                         type: 'literal',
-                        value: '2018'
+                        value: '2015'
                     }
                 }
 
@@ -57,14 +57,12 @@ export class MockDocumentService {
     find(findRequest: FindRequest): Observable<Page<SparqlResults>> {
         // Filter params
         const page: Page<SparqlResults> = new Page<SparqlResults>();
-        let results: SparqlResults = new SparqlResults();
-        results = this.DUMMY_DATA;
+        const results: SparqlResults = this.DUMMY_DATA;
         page.number = 0;
         page.numberOfElements = 10;
         page.size = 10;
         page.totalElements = 10;
         // TODO sort
-
         page.content = [results];
         return of(page);
     }

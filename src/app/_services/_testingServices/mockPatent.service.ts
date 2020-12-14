@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
-import { Binding, SparqlResults } from 'src/app/_models/sparql';
-import { PatentService } from '../patent.service';
+import { FindRequest, Page } from 'src/app/_helpers/search';
+import { SparqlResults } from 'src/app/_models/sparql';
 
 /**
  *  Service for testiong patent service

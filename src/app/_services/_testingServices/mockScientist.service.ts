@@ -42,7 +42,7 @@ export class MockScientistService extends ScientistService {
                 {
                     name: {
                         type: 'literal',
-                        value: 'Jesualdo Tomás Fernández Breis'
+                        value: 'Jesualdo Tomás'
                     },
                     id: {
                         type: 'literal',
@@ -57,7 +57,7 @@ export class MockScientistService extends ScientistService {
                 {
                     name: {
                         type: 'literal',
-                        value: 'Jesualdo Tomás Fernández Breis'
+                        value: 'Tomás Fernández Breis'
                     },
                     id: {
                         type: 'literal',
@@ -72,7 +72,7 @@ export class MockScientistService extends ScientistService {
                 {
                     name: {
                         type: 'literal',
-                        value: 'Jesualdo Tomás Fernández Breis'
+                        value: 'Jesualdo Tomás Breis'
                     },
                     id: {
                         type: 'literal',
@@ -87,7 +87,7 @@ export class MockScientistService extends ScientistService {
                 {
                     name: {
                         type: 'literal',
-                        value: 'Jesualdo Tomás Fernández Breis'
+                        value: 'Jesualdo Breis'
                     },
                     id: {
                         type: 'literal',
@@ -102,7 +102,7 @@ export class MockScientistService extends ScientistService {
                 {
                     name: {
                         type: 'literal',
-                        value: 'Jesualdo Tomás Fernández Breis'
+                        value: 'Jesualdo Hernesto'
                     },
                     id: {
                         type: 'literal',

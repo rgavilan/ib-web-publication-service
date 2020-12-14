@@ -4,8 +4,8 @@
         <div class="row">
             <!-- type -->
             <div class="form-group col-lg-6">
-                <label for="activo"
-                    class="col-sm-3 control-label">{{ "researchmentStructure.type" | translate }}</label>
+                <label for="activo" class="col-sm-3 control-label">{{ "researchmentStructure.type" | translate
+                    }}</label>
                 <div class="col-sm-9">
                     <select name="type" class="form-control" [(ngModel)]="findRequest.filter.type" #type="ngModel"
                         (change)="filterResearchmentStructures('type')">
@@ -21,8 +21,8 @@
 
             <!-- financing -->
             <div class="form-group col-lg-6">
-                <label for="activo"
-                    class="col-sm-3 control-label">{{ "researchmentStructure.financing" | translate }}</label>
+                <label for="activo" class="col-sm-3 control-label">{{ "researchmentStructure.financing" | translate
+                    }}</label>
                 <div class="col-sm-9">
                     <select name="financing" class="form-control" [(ngModel)]="findRequest.filter.financing"
                         #financing="ngModel">
@@ -60,26 +60,22 @@
     </form>
 </fieldset>
 
-
-<fieldset>
-    <div class="container-fluid">
-        <div class="row justify-content-end">
-            <div class="input-group col-md-4">
-                <input class="form-control py-2 border-right-0 border" type="search"
-                    placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name">
-                <span class="input-group-append">
-                    <button class="btn btn-outline-secondary border-left-0 border" type="button">
-                        <em class="oi oi-magnifying-glass "></em>
-                    </button>
-                </span>
-            </div>
+<div class="container-fluid">
+    <div class="row justify-content-end">
+        <div class="input-group col-md-4">
+            <input class="form-control py-2 border-right-0 border" type="search"
+                placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name">
+            <span class="input-group-append">
+                <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                    <em class="oi oi-magnifying-glass "></em>
+                </button>
+            </span>
         </div>
     </div>
+</div>
 
-    <app-table-results [data]="allResearchmentStructuresFiltered.content[0]"
-        [pageInfo]="allResearchmentStructuresFiltered" [routerField]="'name'"
-        (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)"
-        (sizeChanged)="allResearchmentStructuresFilteredSizeChanged($event)"
-        (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
-    </app-table-results>
-</fieldset>
+<app-table-results [data]="allResearchmentStructuresFiltered.content[0]" [pageInfo]="allResearchmentStructuresFiltered"
+    [routerField]="'name'" (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)"
+    (sizeChanged)="allResearchmentStructuresFilteredSizeChanged($event)"
+    (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
+</app-table-results>

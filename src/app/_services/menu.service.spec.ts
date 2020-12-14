@@ -1,5 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { MenuService } from './menu.service';
 import { TestingHelper } from '../_helpers/testing.spec';
 

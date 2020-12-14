@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { PatentService } from 'src/app/_services/patent.service';
 
@@ -17,14 +17,52 @@ import { PatentService } from 'src/app/_services/patent.service';
   styleUrls: ['./patents.component.css']
 })
 export class PatentsComponent implements OnInit {
+  /**
+   * university id for filter
+   *
+   * @type {string}
+   * @memberof PatentsComponent
+   */
   @Input() universityId: string;
+  /**
+   * all data shown on table
+   *
+   * @type {Page<SparqlResults>}
+   * @memberof PatentsComponent
+   */
   allPatentFiltered: Page<SparqlResults>;
-  filters: Map<string, string> = new Map();
+  /**
+   *
+   *  find request
+   * @type {FindRequest}
+   * @memberof PatentsComponent
+   */
   findRequest: FindRequest = new FindRequest();
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof PatentsComponent
+   */
   echartOptions: any;
+  /**
+   *
+   * if data from back is loadeding
+   * @memberof PatentsComponent
+   */
   loadingData = false;
+  /**
+   *
+   *
+   * @memberof PatentsComponent
+   */
   loaded = false;
 
+  /**
+   * Creates an instance of PatentsComponent.
+   * @param {PatentService} patentService
+   * @memberof PatentsComponent
+   */
   constructor(
     private patentService: PatentService) {
   }
@@ -160,8 +198,6 @@ export class PatentsComponent implements OnInit {
     pageRequest.page = 0;
     pageRequest.size = this.allPatentFiltered.size;
     this.findRequest.pageRequest = pageRequest;
-
-
     this.patentService.find(this.findRequest).subscribe((data) => {
       this.allPatentFiltered = data;
       this.loaded = true;
@@ -213,6 +249,23 @@ export class PatentsComponent implements OnInit {
    */
   onChartInit() {
     this.loadingData = true;
+  }
+
+  /**
+   *
+   *
+   * @memberof PatentsComponent
+   */
+  filterProjects() {
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = 0;
+    pageRequest.size = this.allPatentFiltered.size;
+    this.findRequest.pageRequest = pageRequest;
+    this.patentService.find(this.findRequest).subscribe((data) => {
+      this.allPatentFiltered = data;
+      this.loaded = true;
+    });
+
   }
 
 }

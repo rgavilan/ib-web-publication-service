@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Direction, FindRequest, Page, PageRequest } from '../_helpers/search';
-import { Observable } from 'rxjs';
+import { Direction, Page, PageRequest } from '../_helpers/search';
 import { AbstractService } from '../_helpers/abstract';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Binding, SparqlResults } from '../_models/sparql';
 
 @Injectable({
