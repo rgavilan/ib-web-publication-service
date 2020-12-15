@@ -1,9 +1,25 @@
 <ul class="sidebar-nav">
+  <!-- Hercules logo -->
+  <li class=" sidebar-brand">
+    <img alt="Logo Hercules" class="logo" src="assets/images/transparent logo Hercules.png">
+  </li>
+  <!-- menu entries -->
   <li *ngFor="let item of menuItems" class="sidebar-brand">
-    <a [routerLink]="[item.url]">{{item.title | translate}}</a>
+    <ng-container *ngIf="!item.disabled">
+      <a [routerLink]="[item.url]">
+        <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
+        {{ item.title | translate }}
+      </a>
+    </ng-container>
+    <ng-container *ngIf="item.disabled">
+      <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
+      {{ item.title | translate }}
+    </ng-container>
   </li>
 
-  <li class="sidebar-brand">
-    <a (click)="logout()"> {{'menu.logout' | translate}} </a>
+  <!-- logout button -->
+  <li class=" sidebar-brand">
+    <em class="oi oi-account-logout icons-menu"></em>
+    {{ "menu.logout" | translate }}
   </li>
 </ul>

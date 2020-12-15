@@ -4,13 +4,23 @@
 
 export const environment = {
   production: false,
-  urlBase: 'http://localhost:8080',
+  urlBase: 'http://localhost:8787',
   oauthUrl: '',
   urlWebsocket: '/gs-guide-websocket',
   oauthClientId: 'acme',
-  oauthSecret: 'acmesecret'
+  oauthSecret: 'acmesecret',
 };
 
+// default settings for how to query the endpoint
+export const yasgui = {
+  // Wikibase:
+  // endpoint: 'http://localhost:8282/proxy/wdqs/bigdata/namespace/wdq/sparql',
+  // method: 'GET'
+
+  // Fuseki
+  endpoint: 'http://localhost:8787/trellis/sparql',
+  method: 'POST',
+};
 
 /*
  * For easier debugging in development mode, you can import the following file

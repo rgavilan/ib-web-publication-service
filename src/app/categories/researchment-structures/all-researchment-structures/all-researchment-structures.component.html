@@ -1,0 +1,81 @@
+<fieldset class="panel-default">
+    <legend></legend>
+    <form class="form-horizontal" (ngSubmit)="filterResearchmentStructures(null)" #f="ngForm">
+        <div class="row">
+            <!-- type -->
+            <div class="form-group col-lg-6">
+                <label for="activo" class="col-sm-3 control-label">{{ "researchmentStructure.type" | translate
+                    }}</label>
+                <div class="col-sm-9">
+                    <select name="type" class="form-control" [(ngModel)]="findRequest.filter.type" #type="ngModel"
+                        (change)="filterResearchmentStructures('type')">
+                        <option value="undefined"> {{ "form.select" | translate }}</option>
+                        <option value="Universidad">Universidad</option>
+                        <option value="Centro">Centro</option>
+                        <option value="Organizacion">Organización</option>
+                        <option value="Fundación">Fundación</option>
+                        <option value="Otras estructuras">Otras estructuras</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- financing -->
+            <div class="form-group col-lg-6">
+                <label for="activo" class="col-sm-3 control-label">{{ "researchmentStructure.financing" | translate
+                    }}</label>
+                <div class="col-sm-9">
+                    <select name="financing" class="form-control" [(ngModel)]="findRequest.filter.financing"
+                        #financing="ngModel">
+                        <option value="undefined">{{ "form.select" | translate }}</option>
+                        <option value="Proyectos H2020">Proyectos H2020</option>
+                        <option value="Proyecto del Plan Estatal">
+                            Proyecto del Plan Estatal
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- q&a -->
+            <div class="form-group col-lg-6">
+                <label for="activo" class="col-sm-3 control-label">{{ "researchmentStructure.qa" | translate }}</label>
+                <div class="col-sm-9">
+                    <select name="qa" class="form-control" [(ngModel)]="findRequest.filter.qa" #qa="ngModel"
+                        (change)="filterResearchmentStructures('qa')">
+                        <option [value]="undefined">{{ "form.select" | translate }}</option>
+                        <option [value]="'Severo Ochoa'">Severo Ochoa</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- SEARCH BUTTON -->
+        <!-- <div class="form-group">
+            <div class="offset-sm-2 col-sm-10 text-right">
+                <button type="submit" class="btn btn-outline-primary">
+                    <em class="oi oi-magnifying-glass"></em>
+                    {{ "form.search" | translate }}
+                </button>
+            </div>
+        </div> -->
+    </form>
+</fieldset>
+
+<div class="container-fluid">
+    <div class="row justify-content-end">
+        <div class="input-group col-md-4">
+            <input class="form-control py-2 border-right-0 border" type="search"
+                placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name">
+            <span class="input-group-append">
+                <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                    <em class="oi oi-magnifying-glass "></em>
+                </button>
+            </span>
+        </div>
+    </div>
+</div>
+
+<app-table-results [data]="allResearchmentStructuresFiltered.content[0]" [pageInfo]="allResearchmentStructuresFiltered"
+    [routerField]="'name'" (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)"
+    (sizeChanged)="allResearchmentStructuresFilteredSizeChanged($event)"
+    (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
+</app-table-results>

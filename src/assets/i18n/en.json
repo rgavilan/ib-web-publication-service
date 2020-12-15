@@ -1,68 +1,184 @@
 {
-    "app" : {
-        "title" : "blankapp"
+  "app": {
+    "title": "blankapp"
+  },
+  "toast": {
+    "success": "Success",
+    "error": "Error",
+    "success-saving": "The item has been successfully saved",
+    "error-saving": "An error ocured while saving the item",
+    "error403": "Permission violation",
+    "error403-body": "It seems that you don't have the necessary permissions to perform the selected operation. Contact an administrator if you need to solve this issue."
+  },
+  "form": {
+    "submit": "Submit",
+    "save": "Save",
+    "cancel": "Cancel",
+    "search": "Search",
+    "search-by-name": "Search by name",
+    "search-by-title": "Search by title",
+    "search-by-description": "Search by description",
+    "pagination": "Displaying results {{min}} accross {{max}} of {{total}}",
+    "pagination-next": "⟩",
+    "pagination-previous": "⟨",
+    "pagination-first": "«",
+    "pagination-last": "»",
+    "search-form": "Search criteria",
+    "results": "Results",
+    "validation": {
+      "required": "Required input",
+      "email": "This is not a valid email",
+      "number": "This is not a valid number"
     },
-    "toast" : {
-        "success" : "Success",
-        "error" : "Error",
-        "success-saving" : "The item has been successfully saved",
-        "error-saving" : "An error ocured while saving the item",
-        "error403": "Permission violation",
-        "error403-body": "It seems that you don't have the necessary permissions to perform the selected operation. Contact an administrator if you need to solve this issue."
+    "select": "Select ...",
+    "yes": "Yes",
+    "no": "No",
+    "datepicker-placeholder": "YYYY-MM-DD"
+  },
+  "menu": {
+    "home": "Welcome",
+    "users": "Users",
+    "sparql": "SPARQL",
+    "graphics": "Graphics.",
+    "logout": "Log out",
+    "university": "Structures",
+    "scientist": "Research staff",
+    "category-inves": "Research categories",
+    "prod-scientist": "Scientific production",
+    "acction-inves": "Investigation actions",
+    "stats": "Stats and indicators"
+  },
+  "login": {
+    "form": {
+      "user": "User",
+      "password": "Password",
+      "submit": "Log in"
     },
-    "form" : {
-        "submit": "Submit",
-        "save": "Save",
-        "cancel": "Cancel",
-        "search": "Search",
-        "pagination": "Displaying results {{min}} accross {{max}} of {{total}}",
-        "pagination-next": "⟩",
-        "pagination-previous": "⟨",
-        "pagination-first": "«",
-        "pagination-last": "»",
-        "search-form": "Search criteria",
-        "results": "Results",
-        "validation": {
-          "required": "Required input",
-          "email": "This is not a valid email",
-          "number":  "This is not a valid number"
-        },
-        "select": "Select ...",
-        "yes": "Yes",
-        "no": "No"
-    },
-    "menu" : {
-        "home": "Welcome",
-        "users" : "Users",
-        "logout" : "Log out"
-    },
-    "login" : {
-        "form" : {
-            "user" : "User",
-            "password" : "Password",
-            "submit" : "Log in"
-        },
-        "error": {
-            "invalid": "Invalid credentials",
-            "invalid-body": "The username and/or password provided are invalid"
-        }
-    },
-    "user" : {
-        "id" : "ID",
-        "title" : "Users",
-        "create" : "Create user",
-        "selectRole" : "Select a role",
-        "roles" : "Roles",
-        "name": "Name",
-        "email": "Email",
-        "address": "Address",
-        "city": "City",
-        "country": "Country",
-        "language": "Language",
-        "enabled": "Enabled",
-        "username": "Username",
-        "password": "Password",
-        "edit-user-title": "Edit user: {{name}}",
-        "create-user-title": "Create new user"
+    "error": {
+      "invalid": "Invalid credentials",
+      "invalid-body": "The username and/or password provided are invalid"
     }
+  },
+  "user": {
+    "id": "ID",
+    "title": "Users",
+    "create": "Create user",
+    "selectRole": "Select a role",
+    "roles": "Roles",
+    "name": "Name",
+    "email": "Email",
+    "address": "Address",
+    "city": "City",
+    "country": "Country",
+    "language": "Language",
+    "enabled": "Enabled",
+    "username": "Username",
+    "password": "Password",
+    "edit-user-title": "Edit user: {{name}}",
+    "create-user-title": "Create new user"
+  },
+  "sparql": {
+    "results": {
+      "table": "table",
+      "response": "response",
+      "map": "map",
+      "chart": "chart"
+    }
+  },
+  "home": {
+    "search": "Global search",
+    "service": "Services",
+    "sparql": "Queries SPARQL",
+    "users": "User management",
+    "category": "Categories",
+    "university": "Researchment Structures",
+    "scientist": "Research staff",
+    "category-inves": "Research categories",
+    "prod-scientist": "Scientific production",
+    "acction-inves": "Investigation actions",
+    "stats": "Statistics and indicators",
+    "info": "Information",
+    "info-URI": "URIs contract information",
+    "validators": "Validators",
+    "sgi": "Backends SGI",
+    "graphs": "Named Graphs metadata rendering",
+    "info-hercules": "Information about Hercules",
+    "contact": "Contact information"
+  },
+  "links": {
+    "title": "Links GitHub",
+    "principal": "Principal",
+    "repository": "Repositories"
+  },
+  "researchmentStructure": {
+    "title": "Researchment Structures",
+    "type": "Type",
+    "financing": "Financing",
+    "name": "Name",
+    "publications": "Publications",
+    "top-structures": "Top Structures",
+    "top": "Top",
+    "qa": "Quality Assurance",
+    "num-qa": "Number of Universities by Q&A",
+    "num-financing": "Number of Universities by Financing",
+    "scientist": "Research staff",
+    "prod-scientist": "Scientific production",
+    "projects": "Projects",
+    "patents": "Patentes",
+    "area": "Area"
+  },
+  "scientist": {
+    "title": "Research staff",
+    "area": "Area",
+    "type": "Type"
+  },
+  "scientific-production": {
+    "title": "Scientific production",
+    "date-from": "Date from",
+    "date-to": "Date to",
+    "degree": "Degree",
+    "type": "Type",
+    "doi": "DOI",
+    "publication-year": "Publication year"
+  },
+  "projects": {
+    "year": "Year",
+    "project-name": "Project name",
+    "key-words": "Keywords",
+    "participation": "Participation",
+    "project-type": "Project type",
+    "financing": "Financing",
+    "convocation": "Convocation",
+    "date-fin": "End Date",
+    "date-ini": "Start Date",
+    "general-info": "General info",
+    "participants": "Participants",
+    "deliverables": "Deliverables",
+    "financing-type": "Financing type",
+    "call-type": "Call Type",
+    "people-involved": "People involved in proyect",
+    "main-researcher": "name(s) main  researcher(s)"
+  },
+  "investigation-actions": {
+    "title": "Investigation actions",
+    "documents": "Documents",
+    "projects": "Projects",
+    "documents-table": {
+      "id": "id",
+      "name": "name",
+      "anyo": "year"
+    }
+  },
+  "documents": {
+    "document": "Documents",
+    "date-fin": "End Date",
+    "date-ini": "Start Date"
+  },
+  "participant": {
+    "title": "Participants",
+    "level": "Level",
+    "year": "Year",
+    "people-involved": "Perople involved in proyect",
+    "proyect-participants": "Collaborating / participating entities"
+  }
 }

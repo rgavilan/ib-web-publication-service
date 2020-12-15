@@ -3,49 +3,72 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './_guards/auth.guard';
-import { UserComponent } from './user/user.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
+import { NoAuthGuard } from './_guards/no-auth.guard';
+import { GraphicComponent } from './graphic/graphic.component';
+import { LinksComponent } from './links/links.component';
 
 /**
- * Rutas securizadas
+ * **********************************************
+ * ************** Rutas securizadas *************
+ * **********************************************
  */
 const secureRoutes: Routes = [
+  /**
+   * Usuarios
+   */
+  // {
+  //   path: 'users',
+  //   component: UserModule,
+  // },
+];
+
+/**
+ * *************************************************
+ * ************** Rutas no securizadas *************
+ * *************************************************
+ */
+const noSecureRoutes: Routes = [
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
   },
-  /**
-   * Consulta de usuarios
-   */
   {
     path: 'users',
-    component: UserComponent
+    loadChildren: () =>
+      import('./users/users.module').then((m) => m.UsersModule),
   },
-  /**
-   * Creación de usuarios.
-   */
+
   {
-    path: 'users/create',
-    component: UserDetailComponent
+    path: 'sparql',
+    loadChildren: () =>
+      import('./sparqleditor/sparqleditor.module').then(
+        (m) => m.SparqleditorModule
+      ),
   },
-  /**
-   * Detalle de usuarios.
-   */
+  /* Graphics path */
   {
-    path: 'users/:id',
-    component: UserDetailComponent
-  }
+    path: 'graphics',
+    component: GraphicComponent,
+  },
+  /***************** Categories *******************/
+  {
+    path: 'categories',
+    loadChildren: () =>
+      import('./categories/categories.module').then((m) => m.CategoriesModule),
+  },
+  {
+    path: 'links',
+    component: LinksComponent,
+  },
 ];
 
 const routes: Routes = [
-/**
- * Login
- */
- {
+  /* Login */
+  {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
 
   /**
@@ -55,18 +78,28 @@ const routes: Routes = [
     path: 'main',
     component: MainComponent,
     canActivate: [AuthGuard],
-    children: secureRoutes
+    children: secureRoutes,
+  },
+
+  /**
+   * Ruta main no securizada.
+   */
+  {
+    path: 'main',
+    component: MainComponent,
+    canActivate: [NoAuthGuard],
+    children: noSecureRoutes,
   },
 
   // otherwhise redirect to main
   {
-      path: '**',
-      redirectTo: 'main/home'
-  }
+    path: '**',
+    redirectTo: 'main/home',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

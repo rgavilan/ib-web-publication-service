@@ -1,0 +1,54 @@
+<fieldset>
+    <legend class="legend margin-top">{{researchment?.name}}</legend>
+    <div class="mt-20">
+        <div class="row">
+            <div class="col-12">
+                <p>{{researchment?.address}} </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p> {{researchment?.tel}} </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mt-40">
+            <tabset #resultsTab [justified]="true">
+                <tab>
+                    <ng-template tabHeading>
+                        {{'researchmentStructure.scientist' | translate}}
+                    </ng-template>
+                    <ng-container>
+                        <app-scientist-search></app-scientist-search>
+                    </ng-container>
+                </tab>
+                <tab>
+                    <ng-template tabHeading>
+                        {{'researchmentStructure.prod-scientist' | translate}}
+                    </ng-template>
+                    <ng-container>
+                        <app-documents [isTreeVisible]="false" [filterDocumentType]="['Libro', 'Articulo']">
+                        </app-documents>
+                    </ng-container>
+                </tab>
+                <tab>
+                    <ng-template tabHeading>
+                        {{'researchmentStructure.projects' | translate}}
+                    </ng-template>
+                    <ng-container>
+                        <app-proyects [chartType]="'bar'"></app-proyects>
+                    </ng-container>
+                </tab>
+                <tab>
+                    <ng-template tabHeading>
+                        {{'researchmentStructure.patents' | translate}}
+                    </ng-template>
+                    <ng-container>
+                        <app-patents></app-patents>
+                    </ng-container>
+                </tab>
+            </tabset>
+        </div>
+    </div>
+</fieldset>

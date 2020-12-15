@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-lg-12 margin-bottom">
+        <h2>{{ "investigation-actions.title" | translate }}</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 mt-40">
+        <tabset #resultsTab [justified]="true">
+            <tab>
+                <ng-template tabHeading>
+                    {{'investigation-actions.documents' | translate}}
+                </ng-template>
+                <ng-container>
+                    <app-documents [filterDocumentType]="['Libro', 'Articulo']"></app-documents>
+                </ng-container>
+            </tab>
+            <tab>
+                <ng-template tabHeading>
+                    {{'investigation-actions.projects' | translate}}
+                </ng-template>
+                <ng-container>
+                    <app-proyects></app-proyects>
+                </ng-container>
+            </tab>
+        </tabset>
+    </div>
+</div>

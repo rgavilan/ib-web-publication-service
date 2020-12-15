@@ -1,68 +1,199 @@
 {
-    "app" : {
-        "title" : "blankapp"
+  "app": {
+    "title": "blankapp"
+  },
+  "toast": {
+    "success": "Éxito",
+    "error": "Error",
+    "success-saving": "El registro se ha guardado con éxito",
+    "error-saving": "Ha sucedido un error al guardar el registro",
+    "error403": "Transgresión de permisos",
+    "error403-body": "Parece que no tiene permisos para realizar la operación seleccionada. Póngase en contacto con el administrador."
+  },
+  "form": {
+    "submit": "Enviar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "search": "Buscar",
+    "search-by-name": "Buscar por nombre",
+    "search-by-title": "Buscar por título",
+    "search-by-description": "Buscar por descripción",
+    "pagination": "Viendo filas {{min}} a {{max}} de {{total}}",
+    "pagination-next": "⟩",
+    "pagination-previous": "⟨",
+    "pagination-first": "«",
+    "pagination-last": "»",
+    "search-form": "Criterios de búsqueda",
+    "results": "Resultados",
+    "validation": {
+      "required": "Valor requerido",
+      "email": "No es un email válido",
+      "number": "No es un valor numérico válido"
     },
-    "toast" : {
-        "success" : "Éxito",
-        "error" : "Error",
-        "success-saving" : "El registro se ha guardado con éxito",
-        "error-saving" : "Ha sucedido un error al guardar el registro",
-        "error403": "Transgresión de permisos",
-        "error403-body": "Parece que no tiene permisos para realizar la operación seleccionada. Póngase en contacto con el administrador."
+    "select": "Selecciona ...",
+    "yes": "Sí",
+    "no": "No",
+    "datepicker-placeholder": "YYYY-MM-DD"
+  },
+  "menu": {
+    "home": "Inicio",
+    "users": "Usuarios",
+    "sparql": "SPARQL",
+    "graphics": "Gráficos.",
+    "logout": "Salir",
+    "university": "Estruc. investigación",
+    "scientist": "Personal investigador",
+    "category-inves": "Cat. investigación",
+    "prod-scientist": "Producción cientifica",
+    "acction-inves": "Ac. investigación",
+    "stats": "Estadisticas"
+  },
+  "login": {
+    "form": {
+      "user": "Usuario",
+      "password": "Contraseña",
+      "submit": "Acceder"
     },
-    "form" : {
-        "submit": "Enviar",
-        "save": "Guardar",
-        "cancel": "Cancelar",
-        "search": "Buscar",
-        "pagination": "Viendo filas {{min}} a {{max}} de {{total}}",
-        "pagination-next": "⟩",
-        "pagination-previous": "⟨",
-        "pagination-first": "«",
-        "pagination-last": "»",
-        "search-form": "Criterios de búsqueda",
-        "results": "Resultados",
-        "validation": {
-            "required": "Valor requerido",
-            "email": "No es un email válido",
-            "number":  "No es un valor numérico válido"
-        },
-        "select": "Selecciona ...",
-        "yes": "Sí",
-        "no": "No"
-    },
-    "menu" : {
-        "home": "Inicio",
-        "users" : "Usuarios",
-        "logout" : "Salir"
-    },
-    "login" : {
-        "form" : {
-            "user" : "Usuario",
-            "password" : "Contraseña",
-            "submit" : "Acceder"
-        },
-        "error": {
-            "invalid": "Credenciales no válidas",
-            "invalid-body": "El nombre de usuario y/o contraseña introducido no son correctos"
-        }
-    },
-    "user" : {
-        "id" : "ID",
-        "title" : "Usuarios",
-        "create" : "Crear usuario",
-        "selectRole" : "Seleccione un rol",
-        "roles" : "Roles",
-        "name": "Nombre",
-        "email": "Email",
-        "address": "Dirección",
-        "city": "Ciudad",
-        "country": "Pais",
-        "language": "Idioma",
-        "enabled": "Habilitado",
-        "username": "Nombre de usuario",
-        "password": "Contraseña",
-        "edit-user-title": "Editar usuario: {{name}}",
-        "create-user-title": "Crear nuevo usuario"
+    "error": {
+      "invalid": "Credenciales no válidas",
+      "invalid-body": "El nombre de usuario y/o contraseña introducido no son correctos"
     }
+  },
+  "user": {
+    "id": "ID",
+    "title": "Usuarios",
+    "create": "Crear usuario",
+    "selectRole": "Seleccione un rol",
+    "roles": "Roles",
+    "name": "Nombre",
+    "email": "Email",
+    "address": "Dirección",
+    "city": "Ciudad",
+    "country": "Pais",
+    "language": "Idioma",
+    "enabled": "Habilitado",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "edit-user-title": "Editar usuario: {{name}}",
+    "create-user-title": "Crear nuevo usuario"
+  },
+
+  "sparql": {
+    "results": {
+      "table": "tabla",
+      "response": "response",
+      "map": "mapa",
+      "chart": "gráfica"
+    }
+  },
+  "proyect": {
+    "title": "Proyectos",
+    "detail": {
+      "name": "Nombre",
+      "date": "Fecha"
+    }
+  },
+  "home": {
+    "search": "Buscador global",
+    "service": "Servicios",
+    "sparql": "Consultas SPARQL",
+    "users": "Gestión usuarios",
+    "category": "Categorías",
+    "university": "Estructuras de investigación",
+    "scientist": "Personal investigador",
+    "category-inves": "Categorias de investigación",
+    "prod-scientist": "Producción cientifica",
+    "acction-inves": "Acciones de investigación",
+    "stats": "Estadisticas e indicadores",
+    "info": "Información",
+    "info-URI": "Información del contrato URIs",
+    "validators": "Validadores",
+    "sgi": "Backends SGI",
+    "graphs": "Renderización de metadatos de Named Graphs",
+    "info-hercules": "Información sobre Hercules",
+    "contact": "Datos de contacto"
+  },
+  "links": {
+    "title": "Links GitHub",
+    "principal": "Principal",
+    "repository": "Respositorios"
+  },
+
+  "researchmentStructure": {
+    "title": "Estructuras de investigación",
+    "type": "Tipo",
+    "financing": "Financiación",
+    "name": "Nombre",
+    "publications": "Publicaciones",
+    "top-structures": "Top de Estructuras",
+    "top": "Top",
+    "qa": "Sello de calidad",
+    "num-qa": "Número de universidades por Sello de Calidad",
+    "num-financing": "Número de universidades por Financiación",
+    "scientist": "Personal investigador",
+    "prod-scientist": "Producción cientifica",
+    "projects": "Proyectos",
+    "patents": "Patentes",
+    "area": "Área"
+  },
+  "scientist": {
+    "title": "Personal investigador",
+    "area": "Área",
+    "type": "Tipo"
+  },
+  "scientific-production": {
+    "title": "Producción cientifica",
+    "date-from": "Fecha desde",
+    "date-to": "Fecha hasta",
+    "degree": "Título",
+    "type": "Tipo",
+    "doi": "DOI",
+    "publication-year": "Año de publicación"
+  },
+  "projects": {
+    "year": "Año",
+    "project-name": "Nombre del proyecto",
+    "key-words": "Palabras claves",
+    "participation": "Participaciones",
+    "project-type": "Tipos de proyecto",
+    "financing": "Financiaciamiento",
+    "convocation": "Convocatoria",
+    "date-fin": "Fecha Fin",
+    "date-ini": "Fecha Inicio",
+    "general-info": "Información general",
+    "participants": "Participantes",
+    "deliverables": "Entregables",
+    "financing-type": "Tipo de financiamiento",
+    "call-type": "Tipo de convocatoria",
+    "people-involved": "Personas involucradas en el proyecto",
+    "main-researcher": "Nombre(s) del investigador (s) principal"
+  },
+  "investigation-actions": {
+    "title": "Acciones de investigación",
+    "documents": "Documentos",
+    "projects": "Proyectos",
+    "documents-table": {
+      "id": "id",
+      "name": "nombre",
+      "anyo": "año"
+    }
+  },
+  "documents": {
+    "document": "Documentos",
+    "date-fin": "Fecha Fin",
+    "date-ini": "Fecha Inicio"
+  },
+  "participant": {
+    "title": "Participantes",
+    "level": "Nivel",
+    "year": "Año",
+    "people-involved": "Personas involucradas en el proyecto",
+    "proyect-participants": "Entidades colaboradores/ participantes"
+  },
+  "deliverable": {
+    "title": "Entregables/ Memoria del proyecto",
+    "level": "Nivel",
+    "year": "Año",
+    "scientific-production-related": "Producción cientifíca relacionada con el proyecto"
+  }
 }

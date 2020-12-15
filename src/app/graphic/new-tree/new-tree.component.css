@@ -1,0 +1,45 @@
+div {
+    font-size: 12px;
+}
+
+li {
+    list-style: none;
+}
+
+.myBorder {
+    border-left: 1px solid #000;
+    margin-left: 10px;
+    padding-left: 2px;
+    padding-top: 5px;
+  }
+
+.slide-right {
+	-webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+ @-webkit-keyframes slide-right {
+    0% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(10px);
+              transform: translateX(10px);
+    }
+  }
+  @keyframes slide-right {
+    0% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    100% {
+      -webkit-transform: translateX(10px);
+              transform: translateX(10px);
+    }
+  }
+
+  .cursor > * {
+      cursor: pointer;
+  }
+  

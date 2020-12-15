@@ -4,10 +4,14 @@ import { TestBed } from '@angular/core/testing';
 import { AppRoutingModule } from '../app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HttpClientModule,
+  HttpClient,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { NgProgressModule } from 'ngx-progressbar';
@@ -16,18 +20,15 @@ import { NgProgressRouterModule } from 'ngx-progressbar/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 // -------------- Services --------------
-import { LoginService } from '../_services/login.service'; 
+import { LoginService } from '../_services/login.service';
 import { MenuService } from '../_services/menu.service';
 import { UserService } from '../_services/user.service';
 
 // -------------- Components --------------
 import { LoginComponent } from '../login/login.component';
-import { UserComponent } from '../user/user.component';
-import { UserDetailComponent } from '../user-detail/user-detail.component';
 import { MainComponent } from '../main/main.component';
 import { MenuComponent } from '../menu/menu.component';
 import { HomeComponent } from '../home/home.component';
-import { PaginationComponent } from '../pagination/pagination.component';
 
 // -------------- Guards --------------
 import { AuthGuard } from '../_guards/auth.guard';
@@ -37,66 +38,133 @@ import { TokenizedInterceptor } from '../_interceptors/tokenized-interceptor';
 import { OAuthInterceptor } from '../_interceptors/oauth-interceptor';
 
 import { APP_BASE_HREF } from '@angular/common';
+import { SPARQLEditorComponent } from '../sparqleditor/sparqleditor.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TopSearchComponent } from '../common/top-search/top-search.component';
+import { UserDetailComponent } from '../users/user-detail/user-detail.component';
+import { ScientistSearchComponent } from '../common/scientist-search/scientist-search.component';
+import { UserComponent } from '../users/user/user.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { TreeComponent } from '../graphic/tree/tree.component';
+import { NewTreeComponent } from '../graphic/new-tree/new-tree.component';
+import { of } from 'rxjs';
+import { CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Pipe, PipeTransform } from '@angular/core';
+import { TableResultsComponent } from '../common-display-data/table-results/table-results.component';
+import { ProyectsComponent } from '../common/proyects/proyects.component';
+import { PatentsComponent } from '../common/patents/patents.component';
+import { DocumentsComponent } from '../common/documents/documents.component';
+import { ParticipantsComponent } from '../common/participants/participants.component';
+import { DeliverableComponent } from '../common/deliverable/deliverable.component';
+import { ProjectsDetailComponent } from '../common/proyects/projects-detail/projects-detail.component';
+import { ScientistComponent } from '../categories/scientist/scientist.component';
+import { InvestigationActionsComponent } from '../categories/investigation-actions/investigation-actions.component';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { TabsetComponent } from 'ngx-bootstrap/tabs';
+
 
 /**
  * Clase de ayuda para construcción de tests unitarios.
  */
+export class TranslateServiceStub {
+  public onLangChange = new EventEmitter<any>();
+  public onTranslationChange = new EventEmitter<any>();
+  public onDefaultLangChange = new EventEmitter<any>();
+  public addLangs(langs: string[]) { return; }
+  public getLangs() { return ['en-us']; }
+  public getBrowserLang() { return ''; }
+  public getBrowserCultureLang() { return ''; }
+  public use(lang: string) { return null; }
+  // tslint:disable-next-line:no-reserved-keywords
+  public get(key: any): any { return of(key); }
+  instant(): string {
+    return 'some_string';
+  }
+}
+@Pipe({ name: 'translate' })
+export class TranslatePipeStub implements PipeTransform {
+  public transform(key: string, ...args: any[]): any { return key; }
+}
 export class TestingHelper {
-    public static configureTest(): typeof TestBed {
-        return TestBed.configureTestingModule({
-            declarations: [
-                LoginComponent,
-                UserComponent,
-                UserDetailComponent,
-                MainComponent,
-                MenuComponent,
-                HomeComponent,
-                PaginationComponent
-            ],
-            imports: [
-                BrowserModule,
-                FormsModule,
-                AppRoutingModule,
-                HttpClientModule,
-                BrowserAnimationsModule,
-                TranslateModule.forRoot({
-                loader: {
-                    provide: TranslateLoader,
-                    useFactory: (this.createTranslateLoader),
-                    deps: [HttpClient]
-                }
-                }),
-                ToastrModule.forRoot(),
-                PaginationModule.forRoot(),
-                NgProgressModule,
-                NgProgressHttpModule,
-                NgProgressRouterModule,
-                NgSelectModule
-            ],
-            providers: [
-                AuthGuard,
-                LoginService,
-                MenuService,
-                UserService,
-                {
-                    provide: HTTP_INTERCEPTORS,
-                    useClass: TokenizedInterceptor,
-                    multi: true
-                },
-                {
-                    provide: HTTP_INTERCEPTORS,
-                    useClass: OAuthInterceptor,
-                    multi: true
-                },
-                {
-                    provide: APP_BASE_HREF, 
-                    useValue : '/' 
-                }
-            ]
-        });
-    }
+  public static configureTest(): typeof TestBed {
+    return TestBed.configureTestingModule({
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      declarations: [
+        TranslatePipeStub,
+        LoginComponent,
+        MainComponent,
+        MenuComponent,
+        HomeComponent,
+        SPARQLEditorComponent,
+        TopSearchComponent,
+        UserDetailComponent,
+        ScientistSearchComponent,
+        UserComponent,
+        TreeComponent,
+        NewTreeComponent,
+        TableResultsComponent,
+        ProyectsComponent,
+        PatentsComponent,
+        TreeComponent,
+        NewTreeComponent,
+        DocumentsComponent,
+        ParticipantsComponent,
+        DeliverableComponent,
+        ProjectsDetailComponent,
+        ScientistComponent,
+        InvestigationActionsComponent
+      ],
+      imports: [
+        BrowserModule,
+        AlertModule,
+        FormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        RouterTestingModule,
+        NgbModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: this.createTranslateLoader,
+            deps: [HttpClient],
+          },
+        }),
+        ToastrModule.forRoot(),
+        PaginationModule.forRoot(),
+        NgProgressModule,
+        NgProgressHttpModule,
+        NgProgressRouterModule,
+        NgSelectModule,
+        NgxEchartsModule.forRoot({
+          echarts: () => import('echarts'),
+        }),
+      ],
+      providers: [
+        AuthGuard,
+        LoginService,
+        MenuService,
+        UserService,
+        { provide: TranslateService, useClass: TranslateServiceStub },
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: TokenizedInterceptor,
+          multi: true,
+        },
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: OAuthInterceptor,
+          multi: true,
+        },
+        {
+          provide: APP_BASE_HREF,
+          useValue: '/',
+        }
+      ]
+    });
+  }
 
-    private static createTranslateLoader(httpClient: HttpClient) {
-        return new TranslateHttpLoader(httpClient, '../assets/i18n/', '.json');
-    }
+  private static createTranslateLoader(httpClient: HttpClient) {
+    return new TranslateHttpLoader(httpClient, '../assets/i18n/', '.json');
+  }
 }

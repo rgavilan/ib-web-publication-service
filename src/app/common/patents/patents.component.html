@@ -1,0 +1,40 @@
+<form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm">
+    <div class="row mt-20">
+        <!-- categorias tree -->
+        <div class="col-lg-6">
+            <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
+            <app-new-tree [treeType]="'area'"></app-new-tree>
+        </div>
+        <!-- type -->
+        <div class="form-group col-lg-6">
+            <label for="type" class="col-sm-4 control-label">{{ "scientist.type" | translate }}</label>
+            <div class="col-sm-8">
+                <select (change)="filterPatents()" name="type" class="form-control"
+                    [(ngModel)]="findRequest.filter.type" #type="ngModel">
+                    <option [value]="undefined">{{ "form.select" | translate }}</option>
+                    <option [value]="'D'">Diseño industrial</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="container-fluid">
+    <div class="row justify-content-end">
+        <div class="input-group col-md-4">
+            <input class="form-control py-2 border-right-0 border" type="search"
+                placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name"
+                id="example-search-input">
+            <span class="input-group-append">
+                <button (click)="filterPatents()" class="btn btn-outline-secondary border-left-0 border" type="button">
+                    <em class="oi oi-magnifying-glass "></em>
+                </button>
+            </span>
+        </div>
+    </div>
+</div>
+
+<app-table-results *ngIf="loaded" [data]="allPatentFiltered.content[0]" [pageInfo]="allPatentFiltered"
+    (pageChanged)="allPatentsFilteredPageChanged($event)" (sizeChanged)="allPatentsFilteredSizeChanged($event)"
+    (sortChanged)="allPatentsFilteredSortChanged($event)">
+</app-table-results>
+<div style="min-width:600px;height: 450px" echarts [options]="echartOptions" class="sector-chart"></div>

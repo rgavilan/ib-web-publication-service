@@ -1,18 +1,27 @@
-<div id="wrapper" [ngClass]="{toggled:isMenuCollapsed}">
-    
-    <div class="sidebar-toggle" (click)="toggleMenu()">
-		<em class="oi oi-menu"></em>
-	</div>
+<div id="wrapper" [ngClass]="{ toggled: isMenuCollapsed }">
+  <div class="sidebar-toggle" (click)="toggleMenu()">
+    <em class="oi oi-menu"></em>
+  </div>
 
-    <div id="sidebar-wrapper">
-        <app-menu></app-menu>
+  <div id="sidebar-wrapper">
+    <app-menu></app-menu>
+  </div>
+  <div class="logos">
+    <img alt="Logo Gobierno de España" class="logo" src="assets/images/logo1.jpg">
+    <img alt="Logo Universidad de Murcia" class="logo" src="assets/images/logo2.png">
+    <img alt="Logo Unión europea" class="logo2" src="assets/images/logo3.png">
+  </div>
+  <div class="logoText">
+    <p>FONDO EUROPEO DE DESARROLLO REGIONAL (FEDER)</p>
+    <p><strong><em>Una manera de hacer Europa</em></strong></p>
+  </div>
+  <div id="page-content-wrapper">
+
+    <div class="container-fluid">
+
+      <div class="anim">
+        <router-outlet></router-outlet>
+      </div>
     </div>
-    
-    <div id="page-content-wrapper">
-        <div class="container-fluid">
-            <div class="anim">
-                <router-outlet></router-outlet>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>

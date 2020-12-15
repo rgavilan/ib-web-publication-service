@@ -1,0 +1,49 @@
+.home {
+  margin-top: 15px;
+}
+
+.home h3 {
+  margin-top: 30px;
+}
+
+.home hr {
+  margin-bottom: 30px;
+}
+
+.imagenes {
+  width: 70px;
+  height: 80px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cursor > *,
+.cursor {
+  cursor: pointer;
+}
+
+.cursor a {
+  color: black;
+}
+
+.home-disabled,
+.home-disabled a {
+  color: #aab3bb;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 50;
+    max-width: 50%;
+  }
+}

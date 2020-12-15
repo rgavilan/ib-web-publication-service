@@ -1,5 +1,5 @@
-/** 
- * possible states for the STOMP service 
+/**
+ * possible states for the STOMP service
  */
 export enum STOMPState {
   /**
@@ -21,12 +21,12 @@ export enum STOMPState {
   /**
    * Desconectando.
    */
-  DISCONNECTING
+  DISCONNECTING,
 }
 
 /**
  * Mensaje para el envío de datos de usuario.
  */
 export class UserMessage {
-    name: string;
+  name: string;
 }

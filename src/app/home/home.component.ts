@@ -1,14 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeGroupItem } from '../_models/home';
+import { HomeService } from '../_services/home.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  /**
+   * Lista de categorias.
+   */
+  groupItems: HomeGroupItem[];
 
-  constructor() { }
+  /**
+   * Categoria seleccionada.
+   */
+  category: string;
+
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
+    this.homeService.getHome().then((groupItems: HomeGroupItem[]) => {
+      this.groupItems = groupItems;
+    });
   }
-
 }
