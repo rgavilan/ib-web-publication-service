@@ -78,7 +78,6 @@ export class AllResearchmentStructuresComponent implements OnInit {
    * @memberof AllResearchmentStructuresComponent
    */
   allResearchmentStructuresFilteredPageChanged(i: number): void {
-    console.log('allResearchmentStructuresFilteredPageChanged');
 
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = i;
@@ -100,7 +99,6 @@ export class AllResearchmentStructuresComponent implements OnInit {
    * @memberof AllResearchmentStructuresComponent
    */
   allResearchmentStructuresFilteredSizeChanged(i: number): void {
-    console.log('allResearchmentStructuresFilteredSizeChanged');
 
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.allResearchmentStructuresFiltered.number;
@@ -121,7 +119,6 @@ export class AllResearchmentStructuresComponent implements OnInit {
    * @memberof AllResearchmentStructuresComponent
    */
   allResearchmentStructuresFilteredSortChanged(pageRequest: PageRequest): void {
-    console.log('allResearchmentStructuresFilteredSortChanged');
 
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allResearchmentStructuresFiltered.number;

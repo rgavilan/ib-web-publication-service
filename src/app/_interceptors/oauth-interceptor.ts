@@ -43,7 +43,6 @@ export class OAuthInterceptor extends AbstractHttpInterceptor {
   }
 
   private handleError(error: Response) {
-    console.log(error);
     return throwError(error);
   }
 }

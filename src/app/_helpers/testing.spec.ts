@@ -49,7 +49,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { TreeComponent } from '../graphic/tree/tree.component';
 import { NewTreeComponent } from '../graphic/new-tree/new-tree.component';
 import { of } from 'rxjs';
-import { EventEmitter, Pipe, PipeTransform } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Pipe, PipeTransform } from '@angular/core';
 import { TableResultsComponent } from '../common-display-data/table-results/table-results.component';
 import { ProyectsComponent } from '../common/proyects/proyects.component';
 import { PatentsComponent } from '../common/patents/patents.component';
@@ -59,6 +59,8 @@ import { DeliverableComponent } from '../common/deliverable/deliverable.componen
 import { ProjectsDetailComponent } from '../common/proyects/projects-detail/projects-detail.component';
 import { ScientistComponent } from '../categories/scientist/scientist.component';
 import { InvestigationActionsComponent } from '../categories/investigation-actions/investigation-actions.component';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { TabsetComponent } from 'ngx-bootstrap/tabs';
 
 
 /**
@@ -86,6 +88,7 @@ export class TranslatePipeStub implements PipeTransform {
 export class TestingHelper {
   public static configureTest(): typeof TestBed {
     return TestBed.configureTestingModule({
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [
         TranslatePipeStub,
         LoginComponent,
@@ -113,6 +116,7 @@ export class TestingHelper {
       ],
       imports: [
         BrowserModule,
+        AlertModule,
         FormsModule,
         AppRoutingModule,
         HttpClientModule,

@@ -21,6 +21,5 @@ export class JsonResultsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.data);
   }
 }

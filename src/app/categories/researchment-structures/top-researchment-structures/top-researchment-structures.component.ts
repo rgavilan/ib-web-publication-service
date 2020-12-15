@@ -114,7 +114,6 @@ export class TopResearchmentStructuresComponent implements OnInit {
    * @memberof TopResearchmentStructuresComponent
    */
   topResearchmentStructuresFilteredPageChanged(i: number): void {
-    console.log('topResearchmentStructuresFilteredPageChanged');
 
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = i;
@@ -135,7 +134,6 @@ export class TopResearchmentStructuresComponent implements OnInit {
    * @memberof TopResearchmentStructuresComponent
    */
   topResearchmentStructuresFilteredSizeChanged(i: number): void {
-    console.log('topResearchmentStructuresFilteredSizeChanged');
 
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.topResearchmentStructuresFiltered.number;
@@ -155,7 +153,6 @@ export class TopResearchmentStructuresComponent implements OnInit {
    * @memberof TopResearchmentStructuresComponent
    */
   topResearchmentStructuresFilteredSortChanged(pageRequest: PageRequest): void {
-    console.log('topResearchmentStructuresFilteredSortChanged');
 
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.topResearchmentStructuresFiltered.number;

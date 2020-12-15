@@ -56,7 +56,6 @@ export class LoginService extends AbstractService {
     const refreshToken: string = localStorage.getItem('refresh_token');
 
     if (refreshToken != null) {
-      console.log('Refreshing with token: ' + refreshToken);
       const data = 'grant_type=refresh_token&refresh_token=' + refreshToken;
 
       return this.httpClient.post(Helper.getUrl('/oauth/token'), data).pipe(

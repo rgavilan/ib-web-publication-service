@@ -10,6 +10,6 @@ export class ErrorResultsComponent implements OnInit {
   errorMessage; // private property _data
 
   ngOnInit(): void {
-    // console.log(this.errorMessage);
+
   }
 }

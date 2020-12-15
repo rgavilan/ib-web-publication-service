@@ -285,11 +285,10 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
    * @param entity Entidad para la que se pretende realizar el borrado.
    */
   remove(entity: T) {
-    console.log('borrando elemento ...', entity);
+
 
     this.removeInternal(entity).subscribe(
       (response: Response | {}) => {
-        console.log(response);
         this.find();
       },
       (error: Response) => {

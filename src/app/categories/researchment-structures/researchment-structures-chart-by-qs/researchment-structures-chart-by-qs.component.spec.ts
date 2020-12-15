@@ -1,3 +1,4 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResearchmentStructuresByQSComponent } from './researchment-structures-chart-by-qs.component';
@@ -8,6 +9,7 @@ describe('SectorChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ResearchmentStructuresByQSComponent]
     })
       .compileComponents();

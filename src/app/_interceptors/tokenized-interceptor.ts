@@ -57,7 +57,6 @@ export class TokenizedInterceptor extends AbstractHttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ) {
-    console.log(error);
 
     if (error.status === 401) {
       return this.loginService.refreshToken().pipe(
@@ -66,7 +65,6 @@ export class TokenizedInterceptor extends AbstractHttpInterceptor {
           return this.intercept(req, next);
         }),
         catchError((err: any) => {
-          console.log(err);
           this.router.navigate(['/login']);
           return of();
         })

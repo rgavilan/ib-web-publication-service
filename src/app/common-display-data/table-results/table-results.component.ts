@@ -145,7 +145,6 @@ export class TableResultsComponent
 
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges ');
     if (!!this.pageInfo) {
       this.dataCompleteToShow = this.dataComplete.results.bindings;
     }
@@ -153,7 +152,6 @@ export class TableResultsComponent
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<any>> {
-    console.log('findInternal ' + this.data);
     const page: Page<any> = new Page<any>();
     if (!!this.pageInfo) {
 
@@ -221,7 +219,6 @@ export class TableResultsComponent
   }
 
   showPage(i: number): void {
-    console.log('ShowPage' + i + ' - ' + this.findRequest.pageRequest.property + ' ' + this.findRequest.pageRequest.direction);
     if (!!this.findRequest.pageRequest.property && this.dataComplete.head.vars.indexOf(this.findRequest.pageRequest.property) > 0) {
       this.dataComplete.results.bindings = this.dataComplete.results.bindings.sort((a, b) => {
         if (this.findRequest.pageRequest.direction === Direction.ASC) {
@@ -236,7 +233,6 @@ export class TableResultsComponent
   }
 
   callShowPageWhenPageChanges(i: number): void {
-    console.log('callShowPageWhenPageChanges' + i);
     this.findRequest.pageRequest.page = i;
     if (!this.pageInfo) {
       this.find();
@@ -246,8 +242,6 @@ export class TableResultsComponent
   }
 
   callShowPageWhenSizeChanges(i: number): void {
-
-    console.log('callShowPageWhenSizeChanges' + i);
     this.findRequest.pageRequest.size = i;
     if (!this.pageInfo) {
       this.find();
