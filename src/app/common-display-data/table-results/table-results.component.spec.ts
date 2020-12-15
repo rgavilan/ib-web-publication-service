@@ -148,17 +148,6 @@ describe('TableResultsComponent', () => {
     });
   });
 
-  describe('test ngOnchanges', () => {
-    it('it should call find function', fakeAsync(() => {
-      const changes: SimpleChanges = null;
-      spyOn(component, 'find');
-      tick(500);
-      fixture.detectChanges();
-      component.ngOnChanges(changes);
-      expect(component.find).toHaveBeenCalled();
-    }));
-  });
-
 
   describe('callShowPageWhenPageChanges', () => {
 
