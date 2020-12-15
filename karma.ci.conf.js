@@ -15,7 +15,7 @@ module.exports = function (config) {
     customLaunchers: {
       ChromeHeadlessCI: {
         base: 'ChromeHeadless',
-        flags: ['--no-sandbox']
+        flags: ['--no-sandbox', '--disable-setuid-sandbox']
       }
     },
     client: {
@@ -24,7 +24,7 @@ module.exports = function (config) {
     coverageIstanbulReporter: {
       dir: require("path").join(
         __dirname,
-        "./coverage/web-publication-service"
+        "./coverage"
       ),
       reports: ["html", "lcovonly", "text-summary"],
       fixWebpackSourcePaths: true,
