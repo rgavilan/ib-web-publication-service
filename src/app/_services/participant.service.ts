@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AbstractService } from '../_helpers/abstract';
-import { Direction, Page, PageRequest } from '../_helpers/search';
+import { Page, PageRequest } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
-import { Binding, SparqlResults } from '../_models/sparql';
+import { SparqlResults } from '../_models/sparql';
 
 
 /**

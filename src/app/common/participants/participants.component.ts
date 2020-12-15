@@ -12,7 +12,7 @@ export class ParticipantsComponent implements OnInit {
    * university Id for search filter in case of necessary
    */
   @Input() universityId: string;
-  allData: Page<SparqlResults> = new Page();
+  allDataParticipants: Page<SparqlResults> = new Page();
   findRequest: FindRequest = new FindRequest();
   loaded = false;
 
@@ -24,10 +24,14 @@ export class ParticipantsComponent implements OnInit {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
     pageRequest.size = 10;
-    this.allData = this.participantService.find(
+    this.allDataParticipants = this.participantService.find(
       null, pageRequest
     );
-    this.loaded = true;
+
+    setTimeout(() => {
+      this.loaded = true;
+    }, 300);
+
   }
 
   /**
@@ -39,21 +43,23 @@ export class ParticipantsComponent implements OnInit {
   allScientistsFilteredPageChanged(i: number): void {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = i;
-    pageRequest.size = this.allData.size;
-    pageRequest.property = this.allData.sort;
-    pageRequest.direction = this.allData.direction;
-
+    pageRequest.size = this.allDataParticipants.size;
+    pageRequest.property = this.allDataParticipants.sort;
+    pageRequest.direction = this.allDataParticipants.direction;
+    this.loaded = true;
   }
 
-  allprojectsFilteredPageChanged(i: number): void {
-
+  allParticipantsFilteredPageChanged(i: number): void {
+    this.loaded = true;
   }
 
-  allprojectsFilteredSizeChanged(i: number): void {
-
+  allParticipantsFilteredSizeChanged(i: number): void {
+    this.loaded = true;
   }
 
-  allprojectsFilteredSortChanged(pageRequest: PageRequest) { }
+  allParticipantsFilteredSortChanged(pageRequest: PageRequest) {
+    this.loaded = true;
+  }
 
 
 }

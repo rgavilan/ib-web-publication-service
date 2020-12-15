@@ -175,6 +175,32 @@ describe('TreeComponent', () => {
       const result = component.isNodeSelected(node, 'Ingeniería Química');
       expect(result).toBeFalsy();
     });
+
+    it('should return true because node is not selected', () => {
+      const node = {
+        name: 'Ingeniería Química', value: 'IQM', selected: true, lineStyle: '', children:
+          [{
+            name: 'Ingeniería', value: 'IQM', selected: false, children: [
+              { name: 'Ingeniería 2', value: 'IQM', selected: false, children: [], lineStyle: { color: 'black' } }
+            ], lineStyle: { color: 'black' }
+          }],
+      };
+      const result = component.isNodeSelected(node, 'Matematica');
+      expect(result).toBeFalsy();
+    });
+
+    it('should return true because node is not selected', () => {
+      const node = {
+        name: 'Ingeniería Química', value: 'IQM', selected: true, lineStyle: '', children:
+          [{
+            name: 'Ingeniería', value: 'IQM', selected: false, children: [
+              { name: 'Ingeniería 2', value: 'IQM', selected: false, children: [], lineStyle: { color: 'black' } }
+            ], lineStyle: { color: 'black' }
+          }],
+      };
+      const result = component.isNodeSelected(node, 'Matematica');
+      expect(result).toBeFalsy();
+    });
   });
 
 });
