@@ -58,7 +58,10 @@ export class DeliverableComponent implements OnInit {
     this.allData = this.participantService.find(
       null, pageRequest
     );
-    this.loaded = true;
+    setTimeout(() => {
+      this.loaded = true;
+    }, 300);
+
   }
 
   /**
@@ -73,7 +76,7 @@ export class DeliverableComponent implements OnInit {
     pageRequest.size = this.allData.size;
     pageRequest.property = this.allData.sort;
     pageRequest.direction = this.allData.direction;
-
+    this.loaded = true;
   }
 
   /**
@@ -82,7 +85,9 @@ export class DeliverableComponent implements OnInit {
    * @param {number} i
    * @memberof DeliverableComponent
    */
-  allprojectsFilteredPageChanged(i: number): void { }
+  allprojectsFilteredPageChanged(i: number): void {
+    this.loaded = true;
+  }
 
   /**
    *
@@ -90,7 +95,9 @@ export class DeliverableComponent implements OnInit {
    * @param {number} i
    * @memberof DeliverableComponent
    */
-  allprojectsFilteredSizeChanged(i: number): void { }
+  allprojectsFilteredSizeChanged(i: number): void {
+    this.loaded = true;
+  }
 
   /**
    *
@@ -98,7 +105,9 @@ export class DeliverableComponent implements OnInit {
    * @param {PageRequest} pageRequest
    * @memberof DeliverableComponent
    */
-  allprojectsFilteredSortChanged(pageRequest: PageRequest) { }
+  allprojectsFilteredSortChanged(pageRequest: PageRequest) {
+    this.loaded = true;
+  }
 
 
 }
