@@ -65,9 +65,7 @@
     </div>
 </div>
 <app-table-results *ngIf="loaded" [data]="allDataPerson.content[0]" [pageInfo]="allDataPerson"
-    (pageChanged)="allParticipantsFilteredPageChanged($event)"
-    (sizeChanged)="allParticipantsFilteredSizeChanged($event)"
-    (sortChanged)="allParticipantsFilteredSortChanged($event)">
+    (pageChanged)="allChanged($event)" (sizeChanged)="allChanged($event)" (sortChanged)="allChanged($event)">
 </app-table-results>
 <hr>
 <h2>{{'participant.proyect-participants' | translate}}</h2>
@@ -84,8 +82,8 @@
         </div>
     </div>
 </div>
-<app-table-results *ngIf="loaded" [data]="allDataParticipants.content[0]" [pageInfo]="allDataParticipants"
-    (pageChanged)="allParticipantsFilteredPageChanged($event)"
+<app-table-results *ngIf="loaded" [data]="allDataParticipantsSecondTable.content[0]"
+    [pageInfo]="allDataParticipantsSecondTable" (pageChanged)="allParticipantsFilteredPageChanged($event)"
     (sizeChanged)="allParticipantsFilteredSizeChanged($event)"
     (sortChanged)="allParticipantsFilteredSortChanged($event)">
 </app-table-results>
