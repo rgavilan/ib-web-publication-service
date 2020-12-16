@@ -33,6 +33,12 @@ Dentro del proyecto base se integran las siguientes características:
 1. npm install -> Descarga las librerías
 2. npm run start -> pone en funcionamiento el servidor con la aplicación
 
+
+
+## Testing y cobertura
+
+[Testing](https://sonarcloud.io/component_measures?id=HerculesCRUE_ib-web-publication-service&metric=coverage&view=list)
+
 ## Yasgui
 
 Se configura la llamada al servicio que nos devuelve los datos con la variable endpoint de yasgui de los ficheros de la carpeta "enviroments".
