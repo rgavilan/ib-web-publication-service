@@ -4,7 +4,7 @@
 
 | Entregable     | Servicio de publicación web                                  |
 | -------------- | ------------------------------------------------------------ |
-| Fecha          | 16/12/2020                                                   |
+| Fecha          | 17/12/2020                                                   |
 | Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
 | Módulo         | Servicio de publicación web - Web (frontend)                 |
 | Tipo           | Software                                                     |
