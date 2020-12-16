@@ -64,6 +64,7 @@ describe('DeliverableComponent', () => {
       providers: [{
         provide: ParticipantService, useValue: {
           find: () => of(page),
+          findPerson: () => of(page),
         }
       }]
     }).compileComponents();

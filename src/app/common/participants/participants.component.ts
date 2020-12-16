@@ -14,6 +14,7 @@ export class ParticipantsComponent implements OnInit {
    */
   @Input() universityId: string;
   allDataParticipants: Page<SparqlResults> = new Page();
+  allDataParticipantsSecondTable: Page<SparqlResults> = new Page();
   allDataPerson: Page<SparqlResults> = new Page();
   findRequest: FindRequest = new FindRequest();
   loaded = false;
@@ -35,6 +36,7 @@ export class ParticipantsComponent implements OnInit {
     const findRequest: FindRequest = new FindRequest();
     this.participantService.findPerson(findRequest).subscribe(data => {
       this.allDataParticipants = data;
+      this.allDataParticipantsSecondTable = data;
       this.loaded = true;
     });
 
