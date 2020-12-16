@@ -4,6 +4,8 @@ import { Page, PageRequest } from 'src/app/_helpers/search';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { ParticipantService } from 'src/app/_services/participant.service';
+import { ScientistService } from 'src/app/_services/scientist.service';
+import { MockScientistService } from 'src/app/_services/_testingServices/mockScientist.service';
 
 import { ParticipantsComponent } from './participants.component';
 
@@ -63,8 +65,9 @@ describe('ParticipantsComponent', () => {
       providers: [{
         provide: ParticipantService, useValue: {
           find: () => of(page),
+          findPerson: () => of(page),
         }
-      }]
+      }, { provide: ScientistService, useClass: MockScientistService }]
     }).compileComponents();
   }));
 
