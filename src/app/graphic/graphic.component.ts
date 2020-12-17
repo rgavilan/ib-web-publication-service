@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { latLng, tileLayer } from 'leaflet';
+import { HelperGraphics } from '../_helpers/helperGraphics';
 
 @Component({
   selector: 'app-graphic',
@@ -23,38 +24,21 @@ export class GraphicComponent implements OnInit {
       data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
       data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
     }
-
-    this.echartOptions = {
-      legend: {
-        data: ['bar', 'bar2'],
-        align: 'left',
+    const seriesData = [
+      {
+        name: 'bar',
+        type: 'bar',
+        data: data1,
+        animationDelay: (idx) => idx * 10,
       },
-      tooltip: {},
-      xAxis: {
-        data: xAxisData,
-        silent: false,
-        splitLine: {
-          show: false,
-        },
+      {
+        name: 'bar2',
+        type: 'bar',
+        data: data2,
+        animationDelay: (idx) => idx * 10 + 100,
       },
-      yAxis: {},
-      series: [
-        {
-          name: 'bar',
-          type: 'bar',
-          data: data1,
-          animationDelay: (idx) => idx * 10,
-        },
-        {
-          name: 'bar2',
-          type: 'bar',
-          data: data2,
-          animationDelay: (idx) => idx * 10 + 100,
-        },
-      ],
-      animationEasing: 'elasticOut',
-      animationDelayUpdate: (idx) => idx * 5,
-    };
+    ];
+    this.echartOptions = HelperGraphics.configChartBar(xAxisData, seriesData, ['bar', 'bar2']);
 
     // leaflet map
     this.options = {

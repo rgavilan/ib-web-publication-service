@@ -3,6 +3,8 @@ import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { ProjectService } from 'src/app/_services/project.service';
 import { Helper } from 'src/app/_helpers/utils';
+import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
+import { SeriesBarData } from 'src/app/_models/seriesBarData';
 
 /**
  *
@@ -112,86 +114,59 @@ export class ProyectsComponent implements OnInit {
       data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
     }
     if (this.chartType === 'bar') {
-      this.echartOptions = {
-        legend: {
-          data: ['Proyectos año 2019', 'Proyectos año 2020'],
-          align: 'left',
-        },
-        tooltip: {},
-        xAxis: {
-          data: xAxisData,
-          silent: false,
-          splitLine: {
-            show: false,
-          },
-        },
-        yAxis: {},
-        series: [
-          {
-            name: 'Proyectos año 2019',
-            type: 'bar',
-            data: data1,
-            animationDelay: (idx) => idx * 10,
-          },
-          {
-            name: 'Proyectos año 2020',
-            type: 'bar',
-            data: data2,
-            animationDelay: (idx) => idx * 10 + 100,
-          },
-        ],
-        animationEasing: 'elasticOut',
-        animationDelayUpdate: (idx) => idx * 5,
-      };
+      const legend = ['Proyectos año 2019', 'Proyectos año 2020'];
+      const barData: Array<SeriesBarData> = [{
+        name: 'Proyectos año 2019',
+        type: 'bar',
+        data: data1,
+        animationDelay: (idx) => idx * 10,
+      },
+      {
+        name: 'Proyectos año 2020',
+        type: 'bar',
+        data: data2,
+        animationDelay: (idx) => idx * 10 + 100,
+      }];
+      this.echartOptions = HelperGraphics.configChartBar(xAxisData, barData, legend);
     } else {
-      this.echartOptions = {
-        series: [{
-          type: 'treemap',
-          data: [{
-            name: 'Ciencias agrícolas y agroalimentarias',
-            value: 10
-          }, {
-            name: 'Agricultura y Bosques',
-            value: 20
-          }, {
-            name: 'Astronomía y astrofísica',
-            value: 15
-          }, {
-            name: 'Biomedicina',
-            value: 30
-          }, {
-            name: 'Economía',
-            value: 30
-          }, {
-            name: 'Ciencia y tecnología ambiental',
-            value: 30
-          }, {
-            name: 'Ciencia y tecnología de los alimentos',
-            value: 30
-          }, {
-            name: 'Física fundamental y de partículas',
-            value: 30
-          }, {
-            name: 'Producción industrial, ingeniería civil e ingeniería para la sociedad',
-            value: 30
-          }, {
-            name: 'Ciencias de la vida',
-            value: 30
-          }, {
-            name: 'Ciencias matemáticas',
-            value: 30
-          }, {
-            name: 'Biología molecular y celular',
-            value: 30
-          }],
-          label: {
-            show: true
-          },
-          tooltip: {
-            borderWidth: 0.5
-          }
-        }]
-      };
+      const treeData = [{
+        name: 'Ciencias agrícolas y agroalimentarias',
+        value: 10
+      }, {
+        name: 'Agricultura y Bosques',
+        value: 20
+      }, {
+        name: 'Astronomía y astrofísica',
+        value: 15
+      }, {
+        name: 'Biomedicina',
+        value: 30
+      }, {
+        name: 'Economía',
+        value: 30
+      }, {
+        name: 'Ciencia y tecnología ambiental',
+        value: 30
+      }, {
+        name: 'Ciencia y tecnología de los alimentos',
+        value: 30
+      }, {
+        name: 'Física fundamental y de partículas',
+        value: 30
+      }, {
+        name: 'Producción industrial, ingeniería civil e ingeniería para la sociedad',
+        value: 30
+      }, {
+        name: 'Ciencias de la vida',
+        value: 30
+      }, {
+        name: 'Ciencias matemáticas',
+        value: 30
+      }, {
+        name: 'Biología molecular y celular',
+        value: 30
+      }];
+      this.echartOptions = HelperGraphics.configChartTree(treeData);
     }
 
 
