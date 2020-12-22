@@ -4,6 +4,7 @@ import { ProjectsDetailComponent } from '../common/proyects/projects-detail/proj
 import { InvestigationActionsComponent } from './investigation-actions/investigation-actions.component';
 import { ResearchmentStructuresDetailComponent } from './researchment-structures-detail/researchment-structures-detail.component';
 import { ResearchmentStructuresComponent } from './researchment-structures/researchment-structures.component';
+import { ScientisDetailComponent } from './scientis-detail/scientis-detail.component';
 import { ScientistComponent } from './scientist/scientist.component';
 
 const routes: Routes = [
@@ -31,6 +32,10 @@ const routes: Routes = [
     path: 'scientist',
     component: ScientistComponent,
   },
+  {
+    path: 'scientist/:id',
+    component: ScientisDetailComponent,
+  }
 ];
 
 @NgModule({

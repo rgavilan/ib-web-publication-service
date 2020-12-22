@@ -31,6 +31,10 @@ export class ScientistService extends AbstractService {
             bindings: [
                 // 1
                 {
+                    id: {
+                        type: 'literal',
+                        value: '1'
+                    },
                     name: {
                         type: 'literal',
                         value: 'Maria Hernandez Reyes Mora'
@@ -58,6 +62,10 @@ export class ScientistService extends AbstractService {
                 },
                 // 1
                 {
+                    id: {
+                        type: 'literal',
+                        value: '2'
+                    },
                     name: {
                         type: 'literal',
                         value: 'Jesualdo Tomás Fernández Breis'
