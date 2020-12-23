@@ -27,13 +27,15 @@ import { ParticipantsComponent } from '../common/participants/participants.compo
 import { DeliverableComponent } from '../common/deliverable/deliverable.component';
 import { ScientistComponent } from './scientist/scientist.component';
 import { ScientistDetailComponent } from './scientist-detail/scientist-detail.component';
+import { DirectedJobsComponent } from '../common/directed-jobs/directed-jobs.component';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
     TopResearchmentStructuresComponent, ResearchmentStructuresByFinancingComponent, ResearchmentStructuresByQSComponent,
     InvestigationActionsComponent, TreeComponent, GraphicComponent, NewTreeComponent, PatentsComponent,
     ProyectsComponent, ScientistSearchComponent, TopSearchComponent, DocumentsComponent,
-    ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent
+    ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
+    DirectedJobsComponent
   ],
   imports: [
     CommonModule,

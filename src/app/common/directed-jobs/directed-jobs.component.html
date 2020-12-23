@@ -1,0 +1,36 @@
+<form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm">
+    <div class="row mt-20">
+        <!-- type -->
+        <div class="form-group col-lg-6">
+            <label for="type" class="col-sm-4 control-label">{{ "participant.level" | translate }}</label>
+            <div class="col-sm-8">
+                <select name="type" class="form-control" [(ngModel)]="findRequest.filter.level" #type="ngModel">
+                    <option [value]="undefined">{{ "form.select" | translate }}</option>
+                    <option [value]="'Regional'">Regional</option>
+                    <option [value]="'Internacional'">Internacional</option>
+                </select>
+            </div>
+        </div>
+        <!-- year -->
+        <div class="form-group col-lg-6">
+            <label for="anyo" class="col-sm-4 control-label">{{ "participant.year" | translate }}</label>
+            <div class="col-sm-8">
+                <select name="anyo" class="form-control" [(ngModel)]="findRequest.filter.anyo" #type="ngModel">
+                    <option [value]="undefined">{{ "form.select" | translate }}</option>
+                    <option [value]="'2020'">2020</option>
+                    <option [value]="'2019'">2019</option>
+                    <option [value]="'2018'">2018</option>
+                    <option [value]="'2017'">2017</option>
+                    <option [value]="'2016'">2016</option>
+                    <option [value]="'2015'">2015</option>
+                    <option [value]="'2014'">2014</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <app-table-results *ngIf="loaded" [data]="allDirectedJobs.content[0]" [pageInfo]="allDirectedJobs"
+        (pageChanged)="allParticipantsFilteredPageChanged($event)"
+        (sizeChanged)="allParticipantsFilteredSizeChanged($event)"
+        (sortChanged)="allParticipantsFilteredSortChanged($event)">
+    </app-table-results>
+</form>
