@@ -130,7 +130,11 @@
   "scientist": {
     "title": "Research staff",
     "area": "Area",
-    "type": "Type"
+    "type": "Type",
+    "acction-inves":"Investigation actions",
+    "congress": "Congress",
+    "business-activity": "Business activity",
+    "trajectory": "Trayectory"
   },
   "scientific-production": {
     "title": "Scientific production",

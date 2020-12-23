@@ -3,11 +3,11 @@ import { TestingHelper } from 'src/app/_helpers/testing.spec';
 import { ScientistService } from 'src/app/_services/scientist.service';
 import { MockScientistService } from 'src/app/_services/_testingServices/mockScientist.service';
 
-import { ScientisDetailComponent } from './scientis-detail.component';
+import { ScientistDetailComponent } from './scientist-detail.component';
 
 describe('ScientisDetailComponent', () => {
-  let component: ScientisDetailComponent;
-  let fixture: ComponentFixture<ScientisDetailComponent>;
+  let component: ScientistDetailComponent;
+  let fixture: ComponentFixture<ScientistDetailComponent>;
 
   beforeEach(async(() => {
     TestingHelper.configureTest()
@@ -18,7 +18,7 @@ describe('ScientisDetailComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ScientisDetailComponent);
+    fixture = TestBed.createComponent(ScientistDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -139,7 +139,11 @@
   "scientist": {
     "title": "Personal investigador",
     "area": "Área",
-    "type": "Tipo"
+    "type": "Tipo",
+    "acction-inves":"Acciones de investigación",
+    "congress": "Congresos",
+    "business-activity": "Actividad empresarial",
+    "trajectory": "Trayectoria"
   },
   "scientific-production": {
     "title": "Producción cientifica",

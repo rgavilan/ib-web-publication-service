@@ -1,0 +1,53 @@
+<fieldset>
+    <legend class="legend margin-top">{{scientist?.name}}</legend>
+    <div class="mt-20">
+        <div class="row">
+            <div class="col-12">
+                <p>{{scientist?.university}} </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p> {{scientist?.email}} </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mt-40">
+            <tabset #resultsTab [justified]="true">
+                <tab>
+                    <ng-template tabHeading>
+                        {{'scientist.acction-inves' | translate}}
+                    </ng-template>
+                    <ng-container>
+
+                    </ng-container>
+                </tab>
+                <tab>
+                    <ng-template tabHeading>
+                        {{'scientist.congress' | translate}}
+                    </ng-template>
+                    <ng-container>
+
+                    </ng-container>
+                </tab>
+                <tab>
+                    <ng-template tabHeading>
+                        {{'scientist.business-activity' | translate}}
+                    </ng-template>
+                    <ng-container>
+
+                    </ng-container>
+                </tab>
+                <tab>
+                    <ng-template tabHeading>
+                        {{'scientist.trajectory' | translate}}
+                    </ng-template>
+                    <ng-container>
+
+                    </ng-container>
+                </tab>
+            </tabset>
+        </div>
+    </div>
+</fieldset>
