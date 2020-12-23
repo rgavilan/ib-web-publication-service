@@ -143,7 +143,10 @@
     "acction-inves":"Acciones de investigación",
     "congress": "Congresos",
     "business-activity": "Actividad empresarial",
-    "trajectory": "Trayectoria"
+    "trajectory": "Trayectoria",
+    "reg-documents": "Documentos registrados",
+    "prod-scientist":"Producción cientifica",
+    "directed-jobs": "Trabajos dirigidos"
   },
   "scientific-production": {
     "title": "Producción cientifica",

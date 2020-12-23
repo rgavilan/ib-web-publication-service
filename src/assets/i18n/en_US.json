@@ -134,7 +134,10 @@
     "acction-inves":"Investigation actions",
     "congress": "Congress",
     "business-activity": "Business activity",
-    "trajectory": "Trayectory"
+    "trajectory": "Trayectory",
+    "reg-documents": "Registered documents",
+    "prod-scientist": "Scientific production",
+    "directed-jobs": "Directed Jobs"
   },
   "scientific-production": {
     "title": "Scientific production",

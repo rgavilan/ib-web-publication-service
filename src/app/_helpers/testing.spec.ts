@@ -60,6 +60,7 @@ import { ProjectsDetailComponent } from '../common/proyects/projects-detail/proj
 import { ScientistComponent } from '../categories/scientist/scientist.component';
 import { InvestigationActionsComponent } from '../categories/investigation-actions/investigation-actions.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { ScientistDetailComponent } from '../categories/scientist-detail/scientist-detail.component';
 
 
 /**
@@ -111,7 +112,8 @@ export class TestingHelper {
         DeliverableComponent,
         ProjectsDetailComponent,
         ScientistComponent,
-        InvestigationActionsComponent
+        InvestigationActionsComponent,
+        ScientistDetailComponent
       ],
       imports: [
         BrowserModule,

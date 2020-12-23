@@ -21,6 +21,13 @@
                     </ng-template>
                     <ng-container>
 
+                        <legend class="mt-10">{{'scientist.prod-scientist' | translate}}</legend>
+                        <hr>
+                        <legend>{{'scientist.directed-jobs' | translate}}</legend>
+                        <hr>
+                        <legend>{{'scientist.reg-documents' | translate}}</legend>
+                        <hr>
+                        <app-documents [filterDocumentType]="['Libro', 'Articulo']"></app-documents>
                     </ng-container>
                 </tab>
                 <tab>
@@ -28,7 +35,9 @@
                         {{'scientist.congress' | translate}}
                     </ng-template>
                     <ng-container>
-
+                        <legend class="mt-10">{{'scientist.reg-documents' | translate}}</legend>
+                        <hr>
+                        <app-documents [filterDocumentType]="['Libro', 'Articulo']"></app-documents>
                     </ng-container>
                 </tab>
                 <tab>
