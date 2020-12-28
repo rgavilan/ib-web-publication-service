@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
 import { DirectedJobsService } from 'src/app/_services/directedJobs.service';
-import { MockDirectedJobsService } from 'src/app/_services/_testingServices/directedJobs.service';
+import { MockDirectedJobsService } from 'src/app/_services/_testingServices/mockDirectedJobs.service';
 
 import { DirectedJobsComponent } from './directed-jobs.component';
 

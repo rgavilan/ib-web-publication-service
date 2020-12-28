@@ -22,7 +22,7 @@ export class DirectedJobsComponent implements OnInit {
     );
     this.loaded = true;
   }
-
+  filterDocuments() { }
   allParticipantsFilteredPageChanged(i: number) { }
   allParticipantsFilteredSizeChanged(i: number) { }
   allParticipantsFilteredSortChanged(pageRequest: PageRequest) { }

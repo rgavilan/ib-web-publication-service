@@ -1,34 +1,27 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AbstractService } from 'src/app/_helpers/abstract';
-import { Page, PageRequest } from 'src/app/_helpers/search';
-import { Helper } from 'src/app/_helpers/utils';
-import { SparqlResults } from 'src/app/_models/sparql';
-
-
-
-
-
+import { AbstractService } from '../_helpers/abstract';
+import { Page, PageRequest } from '../_helpers/search';
+import { Helper } from '../_helpers/utils';
+import { SparqlResults } from '../_models/sparql';
 
 /**
  *
  *
  * @export
- * @class MockDirectedJobsService
+ * @class BusinnessActivityService
  * @extends {AbstractService}
  */
 @Injectable({
     providedIn: 'root',
 })
-export class MockDirectedJobsService extends AbstractService {
+export class BusinnessActivityService extends AbstractService {
     // mock data
     readonly DUMMY_DATA: SparqlResults = {
         head: {
             vars: [
                 'title',
                 'type',
-                'keywords',
-                'releaseYear'
+                'rol',
             ]
         },
         results: {
@@ -37,30 +30,40 @@ export class MockDirectedJobsService extends AbstractService {
                 {
                     title: {
                         type: 'literal',
-                        value: 'Optimización de software'
+                        value: 'Izertis'
                     },
                     type: {
                         type: 'literal',
-                        value: 'Tesis'
+                        value: 'Startup'
                     },
-                    keywords: {
+                    rol: {
                         type: 'literal',
-                        value: 'Álgebra'
-                    },
-                    releaseYear: {
-                        type: 'literal',
-                        value: '2012'
+                        value: 'Socio'
                     }
                 },
+                {
+                    title: {
+                        type: 'literal',
+                        value: 'DXI'
+                    },
+                    type: {
+                        type: 'literal',
+                        value: 'Startup'
+                    },
+                    rol: {
+                        type: 'literal',
+                        value: 'Fundador'
+                    }
+                }
             ]
         }
     };
 
 
-    constructor(private httpClient: HttpClient) {
+
+    constructor() {
         super();
     }
-
 
 
     /**
@@ -69,7 +72,7 @@ export class MockDirectedJobsService extends AbstractService {
      * @param {Map<string, string>} filters
      * @param {PageRequest} pageRequest
      * @return {*}  {Page<SparqlResults>}
-     * @memberof MockDirectedJobsService
+     * @memberof BusinnessActivityService
      */
     find(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
         const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));

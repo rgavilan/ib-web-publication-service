@@ -28,6 +28,7 @@ import { DeliverableComponent } from '../common/deliverable/deliverable.componen
 import { ScientistComponent } from './scientist/scientist.component';
 import { ScientistDetailComponent } from './scientist-detail/scientist-detail.component';
 import { DirectedJobsComponent } from '../common/directed-jobs/directed-jobs.component';
+import { StartupComponent } from '../common/startup/startup.component';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
@@ -35,7 +36,7 @@ import { DirectedJobsComponent } from '../common/directed-jobs/directed-jobs.com
     InvestigationActionsComponent, TreeComponent, GraphicComponent, NewTreeComponent, PatentsComponent,
     ProyectsComponent, ScientistSearchComponent, TopSearchComponent, DocumentsComponent,
     ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
-    DirectedJobsComponent
+    DirectedJobsComponent, StartupComponent
   ],
   imports: [
     CommonModule,

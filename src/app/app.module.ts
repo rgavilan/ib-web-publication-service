@@ -44,6 +44,7 @@ import { NgbModule, NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerI18n } 
 import { CustomNgbDateAdapter } from './_helpers/customNgbDateAdapter';
 import { CustomNgbDateFormatter } from './_helpers/customNgbDateFormatter';
 import { CustomNgbDatepickerI18n } from './_helpers/customNgbDatepickerI18n.provider';
+import { StartupComponent } from './common/startup/startup.component';
 
 // -------------- Aux functions --------------
 

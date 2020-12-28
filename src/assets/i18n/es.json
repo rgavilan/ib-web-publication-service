@@ -146,7 +146,13 @@
     "trajectory": "Trayectoria",
     "reg-documents": "Documentos registrados",
     "prod-scientist":"Producción cientifica",
-    "directed-jobs": "Trabajos dirigidos"
+    "directed-jobs": "Trabajos dirigidos",
+    "startups": "Startups/ Spin-off",
+    "scientific-production-indicators": "Indicadores de producción científica",
+    "times-quoted": "Veces Citado",
+    "h-index": "h-index",
+    "apto": "Apto",
+    "trajectory-by-timeline": "Trayectoria por línea de tiempo"
   },
   "scientific-production": {
     "title": "Producción cientifica",

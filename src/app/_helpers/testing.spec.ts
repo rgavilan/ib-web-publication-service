@@ -44,7 +44,7 @@ import { TopSearchComponent } from '../common/top-search/top-search.component';
 import { UserDetailComponent } from '../users/user-detail/user-detail.component';
 import { ScientistSearchComponent } from '../common/scientist-search/scientist-search.component';
 import { UserComponent } from '../users/user/user.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbTabsetConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { TreeComponent } from '../graphic/tree/tree.component';
 import { NewTreeComponent } from '../graphic/new-tree/new-tree.component';
@@ -62,6 +62,9 @@ import { InvestigationActionsComponent } from '../categories/investigation-actio
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { ScientistDetailComponent } from '../categories/scientist-detail/scientist-detail.component';
 import { DirectedJobsComponent } from '../common/directed-jobs/directed-jobs.component';
+import { StartupComponent } from '../common/startup/startup.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 
 /**
@@ -115,11 +118,12 @@ export class TestingHelper {
         ScientistComponent,
         InvestigationActionsComponent,
         ScientistDetailComponent,
-        DirectedJobsComponent
+        DirectedJobsComponent,
+        StartupComponent
       ],
       imports: [
         BrowserModule,
-        AlertModule,
+        AlertModule.forRoot(),
         FormsModule,
         AppRoutingModule,
         HttpClientModule,
@@ -139,9 +143,11 @@ export class TestingHelper {
         NgProgressHttpModule,
         NgProgressRouterModule,
         NgSelectModule,
+        LeafletModule,
         NgxEchartsModule.forRoot({
           echarts: () => import('echarts'),
         }),
+        TabsModule.forRoot(),
       ],
       providers: [
         AuthGuard,

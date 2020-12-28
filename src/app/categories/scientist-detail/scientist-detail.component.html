@@ -20,10 +20,10 @@
                         {{'scientist.acction-inves' | translate}}
                     </ng-template>
                     <ng-container>
-
-                        <legend class="mt-10">{{'scientist.prod-scientist' | translate}}</legend>
+                        <legend class="mt-40">{{'scientist.directed-jobs' | translate}}</legend>
                         <hr>
-                        <legend>{{'scientist.directed-jobs' | translate}}</legend>
+                        <app-directed-jobs></app-directed-jobs>
+                        <legend>{{'scientist.prod-scientist' | translate}}</legend>
                         <hr>
                         <app-directed-jobs></app-directed-jobs>
                         <legend>{{'scientist.reg-documents' | translate}}</legend>
@@ -36,7 +36,7 @@
                         {{'scientist.congress' | translate}}
                     </ng-template>
                     <ng-container>
-                        <legend class="mt-10">{{'scientist.reg-documents' | translate}}</legend>
+                        <legend class="mt-40">{{'scientist.directed-jobs' | translate}}</legend>
                         <hr>
                         <app-documents [filterDocumentType]="['Libro', 'Articulo']"></app-documents>
                     </ng-container>
@@ -46,7 +46,9 @@
                         {{'scientist.business-activity' | translate}}
                     </ng-template>
                     <ng-container>
-
+                        <legend class="mt-40">{{'scientist.startups' | translate}}</legend>
+                        <hr>
+                        <app-startup></app-startup>
                     </ng-container>
                 </tab>
                 <tab>
@@ -54,7 +56,16 @@
                         {{'scientist.trajectory' | translate}}
                     </ng-template>
                     <ng-container>
-
+                        <legend class="mt-40">{{'scientist.scientific-production-indicators' | translate}}</legend>
+                        <hr>
+                        <p><b>{{'scientist.times-quoted' | translate}}: </b>71</p>
+                        <p><b>{{'scientist.h-index' | translate}}: </b>12</p>
+                        <p><b>{{'scientist.apto' | translate}}: </b>Evalución sobre el sexenio de tranferencia del
+                            conocimiento e innovación</p>
+                        <legend class="mt-40">{{'scientist.trajectory-by-timeline' | translate}}</legend>
+                        <hr>
+                        <div style="min-width: 600px; width:100%; height:450px" echarts [loading]="loadingData"
+                            [options]="echartOptions" class="demo-chart"></div>
                     </ng-container>
                 </tab>
             </tabset>
