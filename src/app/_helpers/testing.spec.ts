@@ -119,7 +119,8 @@ export class TestingHelper {
         InvestigationActionsComponent,
         ScientistDetailComponent,
         DirectedJobsComponent,
-        StartupComponent
+        StartupComponent,
+        UserDetailComponent
       ],
       imports: [
         BrowserModule,
