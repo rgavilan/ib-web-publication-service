@@ -55,13 +55,13 @@ export class ProyectsComponent implements OnInit {
   echartOptions: any;
   /**
    *
-   *
+   * @type {boolean}
    * @memberof ProyectsComponent
    */
   loadingData = false;
   /**
    *
-   *
+   * @type {boolean}
    * @memberof ProyectsComponent
    */
   loadedProjects = false;
@@ -79,6 +79,12 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   dateFin: number;
+  /**
+   *
+   * @type {boolean}
+   * @memberof ProyectsComponent
+   */
+  normalTree = true;
   /**
    * Creates an instance of ProyectsComponent.
    * @param {ProjectService} projectService

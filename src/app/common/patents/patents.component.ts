@@ -54,11 +54,16 @@ export class PatentsComponent implements OnInit {
   loadingData = false;
   /**
    *
-   *
+   * @type {boolean}
    * @memberof PatentsComponent
    */
   loaded = false;
-
+  /**
+   *
+   * @type {boolean}
+   * @memberof PatentsComponent
+   */
+  normalTree = true;
   /**
    * Creates an instance of PatentsComponent.
    * @param {PatentService} patentService

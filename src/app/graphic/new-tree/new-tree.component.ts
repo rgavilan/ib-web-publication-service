@@ -26,7 +26,7 @@ export class NewTreeComponent implements OnInit {
   ngOnInit(): void {
     if (this.treeType !== 'area') {
       this.data = {
-        name: 'Áreas',
+        name: 'Documentos',
         children: [
           {
             name: 'Abstracts',
@@ -106,7 +106,10 @@ export class NewTreeComponent implements OnInit {
                   { name: 'Materiales para biomedicia', value: 'MBM', selected: false, children: [] },
                   { name: 'Materiales para la energia y el medioambiente', value: 'MEN', selected: false, children: [] },
                   { name: 'Materiales estructurales', value: 'MES', selected: false, children: [] },
-                  { name: 'Materiales con funcionalidad eléctrica, magnética, óptica o térmica', value: 'FYA', selected: false, children: [] }
+                  {
+                    name: 'Materiales con funcionalidad eléctrica, magnética, óptica o térmica',
+                    value: 'FYA', selected: false, children: []
+                  }
                 ]
               },
               {

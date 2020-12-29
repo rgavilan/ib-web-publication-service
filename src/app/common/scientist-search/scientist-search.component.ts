@@ -24,6 +24,7 @@ export class ScientistSearchComponent implements OnInit {
   filters: Map<string, string> = new Map();
   findRequest: FindRequest = new FindRequest();
   echartOptions: any;
+  normalTree = true;
 
   loaded = false;
 

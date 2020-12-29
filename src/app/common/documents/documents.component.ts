@@ -65,6 +65,7 @@ export class DocumentsComponent implements OnInit {
    * @memberof DocumentsComponent
    */
   allDocumentFiltered: Page<SparqlResults> = new Page();
+  normalTree = true;
 
   headerData: TableResultsHeaderItem[] = [
     {

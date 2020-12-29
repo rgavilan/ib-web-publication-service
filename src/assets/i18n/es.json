@@ -33,7 +33,8 @@
     "select": "Selecciona ...",
     "yes": "Sí",
     "no": "No",
-    "datepicker-placeholder": "YYYY-MM-DD"
+    "datepicker-placeholder": "YYYY-MM-DD",
+    "change-tree": "Cambiar versión visual árbol"
   },
   "menu": {
     "home": "Inicio",
