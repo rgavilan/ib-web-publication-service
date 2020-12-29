@@ -153,7 +153,15 @@
     "times-quoted": "Veces Citado",
     "h-index": "h-index",
     "apto": "Apto",
-    "trajectory-by-timeline": "Trayectoria por línea de tiempo"
+    "trajectory-by-timeline": "Trayectoria por línea de tiempo",
+    "table-header": {
+      "name":"Nombre",
+      "area":"Área",
+      "type":"Tipo",
+      "appointments": "Citas",
+      "h-index": "H-index",
+      "publications": "Publicaciones"
+    }
   },
   "scientific-production": {
     "title": "Producción cientifica",
@@ -180,16 +188,24 @@
     "financing-type": "Tipo de financiamiento",
     "call-type": "Tipo de convocatoria",
     "people-involved": "Personas involucradas en el proyecto",
-    "main-researcher": "Nombre(s) del investigador (s) principal"
+    "main-researcher": "Nombre(s) del investigador (s) principal",
+    "table-header": {
+      "end": "Fecha fin",
+      "fund": "Fund",
+      "id": "ID",
+      "name":"Nombre",
+      "start": "Fecha inicio",
+      "tipo": "Tipo"
+      }
   },
   "investigation-actions": {
     "title": "Acciones de investigación",
     "documents": "Documentos",
     "projects": "Proyectos",
     "documents-table": {
-      "id": "id",
-      "name": "nombre",
-      "anyo": "año"
+      "id": "ID",
+      "name": "Nombre",
+      "anyo": "Año"
     }
   },
   "documents": {
@@ -209,5 +225,29 @@
     "level": "Nivel",
     "year": "Año",
     "scientific-production-related": "Producción cientifíca relacionada con el proyecto"
+  },
+  "patent": {
+    "table-header": {
+      "name": "Nombre",
+      "ini": "Fecha inicio",
+      "fin": "Fecha fin",
+      "id":"ID",
+      "tipo": "Tipo"
+    }
+  },
+  "directed-jobs": {
+    "table-header": {
+      "title": "Título",
+      "type":"Tipo",
+      "keywords": "Palabras claves",
+      "release-year": "Año de lanzamiento"
+    }
+  },
+  "startup": {
+    "table-header": {
+      "title": "Título",
+      "type":"Tipo",
+      "rol": "Rol"
+    }
   }
 }

@@ -47,7 +47,7 @@
     </div>
 </div>
 <app-table-results [routerNameLink]="'./project/'" *ngIf="loadedProjects" [routerField]="'id'"
-    [data]="allProjectFiltered.content[0]" [pageInfo]="allProjectFiltered"
+    [data]="allProjectFiltered.content[0]" [pageInfo]="allProjectFiltered" [headerData]="headerData"
     (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
     (sortChanged)="allprojectsFilteredSortChanged($event)">
 </app-table-results>

@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <app-table-results *ngIf="loaded" [data]="allStartup.content[0]" [pageInfo]="allStartup"
+    <app-table-results *ngIf="loaded" [data]="allStartup.content[0]" [pageInfo]="allStartup" [headerData]="headerData"
         (pageChanged)="allStartupFilteredPageChanged($event)" (sizeChanged)="allStartupFilteredSizeChanged($event)"
         (sortChanged)="allStartupFilteredSortChanged($event)">
     </app-table-results>

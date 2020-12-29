@@ -42,9 +42,9 @@ describe('TopSearchComponent', () => {
 
   describe('filter Top results', () => {
     it('should filter by type', () => {
-      component.filterTop('2017', 'anyo');
+      component.filterTop('1', 'hIndex');
       spyOn(scientificsService, 'findTopByFilters').and.callThrough();
-      expect(component.allTopFiltered.totalElements).toBe(1);
+      expect(component.allTopFiltered.totalElements).toBe(5);
     });
 
     it('should return all values by filtering by empty filter', () => {

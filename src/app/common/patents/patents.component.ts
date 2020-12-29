@@ -3,6 +3,7 @@ import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { SparqlResults } from 'src/app/_models/sparql';
+import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { PatentService } from 'src/app/_services/patent.service';
 
 
@@ -64,6 +65,28 @@ export class PatentsComponent implements OnInit {
    * @memberof PatentsComponent
    */
   normalTree = true;
+  headerData: TableResultsHeaderItem[] = [
+    {
+      textToTranslate: 'patent.table-header.fin',
+      columnName: 'fin'
+    },
+    {
+      textToTranslate: 'patent.table-header.id',
+      columnName: 'id'
+    },
+    {
+      textToTranslate: 'patent.table-header.ini',
+      columnName: 'ini'
+    },
+    {
+      textToTranslate: 'patent.table-header.name',
+      columnName: 'name'
+    },
+    {
+      textToTranslate: 'patent.table-header.tipo',
+      columnName: 'tipo'
+    }
+  ];
   /**
    * Creates an instance of PatentsComponent.
    * @param {PatentService} patentService

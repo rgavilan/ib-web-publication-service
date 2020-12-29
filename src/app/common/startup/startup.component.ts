@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
+import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { BusinnessActivityService } from 'src/app/_services/businnessActivity.service';
 
 @Component({
@@ -11,6 +12,20 @@ export class StartupComponent implements OnInit {
   findRequest: FindRequest = new FindRequest();
   loaded = false;
   allStartup: Page<SparqlResults> = new Page();
+  headerData: TableResultsHeaderItem[] = [
+    {
+      textToTranslate: 'startup.table-header.title',
+      columnName: 'title'
+    },
+    {
+      textToTranslate: 'startup.table-header.type',
+      columnName: 'type'
+    },
+    {
+      textToTranslate: 'startup.table-header.rol',
+      columnName: 'rol'
+    }
+  ];
   constructor(private businnessActivityService: BusinnessActivityService) { }
 
   ngOnInit(): void {

@@ -17,8 +17,11 @@ export class MockScientistService extends ScientistService {
         head: {
             vars: [
                 'name',
-                'id',
-                'anyo',
+                'area',
+                'type',
+                'appointments',
+                'hIndex',
+                'publications'
             ]
         },
         results: {
@@ -29,13 +32,25 @@ export class MockScientistService extends ScientistService {
                         type: 'literal',
                         value: 'Maria Hernandez Reyes Mora'
                     },
-                    id: {
+                    area: {
                         type: 'literal',
-                        value: '123'
+                        value: 'Área de gestión'
                     },
-                    anyo: {
+                    type: {
                         type: 'literal',
-                        value: '2020'
+                        value: 'Docente'
+                    },
+                    appointments: {
+                        type: 'literal',
+                        value: '208520'
+                    },
+                    hIndex: {
+                        type: 'literal',
+                        value: '0'
+                    },
+                    publications: {
+                        type: 'literal',
+                        value: '8'
                     }
                 },
                 // 1
@@ -44,13 +59,25 @@ export class MockScientistService extends ScientistService {
                         type: 'literal',
                         value: 'Jesualdo Tomás'
                     },
-                    id: {
+                    area: {
                         type: 'literal',
-                        value: '345'
+                        value: 'Área de informatica'
                     },
-                    anyo: {
+                    type: {
                         type: 'literal',
-                        value: '2019'
+                        value: 'Docente'
+                    },
+                    appointments: {
+                        type: 'literal',
+                        value: '74'
+                    },
+                    hIndex: {
+                        type: 'literal',
+                        value: '1'
+                    },
+                    publications: {
+                        type: 'literal',
+                        value: '14'
                     }
                 },
                 // 1
@@ -59,13 +86,25 @@ export class MockScientistService extends ScientistService {
                         type: 'literal',
                         value: 'Tomás Fernández Breis'
                     },
-                    id: {
+                    area: {
                         type: 'literal',
-                        value: '567'
+                        value: 'Área de informatica'
                     },
-                    anyo: {
+                    type: {
                         type: 'literal',
-                        value: '2018'
+                        value: 'Docente'
+                    },
+                    appointments: {
+                        type: 'literal',
+                        value: '74'
+                    },
+                    hIndex: {
+                        type: 'literal',
+                        value: '1'
+                    },
+                    publications: {
+                        type: 'literal',
+                        value: '14'
                     }
                 },
                 // 1
@@ -74,13 +113,25 @@ export class MockScientistService extends ScientistService {
                         type: 'literal',
                         value: 'Jesualdo Tomás Breis'
                     },
-                    id: {
+                    area: {
                         type: 'literal',
-                        value: '233232'
+                        value: 'Área de informatica'
                     },
-                    anyo: {
+                    type: {
                         type: 'literal',
-                        value: '2819'
+                        value: 'Docente'
+                    },
+                    appointments: {
+                        type: 'literal',
+                        value: '74'
+                    },
+                    hIndex: {
+                        type: 'literal',
+                        value: '1'
+                    },
+                    publications: {
+                        type: 'literal',
+                        value: '14'
                     }
                 },
                 // 1
@@ -89,13 +140,25 @@ export class MockScientistService extends ScientistService {
                         type: 'literal',
                         value: 'Jesualdo Breis'
                     },
-                    id: {
+                    area: {
                         type: 'literal',
-                        value: '333'
+                        value: 'Área de informatica'
                     },
-                    anyo: {
+                    type: {
                         type: 'literal',
-                        value: '1990'
+                        value: 'Docente'
+                    },
+                    appointments: {
+                        type: 'literal',
+                        value: '74'
+                    },
+                    hIndex: {
+                        type: 'literal',
+                        value: '1'
+                    },
+                    publications: {
+                        type: 'literal',
+                        value: '14'
                     }
                 },
                 // 1
@@ -104,13 +167,25 @@ export class MockScientistService extends ScientistService {
                         type: 'literal',
                         value: 'Jesualdo Hernesto'
                     },
-                    id: {
+                    area: {
                         type: 'literal',
-                        value: '786'
+                        value: 'Área de informatica'
                     },
-                    anyo: {
+                    type: {
                         type: 'literal',
-                        value: '2017'
+                        value: 'Docente'
+                    },
+                    appointments: {
+                        type: 'literal',
+                        value: '74'
+                    },
+                    hIndex: {
+                        type: 'literal',
+                        value: '1'
+                    },
+                    publications: {
+                        type: 'literal',
+                        value: '14'
                     }
                 },
             ]

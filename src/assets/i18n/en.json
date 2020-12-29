@@ -144,7 +144,15 @@
     "times-quoted": "Times quoted",
     "h-index": "h-index",
     "apto": "Apto",
-    "trajectory-by-timeline": "Trayectory by timeline"
+    "trajectory-by-timeline": "Trayectory by timeline",
+    "table-header": {
+      "name":"Name",
+      "area":"Area",
+      "type":"Type",
+      "appointments": "Appointments",
+      "h-index": "H-index",
+      "publications": "Publications"
+    }
   },
   "scientific-production": {
     "title": "Scientific production",
@@ -171,7 +179,15 @@
     "financing-type": "Financing type",
     "call-type": "Call Type",
     "people-involved": "People involved in proyect",
-    "main-researcher": "name(s) main  researcher(s)"
+    "main-researcher": "name(s) main  researcher(s)",
+    "table-header": {
+      "end": "End",
+      "fund": "Fund",
+      "id": "ID",
+      "name":"Name",
+      "start": "Start",
+      "tipo": "Type"
+      }
   },
   "investigation-actions": {
     "title": "Investigation actions",
@@ -194,5 +210,29 @@
     "year": "Year",
     "people-involved": "Perople involved in proyect",
     "proyect-participants": "Collaborating / participating entities"
+  },
+  "patent": {
+    "table-header": {
+      "name": "Name",
+      "ini": "Start date",
+      "fin": "Finish date",
+      "id":"ID",
+      "tipo": "Type"
+    }
+  },
+  "directed-jobs": {
+    "table-header": {
+      "title": "Title",
+      "type":"Type",
+      "keywords": "Keywords",
+      "release-year": "Release year"
+    }
+  },
+  "startup": {
+    "table-header": {
+      "title": "Title",
+      "type":"Type",
+      "rol": "Rol"
+    }
   }
 }

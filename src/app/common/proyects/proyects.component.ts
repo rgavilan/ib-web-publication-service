@@ -5,6 +5,7 @@ import { ProjectService } from 'src/app/_services/project.service';
 import { Helper } from 'src/app/_helpers/utils';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { SeriesBarData } from 'src/app/_models/seriesBarData';
+import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 
 /**
  *
@@ -85,6 +86,32 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   normalTree = true;
+  headerData: TableResultsHeaderItem[] = [
+    {
+      textToTranslate: 'projects.table-header.end',
+      columnName: 'end'
+    },
+    {
+      textToTranslate: 'projects.table-header.fund',
+      columnName: 'fund'
+    },
+    {
+      textToTranslate: 'projects.table-header.id',
+      columnName: 'id'
+    },
+    {
+      textToTranslate: 'projects.table-header.name',
+      columnName: 'name'
+    },
+    {
+      textToTranslate: 'projects.table-header.start',
+      columnName: 'start'
+    },
+    {
+      textToTranslate: 'projects.table-header.tipo',
+      columnName: 'tipo'
+    }
+  ];
   /**
    * Creates an instance of ProyectsComponent.
    * @param {ProjectService} projectService

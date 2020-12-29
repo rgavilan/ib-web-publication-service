@@ -3,6 +3,7 @@ import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { SparqlResults } from 'src/app/_models/sparql';
+import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { ScientistService } from 'src/app/_services/scientist.service';
 /**
  *
@@ -27,6 +28,32 @@ export class ScientistSearchComponent implements OnInit {
   normalTree = true;
 
   loaded = false;
+  headerData: TableResultsHeaderItem[] = [
+    {
+      textToTranslate: 'scientist.table-header.name',
+      columnName: 'name'
+    },
+    {
+      textToTranslate: 'scientist.table-header.area',
+      columnName: 'area'
+    },
+    {
+      textToTranslate: 'scientist.table-header.type',
+      columnName: 'type'
+    },
+    {
+      textToTranslate: 'scientist.table-header.appointments',
+      columnName: 'appointments'
+    },
+    {
+      textToTranslate: 'scientist.table-header.h-index',
+      columnName: 'hIndex'
+    },
+    {
+      textToTranslate: 'scientist.table-header.publications',
+      columnName: 'publications'
+    }
+  ];
 
   /**
    * Constructor

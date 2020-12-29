@@ -46,7 +46,8 @@
 </div>
 
 <app-table-results [routerNameLink]="'./'" [routerField]="'id'" [data]="allScientificsFiltered.content[0]"
-    [pageInfo]="allScientificsFiltered" (pageChanged)="allScientistsFilteredPageChanged($event)"
-    (sizeChanged)="allScientistsFilteredPageChanged($event)" (sortChanged)="allScientistsFilteredPageChanged($event)">
+    [pageInfo]="allScientificsFiltered" [headerData]="headerData"
+    (pageChanged)="allScientistsFilteredPageChanged($event)" (sizeChanged)="allScientistsFilteredPageChanged($event)"
+    (sortChanged)="allScientistsFilteredPageChanged($event)">
 </app-table-results>
 <div echarts [options]="echartOptions" class="sector-chart"></div>

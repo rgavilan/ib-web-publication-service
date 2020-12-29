@@ -39,9 +39,9 @@ describe('ScientistSearchComponent', () => {
 
   describe('filter Top results', () => {
     it('should filter by type', () => {
-      component.filterTop('2017', 'anyo');
+      component.filterTop('74', 'appointments');
       spyOn(scientificsService, 'findTopByFilters').and.callThrough();
-      expect(component.allScientificsFiltered.totalElements).toBe(1);
+      expect(component.allScientificsFiltered.totalElements).toBe(5);
     });
 
     it('should return all values by filtering by empty filter', () => {

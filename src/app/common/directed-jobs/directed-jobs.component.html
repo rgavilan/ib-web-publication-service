@@ -44,7 +44,7 @@
         </div>
     </div>
     <app-table-results *ngIf="loaded" [data]="allDirectedJobs.content[0]" [pageInfo]="allDirectedJobs"
-        (pageChanged)="allParticipantsFilteredPageChanged($event)"
+        (pageChanged)="allParticipantsFilteredPageChanged($event)" [headerData]="headerData"
         (sizeChanged)="allParticipantsFilteredSizeChanged($event)"
         (sortChanged)="allParticipantsFilteredSortChanged($event)">
     </app-table-results>

@@ -18,11 +18,11 @@ export class MockProjectService extends ProjectService {
         head: {
             vars: [
                 'name',
-                'keywords',
-                'participation',
-                'type',
-                'financing',
-                'convocation'
+                'end',
+                'fund',
+                'start',
+                'tipo',
+                'id'
             ]
         },
         results: {
@@ -33,91 +33,78 @@ export class MockProjectService extends ProjectService {
                         type: 'literal',
                         value: 'HERCULES'
                     },
-                    keywords: {
+                    end: {
                         type: 'literal',
-                        value: 'Semantica'
+                        value: ''
                     },
-                    participation: {
+                    fund: {
                         type: 'literal',
-                        value: 'Participante'
+                        value: '-'
                     },
-                    type: {
+                    start: {
                         type: 'literal',
-                        value: 'No competitivo'
+                        value: ''
                     },
-                    financing: {
+                    tipo: {
                         type: 'literal',
-                        value: 'Publico'
+                        value: 'GRUPO'
                     },
-                    convocation: {
+                    id: {
                         type: 'literal',
                         value: 'H2020'
-                    },
-                    year: {
-                        type: 'literal',
-                        value: '2020'
                     }
                 },
                 // 2
                 {
                     name: {
                         type: 'literal',
-                        value: 'ASIO'
+                        value: 'HERCULES 1'
                     },
-                    keywords: {
+                    end: {
                         type: 'literal',
-                        value: 'Semantica'
+                        value: ' - '
                     },
-                    participation: {
+                    fund: {
                         type: 'literal',
-                        value: 'Participante'
+                        value: '-'
                     },
-                    type: {
+                    start: {
                         type: 'literal',
-                        value: 'No competitivo'
+                        value: ''
                     },
-                    financing: {
+                    tipo: {
                         type: 'literal',
-                        value: 'Publico'
+                        value: 'GRUPO'
                     },
-                    convocation: {
+                    id: {
                         type: 'literal',
-                        value: 'A2019'
-                    },
-                    year: {
-                        type: 'literal',
-                        value: '2019'
+                        value: 'H2021'
                     }
                 },
-                // 2
                 {
                     name: {
                         type: 'literal',
-                        value: 'ASIO'
+                        value: 'HERCULES 3'
                     },
-                    keywords: {
+                    end: {
                         type: 'literal',
-                        value: 'Semantica'
+                        value: ''
                     },
-                    participation: {
+                    fund: {
                         type: 'literal',
-                        value: 'Participante'
+                        value: '-'
                     },
-                    type: {
+                    start: {
                         type: 'literal',
-                        value: 'No competitivo'
+                        value: ''
                     },
-                    financing: {
+                    tipo: {
                         type: 'literal',
-                        value: 'Publico'
+                        value: 'CON'
                     },
-                    convocation: {
+                    id: {
                         type: 'literal',
-                        value: 'A2019'
-                    },
-                    year: {
-                        type: 'literal',
-                        value: '2019'
+                        value: 'H2022'
                     }
                 }
             ]

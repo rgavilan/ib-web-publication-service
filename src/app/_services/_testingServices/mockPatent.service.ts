@@ -14,13 +14,15 @@ import { SparqlResults } from 'src/app/_models/sparql';
 })
 export class MockPatentService {
     // mock data
+
     readonly DUMMY_DATA: SparqlResults = {
         head: {
             vars: [
                 'name',
-                'area',
-                'organisation',
-                'id'
+                'ini',
+                'fin',
+                'id',
+                'tipo'
             ]
         },
         results: {
@@ -29,38 +31,46 @@ export class MockPatentService {
                 {
                     name: {
                         type: 'literal',
-                        value: 'Patente 1'
+                        value: 'CIRCADIANWARE'
                     },
-                    area: {
+                    ini: {
                         type: 'literal',
-                        value: 'Derecho'
+                        value: '15-05-1997'
                     },
-                    organisation: {
+                    fin: {
                         type: 'literal',
-                        value: 'red.es'
+                        value: ''
                     },
                     id: {
                         type: 'literal',
-                        value: 'xxxxxx'
+                        value: '333'
+                    },
+                    tipo: {
+                        type: 'literal',
+                        value: 'D'
                     }
                 },
                 // 2
                 {
                     name: {
                         type: 'literal',
-                        value: 'Patente 2'
+                        value: 'NIP IMPERFECTION PROCESSOR'
                     },
-                    area: {
+                    ini: {
                         type: 'literal',
-                        value: 'Historia'
+                        value: ''
                     },
-                    organisation: {
+                    fin: {
                         type: 'literal',
-                        value: 'Fondos europeos'
+                        value: ''
                     },
                     id: {
                         type: 'literal',
-                        value: 'xxxxxx'
+                        value: '555'
+                    },
+                    tipo: {
+                        type: 'literal',
+                        value: 'D'
                     }
                 }
 

@@ -43,7 +43,7 @@
 </div>
 
 <app-table-results *ngIf="loaded" [data]="allPatentFiltered.content[0]" [pageInfo]="allPatentFiltered"
-    (pageChanged)="allPatentsFilteredPageChanged($event)" (sizeChanged)="allPatentsFilteredSizeChanged($event)"
-    (sortChanged)="allPatentsFilteredSortChanged($event)">
+    [headerData]="headerData" (pageChanged)="allPatentsFilteredPageChanged($event)"
+    (sizeChanged)="allPatentsFilteredSizeChanged($event)" (sortChanged)="allPatentsFilteredSortChanged($event)">
 </app-table-results>
 <div style="min-width:600px;height: 450px" echarts [options]="echartOptions" class="sector-chart"></div>
