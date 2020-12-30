@@ -41,16 +41,13 @@ import { APP_BASE_HREF } from '@angular/common';
 import { SPARQLEditorComponent } from '../sparqleditor/sparqleditor.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TopSearchComponent } from '../common/top-search/top-search.component';
-import { UserDetailComponent } from '../users/user-detail/user-detail.component';
 import { ScientistSearchComponent } from '../common/scientist-search/scientist-search.component';
-import { UserComponent } from '../users/user/user.component';
-import { NgbModule, NgbTabsetConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { TreeComponent } from '../graphic/tree/tree.component';
 import { NewTreeComponent } from '../graphic/new-tree/new-tree.component';
 import { of } from 'rxjs';
 import { CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Pipe, PipeTransform } from '@angular/core';
-import { TableResultsComponent } from '../common-display-data/table-results/table-results.component';
 import { ProyectsComponent } from '../common/proyects/proyects.component';
 import { PatentsComponent } from '../common/patents/patents.component';
 import { DocumentsComponent } from '../common/documents/documents.component';
@@ -101,12 +98,9 @@ export class TestingHelper {
         HomeComponent,
         SPARQLEditorComponent,
         TopSearchComponent,
-        UserDetailComponent,
         ScientistSearchComponent,
-        UserComponent,
         TreeComponent,
         NewTreeComponent,
-        TableResultsComponent,
         ProyectsComponent,
         PatentsComponent,
         TreeComponent,
@@ -119,8 +113,7 @@ export class TestingHelper {
         InvestigationActionsComponent,
         ScientistDetailComponent,
         DirectedJobsComponent,
-        StartupComponent,
-        UserDetailComponent
+        StartupComponent
       ],
       imports: [
         BrowserModule,

@@ -82,7 +82,7 @@ export class UserDetailComponent implements OnInit {
     observable.subscribe(
       (user: User) => {
         if (this.createMode) {
-          this.router.navigate(['/main/users', user.id]);
+          this.router.navigate(['./', user.id]);
         } else {
           this.user = user;
         }
@@ -95,7 +95,6 @@ export class UserDetailComponent implements OnInit {
         );
       },
       (error) => {
-        console.error(error);
         this.toastr.error(
           this.translate.instant(
             'toast.error-saving',

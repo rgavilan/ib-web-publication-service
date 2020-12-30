@@ -46,7 +46,7 @@
         </div>
     </div>
 </div>
-<app-table-results *ngIf="loaded" [data]="allData.content[0]" [pageInfo]="allData"
+<app-table-results *ngIf="loaded" [data]="allData.content[0]" [pageInfo]="allData" [headerData]="headerData"
     (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
     (sortChanged)="allprojectsFilteredSortChanged($event)">
 </app-table-results>
@@ -66,7 +66,7 @@
         </div>
     </div>
 </div>
-<app-table-results *ngIf="loaded" [data]="allData.content[0]" [pageInfo]="allData"
+<app-table-results *ngIf="loaded" [data]="allData.content[0]" [pageInfo]="allData" [headerData]="headerData"
     (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
     (sortChanged)="allprojectsFilteredSortChanged($event)">
 </app-table-results>

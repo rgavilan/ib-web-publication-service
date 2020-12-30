@@ -48,6 +48,9 @@ export class PaginationComponent implements OnChanges {
         (this.resultObject.number + 1) * this.resultObject.size +
         this.resultObject.numberOfElements, this.resultObject.totalElements);
       this.totalElements = this.resultObject.totalElements || 0;
+      if (!this.max) {
+        this.max = 0;
+      }
       this.pageSize = this.resultObject.size;
     }
   }

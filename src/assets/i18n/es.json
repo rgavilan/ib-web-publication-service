@@ -218,13 +218,24 @@
     "level": "Nivel",
     "year": "Año",
     "people-involved": "Personas involucradas en el proyecto",
-    "proyect-participants": "Entidades colaboradores/ participantes"
+    "proyect-participants": "Entidades colaboradores/ participantes", 
+    "table-header": {
+      "centro": "Centro",
+      "dpto": "Departamento",
+      "id":"ID"
+    }
   },
   "deliverable": {
     "title": "Entregables/ Memoria del proyecto",
     "level": "Nivel",
     "year": "Año",
-    "scientific-production-related": "Producción cientifíca relacionada con el proyecto"
+    "scientific-production-related": "Producción cientifíca relacionada con el proyecto",
+    "table-header": {
+      "title": "Título",
+      "type": "Tipo",
+      "doi": "DOI",
+      "release-year": "Año de lanzamiento"
+    }
   },
   "patent": {
     "table-header": {

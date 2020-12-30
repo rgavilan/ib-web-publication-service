@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
+import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { ParticipantService } from 'src/app/_services/participant.service';
 
 @Component({
@@ -36,7 +37,24 @@ export class DeliverableComponent implements OnInit {
    */
   allData: Page<SparqlResults> = new Page();
 
-
+  headerData: TableResultsHeaderItem[] = [
+    {
+      textToTranslate: 'deliverable.table-header.title',
+      columnName: 'title'
+    },
+    {
+      textToTranslate: 'deliverable.table-header.type',
+      columnName: 'type'
+    },
+    {
+      textToTranslate: 'deliverable.table-header.doi',
+      columnName: 'doi'
+    },
+    {
+      textToTranslate: 'deliverable.table-header.release-year',
+      columnName: 'releaseYear'
+    }
+  ];
   /**
    * Creates an instance of DeliverableComponent.
    * @param {ParticipantService} participantService

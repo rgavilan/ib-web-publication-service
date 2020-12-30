@@ -21,13 +21,53 @@ export class ScientistSearchComponent implements OnInit {
    * university Id for search filter in case of necessary
    */
   @Input() universityId: string;
+  /**
+   *
+   *
+   * @type {Page<SparqlResults>}
+   * @memberof ScientistSearchComponent
+   */
   allScientificsFiltered: Page<SparqlResults>;
+  /**
+   *
+   *
+   * @type {Map<string, string>}
+   * @memberof ScientistSearchComponent
+   */
   filters: Map<string, string> = new Map();
+  /**
+   *
+   *
+   * @type {FindRequest}
+   * @memberof ScientistSearchComponent
+   */
   findRequest: FindRequest = new FindRequest();
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof ScientistSearchComponent
+   */
   echartOptions: any;
+  /**
+   *
+   *
+   * @memberof ScientistSearchComponent
+   */
   normalTree = true;
 
+  /**
+   *
+   *
+   * @memberof ScientistSearchComponent
+   */
   loaded = false;
+  /**
+   *
+   *
+   * @type {TableResultsHeaderItem[]}
+   * @memberof ScientistSearchComponent
+   */
   headerData: TableResultsHeaderItem[] = [
     {
       textToTranslate: 'scientist.table-header.name',

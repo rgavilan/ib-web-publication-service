@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
+import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { ParticipantService } from 'src/app/_services/participant.service';
 import { ScientistService } from 'src/app/_services/scientist.service';
 
@@ -13,11 +14,92 @@ export class ParticipantsComponent implements OnInit {
    * university Id for search filter in case of necessary
    */
   @Input() universityId: string;
+  /**
+   *
+   *
+   * @type {Page<SparqlResults>}
+   * @memberof ParticipantsComponent
+   */
   allDataParticipants: Page<SparqlResults> = new Page();
+  /**
+   *
+   *
+   * @type {Page<SparqlResults>}
+   * @memberof ParticipantsComponent
+   */
   allDataParticipantsSecondTable: Page<SparqlResults> = new Page();
+  /**
+   *
+   *
+   * @type {Page<SparqlResults>}
+   * @memberof ParticipantsComponent
+   */
   allDataPerson: Page<SparqlResults> = new Page();
+  /**
+   *
+   *
+   * @type {FindRequest}
+   * @memberof ParticipantsComponent
+   */
   findRequest: FindRequest = new FindRequest();
+  /**
+   *
+   *
+   * @memberof ParticipantsComponent
+   */
   loaded = false;
+  /**
+   *
+   *
+   * @type {TableResultsHeaderItem[]}
+   * @memberof ParticipantsComponent
+   */
+  headerData: TableResultsHeaderItem[] = [
+    {
+      textToTranslate: 'participant.table-header.centro',
+      columnName: 'Centro'
+    },
+    {
+      textToTranslate: 'participant.table-header.dpto',
+      columnName: 'Dpto'
+    },
+    {
+      textToTranslate: 'participant.table-header.id',
+      columnName: 'id'
+    }
+  ];
+  /**
+   *
+   *
+   * @type {TableResultsHeaderItem[]}
+   * @memberof ParticipantsComponent
+   */
+  headerData2: TableResultsHeaderItem[] = [
+    {
+      textToTranslate: 'scientist.table-header.name',
+      columnName: 'name'
+    },
+    {
+      textToTranslate: 'scientist.table-header.area',
+      columnName: 'area'
+    },
+    {
+      textToTranslate: 'scientist.table-header.type',
+      columnName: 'type'
+    },
+    {
+      textToTranslate: 'scientist.table-header.appointments',
+      columnName: 'appointments'
+    },
+    {
+      textToTranslate: 'scientist.table-header.h-index',
+      columnName: 'hIndex'
+    },
+    {
+      textToTranslate: 'scientist.table-header.publications',
+      columnName: 'publications'
+    }
+  ];
 
   constructor(
     private participantService: ParticipantService,

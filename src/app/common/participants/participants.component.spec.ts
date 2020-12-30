@@ -1,10 +1,9 @@
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { of } from 'rxjs';
-import { Page, PageRequest } from 'src/app/_helpers/search';
+import { PageRequest } from 'src/app/_helpers/search';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
-import { SparqlResults } from 'src/app/_models/sparql';
 import { ParticipantService } from 'src/app/_services/participant.service';
 import { ScientistService } from 'src/app/_services/scientist.service';
+import { MockParticipantService } from 'src/app/_services/_testingServices/mockParticipant.service';
 import { MockScientistService } from 'src/app/_services/_testingServices/mockScientist.service';
 
 import { ParticipantsComponent } from './participants.component';
@@ -12,62 +11,13 @@ import { ParticipantsComponent } from './participants.component';
 describe('ParticipantsComponent', () => {
   let component: ParticipantsComponent;
   let fixture: ComponentFixture<ParticipantsComponent>;
-  const page: Page<SparqlResults> = new Page();
-  const DATA: SparqlResults = {
-    head: {
-      vars: [
-        'anyo',
-        'description',
-        'id'
-      ]
-    },
-    results: {
-      bindings: [
-        // 1
-        {
-          description: {
-            type: 'literal',
-            value: 'description 1'
-          },
-          id: {
-            type: 'literal',
-            value: '13'
-          },
-          anyo: {
-            type: 'literal',
-            value: '2011'
-          }
-        },
-        // 2
-        {
-          description: {
-            type: 'literal',
-            value: 'description 2'
-          },
-          id: {
-            type: 'literal',
-            value: '1435'
-          },
-          anyo: {
-            type: 'literal',
-            value: '2025'
-          }
-        }
 
-      ]
-    }
-  };
-  page.content = [DATA];
   beforeEach(async(() => {
     TestingHelper.configureTest()
       .compileComponents();
     TestBed.configureTestingModule({
-      providers: [{
-        provide: ParticipantService, useValue: {
-          find: () => of(page),
-          findPerson: () => of(page),
-        }
-      }, { provide: ScientistService, useClass: MockScientistService }]
+      providers: [{ provide: ScientistService, useClass: MockScientistService },
+      { provide: ParticipantService, useClass: MockParticipantService }]
     }).compileComponents();
   }));
 

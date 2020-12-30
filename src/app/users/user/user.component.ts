@@ -24,6 +24,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class UserComponent extends PaginatedSearchComponent<User> {
   constructor(
+    private transl: TranslateService,
     router: Router,
     translate: TranslateService,
     toastr: ToastrService,

@@ -209,7 +209,24 @@
     "level": "Level",
     "year": "Year",
     "people-involved": "Perople involved in proyect",
-    "proyect-participants": "Collaborating / participating entities"
+    "proyect-participants": "Collaborating / participating entities", 
+    "table-header": {
+      "centro": "Center",
+      "dpto": "Department",
+      "id":"ID"
+    }
+  },
+  "deliverable": {
+    "title": "Deliverable",
+    "level": "Level",
+    "year": "Year",
+    "scientific-production-related": "Scientifict production related",
+    "table-header": {
+      "title": "Title",
+      "type": "Type",
+      "doi": "DOI",
+      "release-year": "Release year"
+    }
   },
   "patent": {
     "table-header": {

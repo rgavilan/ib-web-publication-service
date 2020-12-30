@@ -44,8 +44,8 @@
         </div>
     </div>
 </div>
-<app-table-results *ngIf="loaded" [data]="allDataParticipants.content[0]" [pageInfo]="allDataParticipants"
-    (pageChanged)="allParticipantsFilteredPageChanged($event)"
+<app-table-results *ngIf="loaded" [data]="allDataParticipants.content[0]" [headerData]="headerData"
+    [pageInfo]="allDataParticipants" (pageChanged)="allParticipantsFilteredPageChanged($event)"
     (sizeChanged)="allParticipantsFilteredSizeChanged($event)"
     (sortChanged)="allParticipantsFilteredSortChanged($event)">
 </app-table-results>
@@ -65,7 +65,8 @@
     </div>
 </div>
 <app-table-results *ngIf="loaded" [data]="allDataPerson.content[0]" [pageInfo]="allDataPerson"
-    (pageChanged)="allChanged($event)" (sizeChanged)="allChanged($event)" (sortChanged)="allChanged($event)">
+    [headerData]="headerData2" (pageChanged)="allChanged($event)" (sizeChanged)="allChanged($event)"
+    (sortChanged)="allChanged($event)">
 </app-table-results>
 <hr>
 <legend>{{'participant.proyect-participants' | translate}}</legend>
@@ -82,7 +83,7 @@
         </div>
     </div>
 </div>
-<app-table-results *ngIf="loaded" [data]="allDataParticipantsSecondTable.content[0]"
+<app-table-results *ngIf="loaded" [data]="allDataParticipantsSecondTable.content[0]" [headerData]="headerData"
     [pageInfo]="allDataParticipantsSecondTable" (pageChanged)="allParticipantsFilteredPageChanged($event)"
     (sizeChanged)="allParticipantsFilteredSizeChanged($event)"
     (sortChanged)="allParticipantsFilteredSortChanged($event)">
