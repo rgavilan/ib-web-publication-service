@@ -9,9 +9,32 @@ import { BusinnessActivityService } from 'src/app/_services/businnessActivity.se
   templateUrl: './startup.component.html'
 })
 export class StartupComponent implements OnInit {
+  /**
+   *
+   *
+   * @type {FindRequest}
+   * @memberof StartupComponent
+   */
   findRequest: FindRequest = new FindRequest();
+  /**
+   *
+   *
+   * @memberof StartupComponent
+   */
   loaded = false;
+  /**
+   *
+   *
+   * @type {Page<SparqlResults>}
+   * @memberof StartupComponent
+   */
   allStartup: Page<SparqlResults> = new Page();
+  /**
+   *
+   *
+   * @type {TableResultsHeaderItem[]}
+   * @memberof StartupComponent
+   */
   headerData: TableResultsHeaderItem[] = [
     {
       textToTranslate: 'startup.table-header.title',
@@ -38,9 +61,17 @@ export class StartupComponent implements OnInit {
     this.loaded = true;
   }
 
-  allStartupFilteredPageChanged(i: number) { }
-  allStartupFilteredSizeChanged(i: number) { }
-  allStartupFilteredSortChanged(pageRequest: PageRequest) { }
+  allStartupFilteredPageChanged(i: number) {
+    this.loaded = true;
+  }
+  allStartupFilteredSizeChanged(i: number) {
+    this.loaded = true;
+  }
+  allStartupFilteredSortChanged(pageRequest: PageRequest) {
+    this.loaded = true;
+  }
 
-  filterDocuments() { }
+  filterDocuments() {
+    this.loaded = true;
+  }
 }

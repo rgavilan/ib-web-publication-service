@@ -65,6 +65,12 @@ export class PatentsComponent implements OnInit {
    * @memberof PatentsComponent
    */
   normalTree = true;
+  /**
+   *
+   *
+   * @type {TableResultsHeaderItem[]}
+   * @memberof PatentsComponent
+   */
   headerData: TableResultsHeaderItem[] = [
     {
       textToTranslate: 'patent.table-header.fin',

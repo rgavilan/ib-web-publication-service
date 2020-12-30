@@ -65,8 +65,19 @@ export class DocumentsComponent implements OnInit {
    * @memberof DocumentsComponent
    */
   allDocumentFiltered: Page<SparqlResults> = new Page();
+  /**
+   *
+   *
+   * @memberof DocumentsComponent
+   */
   normalTree = true;
 
+  /**
+   *
+   *
+   * @type {TableResultsHeaderItem[]}
+   * @memberof DocumentsComponent
+   */
   headerData: TableResultsHeaderItem[] = [
     {
       textToTranslate: 'investigation-actions.documents-table.id',

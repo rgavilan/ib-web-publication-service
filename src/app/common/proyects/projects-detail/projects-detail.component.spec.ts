@@ -96,5 +96,18 @@ describe('ProjectsDetailComponent', () => {
       component.ngOnInit();
       expect(component.id).toBe('123');
     });
+    it('should init instance and return no value in find', () => {
+      const projService = fixture.debugElement.injector.get(ProjectService);
+      const spy = spyOn(projService, 'find').and.returnValue(of());
+      component.ngOnInit();
+      expect(component.id).toBe('123');
+    });
+
+    it('expect not to receive an id', () => {
+      const activatedReoute = fixture.debugElement.injector.get(ActivatedRoute);
+      activatedReoute.params = of({ id: null });
+      component.ngOnInit();
+      expect(component.id).toBeNull();
+    });
   });
 });

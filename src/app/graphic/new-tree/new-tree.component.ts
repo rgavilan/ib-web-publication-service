@@ -13,9 +13,32 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./new-tree.component.css']
 })
 export class NewTreeComponent implements OnInit {
+  /**
+   *
+   *
+   * @type {EventEmitter<any>}
+   * @memberof NewTreeComponent
+   */
   @Output() filterChanged: EventEmitter<any> = new EventEmitter<any>();
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof NewTreeComponent
+   */
   @Input() treeType: string;
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof NewTreeComponent
+   */
   data: any;
+  /**
+   *
+   *
+   * @memberof NewTreeComponent
+   */
   filter = [];
   /**
    * Creates an instance of NewTreeComponent.

@@ -8,9 +8,32 @@ import { ProjectService } from 'src/app/_services/project.service';
   templateUrl: './projects-detail.component.html'
 })
 export class ProjectsDetailComponent implements OnInit {
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof ProjectsDetailComponent
+   */
   id: string;
+  /**
+   *
+   *
+   * @type {FindRequest}
+   * @memberof ProjectsDetailComponent
+   */
   findRequest: FindRequest = new FindRequest();
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof ProjectsDetailComponent
+   */
   proyect: any;
+  /**
+   *
+   *
+   * @memberof ProjectsDetailComponent
+   */
   loaded = false;
   constructor(
     private route: ActivatedRoute,

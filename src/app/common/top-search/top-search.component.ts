@@ -15,9 +15,33 @@ import { ScientistService } from 'src/app/_services/scientist.service';
   templateUrl: './top-search.component.html'
 })
 export class TopSearchComponent implements OnInit {
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof TopSearchComponent
+   */
   @Input() universityId: string;
+  /**
+   *
+   *
+   * @type {Page<SparqlResults>}
+   * @memberof TopSearchComponent
+   */
   allTopFiltered: Page<SparqlResults>;
+  /**
+   *
+   *
+   * @type {Map<string, string>}
+   * @memberof TopSearchComponent
+   */
   filters: Map<string, string> = new Map();
+  /**
+   *
+   *
+   * @type {FindRequest}
+   * @memberof TopSearchComponent
+   */
   findRequest: FindRequest = new FindRequest();
   /**
    * Creates an instance of TopSearchComponent.

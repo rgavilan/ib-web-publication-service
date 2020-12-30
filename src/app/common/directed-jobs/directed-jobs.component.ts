@@ -9,9 +9,32 @@ import { DirectedJobsService } from 'src/app/_services/directedJobs.service';
   templateUrl: './directed-jobs.component.html'
 })
 export class DirectedJobsComponent implements OnInit {
+  /**
+   *
+   *
+   * @type {FindRequest}
+   * @memberof DirectedJobsComponent
+   */
   findRequest: FindRequest = new FindRequest();
+  /**
+   *
+   *
+   * @memberof DirectedJobsComponent
+   */
   loaded = false;
+  /**
+   *
+   *
+   * @type {Page<SparqlResults>}
+   * @memberof DirectedJobsComponent
+   */
   allDirectedJobs: Page<SparqlResults> = new Page();
+  /**
+   *
+   *
+   * @type {TableResultsHeaderItem[]}
+   * @memberof DirectedJobsComponent
+   */
   headerData: TableResultsHeaderItem[] = [
     {
       textToTranslate: 'directed-jobs.table-header.title',
@@ -41,8 +64,16 @@ export class DirectedJobsComponent implements OnInit {
     );
     this.loaded = true;
   }
-  filterDocuments() { }
-  allParticipantsFilteredPageChanged(i: number) { }
-  allParticipantsFilteredSizeChanged(i: number) { }
-  allParticipantsFilteredSortChanged(pageRequest: PageRequest) { }
+  filterDocuments() {
+    this.loaded = true;
+  }
+  allParticipantsFilteredPageChanged(i: number) {
+    this.loaded = true;
+  }
+  allParticipantsFilteredSizeChanged(i: number) {
+    this.loaded = true;
+  }
+  allParticipantsFilteredSortChanged(pageRequest: PageRequest) {
+    this.loaded = true;
+  }
 }
