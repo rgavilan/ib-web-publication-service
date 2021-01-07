@@ -1,4 +1,4 @@
-import { SeriesBarData } from "../_models/seriesBarData";
+import { SeriesBarData } from '../_models/seriesBarData';
 
 /**
  *
@@ -57,6 +57,16 @@ export class HelperGraphics {
         return echartOptions;
     }
 
+    /**
+     *
+     *  config chart
+     * @static
+     * @param {*} xAxisData
+     * @param {Array<SeriesBarData>} seriesData
+     * @param {Array<string>} legendData
+     * @return {*} 
+     * @memberof HelperGraphics
+     */
     static configChartBar(xAxisData: any, seriesData: Array<SeriesBarData>, legendData: Array<string>) {
         const echartOptions = {
             legend: {
@@ -95,6 +105,14 @@ export class HelperGraphics {
         return echartOptions;
     }
 
+    /**
+     *
+     *  return data for tree graphic filter by tree type
+     * @static
+     * @param {string} treeType
+     * @return {*} 
+     * @memberof HelperGraphics
+     */
     static returnDataForTree(treeType: string) {
         if (treeType !== 'area') {
             return {
@@ -224,5 +242,52 @@ export class HelperGraphics {
                 ],
             };
         }
+    }
+
+    /**
+     *
+     *  return data to create squere graphics
+     * @static
+     * @return {*} 
+     * @memberof HelperGraphics
+     */
+    static returnSquareData() {
+        return [{
+            name: 'Ciencias agrícolas y agroalimentarias',
+            value: 10
+        }, {
+            name: 'Agricultura y Bosques',
+            value: 20
+        }, {
+            name: 'Astronomía y astrofísica',
+            value: 15
+        }, {
+            name: 'Biomedicina',
+            value: 30
+        }, {
+            name: 'Economía',
+            value: 30
+        }, {
+            name: 'Ciencia y tecnología ambiental',
+            value: 30
+        }, {
+            name: 'Ciencia y tecnología de los alimentos',
+            value: 30
+        }, {
+            name: 'Física fundamental y de partículas',
+            value: 30
+        }, {
+            name: 'Producción industrial, ingeniería civil e ingeniería para la sociedad',
+            value: 30
+        }, {
+            name: 'Ciencias de la vida',
+            value: 30
+        }, {
+            name: 'Ciencias matemáticas',
+            value: 30
+        }, {
+            name: 'Biología molecular y celular',
+            value: 30
+        }];
     }
 }

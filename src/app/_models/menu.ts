@@ -52,8 +52,8 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     title: 'menu.category-inves',
     icon: 'oi oi-folder',
-    url: '/main/home',
-    disabled: true
+    url: '/main/categories/research-categories',
+    disabled: false
   },
   {
     title: 'menu.prod-scientist',

@@ -162,43 +162,7 @@ export class ProyectsComponent implements OnInit {
       }];
       this.echartOptions = HelperGraphics.configChartBar(xAxisData, barData, legend);
     } else {
-      const treeData = [{
-        name: 'Ciencias agrícolas y agroalimentarias',
-        value: 10
-      }, {
-        name: 'Agricultura y Bosques',
-        value: 20
-      }, {
-        name: 'Astronomía y astrofísica',
-        value: 15
-      }, {
-        name: 'Biomedicina',
-        value: 30
-      }, {
-        name: 'Economía',
-        value: 30
-      }, {
-        name: 'Ciencia y tecnología ambiental',
-        value: 30
-      }, {
-        name: 'Ciencia y tecnología de los alimentos',
-        value: 30
-      }, {
-        name: 'Física fundamental y de partículas',
-        value: 30
-      }, {
-        name: 'Producción industrial, ingeniería civil e ingeniería para la sociedad',
-        value: 30
-      }, {
-        name: 'Ciencias de la vida',
-        value: 30
-      }, {
-        name: 'Ciencias matemáticas',
-        value: 30
-      }, {
-        name: 'Biología molecular y celular',
-        value: 30
-      }];
+      const treeData = HelperGraphics.returnSquareData();
       this.echartOptions = HelperGraphics.configChartTree(treeData);
     }
 

@@ -251,5 +251,14 @@
       "type":"Type",
       "rol": "Rol"
     }
+  }, 
+  "research-categories" : {
+    "title": "Research categories",
+    "areas": "Areas",
+    "disciplines": "Disciplines",
+    "lines-investigation": "Lines of investigation",
+    "topics": "Topics",
+    "areas-more-projects": "Areas with more projects",
+    "appointments-area": "Appointments by area"
   }
 }

@@ -62,6 +62,7 @@ import { DirectedJobsComponent } from '../common/directed-jobs/directed-jobs.com
 import { StartupComponent } from '../common/startup/startup.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { ResearchCategoriesComponent } from '../categories/research-categories/research-categories.component';
 
 
 /**
@@ -113,7 +114,8 @@ export class TestingHelper {
         InvestigationActionsComponent,
         ScientistDetailComponent,
         DirectedJobsComponent,
-        StartupComponent
+        StartupComponent,
+        ResearchCategoriesComponent
       ],
       imports: [
         BrowserModule,

@@ -29,6 +29,7 @@ import { ScientistComponent } from './scientist/scientist.component';
 import { ScientistDetailComponent } from './scientist-detail/scientist-detail.component';
 import { DirectedJobsComponent } from '../common/directed-jobs/directed-jobs.component';
 import { StartupComponent } from '../common/startup/startup.component';
+import { ResearchCategoriesComponent } from './research-categories/research-categories.component';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
@@ -36,7 +37,7 @@ import { StartupComponent } from '../common/startup/startup.component';
     InvestigationActionsComponent, TreeComponent, GraphicComponent, NewTreeComponent, PatentsComponent,
     ProyectsComponent, ScientistSearchComponent, TopSearchComponent, DocumentsComponent,
     ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
-    DirectedJobsComponent, StartupComponent
+    DirectedJobsComponent, StartupComponent, ResearchCategoriesComponent
   ],
   imports: [
     CommonModule,
