@@ -1,16 +1,5 @@
 <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm">
     <div class="row mt-20">
-        <!-- type -->
-        <div class="form-group col-lg-6">
-            <label for="type" class="col-sm-4 control-label">{{ "participant.level" | translate }}</label>
-            <div class="col-sm-8">
-                <select name="type" class="form-control" [(ngModel)]="findRequest.filter.level" #type="ngModel">
-                    <option [value]="undefined">{{ "form.select" | translate }}</option>
-                    <option [value]="'Regional'">Regional</option>
-                    <option [value]="'Internacional'">Internacional</option>
-                </select>
-            </div>
-        </div>
         <!-- year -->
         <div class="form-group col-lg-6">
             <label for="anyo" class="col-sm-4 control-label">{{ "participant.year" | translate }}</label>
@@ -35,7 +24,7 @@
                     placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name"
                     id="example-search-input">
                 <span class="input-group-append">
-                    <button (click)="filterDocuments()" class="btn btn-outline-secondary border-left-0 border"
+                    <button (click)="filteDirectedJobs()" class="btn btn-outline-secondary border-left-0 border"
                         type="button">
                         <em class="oi oi-magnifying-glass "></em>
                     </button>
@@ -44,8 +33,7 @@
         </div>
     </div>
     <app-table-results *ngIf="loaded" [data]="allDirectedJobs.content[0]" [pageInfo]="allDirectedJobs"
-        (pageChanged)="allParticipantsFilteredPageChanged($event)" [headerData]="headerData"
-        (sizeChanged)="allParticipantsFilteredSizeChanged($event)"
-        (sortChanged)="allParticipantsFilteredSortChanged($event)">
+        (pageChanged)="allDirectedFilteredPageChanged($event)" [headerData]="headerData"
+        (sizeChanged)="allDirectedFilteredSizeChanged($event)" (sortChanged)="allDirectedFilteredSortChanged($event)">
     </app-table-results>
 </form>

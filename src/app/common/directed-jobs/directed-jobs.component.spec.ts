@@ -28,23 +28,23 @@ describe('DirectedJobsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should filterDocuments', () => {
-    component.filterDocuments();
+  it('should filteDirectedJobs', () => {
+    component.filteDirectedJobs();
     expect(component.loaded).toBeTruthy();
   });
 
-  it('should allParticipantsFilteredPageChanged', () => {
-    component.allParticipantsFilteredPageChanged(1);
+  it('should allDirectedFilteredPageChanged', () => {
+    component.allDirectedFilteredPageChanged(1);
     expect(component.loaded).toBeTruthy();
   });
-  it('should allParticipantsFilteredSizeChanged', () => {
-    component.allParticipantsFilteredSizeChanged(1);
+  it('should allDirectedFilteredSizeChanged', () => {
+    component.allDirectedFilteredSizeChanged(1);
     expect(component.loaded).toBeTruthy();
   });
 
-  it('should allParticipantsFilteredSortChanged', () => {
+  it('should allDirectedFilteredSortChanged', () => {
     const page: PageRequest = new PageRequest();
-    component.allParticipantsFilteredSortChanged(page);
+    component.allDirectedFilteredSortChanged(page);
     expect(component.loaded).toBeTruthy();
   });
 });

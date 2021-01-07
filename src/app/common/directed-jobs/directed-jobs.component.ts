@@ -64,16 +64,16 @@ export class DirectedJobsComponent implements OnInit {
     );
     this.loaded = true;
   }
-  filterDocuments() {
+  filteDirectedJobs() {
     this.loaded = true;
   }
-  allParticipantsFilteredPageChanged(i: number) {
+  allDirectedFilteredPageChanged(i: number) {
     this.loaded = true;
   }
-  allParticipantsFilteredSizeChanged(i: number) {
+  allDirectedFilteredSizeChanged(i: number) {
     this.loaded = true;
   }
-  allParticipantsFilteredSortChanged(pageRequest: PageRequest) {
+  allDirectedFilteredSortChanged(pageRequest: PageRequest) {
     this.loaded = true;
   }
 }
