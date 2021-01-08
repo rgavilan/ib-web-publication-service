@@ -209,4 +209,19 @@ export class Helper {
     page.content = [data];
     return page;
   }
+
+  /**
+   *
+   *  get years for select
+   * @return {*} 
+   * @memberof Helper
+   */
+  static getYears() {
+    const year3 = new Date().getFullYear();
+    const result = [];
+    for (let index = year3 - 8; index < year3 + 1; index++) {
+      result.push(index);
+    }
+    return result.reverse();
+  }
 }

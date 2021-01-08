@@ -1,9 +1,7 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { AbstractService } from '../_helpers/abstract';
-import { FindRequest, Page, PageRequest } from '../_helpers/search';
+import { Page, PageRequest } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
 import { SparqlResults } from '../_models/sparql';
 

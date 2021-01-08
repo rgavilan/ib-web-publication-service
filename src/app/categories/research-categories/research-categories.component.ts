@@ -42,6 +42,12 @@ export class ResearchCategoriesComponent implements OnInit {
    * @memberof ResearchCategoriesComponent
    */
   echartOptions2: any;
+  /**
+   *
+   *  get years for select
+   * @memberof ResearchCategoriesComponent
+   */
+  yearsForSelect = Helper.getYears();
   constructor() { }
 
   ngOnInit(): void {

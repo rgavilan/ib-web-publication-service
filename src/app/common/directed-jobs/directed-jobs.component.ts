@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { Helper } from 'src/app/_helpers/utils';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { DirectedJobsService } from 'src/app/_services/directedJobs.service';
@@ -53,6 +54,12 @@ export class DirectedJobsComponent implements OnInit {
       columnName: 'releaseYear'
     }
   ];
+  /**
+   *
+   *
+   * @memberof DirectedJobsComponent
+   */
+  yearsForSelect = Helper.getYears();
   constructor(private directedJobsService: DirectedJobsService) { }
 
   ngOnInit(): void {

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { Helper } from 'src/app/_helpers/utils';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { ParticipantService } from 'src/app/_services/participant.service';
@@ -36,6 +37,12 @@ export class DeliverableComponent implements OnInit {
    * @memberof DeliverableComponent
    */
   allData: Page<SparqlResults> = new Page();
+  /**
+   *
+   *
+   * @memberof DeliverableComponent
+   */
+  yearsForSelect = Helper.getYears();
 
   headerData: TableResultsHeaderItem[] = [
     {
