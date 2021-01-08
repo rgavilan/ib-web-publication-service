@@ -30,8 +30,6 @@
     "@types/ramda": "github:types/npm-ramda",
     "@types/superagent": "^4.1.8",
     "bootstrap": "4.4.1",
-    "datatables.net": "^1.10.22",
-    "datatables.net-dt": "^1.10.22",
     "echarts": "^4.9.0",
     "g": "^2.0.1",
     "jquery": "^3.5.1",
