@@ -181,11 +181,11 @@ export class DocumentsComponent implements OnInit {
   }
 
   /**
-  *
-  *
-  * @param {number} i
-  * @memberof PatentsComponent
-  */
+   *
+   *
+   * @param {number} i
+   * @memberof PatentsComponent
+   */
   allprojectsFilteredSizeChanged(i: number): void {
 
     const pageRequest: PageRequest = new PageRequest();
@@ -200,11 +200,11 @@ export class DocumentsComponent implements OnInit {
   }
 
   /**
-  *
-  *
-  * @param {PageRequest} pageRequest
-  * @memberof PatentsComponent
-  */
+   *
+   *
+   * @param {PageRequest} pageRequest
+   * @memberof PatentsComponent
+   */
   allprojectsFilteredSortChanged(pageRequest: PageRequest) {
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allDocumentFiltered.number;

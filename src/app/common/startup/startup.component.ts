@@ -61,16 +61,39 @@ export class StartupComponent implements OnInit {
     this.loaded = true;
   }
 
+  /**
+   *
+   *
+   * @param {number} i
+   * @memberof StartupComponent
+   */
   allStartupFilteredPageChanged(i: number) {
     this.loaded = true;
   }
+  /**
+   *
+   *
+   * @param {number} i
+   * @memberof StartupComponent
+   */
   allStartupFilteredSizeChanged(i: number) {
     this.loaded = true;
   }
+  /**
+   *
+   *
+   * @param {PageRequest} pageRequest
+   * @memberof StartupComponent
+   */
   allStartupFilteredSortChanged(pageRequest: PageRequest) {
     this.loaded = true;
   }
 
+  /**
+   *
+   *
+   * @memberof StartupComponent
+   */
   filterDocuments() {
     this.loaded = true;
   }

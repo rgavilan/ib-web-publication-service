@@ -60,6 +60,7 @@ export class DirectedJobsComponent implements OnInit {
    * @memberof DirectedJobsComponent
    */
   yearsForSelect = Helper.getYears();
+
   constructor(private directedJobsService: DirectedJobsService) { }
 
   ngOnInit(): void {
@@ -71,15 +72,39 @@ export class DirectedJobsComponent implements OnInit {
     );
     this.loaded = true;
   }
+
+  /**
+   *
+   *
+   * @memberof DirectedJobsComponent
+   */
   filteDirectedJobs() {
     this.loaded = true;
   }
+  /**
+   *
+   *
+   * @param {number} i
+   * @memberof DirectedJobsComponent
+   */
   allDirectedFilteredPageChanged(i: number) {
     this.loaded = true;
   }
+  /**
+   *
+   *
+   * @param {number} i
+   * @memberof DirectedJobsComponent
+   */
   allDirectedFilteredSizeChanged(i: number) {
     this.loaded = true;
   }
+  /**
+   *
+   *
+   * @param {PageRequest} pageRequest
+   * @memberof DirectedJobsComponent
+   */
   allDirectedFilteredSortChanged(pageRequest: PageRequest) {
     this.loaded = true;
   }

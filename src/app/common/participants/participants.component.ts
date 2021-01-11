@@ -131,11 +131,12 @@ export class ParticipantsComponent implements OnInit {
 
   }
 
+
   /**
    *
    *
    * @param {number} i
-   * @memberof ScientificProductionComponent
+   * @memberof ParticipantsComponent
    */
   allScientistsFilteredPageChanged(i: number): void {
     const pageRequest: PageRequest = new PageRequest();
@@ -146,6 +147,12 @@ export class ParticipantsComponent implements OnInit {
     this.loaded = true;
   }
 
+  /**
+   *
+   *
+   * @param {number} i
+   * @memberof ParticipantsComponent
+   */
   allParticipantsFilteredPageChanged(i: number): void {
     this.findRequest.pageRequest.page = i - 1;
     this.findRequest.pageRequest.size = this.allDataParticipants.size;
@@ -155,6 +162,12 @@ export class ParticipantsComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   *
+   * @param {number} i
+   * @memberof ParticipantsComponent
+   */
   allParticipantsFilteredSizeChanged(i: number): void {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.allDataParticipants.number;
@@ -167,6 +180,12 @@ export class ParticipantsComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   *
+   * @param {PageRequest} pageRequest
+   * @memberof ParticipantsComponent
+   */
   allParticipantsFilteredSortChanged(pageRequest: PageRequest) {
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allDataParticipants.number;
@@ -180,6 +199,12 @@ export class ParticipantsComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   *
+   * @param {*} event
+   * @memberof ParticipantsComponent
+   */
   allChanged(event) { }
 
 

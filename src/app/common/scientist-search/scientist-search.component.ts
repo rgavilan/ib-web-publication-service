@@ -122,9 +122,9 @@ export class ScientistSearchComponent implements OnInit {
     );
 
 
-    let xAxisData: Array<string> = [];
-    let data1: Array<any> = [];
-    let data2: Array<any> = [];
+    const xAxisData: Array<string> = [];
+    const data1: Array<any> = [];
+    const data2: Array<any> = [];
 
     for (let i = 0; i < 100; i++) {
       xAxisData.push('category' + i);

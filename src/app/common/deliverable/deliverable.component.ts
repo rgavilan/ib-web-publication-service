@@ -44,6 +44,12 @@ export class DeliverableComponent implements OnInit {
    */
   yearsForSelect = Helper.getYears();
 
+  /**
+   *
+   *
+   * @type {TableResultsHeaderItem[]}
+   * @memberof DeliverableComponent
+   */
   headerData: TableResultsHeaderItem[] = [
     {
       textToTranslate: 'deliverable.table-header.title',
