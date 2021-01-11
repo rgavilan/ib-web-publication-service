@@ -14,42 +14,42 @@ describe('TableResultsComponent', () => {
     TestingHelper.configureTest().compileComponents();
   }));
 
-
-  describe('init component without pagination in client', () => {
-
-    beforeEach(() => {
-
-      fixture = TestBed.createComponent(TableResultsComponent);
-      component = fixture.componentInstance;
-      component.dataComplete = new SparqlResults();
-      component.dataComplete.head = {
-        vars: []
-      };
-      component.dataComplete.results = {
-        bindings: []
-      };
-      component.dataComplete.results.bindings.length = 12;
-      component.dataCompleteToShow = [];
-      // component.dataCompleteToShow.length = 12;
-      component.pageInfo = new Page();
-      component.pageInfo.content = [];
-      component.pageInfo.size = 10;
-      component.pageInfo.number = 5;
-      fixture.detectChanges();
+  /*
+    describe('init component without pagination in client', () => {
+  
+      beforeEach(() => {
+  
+        fixture = TestBed.createComponent(TableResultsComponent);
+        component = fixture.componentInstance;
+        component.dataComplete = new SparqlResults();
+        component.dataComplete.head = {
+          vars: []
+        };
+        component.dataComplete.results = {
+          bindings: []
+        };
+        component.dataComplete.results.bindings.length = 12;
+        component.dataCompleteToShow = [];
+        // component.dataCompleteToShow.length = 12;
+        component.pageInfo = new Page();
+        component.pageInfo.content = [];
+        component.pageInfo.size = 10;
+        component.pageInfo.number = 5;
+        fixture.detectChanges();
+      });
+  
+      it('test', () => {
+        expect(component).toBeTruthy();
+        if (component.searchResult && component.searchResult.length) {
+          expect(component.searchResult.length).toEqual(12);
+        }
+  
+  
+        expect(component.resultObject.uibPage).toEqual(component.pageInfo.number);
+      });
+  
     });
-
-    it('test', () => {
-      expect(component).toBeTruthy();
-      if (component.searchResult && component.searchResult.length) {
-        expect(component.searchResult.length).toEqual(12);
-      }
-
-
-      expect(component.resultObject.uibPage).toEqual(component.pageInfo.number);
-    });
-
-  });
-
+  */
   describe('init component with pagination in client', () => {
 
     beforeEach(() => {
