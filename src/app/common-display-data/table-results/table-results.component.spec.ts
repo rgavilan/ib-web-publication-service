@@ -40,7 +40,7 @@ describe('TableResultsComponent', () => {
 
     it('test', () => {
       expect(component).toBeTruthy();
-      if (component.searchResult.length) {
+      if (component.searchResult && component.searchResult.length) {
         expect(component.searchResult.length).toEqual(12);
       }
 
