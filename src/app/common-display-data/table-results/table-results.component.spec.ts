@@ -30,7 +30,7 @@ describe('TableResultsComponent', () => {
       };
       component.dataComplete.results.bindings.length = 12;
       component.dataCompleteToShow = [];
-      component.dataCompleteToShow.length = 12;
+      // component.dataCompleteToShow.length = 12;
       component.pageInfo = new Page();
       component.pageInfo.content = [];
       component.pageInfo.size = 10;
