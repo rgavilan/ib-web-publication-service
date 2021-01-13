@@ -39,7 +39,7 @@ export const MENU_ITEMS: MenuItem[] = [
   */
   {
     title: 'menu.university',
-    icon: 'oi-home',
+    icon: 'oi-project',
     url: '/main/categories/researchmentStructures',
     disabled: false
   },
@@ -81,7 +81,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     title: 'menu.graphics',
-    icon: 'oi-bar-chart',
+    icon: 'oi-pie-chart',
     url: '/main/graphics',
     disabled: true
   },

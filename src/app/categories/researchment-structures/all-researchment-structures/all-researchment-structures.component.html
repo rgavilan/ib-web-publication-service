@@ -3,10 +3,10 @@
     <form class="form-horizontal" (ngSubmit)="filterResearchmentStructures(null)" #f="ngForm">
         <div class="row">
             <!-- type -->
-            <div class="form-group col-lg-6">
-                <label for="activo" class="col-sm-3 control-label">{{ "researchmentStructure.type" | translate
+            <div class="form-group col-lg-4">
+                <label for="activo" class="control-label">{{ "researchmentStructure.type" | translate
                     }}</label>
-                <div class="col-sm-9">
+                <div>
                     <select name="type" class="form-control" [(ngModel)]="findRequest.filter.type" #type="ngModel"
                         (change)="filterResearchmentStructures('type')">
                         <option value="undefined"> {{ "form.select" | translate }}</option>
@@ -20,10 +20,10 @@
             </div>
 
             <!-- financing -->
-            <div class="form-group col-lg-6">
-                <label for="activo" class="col-sm-3 control-label">{{ "researchmentStructure.financing" | translate
+            <div class="form-group col-lg-4">
+                <label for="activo" class="control-label">{{ "researchmentStructure.financing" | translate
                     }}</label>
-                <div class="col-sm-9">
+                <div>
                     <select name="financing" class="form-control" [(ngModel)]="findRequest.filter.financing"
                         #financing="ngModel">
                         <option value="undefined">{{ "form.select" | translate }}</option>
@@ -34,12 +34,10 @@
                     </select>
                 </div>
             </div>
-        </div>
-        <div class="row">
             <!-- q&a -->
-            <div class="form-group col-lg-6">
-                <label for="activo" class="col-sm-3 control-label">{{ "researchmentStructure.qa" | translate }}</label>
-                <div class="col-sm-9">
+            <div class="form-group col-lg-4">
+                <label for="activo" class="control-label">{{ "researchmentStructure.qa" | translate }}</label>
+                <div>
                     <select name="qa" class="form-control" [(ngModel)]="findRequest.filter.qa" #qa="ngModel"
                         (change)="filterResearchmentStructures('qa')">
                         <option [value]="undefined">{{ "form.select" | translate }}</option>

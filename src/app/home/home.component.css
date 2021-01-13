@@ -3,7 +3,7 @@
 }
 
 .home h3 {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .home hr {
@@ -26,9 +26,17 @@
 .cursor a {
   color: black;
 }
+.home-enabled {
+  text-align: center;
+}
+
+.home-enabled em, .home-disabled em{
+  font-size: 30px;
+}
 
 .home-disabled,
 .home-disabled a {
+  text-align: center;
   color: #aab3bb;
 }
 
