@@ -42,11 +42,11 @@
     "sparql": "SPARQL",
     "graphics": "Gráficos.",
     "logout": "Salir",
-    "university": "Estruc. investigación",
+    "university": "Estructuras investigación",
     "scientist": "Personal investigador",
-    "category-inves": "Cat. investigación",
+    "category-inves": "Categorías investigación",
     "prod-scientist": "Producción cientifica",
-    "acction-inves": "Ac. investigación",
+    "acction-inves": "Acciones investigación",
     "stats": "Estadisticas"
   },
   "login": {
