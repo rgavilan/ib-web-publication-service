@@ -249,11 +249,14 @@ export class ProyectsComponent implements OnInit {
     pageRequest.size = this.allProjectFiltered.size;
     this.findRequest.pageRequest = pageRequest;
     setTimeout(() => {
+      console.log(this.dateIni);
       if (this.dateIni) {
         const currentDate = Helper.parse(this.dateIni);
         if (currentDate) {
           this.findRequest.filter.start = currentDate;
         }
+      } else {
+        this.findRequest.filter.start = null;
       }
 
       if (this.dateFin) {
@@ -261,6 +264,8 @@ export class ProyectsComponent implements OnInit {
         if (currentDate) {
           this.findRequest.filter.end = currentDate;
         }
+      } else {
+        this.findRequest.filter.end = null;
       }
       this.projectService.find(this.findRequest).subscribe((data) => {
         this.allProjectFiltered = data;

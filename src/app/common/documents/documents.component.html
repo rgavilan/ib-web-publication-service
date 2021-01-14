@@ -34,7 +34,8 @@
     <div class="container-fluid">
         <div class="row justify-content-end">
             <div class="input-group col-md-1">
-                <button class="btn btn-secondary" (click)="f.resetForm(); filterDocuments()">{{'form.clean' |
+                <button class="btn btn-secondary"
+                    (click)="f.resetForm(); filterDocuments(); dateFin = null; dateIni = null">{{'form.clean' |
                     translate }}</button>
             </div>
             <div class="input-group col-md-4">

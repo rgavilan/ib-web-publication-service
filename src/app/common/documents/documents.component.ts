@@ -133,6 +133,8 @@ export class DocumentsComponent implements OnInit {
         if (currentDate) {
           this.findRequest.filter.yearFrom = currentDate;
         }
+      } else {
+        this.findRequest.filter.yearFrom = null;
       }
 
       if (this.dateFin) {
@@ -140,6 +142,8 @@ export class DocumentsComponent implements OnInit {
         if (currentDate) {
           this.findRequest.filter.yearTo = currentDate;
         }
+      } else {
+        this.findRequest.filter.yearTo = null;
       }
       this.documentService.find(this.findRequest).subscribe((data) => {
         this.allDocumentFiltered = data;
