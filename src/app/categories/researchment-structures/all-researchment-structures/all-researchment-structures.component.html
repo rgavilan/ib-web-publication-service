@@ -7,9 +7,10 @@
                 <label for="activo" class="control-label">{{ "researchmentStructure.type" | translate
                     }}</label>
                 <div>
+                    {{findRequest.filter.type}}
                     <select name="type" class="form-control" [(ngModel)]="findRequest.filter.type" #type="ngModel"
                         (change)="filterResearchmentStructures('type')">
-                        <option value="undefined"> {{ "form.select" | translate }}</option>
+                        <option [value]="undefined"> {{ "form.select" | translate }}</option>
                         <option value="Universidad">Universidad</option>
                         <option value="Centro">Centro</option>
                         <option value="Organizacion">Organización</option>
@@ -26,7 +27,7 @@
                 <div>
                     <select name="financing" class="form-control" [(ngModel)]="findRequest.filter.financing"
                         #financing="ngModel">
-                        <option value="undefined">{{ "form.select" | translate }}</option>
+                        <option [value]="undefined">{{ "form.select" | translate }}</option>
                         <option value="Proyectos H2020">Proyectos H2020</option>
                         <option value="Proyecto del Plan Estatal">
                             Proyecto del Plan Estatal
@@ -46,32 +47,27 @@
                 </div>
             </div>
         </div>
-        <!-- SEARCH BUTTON -->
-        <!-- <div class="form-group">
-            <div class="offset-sm-2 col-sm-10 text-right">
-                <button type="submit" class="btn btn-outline-primary">
-                    <em class="oi oi-magnifying-glass"></em>
-                    {{ "form.search" | translate }}
-                </button>
+
+
+        <div class="container-fluid">
+            <div class="row justify-content-end">
+                <div class="input-group col-md-1">
+                    <button class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
+                        translate }}</button>
+                </div>
+                <div class="input-group col-md-4">
+                    <input class="form-control py-2 border-right-0 border" type="search" name="search" #search="ngModel"
+                        placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name">
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                            <em class="oi oi-magnifying-glass "></em>
+                        </button>
+                    </span>
+                </div>
             </div>
-        </div> -->
+        </div>
     </form>
 </fieldset>
-
-<div class="container-fluid">
-    <div class="row justify-content-end">
-        <div class="input-group col-md-4">
-            <input class="form-control py-2 border-right-0 border" type="search"
-                placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name">
-            <span class="input-group-append">
-                <button class="btn btn-outline-secondary border-left-0 border" type="button">
-                    <em class="oi oi-magnifying-glass "></em>
-                </button>
-            </span>
-        </div>
-    </div>
-</div>
-
 <app-table-results [data]="allResearchmentStructuresFiltered.content[0]" [pageInfo]="allResearchmentStructuresFiltered"
     [routerField]="'name'" (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)"
     (sizeChanged)="allResearchmentStructuresFilteredSizeChanged($event)"
