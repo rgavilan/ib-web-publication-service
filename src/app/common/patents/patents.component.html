@@ -26,21 +26,27 @@
             </div>
         </div>
     </div>
-</form>
-<div class="container-fluid">
-    <div class="row justify-content-end">
-        <div class="input-group col-md-4">
-            <input class="form-control py-2 border-right-0 border" type="search"
-                placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name"
-                id="example-search-input">
-            <span class="input-group-append">
-                <button (click)="filterPatents()" class="btn btn-outline-secondary border-left-0 border" type="button">
-                    <em class="oi oi-magnifying-glass "></em>
-                </button>
-            </span>
+
+    <div class="container-fluid">
+        <div class="row justify-content-end">
+            <div class="input-group col-md-1">
+                <button class="btn btn-secondary" (click)="f.resetForm(); filterPatents();">{{'form.clean' |
+                    translate }}</button>
+            </div>
+            <div class="input-group col-md-4">
+                <input class="form-control py-2 border-right-0 border" type="search" name="search" #search="ngModel"
+                    placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name"
+                    id="example-search-input">
+                <span class="input-group-append">
+                    <button (click)="filterPatents()" class="btn btn-outline-secondary border-left-0 border"
+                        type="button">
+                        <em class="oi oi-magnifying-glass "></em>
+                    </button>
+                </span>
+            </div>
         </div>
     </div>
-</div>
+</form>
 
 <app-table-results *ngIf="loaded" [data]="allPatentFiltered.content[0]" [pageInfo]="allPatentFiltered"
     [headerData]="headerData" (pageChanged)="allPatentsFilteredPageChanged($event)"
