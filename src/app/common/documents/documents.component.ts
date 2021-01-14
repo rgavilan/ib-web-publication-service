@@ -129,16 +129,16 @@ export class DocumentsComponent implements OnInit {
 
     setTimeout(() => {
       if (this.dateIni) {
-        const currentDate = Helper.parse(this.dateIni);
+        const currentDate = Helper.parseYear(this.dateIni);
         if (currentDate) {
-          this.findRequest.filter.start = currentDate;
+          this.findRequest.filter.yearFrom = currentDate;
         }
       }
 
       if (this.dateFin) {
-        const currentDate = Helper.parse(this.dateFin);
+        const currentDate = Helper.parseYear(this.dateFin);
         if (currentDate) {
-          this.findRequest.filter.end = currentDate;
+          this.findRequest.filter.yearTo = currentDate;
         }
       }
       this.documentService.find(this.findRequest).subscribe((data) => {

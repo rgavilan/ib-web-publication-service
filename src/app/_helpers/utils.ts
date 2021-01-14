@@ -127,6 +127,15 @@ export class Helper {
     }
   }
 
+  static parseYear(value: number): any {
+    const momentDate = moment.utc(value);
+    if (momentDate.isValid()) {
+      return momentDate.format('YYYY');
+    } else {
+      return null;
+    }
+  }
+
   /**
    *
    * param count
