@@ -114,8 +114,16 @@ export class ScientistService extends AbstractService {
      * @memberof ProjectService
      */
     findTopByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
-        const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA_TOP));
-        return Helper.findInServiceData(data, filters, pageRequest);
+        // fix provisional
+        if (filters) {
+            const page: Page<SparqlResults> = new Page();
+            page.content = [JSON.parse(JSON.stringify(this.DUMMY_DATA_TOP))];
+            return page;
+        } else {
+            const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA_TOP));
+            return Helper.findInServiceData(data, filters, pageRequest);
+        }
+
     }
 
 

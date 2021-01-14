@@ -34,7 +34,8 @@
     "yes": "Sí",
     "no": "No",
     "datepicker-placeholder": "YYYY-MM-DD",
-    "change-tree": "Cambiar versión visual árbol"
+    "change-tree": "Cambiar versión visual árbol",
+    "clean": "Limpiar"
   },
   "menu": {
     "home": "Inicio",
