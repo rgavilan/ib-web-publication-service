@@ -93,6 +93,8 @@ export class PatentsComponent implements OnInit {
       columnName: 'tipo'
     }
   ];
+  dateIni;
+  dateFin;
   /**
    * Creates an instance of PatentsComponent.
    * @param {PatentService} patentService
@@ -198,10 +200,29 @@ export class PatentsComponent implements OnInit {
     pageRequest.page = 0;
     pageRequest.size = this.allPatentFiltered.size;
     this.findRequest.pageRequest = pageRequest;
-    this.patentService.find(this.findRequest).subscribe((data) => {
-      this.allPatentFiltered = data;
-      this.loaded = true;
-    });
+    setTimeout(() => {
+      if (this.dateIni) {
+        const currentDate = Helper.parse(this.dateIni);
+        if (currentDate) {
+          this.findRequest.filter.ini = currentDate;
+        }
+      } else {
+        this.findRequest.filter.ini = null;
+      }
+
+      if (this.dateFin) {
+        const currentDate = Helper.parse(this.dateFin);
+        if (currentDate) {
+          this.findRequest.filter.end = currentDate;
+        }
+      } else {
+        this.findRequest.filter.end = null;
+      }
+      this.patentService.find(this.findRequest).subscribe((data) => {
+        this.allPatentFiltered = data;
+        this.loaded = true;
+      });
+    }, 0);
 
   }
 

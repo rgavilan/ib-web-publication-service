@@ -6,26 +6,28 @@
         </div>
         <!-- categorias tree -->
         <div class="col-lg-6" *ngIf="normalTree">
-            <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
+            <label for="type" class="col-sm-4 control-label">{{ "patents.area" | translate }}</label>
             <app-new-tree [treeType]="'area'"></app-new-tree>
         </div>
         <!-- categorias tree -->
         <div class="col-lg-12" *ngIf="!normalTree">
-            <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
+            <label for="type" class="col-sm-4 control-label">{{ "patents.area" | translate }}</label>
             <app-tree [treeType]="'area'"></app-tree>
         </div>
         <!-- type -->
-        <div class="form-group col-lg-6">
-            <label for="type" class="col-sm-4 control-label">{{ "scientist.type" | translate }}</label>
-            <div class="col-sm-8">
-                <select (change)="filterPatents()" name="type" class="form-control"
-                    [(ngModel)]="findRequest.filter.type" #type="ngModel">
-                    <option [value]="undefined">{{ "form.select" | translate }}</option>
-                    <option [value]="'D'">Diseño industrial</option>
-                    <option [value]="'P'">P</option>
-                    <option [value]="'M'">M</option>
-                </select>
-            </div>
+        <div class="form-group col-lg-3">
+            <label for="dateFrom" class="control-label">{{'documents.date-ini' | translate }}</label>
+            <input class="form-control" name="dateFrom" id="dateFrom" required (ngModelChange)="filterPatents()"
+                placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
+                #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();" (keyup)="decisionDate.close()"
+                #dateFrom="ngModel" [(ngModel)]="dateIni" />
+        </div>
+        <div class="form-group col-lg-3">
+            <label for="dateTo" class="control-label">{{'documents.date-fin' | translate }}</label>
+            <input class="form-control" name="dateTo" id="dateTo" required (ngModelChange)="filterPatents()"
+                placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
+                #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();" (keyup)="decisionTo.close()"
+                #dateTo="ngModel" [(ngModel)]="dateFin" />
         </div>
     </div>
 

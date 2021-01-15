@@ -9,10 +9,10 @@
         <tabset #resultsTab [justified]="true">
             <tab>
                 <ng-template tabHeading>
-                    {{'investigation-actions.documents' | translate}}
+                    {{'investigation-actions.patents' | translate}}
                 </ng-template>
                 <ng-container>
-                    <app-documents [filterDocumentType]="['Libro', 'Articulo']"></app-documents>
+                    <app-patents></app-patents>
                 </ng-container>
             </tab>
             <tab>

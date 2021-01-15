@@ -194,6 +194,7 @@
     "title": "Investigation actions",
     "documents": "Documents",
     "projects": "Projects",
+    "patents":"Patentes",
     "documents-table": {
       "id": "id",
       "name": "name",
@@ -231,6 +232,7 @@
     }
   },
   "patent": {
+    "area":"Area",
     "table-header": {
       "name": "Name",
       "ini": "Start date",
