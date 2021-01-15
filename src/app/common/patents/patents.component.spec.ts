@@ -40,13 +40,14 @@ describe('PatentsComponent', () => {
   });
 
   describe('test filterProjects', () => {
-    it('expect to call service function findProjectByFilters', () => {
+    it('expect to call service function findProjectByFilters', fakeAsync(() => {
       const patentService1 = fixture.debugElement.injector.get(PatentService);
       const spy = spyOn(patentService1, 'find').and.callThrough();
       fixture.detectChanges(); // update variables in fixture
       component.filterPatents();
+      tick(300);
       expect(spy).toHaveBeenCalled();
-    });
+    }));
   });
 
 

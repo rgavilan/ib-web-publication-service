@@ -6,12 +6,12 @@
         </div>
         <!-- categorias tree -->
         <div class="col-lg-6" *ngIf="normalTree">
-            <label for="type" class="col-sm-4 control-label">{{ "patents.area" | translate }}</label>
+            <label for="type" class="col-sm-4 control-label">{{ "patent.area" | translate }}</label>
             <app-new-tree [treeType]="'area'"></app-new-tree>
         </div>
         <!-- categorias tree -->
         <div class="col-lg-12" *ngIf="!normalTree">
-            <label for="type" class="col-sm-4 control-label">{{ "patents.area" | translate }}</label>
+            <label for="type" class="col-sm-4 control-label">{{ "patent.area" | translate }}</label>
             <app-tree [treeType]="'area'"></app-tree>
         </div>
         <!-- type -->
