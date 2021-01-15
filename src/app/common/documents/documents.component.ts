@@ -90,6 +90,10 @@ export class DocumentsComponent implements OnInit {
     {
       textToTranslate: 'investigation-actions.documents-table.anyo',
       columnName: 'anyo'
+    },
+    {
+      textToTranslate: 'investigation-actions.documents-table.type',
+      columnName: 'type'
     }
   ];
   /**

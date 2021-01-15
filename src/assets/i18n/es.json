@@ -206,7 +206,8 @@
     "documents-table": {
       "id": "ID",
       "name": "Nombre",
-      "anyo": "Año"
+      "anyo": "Año",
+      "type": "Tipo"
     }
   },
   "documents": {

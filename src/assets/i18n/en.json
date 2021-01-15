@@ -197,7 +197,8 @@
     "documents-table": {
       "id": "id",
       "name": "name",
-      "anyo": "year"
+      "anyo": "year",
+      "type":"Type"
     }
   },
   "documents": {

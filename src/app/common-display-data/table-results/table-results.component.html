@@ -30,6 +30,7 @@
               </ng-container>
               <ng-container *ngIf="!!headerData">
                 <td *ngFor="let header of headerData">
+
                   <a href="{{ item[header.columnName].value }}" *ngIf="item[header.columnName]?.type == 'uri'">{{
                     item[header.columnName].value }}</a>
                   <ng-container *ngIf="item[header.columnName]?.type != 'uri'">{{
