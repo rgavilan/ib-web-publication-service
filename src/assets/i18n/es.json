@@ -155,6 +155,8 @@
     "h-index": "h-index",
     "apto": "Apto",
     "trajectory-by-timeline": "Trayectoria por línea de tiempo",
+    "events":"Eventos",
+    "congress-events": "Congresos y eventos de divulgación científica",
     "table-header": {
       "name":"Nombre",
       "area":"Área",
@@ -218,7 +220,8 @@
   "documents": {
     "document": "Documentos",
     "date-fin": "Fecha Fin",
-    "date-ini": "Fecha Inicio"
+    "date-ini": "Fecha Inicio",
+    "type":"Tipo"
   },
   "participant": {
     "title": "Participantes",
@@ -277,5 +280,9 @@
     "topics": "Tópicos",
     "areas-more-projects": "Áreas con mas proyectos",
     "appointments-area": "Citas por área"
+  },
+  "events": {
+    "rol":"Rol",
+    "type":"Tipo"
   }
 }

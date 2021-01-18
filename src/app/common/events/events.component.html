@@ -1,0 +1,76 @@
+<form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm">
+    <div class="row mt-20">
+        <!-- rol -->
+        <div class="form-group col-lg-6">
+            <label for="rol" class="control-label">{{ "events.rol" | translate }}</label>
+            <div>
+                <select name="rol" class="form-control" [(ngModel)]="findRequest.filter.rol" #rol="ngModel">
+                    <option [value]="undefined">{{ "form.select" | translate }}</option>
+                    <option [value]="'Organizador'">Organizador</option>
+                    <option [value]="'Expositor'">Expositor</option>
+                </select>
+            </div>
+        </div>
+        <!-- rol -->
+        <div class="form-group col-lg-6">
+            <label for="type" class="control-label">{{ "events.type" | translate }}</label>
+            <div>
+                <select name="type" class="form-control" [(ngModel)]="findRequest.filter.type" #type="ngModel">
+                    <option [value]="undefined">{{ "form.select" | translate }}</option>
+                    <option [value]="'actuación'">actuación</option>
+                    <option [value]="'audición'">audición</option>
+                    <option [value]="'Competición'">Competición</option>
+                    <option [value]="'Conferencia'">Conferencia</option>
+                    <option [value]="'Contest'">Contest</option>
+                    <option [value]="'Curso'">Curso</option>
+                    <option [value]="'Defensa de tesis'">Defensa de tesis</option>
+                    <option [value]="'Evento de difusión'">Evento de difusión</option>
+                    <option [value]="'Entrevista'">Entrevista</option>
+                    <option [value]="'Estancia'">Estancia</option>
+                    <option [value]="'Exhibición'">Exhibición</option>
+                    <option [value]="'Charla en Panel'">Charla en Panel</option>
+                    <option [value]="'Charla Invitada'">Charla Invitada</option>
+                    <option [value]="'Reunión'">Reunión</option>
+                    <option [value]="'Mesa redonda'">Mesa redonda</option>
+                    <option [value]="'Seminario'">Seminario</option>
+                </select>
+            </div>
+        </div>
+        <!-- dates -->
+        <div class="form-group col-lg-3">
+            <label for="dateFrom" class="control-label">{{'documents.date-ini' | translate }}</label>
+            <input class="form-control" name="dateFrom" id="dateFrom" required (ngModelChange)="filterEvents()"
+                placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
+                #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();" (keyup)="decisionDate.close()"
+                #dateFrom="ngModel" [(ngModel)]="dateIni" />
+        </div>
+        <div class="form-group col-lg-3">
+            <label for="dateTo" class="control-label">{{'documents.date-fin' | translate }}</label>
+            <input class="form-control" name="dateTo" id="dateTo" required (ngModelChange)="filterEvents()"
+                placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
+                #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();" (keyup)="decisionTo.close()"
+                #dateTo="ngModel" [(ngModel)]="dateFin" />
+        </div>
+
+    </div>
+    <div class="container-fluid">
+        <div class="row justify-content-end">
+            <div class="input-group col-md-1">
+                <button class="btn btn-secondary"
+                    (click)="f.resetForm(); filterEvents(); dateFin = null; dateIni = null">{{'form.clean' |
+                    translate }}</button>
+            </div>
+            <div class="input-group col-md-4">
+                <input class="form-control py-2 border-right-0 border" type="search" name="search" #search="ngModel"
+                    placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name"
+                    id="example-search-input">
+                <span class="input-group-append">
+                    <button (click)="filterEvents()" class="btn btn-outline-secondary border-left-0 border"
+                        type="button">
+                        <em class="oi oi-magnifying-glass "></em>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>

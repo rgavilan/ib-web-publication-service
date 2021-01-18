@@ -146,6 +146,8 @@
     "h-index": "h-index",
     "apto": "Apto",
     "trajectory-by-timeline": "Trayectory by timeline",
+    "events": "Events",
+    "congress-events": "Congress and events",
     "table-header": {
       "name":"Name",
       "area":"Area",
@@ -209,7 +211,8 @@
   "documents": {
     "document": "Documents",
     "date-fin": "End Date",
-    "date-ini": "Start Date"
+    "date-ini": "Start Date",
+    "type":"Type"
   },
   "participant": {
     "title": "Participants",
@@ -268,5 +271,9 @@
     "topics": "Topics",
     "areas-more-projects": "Areas with more projects",
     "appointments-area": "Appointments by area"
+  },
+  "events": {
+    "rol":"Rol",
+    "type":"Type"
   }
 }

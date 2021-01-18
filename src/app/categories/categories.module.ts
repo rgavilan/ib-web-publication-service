@@ -30,6 +30,7 @@ import { ScientistDetailComponent } from './scientist-detail/scientist-detail.co
 import { DirectedJobsComponent } from '../common/directed-jobs/directed-jobs.component';
 import { StartupComponent } from '../common/startup/startup.component';
 import { ResearchCategoriesComponent } from './research-categories/research-categories.component';
+import { EventsComponent } from '../common/events/events.component';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
@@ -37,7 +38,7 @@ import { ResearchCategoriesComponent } from './research-categories/research-cate
     InvestigationActionsComponent, TreeComponent, GraphicComponent, NewTreeComponent, PatentsComponent,
     ProyectsComponent, ScientistSearchComponent, TopSearchComponent, DocumentsComponent,
     ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
-    DirectedJobsComponent, StartupComponent, ResearchCategoriesComponent
+    DirectedJobsComponent, StartupComponent, ResearchCategoriesComponent, EventsComponent
   ],
   imports: [
     CommonModule,

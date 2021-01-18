@@ -33,12 +33,12 @@
                 </tab>
                 <tab>
                     <ng-template tabHeading>
-                        {{'scientist.congress' | translate}}
+                        {{'scientist.events' | translate}}
                     </ng-template>
                     <ng-container>
-                        <legend class="mt-40">{{'scientist.directed-jobs' | translate}}</legend>
+                        <legend class="mt-40">{{'scientist.congress-events' | translate}}</legend>
                         <hr>
-                        <app-documents [filterDocumentType]="['Libro', 'Articulo']"></app-documents>
+                        <app-events></app-events>
                     </ng-container>
                 </tab>
                 <tab>

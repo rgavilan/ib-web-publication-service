@@ -15,19 +15,38 @@
             <app-tree [treeType]="'documents'"></app-tree>
         </div>
         <!-- dates -->
-        <div class="form-group col-lg-3" [ngClass]="{'col-lg-4': !isTreeVisible}">
+        <div class="form-group col-lg-3" [ngClass]="{'col-lg-3': !isTreeVisible}">
             <label for="dateFrom" class="control-label">{{'documents.date-ini' | translate }}</label>
             <input class="form-control" name="dateFrom" id="dateFrom" required (ngModelChange)="filterProjects()"
                 placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
                 #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();" (keyup)="decisionDate.close()"
                 #dateFrom="ngModel" [(ngModel)]="dateIni" />
         </div>
-        <div class="form-group col-lg-3" [ngClass]="{'col-lg-4': !isTreeVisible}">
+        <div class="form-group col-lg-3" [ngClass]="{'col-lg-3': !isTreeVisible}">
             <label for="dateTo" class="control-label">{{'documents.date-fin' | translate }}</label>
             <input class="form-control" name="dateTo" id="dateTo" required (ngModelChange)="filterProjects()"
                 placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
                 #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();" (keyup)="decisionTo.close()"
                 #dateTo="ngModel" [(ngModel)]="dateFin" />
+        </div>
+    </div>
+    <div class="row">
+        <!-- type -->
+        <div class="form-group col-lg-6">
+            <label for="type" class="col-sm-4 control-label">{{ "documents.type" | translate }}</label>
+            <div class="col-sm-8">
+                <select (change)="filterProjects()" name="type" class="form-control"
+                    [(ngModel)]="findRequest.filter.type" #type="ngModel">
+                    <option [value]="undefined">{{ "form.select" | translate }}</option>
+                    <option [value]="'Audio'">Audio</option>
+                    <option [value]="'Publicación editada'">Publicación editada</option>
+                    <option [value]="'Coleccionable'">Coleccionable</option>
+                    <option [value]="'Libro'">Libro</option>
+                    <option [value]="'Caso de estudio'">Caso de estudio</option>
+                    <option [value]="'Manual'">Manual</option>
+                    <option [value]="'Tesis'">Tesis</option>
+                </select>
+            </div>
         </div>
     </div>
 
