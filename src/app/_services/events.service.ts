@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractService } from '../_helpers/abstract';
 import { Page, PageRequest } from '../_helpers/search';
@@ -6,26 +5,26 @@ import { Helper } from '../_helpers/utils';
 import { SparqlResults } from '../_models/sparql';
 
 
-
 /**
  *
  *
  * @export
- * @class DirectedJobsService
+ * @class EventsService
  * @extends {AbstractService}
  */
 @Injectable({
     providedIn: 'root',
 })
-export class DirectedJobsService extends AbstractService {
+export class EventsService extends AbstractService {
     // mock data
     readonly DUMMY_DATA: SparqlResults = {
         head: {
             vars: [
                 'title',
                 'type',
-                'keywords',
-                'releaseYear'
+                'rol',
+                'place',
+                'date'
             ]
         },
         results: {
@@ -34,49 +33,78 @@ export class DirectedJobsService extends AbstractService {
                 {
                     title: {
                         type: 'literal',
-                        value: 'Optimización de software'
+                        value: 'IV Congreso sobre semántica web de España'
                     },
                     type: {
                         type: 'literal',
-                        value: 'Tesis'
+                        value: 'Congreso'
                     },
-                    keywords: {
+                    rol: {
                         type: 'literal',
-                        value: 'Álgebra'
+                        value: 'Organizador'
                     },
-                    releaseYear: {
+                    place: {
                         type: 'literal',
-                        value: '2012'
+                        value: 'Universidad de Murcia'
+                    },
+                    date: {
+                        type: 'literal',
+                        value: '25-05-2004'
+                    }
+                },
+                // 2
+                {
+                    title: {
+                        type: 'literal',
+                        value: 'XII Congreso sobre dirección de proyectos PMP'
+                    },
+                    type: {
+                        type: 'literal',
+                        value: 'Congreso'
+                    },
+                    rol: {
+                        type: 'literal',
+                        value: 'Expositor'
+                    },
+                    place: {
+                        type: 'literal',
+                        value: 'Izertis Gijón'
+                    },
+                    date: {
+                        type: 'literal',
+                        value: '25-05-2019'
                     }
                 },
                 {
                     title: {
                         type: 'literal',
-                        value: 'Optimización de software Lab II'
+                        value: 'I Taller sobre semántica Web Universidad de Oviedo'
                     },
                     type: {
                         type: 'literal',
-                        value: 'Tesis'
+                        value: 'Workshop'
                     },
-                    keywords: {
+                    rol: {
                         type: 'literal',
-                        value: 'Informatica'
+                        value: 'Expositor'
                     },
-                    releaseYear: {
+                    place: {
                         type: 'literal',
-                        value: '2024'
+                        value: 'Politecnica UO'
+                    },
+                    date: {
+                        type: 'literal',
+                        value: '03-11-2016'
                     }
                 }
+
             ]
         }
     };
 
 
-    /**
-     * Creates an instance of ParticipantService.
-     * @memberof ParticipantService
-     */
-    constructor(private httpClient: HttpClient) {
+
+    constructor() {
         super();
     }
 
@@ -88,26 +116,20 @@ export class DirectedJobsService extends AbstractService {
      * @param {Map<string, string>} filters
      * @param {PageRequest} pageRequest
      * @return {*}  {Page<SparqlResults>}
-     * @memberof DirectedJobsService
+     * @memberof EventsService
      */
     find(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
         const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
         return Helper.findInServiceData(data, filters, pageRequest);
     }
 
-    /**
-     *
-     *
-     * @param {Map<string, string>} filters
-     * @param {PageRequest} pageRequest
-     * @return {*}  {Page<SparqlResults>}
-     * @memberof DirectedJobsService
-     */
+
     findByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
 
         const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
 
         return Helper.findInServiceData(data, filters, pageRequest);
     }
+
 
 }

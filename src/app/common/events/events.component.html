@@ -74,3 +74,7 @@
         </div>
     </div>
 </form>
+<app-table-results *ngIf="loaded" [data]="allEvents.content[0]" [pageInfo]="allEvents"
+    (pageChanged)="allEventsFilteredPageChanged($event)" (sizeChanged)="allEventsFilteredSizeChanged($event)"
+    (sortChanged)="allEventsFilteredSortChanged($event)">
+</app-table-results>

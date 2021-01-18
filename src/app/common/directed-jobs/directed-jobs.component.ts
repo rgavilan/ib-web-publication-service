@@ -60,6 +60,7 @@ export class DirectedJobsComponent implements OnInit {
    * @memberof DirectedJobsComponent
    */
   yearsForSelect = Helper.getYears();
+  filters: Map<string, string> = new Map();
 
   constructor(private directedJobsService: DirectedJobsService) { }
 
@@ -89,6 +90,14 @@ export class DirectedJobsComponent implements OnInit {
    */
   allDirectedFilteredPageChanged(i: number) {
     this.loaded = true;
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = i;
+    pageRequest.size = this.allDirectedJobs.size;
+    pageRequest.property = this.allDirectedJobs.sort;
+    pageRequest.direction = this.allDirectedJobs.direction;
+    this.allDirectedJobs = this.directedJobsService.findByFilters(
+      this.filters, pageRequest
+    );
   }
   /**
    *
@@ -98,6 +107,15 @@ export class DirectedJobsComponent implements OnInit {
    */
   allDirectedFilteredSizeChanged(i: number) {
     this.loaded = true;
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = this.allDirectedJobs.number;
+    pageRequest.size = i;
+    pageRequest.property = this.allDirectedJobs.sort;
+    pageRequest.direction = this.allDirectedJobs.direction;
+
+    this.allDirectedJobs = this.directedJobsService.findByFilters(
+      this.filters, pageRequest
+    );
   }
   /**
    *
@@ -107,5 +125,14 @@ export class DirectedJobsComponent implements OnInit {
    */
   allDirectedFilteredSortChanged(pageRequest: PageRequest) {
     this.loaded = true;
+    const newPageRequest: PageRequest = new PageRequest();
+    newPageRequest.page = this.allDirectedJobs.number;
+    newPageRequest.size = this.allDirectedJobs.size;
+    newPageRequest.property = pageRequest.property;
+    newPageRequest.direction = pageRequest.direction;
+
+    this.allDirectedJobs = this.directedJobsService.findByFilters(
+      this.filters, pageRequest
+    );
   }
 }
