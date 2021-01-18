@@ -45,7 +45,7 @@
     "logout": "Salir",
     "university": "Estructuras investigación",
     "scientist": "Personal investigador",
-    "category-inves": "Categorías investigación",
+    "areas": "Áreas",
     "prod-scientist": "Producción cientifica",
     "acction-inves": "Acciones investigación",
     "stats": "Estadisticas"
@@ -103,7 +103,7 @@
     "category": "Categorías",
     "university": "Estructuras de investigación",
     "scientist": "Personal investigador",
-    "category-inves": "Categorias de investigación",
+    "areas": "Áreas",
     "prod-scientist": "Producción cientifica",
     "acction-inves": "Acciones de investigación",
     "stats": "Estadisticas e indicadores",
@@ -273,7 +273,7 @@
     }
   }, 
   "research-categories" : {
-    "title": "Categorías de Investigación",
+    "title": "Áreas",
     "areas": "Áreas",
     "disciplines": "Disciplinas",
     "lines-investigation": "Líneas de investigación",

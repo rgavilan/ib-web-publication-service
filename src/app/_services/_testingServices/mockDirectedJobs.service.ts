@@ -76,4 +76,11 @@ export class MockDirectedJobsService extends AbstractService {
         return Helper.findInServiceData(data, filters, pageRequest);
     }
 
+    findByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
+
+        const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
+
+        return Helper.findInServiceData(data, filters, pageRequest);
+    }
+
 }

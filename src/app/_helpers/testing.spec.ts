@@ -64,6 +64,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ResearchCategoriesComponent } from '../categories/research-categories/research-categories.component';
 import { LinksComponent } from '../links/links.component';
+import { EventsComponent } from '../common/events/events.component';
 
 
 /**
@@ -117,7 +118,8 @@ export class TestingHelper {
         DirectedJobsComponent,
         StartupComponent,
         ResearchCategoriesComponent,
-        LinksComponent
+        LinksComponent,
+        EventsComponent
       ],
       imports: [
         BrowserModule,

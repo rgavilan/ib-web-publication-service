@@ -50,7 +50,7 @@ export const MENU_ITEMS: MenuItem[] = [
     disabled: false
   },
   {
-    title: 'menu.category-inves',
+    title: 'menu.areas',
     icon: 'oi oi-folder',
     url: '/main/categories/research-categories',
     disabled: false

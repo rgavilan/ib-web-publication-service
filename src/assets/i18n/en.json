@@ -45,7 +45,7 @@
     "logout": "Log out",
     "university": "Structures",
     "scientist": "Research staff",
-    "category-inves": "Research categories",
+    "areas": "Areas",
     "prod-scientist": "Scientific production",
     "acction-inves": "Investigation actions",
     "stats": "Stats and indicators"
@@ -95,7 +95,7 @@
     "category": "Categories",
     "university": "Researchment Structures",
     "scientist": "Research staff",
-    "category-inves": "Research categories",
+    "areas": "Areas",
     "prod-scientist": "Scientific production",
     "acction-inves": "Investigation actions",
     "stats": "Statistics and indicators",

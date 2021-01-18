@@ -65,7 +65,7 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       disabled: false
     },
     {
-      title: 'home.category-inves',
+      title: 'home.areas',
       iconName: 'oi-folder',
       iconCircle: false,
       url: '../categories/research-categories',
