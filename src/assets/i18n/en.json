@@ -133,7 +133,7 @@
     "title": "Research staff",
     "area": "Area",
     "type": "Type",
-    "acction-inves":"Investigation actions",
+    "acction-inves": "Investigation actions",
     "congress": "Congress",
     "business-activity": "Business activity",
     "trajectory": "Trayectory",
@@ -149,10 +149,10 @@
     "events": "Events",
     "congress-events": "Congress and events",
     "table-header": {
-      "name":"Name",
-      "area":"Area",
-      "type":"Type",
-      "appointments": "Appointments",
+      "name": "Name",
+      "area": "Area",
+      "type": "Type",
+      "appointments": "Cites",
       "h-index": "H-index",
       "publications": "Publications"
     }
@@ -185,45 +185,45 @@
     "call-type": "Call Type",
     "people-involved": "People involved in proyect",
     "main-researcher": "name(s) main  researcher(s)",
-    "competitive":"Competitive",
+    "competitive": "Competitive",
     "level": "Level",
     "table-header": {
       "end": "End",
       "fund": "Fund",
       "id": "ID",
-      "name":"Name",
+      "name": "Name",
       "start": "Start",
       "tipo": "Type"
-      }
+    }
   },
   "investigation-actions": {
     "title": "Investigation actions",
     "documents": "Documents",
     "projects": "Projects",
-    "patents":"Patentes",
+    "patents": "Patentes",
     "documents-table": {
       "id": "id",
       "name": "name",
       "anyo": "year",
-      "type":"Type"
+      "type": "Type"
     }
   },
   "documents": {
     "document": "Documents",
     "date-fin": "End Date",
     "date-ini": "Start Date",
-    "type":"Type"
+    "type": "Type"
   },
   "participant": {
     "title": "Participants",
     "level": "Level",
     "year": "Year",
     "people-involved": "Perople involved in proyect",
-    "proyect-participants": "Collaborating / participating entities", 
+    "proyect-participants": "Collaborating / participating entities",
     "table-header": {
       "centro": "Center",
       "dpto": "Department",
-      "id":"ID"
+      "id": "ID"
     }
   },
   "deliverable": {
@@ -239,19 +239,19 @@
     }
   },
   "patent": {
-    "area":"Area",
+    "area": "Area",
     "table-header": {
       "name": "Name",
       "ini": "Start date",
       "fin": "Finish date",
-      "id":"ID",
+      "id": "ID",
       "tipo": "Type"
     }
   },
   "directed-jobs": {
     "table-header": {
       "title": "Title",
-      "type":"Type",
+      "type": "Type",
       "keywords": "Keywords",
       "release-year": "Release year"
     }
@@ -259,21 +259,21 @@
   "startup": {
     "table-header": {
       "title": "Title",
-      "type":"Type",
+      "type": "Type",
       "rol": "Rol"
     }
-  }, 
-  "research-categories" : {
+  },
+  "research-categories": {
     "title": "Research categories",
     "areas": "Areas",
     "disciplines": "Disciplines",
     "lines-investigation": "Lines of investigation",
     "topics": "Topics",
     "areas-more-projects": "Areas with more projects",
-    "appointments-area": "Appointments by area"
+    "appointments-area": "Cites by area"
   },
   "events": {
-    "rol":"Rol",
-    "type":"Type"
+    "rol": "Rol",
+    "type": "Type"
   }
 }
