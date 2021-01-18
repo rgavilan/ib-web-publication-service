@@ -4,6 +4,8 @@ import { Page, PageRequest } from 'src/app/_helpers/search';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { ParticipantService } from 'src/app/_services/participant.service';
+import { PatentService } from 'src/app/_services/patent.service';
+import { MockPatentService } from 'src/app/_services/_testingServices/mockPatent.service';
 
 import { DeliverableComponent } from './deliverable.component';
 
@@ -61,12 +63,13 @@ describe('DeliverableComponent', () => {
     TestingHelper.configureTest()
       .compileComponents();
     TestBed.configureTestingModule({
-      providers: [{
-        provide: ParticipantService, useValue: {
-          find: () => of(page),
-          findPerson: () => of(page),
-        }
-      }]
+      providers: [
+        { provide: PatentService, useClass: MockPatentService }, {
+          provide: ParticipantService, useValue: {
+            find: () => of(page),
+            findPerson: () => of(page),
+          }
+        }]
     }).compileComponents();
   }));
 
