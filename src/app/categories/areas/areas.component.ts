@@ -3,49 +3,39 @@ import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { FindRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 
-/**
- *
- *
- * @export
- * @class ResearchCategoriesComponent
- * @implements {OnInit}
- */
+
 @Component({
-  selector: 'app-research-categories',
-  templateUrl: './research-categories.component.html'
+  selector: 'app-areas',
+  templateUrl: './areas.component.html'
 })
-export class ResearchCategoriesComponent implements OnInit {
-  /**
-   *
-   *
-   * @memberof ResearchCategoriesComponent
-   */
+export class AreasComponent implements OnInit {
+
   normalTree = true;
   /**
    *
    *
    * @type {FindRequest}
-   * @memberof ResearchCategoriesComponent
+   * @memberof AreasComponent
    */
   findRequest: FindRequest = new FindRequest();
   /**
    *
    *
    * @type {*}
-   * @memberof ResearchCategoriesComponent
+   * @memberof AreasComponent
    */
   echartOptions: any;
   /**
    *
    *
    * @type {*}
-   * @memberof ResearchCategoriesComponent
+   * @memberof AreasComponent
    */
   echartOptions2: any;
   /**
    *
    *  get years for select
-   * @memberof ResearchCategoriesComponent
+   * @memberof AreasComponent
    */
   yearsForSelect = Helper.getYears();
   constructor() { }

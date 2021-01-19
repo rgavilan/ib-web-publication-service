@@ -29,7 +29,7 @@ import { ScientistComponent } from './scientist/scientist.component';
 import { ScientistDetailComponent } from './scientist-detail/scientist-detail.component';
 import { DirectedJobsComponent } from '../common/directed-jobs/directed-jobs.component';
 import { StartupComponent } from '../common/startup/startup.component';
-import { ResearchCategoriesComponent } from './research-categories/research-categories.component';
+import { AreasComponent } from './areas/areas.component';
 import { EventsComponent } from '../common/events/events.component';
 
 @NgModule({
@@ -38,7 +38,7 @@ import { EventsComponent } from '../common/events/events.component';
     InvestigationActionsComponent, TreeComponent, GraphicComponent, NewTreeComponent, PatentsComponent,
     ProyectsComponent, ScientistSearchComponent, TopSearchComponent, DocumentsComponent,
     ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
-    DirectedJobsComponent, StartupComponent, ResearchCategoriesComponent, EventsComponent
+    DirectedJobsComponent, StartupComponent, AreasComponent, EventsComponent
   ],
   imports: [
     CommonModule,

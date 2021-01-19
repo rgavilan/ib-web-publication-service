@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProjectsDetailComponent } from '../common/proyects/projects-detail/projects-detail.component';
 import { InvestigationActionsComponent } from './investigation-actions/investigation-actions.component';
-import { ResearchCategoriesComponent } from './research-categories/research-categories.component';
+import { AreasComponent } from './areas/areas.component';
 import { ResearchmentStructuresDetailComponent } from './researchment-structures-detail/researchment-structures-detail.component';
 import { ResearchmentStructuresComponent } from './researchment-structures/researchment-structures.component';
 import { ScientistDetailComponent } from './scientist-detail/scientist-detail.component';
@@ -39,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'research-categories',
-    component: ResearchCategoriesComponent
+    component: AreasComponent
   }
 ];
 

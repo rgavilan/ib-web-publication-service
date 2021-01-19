@@ -249,7 +249,6 @@ export class ProyectsComponent implements OnInit {
     pageRequest.size = this.allProjectFiltered.size;
     this.findRequest.pageRequest = pageRequest;
     setTimeout(() => {
-      console.log(this.dateIni);
       if (this.dateIni) {
         const currentDate = Helper.parse(this.dateIni);
         if (currentDate) {
