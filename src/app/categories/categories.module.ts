@@ -31,6 +31,8 @@ import { DirectedJobsComponent } from '../common/directed-jobs/directed-jobs.com
 import { StartupComponent } from '../common/startup/startup.component';
 import { AreasComponent } from './areas/areas.component';
 import { EventsComponent } from '../common/events/events.component';
+import { AreasDetailComponent } from './areas/areas-detail/areas-detail.component';
+import { BusinessComponent } from '../common/business/business.component';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
@@ -38,7 +40,7 @@ import { EventsComponent } from '../common/events/events.component';
     InvestigationActionsComponent, TreeComponent, GraphicComponent, NewTreeComponent, PatentsComponent,
     ProyectsComponent, ScientistSearchComponent, TopSearchComponent, DocumentsComponent,
     ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
-    DirectedJobsComponent, StartupComponent, AreasComponent, EventsComponent
+    DirectedJobsComponent, StartupComponent, AreasComponent, EventsComponent, AreasDetailComponent, BusinessComponent
   ],
   imports: [
     CommonModule,

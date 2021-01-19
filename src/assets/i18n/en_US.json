@@ -263,14 +263,15 @@
       "rol": "Rol"
     }
   },
-  "research-categories": {
+  "areas": {
     "title": "Research categories",
     "areas": "Areas",
     "disciplines": "Disciplines",
     "lines-investigation": "Lines of investigation",
     "topics": "Topics",
     "areas-more-projects": "Areas with more projects",
-    "appointments-area": "Cites by area"
+    "appointments-area": "Cites by area",
+    "business-finance": "Business and finances"
   },
   "events": {
     "rol": "Rol",

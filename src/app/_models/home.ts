@@ -68,7 +68,7 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       title: 'home.areas',
       iconName: 'oi-folder',
       iconCircle: false,
-      url: '../categories/research-categories',
+      url: '../categories/areas',
       disabled: false
     },
     {

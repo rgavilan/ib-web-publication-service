@@ -7,6 +7,7 @@ import { ResearchmentStructuresDetailComponent } from './researchment-structures
 import { ResearchmentStructuresComponent } from './researchment-structures/researchment-structures.component';
 import { ScientistDetailComponent } from './scientist-detail/scientist-detail.component';
 import { ScientistComponent } from './scientist/scientist.component';
+import { AreasDetailComponent } from './areas/areas-detail/areas-detail.component';
 
 const routes: Routes = [
   {
@@ -38,8 +39,13 @@ const routes: Routes = [
     component: ScientistDetailComponent,
   },
   {
-    path: 'research-categories',
+    path: 'areas',
     component: AreasComponent
+  }
+  ,
+  {
+    path: 'areas/:area',
+    component: AreasDetailComponent
   }
 ];
 

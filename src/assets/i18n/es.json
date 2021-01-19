@@ -272,14 +272,15 @@
       "rol": "Rol"
     }
   }, 
-  "research-categories" : {
+  "areas" : {
     "title": "Áreas",
     "areas": "Áreas",
     "disciplines": "Disciplinas",
     "lines-investigation": "Líneas de investigación",
     "topics": "Tópicos",
     "areas-more-projects": "Áreas con mas proyectos",
-    "appointments-area": "Citas por área"
+    "appointments-area": "Citas por área",
+    "business-finance": "Empresas y finanzas"
   },
   "events": {
     "rol":"Rol",

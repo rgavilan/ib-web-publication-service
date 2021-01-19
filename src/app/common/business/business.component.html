@@ -1,0 +1,23 @@
+<form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm">
+    <div class="container-fluid">
+        <div class="row justify-content-end">
+            <div class="input-group col-md-1">
+                <button class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
+                    translate }}</button>
+            </div>
+            <div class="input-group col-md-4">
+                <input class="form-control py-2 border-right-0 border" type="search" name="search" search="ngModel"
+                    placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name">
+                <span class="input-group-append">
+                    <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                        <em class="oi oi-magnifying-glass "></em>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>
+<app-table-results *ngIf="loaded" [data]="allData.content[0]" [pageInfo]="allData" [headerData]="headerData"
+    (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
+    (sortChanged)="allprojectsFilteredSortChanged($event)">
+</app-table-results>

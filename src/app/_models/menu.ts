@@ -52,7 +52,7 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     title: 'menu.areas',
     icon: 'oi oi-folder',
-    url: '/main/categories/research-categories',
+    url: '/main/categories/areas',
     disabled: false
   },
   {
