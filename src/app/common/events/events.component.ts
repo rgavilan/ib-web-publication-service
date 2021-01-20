@@ -14,6 +14,7 @@ export class EventsComponent implements OnInit {
   allEvents: Page<SparqlResults> = new Page();
   loaded: boolean;
   filters: Map<string, string> = new Map();
+
   constructor(private eventsService: EventsService) { }
 
   ngOnInit(): void {
@@ -27,7 +28,7 @@ export class EventsComponent implements OnInit {
   }
 
   filterEvents() {
-
+    this.loaded = true;
   }
 
   /**
@@ -37,13 +38,10 @@ export class EventsComponent implements OnInit {
    * @memberof EventsComponent
    */
   allEventsFilteredPageChanged(i: number) {
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = i;
-    pageRequest.size = this.allEvents.size;
-    pageRequest.property = this.allEvents.sort;
-    pageRequest.direction = this.allEvents.direction;
+    this.findRequest.pageRequest.page = i - 1;
+    this.findRequest.pageRequest.size = this.allEvents.size;
     this.allEvents = this.eventsService.findByFilters(
-      this.filters, pageRequest
+      this.filters, this.findRequest.pageRequest
     );
   }
 
@@ -58,8 +56,8 @@ export class EventsComponent implements OnInit {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.allEvents.number;
     pageRequest.size = i;
-    pageRequest.property = this.allEvents.sort;
     pageRequest.direction = this.allEvents.direction;
+    this.findRequest.pageRequest = pageRequest;
 
     this.allEvents = this.eventsService.findByFilters(
       this.filters, pageRequest
@@ -79,6 +77,7 @@ export class EventsComponent implements OnInit {
     newPageRequest.size = this.allEvents.size;
     newPageRequest.property = pageRequest.property;
     newPageRequest.direction = pageRequest.direction;
+    this.findRequest.pageRequest = pageRequest;
 
     this.allEvents = this.eventsService.findByFilters(
       this.filters, pageRequest

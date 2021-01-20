@@ -97,19 +97,16 @@ export class BusinessComponent implements OnInit {
    */
   allprojectsFilteredPageChanged(i: number): void {
     this.loaded = true;
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = i;
-    pageRequest.size = this.allData.size;
-    pageRequest.property = this.allData.sort;
-    pageRequest.direction = this.allData.direction;
+    this.findRequest.pageRequest.page = i - 1;
+    this.findRequest.pageRequest.size = this.allData.size;
     if (this.type === 'comunidades') {
       this.allData = this.businessService.findComunidad(
-        null, pageRequest
+        null, this.findRequest.pageRequest
       );
     }
     if (this.type === 'centros') {
       this.allData = this.businessService.findCentros(
-        null, pageRequest
+        null, this.findRequest.pageRequest
       );
     }
   }
@@ -125,8 +122,8 @@ export class BusinessComponent implements OnInit {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.allData.number;
     pageRequest.size = i;
-    pageRequest.property = this.allData.sort;
     pageRequest.direction = this.allData.direction;
+    this.findRequest.pageRequest = pageRequest;
     if (this.type === 'comunidades') {
       this.allData = this.businessService.findComunidad(
         null, pageRequest
@@ -152,6 +149,7 @@ export class BusinessComponent implements OnInit {
     newPageRequest.size = this.allData.size;
     newPageRequest.property = pageRequest.property;
     newPageRequest.direction = pageRequest.direction;
+    this.findRequest.pageRequest = pageRequest;
     if (this.type === 'comunidades') {
       this.allData = this.businessService.findComunidad(
         null, pageRequest

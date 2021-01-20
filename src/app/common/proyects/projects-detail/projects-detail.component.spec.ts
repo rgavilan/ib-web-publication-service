@@ -103,11 +103,27 @@ describe('ProjectsDetailComponent', () => {
       expect(component.id).toBe('123');
     });
 
+
+
     it('expect not to receive an id', () => {
       const activatedReoute = fixture.debugElement.injector.get(ActivatedRoute);
       activatedReoute.params = of({ id: null });
       component.ngOnInit();
       expect(component.id).toBeNull();
+    });
+
+    it('should init instance and return no value in find', () => {
+      const projService = fixture.debugElement.injector.get(ProjectService);
+      const pagenew: Page<SparqlResults> = new Page<SparqlResults>();
+      pagenew.number = 0;
+      pagenew.numberOfElements = 10;
+      pagenew.size = 10;
+      pagenew.totalElements = 10;
+      pagenew.content = [];
+      console.log(pagenew);
+      const spy = spyOn(projService, 'find').and.returnValue(of(pagenew));
+      component.ngOnInit();
+      expect(component.id).toBe('123');
     });
   });
 });
