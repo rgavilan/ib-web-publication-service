@@ -65,6 +65,8 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { AreasComponent } from '../categories/areas/areas.component';
 import { LinksComponent } from '../links/links.component';
 import { EventsComponent } from '../common/events/events.component';
+import { BusinessComponent } from '../common/business/business.component';
+import { AreasDetailComponent } from '../categories/areas/areas-detail/areas-detail.component';
 
 
 /**
@@ -119,7 +121,9 @@ export class TestingHelper {
         StartupComponent,
         AreasComponent,
         LinksComponent,
-        EventsComponent
+        EventsComponent,
+        BusinessComponent,
+        AreasDetailComponent
       ],
       imports: [
         BrowserModule,

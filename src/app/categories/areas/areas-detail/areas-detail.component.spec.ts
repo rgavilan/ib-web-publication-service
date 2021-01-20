@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestingHelper } from 'src/app/_helpers/testing.spec';
 
 import { AreasDetailComponent } from './areas-detail.component';
 
@@ -7,10 +8,8 @@ describe('AreasDetailComponent', () => {
   let fixture: ComponentFixture<AreasDetailComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AreasDetailComponent ]
-    })
-    .compileComponents();
+    TestingHelper.configureTest()
+      .compileComponents();
   }));
 
   beforeEach(() => {
