@@ -3,6 +3,7 @@ import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { TableResultsHeaderItem } from 'src/app/_models/table-results';
+import { BusinnessActivityService } from 'src/app/_services/businnessActivity.service';
 import { ParticipantService } from 'src/app/_services/participant.service';
 
 @Component({
@@ -23,13 +24,8 @@ export class BusinessComponent implements OnInit {
    * @memberof BusinessComponent
    */
   loaded = false;
-  /**
-   *
-   *
-   * @type {string}
-   * @memberof BusinessComponent
-   */
-  @Input() universityId: string;
+
+  @Input() type: string;
   /**
    *
    *
@@ -43,37 +39,13 @@ export class BusinessComponent implements OnInit {
    * @memberof BusinessComponent
    */
   yearsForSelect = Helper.getYears();
-
-  /**
-   *
-   *
-   * @type {TableResultsHeaderItem[]}
-   * @memberof BusinessComponent
-   */
-  headerData: TableResultsHeaderItem[] = [
-    {
-      textToTranslate: 'deliverable.table-header.title',
-      columnName: 'title'
-    },
-    {
-      textToTranslate: 'deliverable.table-header.type',
-      columnName: 'type'
-    },
-    {
-      textToTranslate: 'deliverable.table-header.doi',
-      columnName: 'doi'
-    },
-    {
-      textToTranslate: 'deliverable.table-header.release-year',
-      columnName: 'releaseYear'
-    }
-  ];
+  filters: Map<string, string> = new Map();
   /**
    * Creates an instance of BusinessComponent.
    * @param {ParticipantService} participantService
    * @memberof BusinessComponent
    */
-  constructor(private participantService: ParticipantService) {
+  constructor(private businessService: BusinnessActivityService) {
   }
 
 
@@ -86,9 +58,16 @@ export class BusinessComponent implements OnInit {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
     pageRequest.size = 10;
-    this.allData = this.participantService.find(
-      null, pageRequest
-    );
+    if (this.type === 'comunidades') {
+      this.allData = this.businessService.findComunidad(
+        null, pageRequest
+      );
+    }
+    if (this.type === 'centros') {
+      this.allData = this.businessService.findCentros(
+        null, pageRequest
+      );
+    }
     setTimeout(() => {
       this.loaded = true;
     }, 300);
@@ -118,6 +97,21 @@ export class BusinessComponent implements OnInit {
    */
   allprojectsFilteredPageChanged(i: number): void {
     this.loaded = true;
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = i;
+    pageRequest.size = this.allData.size;
+    pageRequest.property = this.allData.sort;
+    pageRequest.direction = this.allData.direction;
+    if (this.type === 'comunidades') {
+      this.allData = this.businessService.findComunidad(
+        null, pageRequest
+      );
+    }
+    if (this.type === 'centros') {
+      this.allData = this.businessService.findCentros(
+        null, pageRequest
+      );
+    }
   }
 
   /**
@@ -128,6 +122,21 @@ export class BusinessComponent implements OnInit {
    */
   allprojectsFilteredSizeChanged(i: number): void {
     this.loaded = true;
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = this.allData.number;
+    pageRequest.size = i;
+    pageRequest.property = this.allData.sort;
+    pageRequest.direction = this.allData.direction;
+    if (this.type === 'comunidades') {
+      this.allData = this.businessService.findComunidad(
+        null, pageRequest
+      );
+    }
+    if (this.type === 'centros') {
+      this.allData = this.businessService.findCentros(
+        null, pageRequest
+      );
+    }
   }
 
   /**
@@ -138,6 +147,21 @@ export class BusinessComponent implements OnInit {
    */
   allprojectsFilteredSortChanged(pageRequest: PageRequest) {
     this.loaded = true;
+    const newPageRequest: PageRequest = new PageRequest();
+    newPageRequest.page = this.allData.number;
+    newPageRequest.size = this.allData.size;
+    newPageRequest.property = pageRequest.property;
+    newPageRequest.direction = pageRequest.direction;
+    if (this.type === 'comunidades') {
+      this.allData = this.businessService.findComunidad(
+        null, pageRequest
+      );
+    }
+    if (this.type === 'centros') {
+      this.allData = this.businessService.findCentros(
+        null, pageRequest
+      );
+    }
   }
 
 

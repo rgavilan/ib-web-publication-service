@@ -17,7 +17,7 @@
         </div>
     </div>
 </form>
-<app-table-results *ngIf="loaded" [data]="allData.content[0]" [pageInfo]="allData" [headerData]="headerData"
+<app-table-results *ngIf="loaded" [data]="allData.content[0]" [pageInfo]="allData"
     (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
     (sortChanged)="allprojectsFilteredSortChanged($event)">
 </app-table-results>
