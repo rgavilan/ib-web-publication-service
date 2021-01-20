@@ -44,8 +44,10 @@ describe('TableResultsComponent', () => {
         expect(component.searchResult.length).toEqual(12);
       }
 
+      if (component.resultObject.uibPage) {
+        expect(component.resultObject.uibPage).toEqual(component.pageInfo.number);
+      }
 
-      expect(component.resultObject.uibPage).toEqual(component.pageInfo.number);
     });
 
   });
