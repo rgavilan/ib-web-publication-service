@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './scientific-production.component.html'
 })
 export class ScientificProductionComponent implements OnInit {
-
+  normalTree: boolean;
   constructor() { }
 
   ngOnInit(): void {
