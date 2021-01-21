@@ -164,7 +164,11 @@
     "degree": "Degree",
     "type": "Type",
     "doi": "DOI",
-    "publication-year": "Publication year"
+    "publication-year": "Publication year",
+    "scientific-publications": "Scientific publications",
+    "academic-publications": "Academic publications",
+    "other-publications": "Other publications",
+    "events":"Events"
   },
   "projects": {
     "year": "Year",

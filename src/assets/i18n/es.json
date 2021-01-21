@@ -173,7 +173,11 @@
     "degree": "Título",
     "type": "Tipo",
     "doi": "DOI",
-    "publication-year": "Año de publicación"
+    "publication-year": "Año de publicación",
+    "scientific-publications": "Publicaciones cientificas",
+    "academic-publications": "Publicaciones academicas",
+    "other-publications": "Otras publicaciones",
+    "events":"Eventos"
   },
   "projects": {
     "year": "Año",
