@@ -75,8 +75,8 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       title: 'home.prod-scientist',
       iconName: 'oi-box',
       iconCircle: false,
-      url: null,
-      disabled: true
+      url: '../categories/scientific-production',
+      disabled: false
     },
     {
       title: 'home.acction-inves',

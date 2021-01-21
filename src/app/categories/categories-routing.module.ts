@@ -8,6 +8,7 @@ import { ResearchmentStructuresComponent } from './researchment-structures/resea
 import { ScientistDetailComponent } from './scientist-detail/scientist-detail.component';
 import { ScientistComponent } from './scientist/scientist.component';
 import { AreasDetailComponent } from './areas/areas-detail/areas-detail.component';
+import { ScientificProductionComponent } from './scientific-production/scientific-production.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'areas/:area',
     component: AreasDetailComponent
+  },
+  {
+    path: 'scientific-production',
+    component: ScientificProductionComponent
   }
 ];
 

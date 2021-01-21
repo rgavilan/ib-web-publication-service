@@ -33,6 +33,7 @@ import { AreasComponent } from './areas/areas.component';
 import { EventsComponent } from '../common/events/events.component';
 import { AreasDetailComponent } from './areas/areas-detail/areas-detail.component';
 import { BusinessComponent } from '../common/business/business.component';
+import { ScientificProductionComponent } from './scientific-production/scientific-production.component';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
@@ -40,7 +41,7 @@ import { BusinessComponent } from '../common/business/business.component';
     InvestigationActionsComponent, TreeComponent, GraphicComponent, NewTreeComponent, PatentsComponent,
     ProyectsComponent, ScientistSearchComponent, TopSearchComponent, DocumentsComponent,
     ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
-    DirectedJobsComponent, StartupComponent, AreasComponent, EventsComponent, AreasDetailComponent, BusinessComponent
+    DirectedJobsComponent, StartupComponent, AreasComponent, EventsComponent, AreasDetailComponent, BusinessComponent, ScientificProductionComponent
   ],
   imports: [
     CommonModule,
