@@ -67,6 +67,7 @@ import { LinksComponent } from '../links/links.component';
 import { EventsComponent } from '../common/events/events.component';
 import { BusinessComponent } from '../common/business/business.component';
 import { AreasDetailComponent } from '../categories/areas/areas-detail/areas-detail.component';
+import { ScientificProductionComponent } from '../categories/scientific-production/scientific-production.component';
 
 
 /**
@@ -123,7 +124,8 @@ export class TestingHelper {
         LinksComponent,
         EventsComponent,
         BusinessComponent,
-        AreasDetailComponent
+        AreasDetailComponent,
+        ScientificProductionComponent
       ],
       imports: [
         BrowserModule,

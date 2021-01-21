@@ -35,7 +35,8 @@
                     {{'scientific-production.academic-publications' | translate}}
                 </ng-template>
                 <ng-container>
-                    <app-documents [isTreeVisible]="false" [filterDocumentType]="['Libro', 'Articulo']"></app-documents>
+                    <app-documents [selectDocumentType]="['Tesis de grado', 'Tesis de Master', 'Tesis de doctorado']"
+                        [isTreeVisible]="false" [filterDocumentType]="['Libro', 'Articulo']"></app-documents>
                 </ng-container>
             </tab>
             <tab>
@@ -43,7 +44,9 @@
                     {{'scientific-production.other-publications' | translate}}
                 </ng-template>
                 <ng-container>
-                    <app-documents [isTreeVisible]="false" [filterDocumentType]="['Libro', 'Articulo']"></app-documents>
+                    <app-documents
+                        [selectDocumentType]="['Informes', 'Cartel de conferencia', 'Catalogo', 'Extracto', 'Documento audiovisual']"
+                        [isTreeVisible]="false" [filterDocumentType]="['Libro', 'Articulo']"></app-documents>
                 </ng-container>
             </tab>
             <tab>

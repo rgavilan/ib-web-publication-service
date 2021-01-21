@@ -17,6 +17,8 @@ import { DocumentService } from 'src/app/_services/document.service';
   templateUrl: './documents.component.html'
 })
 export class DocumentsComponent implements OnInit {
+  @Input() selectDocumentType: Array<string> = ['Audio', 'Publicación editada', 'Coleccionable', 'Libro', 'Caso de estudio',
+    'Manual', 'Tesis'];
   /**
    *
    *

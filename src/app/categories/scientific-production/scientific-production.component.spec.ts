@@ -1,4 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestingHelper } from 'src/app/_helpers/testing.spec';
+import { DocumentService } from 'src/app/_services/document.service';
+import { EventsService } from 'src/app/_services/events.service';
+import { MockDocumentService } from 'src/app/_services/_testingServices/mockDocument.service';
+import { MockEventsService } from 'src/app/_services/_testingServices/mockEvents.service';
 
 import { ScientificProductionComponent } from './scientific-production.component';
 
@@ -7,10 +12,12 @@ describe('ScientificProductionComponent', () => {
   let fixture: ComponentFixture<ScientificProductionComponent>;
 
   beforeEach(async(() => {
+    TestingHelper.configureTest()
+      .compileComponents();
     TestBed.configureTestingModule({
-      declarations: [ ScientificProductionComponent ]
-    })
-    .compileComponents();
+      providers: [{ provide: DocumentService, useClass: MockDocumentService },
+      { provide: EventsService, useClass: MockEventsService }]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

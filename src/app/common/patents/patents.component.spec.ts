@@ -48,6 +48,45 @@ describe('PatentsComponent', () => {
       tick(300);
       expect(spy).toHaveBeenCalled();
     }));
+    it('expect to call service function findProjectByFilters with dateIni', fakeAsync(() => {
+      component.dateIni = 1385078400000;
+      const patentService1 = fixture.debugElement.injector.get(PatentService);
+      const spy = spyOn(patentService1, 'find').and.callThrough();
+      fixture.detectChanges(); // update variables in fixture
+      component.filterPatents();
+      tick(300);
+      expect(component.findRequest.filter.ini).toBe('2013-11-22');
+    }));
+
+    it('expect to call service function findProjectByFilters with dateFin', fakeAsync(() => {
+      component.dateFin = 1385078400000;
+      const patentService1 = fixture.debugElement.injector.get(PatentService);
+      const spy = spyOn(patentService1, 'find').and.callThrough();
+      fixture.detectChanges(); // update variables in fixture
+      component.filterPatents();
+      tick(300);
+      expect(component.findRequest.filter.end).toBe('2013-11-22');
+    }));
+
+    it('expect to call service function findProjectByFilters with dateIni wrong', fakeAsync(() => {
+      component.dateIni = 'sss';
+      const patentService1 = fixture.debugElement.injector.get(PatentService);
+      const spy = spyOn(patentService1, 'find').and.callThrough();
+      fixture.detectChanges(); // update variables in fixture
+      component.filterPatents();
+      tick(300);
+      expect(component.findRequest.filter.ini).toBeUndefined();
+    }));
+
+    it('expect to call service function findProjectByFilters with dateFin wrong', fakeAsync(() => {
+      component.dateFin = 'sss';
+      const patentService1 = fixture.debugElement.injector.get(PatentService);
+      const spy = spyOn(patentService1, 'find').and.callThrough();
+      fixture.detectChanges(); // update variables in fixture
+      component.filterPatents();
+      tick(300);
+      expect(component.findRequest.filter.end).toBeUndefined();
+    }));
   });
 
 
