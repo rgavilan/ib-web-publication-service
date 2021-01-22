@@ -280,5 +280,15 @@
   "events": {
     "rol": "Rol",
     "type": "Type"
+  },
+  "document": {
+    "author": "Author",
+    "published-by": "Published by",
+    "published-date": "Published date",
+    "organization": "Organization",
+    "keyword": "Keyword",
+    "resume": "Resume",
+    "other-authors": "Other authors",
+    "name":"Name"
   }
 }

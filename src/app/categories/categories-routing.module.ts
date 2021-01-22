@@ -9,6 +9,7 @@ import { ScientistDetailComponent } from './scientist-detail/scientist-detail.co
 import { ScientistComponent } from './scientist/scientist.component';
 import { AreasDetailComponent } from './areas/areas-detail/areas-detail.component';
 import { ScientificProductionComponent } from './scientific-production/scientific-production.component';
+import { DocumentDetailComponent } from './document-detail/document-detail.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'scientific-production',
     component: ScientificProductionComponent
+  },
+  {
+    path: 'document/:id',
+    component: DocumentDetailComponent
   }
 ];
 

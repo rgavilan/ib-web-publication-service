@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-lg-12 margin-bottom">
+        <legend class="legend">{{ document.title}}</legend>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <p><b>{{document.type}}</b></p>
+        <p><b>{{'document.author' | translate}}:</b> {{document.author}}</p>
+        <p><b>{{'document.published-by' | translate}}:</b> {{document.publishedBy}}</p>
+        <p><b>{{'document.published-date' | translate}}:</b> {{document.publishDate}}</p>
+        <p><b>{{'document.organization' | translate}}:</b> {{document.organization}}</p>
+        <p><b>{{'document.keyword' | translate}}:</b> {{document.keyword}}</p>
+        <p><b>{{'document.resume' | translate}}:</b> {{document.resume}}</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 margin-bottom">
+        <legend class="legend">{{ "document.other-authors" | translate }}</legend>
+    </div>
+    <div class="container-fluid app-table-results">
+        <div class="row">
+            <div class="col">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="sortable">
+                            <th>{{'document.name' | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of document.otherAuthors">
+                            <td>{{item}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

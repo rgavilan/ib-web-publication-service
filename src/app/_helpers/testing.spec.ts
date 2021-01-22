@@ -68,6 +68,7 @@ import { EventsComponent } from '../common/events/events.component';
 import { BusinessComponent } from '../common/business/business.component';
 import { AreasDetailComponent } from '../categories/areas/areas-detail/areas-detail.component';
 import { ScientificProductionComponent } from '../categories/scientific-production/scientific-production.component';
+import { DocumentDetailComponent } from '../categories/document-detail/document-detail.component';
 
 
 /**
@@ -125,7 +126,8 @@ export class TestingHelper {
         EventsComponent,
         BusinessComponent,
         AreasDetailComponent,
-        ScientificProductionComponent
+        ScientificProductionComponent,
+        DocumentDetailComponent
       ],
       imports: [
         BrowserModule,

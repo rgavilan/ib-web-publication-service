@@ -289,5 +289,15 @@
   "events": {
     "rol":"Rol",
     "type":"Tipo"
+  },
+  "document": {
+    "author": "Autor principal",
+    "published-by": "Publicado en",
+    "published-date": "Fecha de publicación",
+    "organization": "Organización",
+    "keyword": "Palabra clave",
+    "resume": "Resumen",
+    "other-authors": "Otros authores",
+    "name":"Nombre"
   }
 }
