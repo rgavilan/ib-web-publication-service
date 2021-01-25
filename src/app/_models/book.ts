@@ -1,13 +1,13 @@
-export class MasterThesis {
-
+/**
+ *
+ *
+ * @export
+ * @class Book
+ */
+export class Book {
     /**
-     * The abbreviation
-     */
-    abbreviation: string;
-
-    /**
-     * The date
-     */
+      * The date
+      */
     date: string;
 
     /**
@@ -16,19 +16,24 @@ export class MasterThesis {
     doi: string;
 
     /**
+     * The edition
+     */
+    edition: string;
+
+    /**
      * The endPage
      */
     endPage: string;
 
     /**
+     * The iccn
+     */
+    iccn: string;
+
+    /**
      * The id
      */
     id: string;
-
-    /**
-     * The name
-     */
-    name: string;
 
     /**
      * The placeOfPublication
@@ -46,7 +51,7 @@ export class MasterThesis {
     startPage: string;
 
     /**
-     * The university
+     * The title
      */
-    university: string;
+    title: string;
 }

@@ -1,27 +1,63 @@
+/**
+ *
+ *
+ * @export
+ * @class Project
+ */
 export class Project {
+
+    /**
+     * The abbreviation
+     */
+    abbreviation: string;
+
+    /**
+     * The description
+     */
+    description: string;
 
     /**
      * The endDate
      */
     endDate: string;
 
+    /**
+     * The foreseenJustificationDate
+     */
+    foreseenJustificationDate: string;
+
     /** 
-     * The id. 
+     * The id
      */
     id: string;
 
     /**
-     * The name
+     * The keyword
      */
-    name: string;
+    keyword: string;
 
     /**
-     * The objective
+     * The modality
      */
-    objective: string;
+    modality: string;
 
     /**
-     * The startDate
+     * The needsEthicalValidation
+     */
+    needsEthicalValidation: string;
+
+    /** 
+     * The startDate 
      */
     startDate: string;
+
+    /** 
+     * The status 
+     */
+    status: string;
+
+    /** 
+     * The title 
+     */
+    title: string;
 }

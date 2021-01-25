@@ -1,22 +1,59 @@
+/**
+ *
+ *
+ * @export
+ * @class Patent
+ */
 export class Patent {
 
-    /**
-     * The fin date
-     */
-    date: string;
 
     /**
-     * The fin expirationDate
+     * The dateIssued
      */
-    expirationDate: string;
+    dateIssued: string;
 
     /**
-     * The fin id
+     * The doi
+     */
+    doi: string;
+
+    /**
+     * The endDate
+     */
+    endDate: string;
+
+    /**
+     * The endPage
+     */
+    endPage: string;
+
+    /**
+     * The id
      */
     id: string;
 
     /**
-     * The fin topic
+     * The keyword
      */
-    topic: string;
+    keyword: string;
+
+    /**
+     * The mode
+     */
+    mode: string;
+
+    /**
+     * The startDate
+     */
+    startDate: string;
+
+    /**
+     * The startPage
+     */
+    startPage: string;
+
+    /**
+     * The title
+     */
+    title: string;
 }

@@ -1,4 +1,10 @@
-export class MasterThesis {
+/**
+ *
+ *
+ * @export
+ * @class DoctoralThesis
+ */
+export class DoctoralThesis {
 
     /**
      * The abbreviation
@@ -26,11 +32,6 @@ export class MasterThesis {
     id: string;
 
     /**
-     * The name
-     */
-    name: string;
-
-    /**
      * The placeOfPublication
      */
     placeOfPublication: string;
@@ -46,7 +47,7 @@ export class MasterThesis {
     startPage: string;
 
     /**
-     * The university
+     * The title
      */
-    university: string;
+    title: string;
 }

@@ -2,9 +2,9 @@
  *
  *
  * @export
- * @class Funding
+ * @class Dossier
  */
-export class Funding {
+export class Dossier {
 
     /**
      * The date
@@ -12,17 +12,22 @@ export class Funding {
     date: string;
 
     /**
+     * The description
+     */
+    description: string;
+
+    /**
      * The id
      */
     id: string;
 
     /**
-     * The publicFunding
+     * The ocicnum
      */
-    publicFunding: string;
+    ocicnum: string;
 
     /**
-     * The title
+     * The date
      */
     title: string;
 }
