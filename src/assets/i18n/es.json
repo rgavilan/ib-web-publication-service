@@ -299,5 +299,16 @@
     "resume": "Resumen",
     "other-authors": "Otros authores",
     "name":"Nombre"
+  },
+  "event": {
+    "id": "Identificador",
+    "area": "Área",
+    "location": "Ubicación",
+    "date-from":"Fecha de inicio",
+    "date-to": "Fecha de fin",
+    "participant": "Participante",
+    "keyword":"Palabra clave",
+    "asociated-publication": "Publicación académica asociada",
+    "description": "Descripción"
   }
 }

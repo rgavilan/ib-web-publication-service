@@ -290,5 +290,16 @@
     "resume": "Resume",
     "other-authors": "Other authors",
     "name":"Name"
+  },
+  "event": {
+    "id": "Id",
+    "area": "Area",
+    "location": "Location",
+    "date-from":"Date from",
+    "date-to": "Date to",
+    "participant": "Participant",
+    "keyword":"Keyword",
+    "asociated-publication": "Asociated publication",
+    "description": "Description"
   }
 }

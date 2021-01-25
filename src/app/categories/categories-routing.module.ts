@@ -10,6 +10,7 @@ import { ScientistComponent } from './scientist/scientist.component';
 import { AreasDetailComponent } from './areas/areas-detail/areas-detail.component';
 import { ScientificProductionComponent } from './scientific-production/scientific-production.component';
 import { DocumentDetailComponent } from './document-detail/document-detail.component';
+import { EventDetailComponent } from './event-detail/event-detail.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'document/:id',
     component: DocumentDetailComponent
+  },
+  {
+    path: 'event/:id',
+    component: EventDetailComponent
   }
 ];
 

@@ -20,6 +20,7 @@ export class EventsService extends AbstractService {
     readonly DUMMY_DATA: SparqlResults = {
         head: {
             vars: [
+                'id',
                 'title',
                 'type',
                 'rol',
@@ -31,6 +32,10 @@ export class EventsService extends AbstractService {
             bindings: [
                 // 1
                 {
+                    id: {
+                        type: 'literal',
+                        value: '111'
+                    },
                     title: {
                         type: 'literal',
                         value: 'IV Congreso sobre semántica web de España'
@@ -54,6 +59,10 @@ export class EventsService extends AbstractService {
                 },
                 // 2
                 {
+                    id: {
+                        type: 'literal',
+                        value: '222'
+                    },
                     title: {
                         type: 'literal',
                         value: 'XII Congreso sobre dirección de proyectos PMP'
@@ -76,6 +85,10 @@ export class EventsService extends AbstractService {
                     }
                 },
                 {
+                    id: {
+                        type: 'literal',
+                        value: '2323'
+                    },
                     title: {
                         type: 'literal',
                         value: 'I Taller sobre semántica Web Universidad de Oviedo'
