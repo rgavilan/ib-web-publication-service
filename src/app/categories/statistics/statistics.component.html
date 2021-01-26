@@ -1,1 +1,11 @@
-<p>statistics works!</p>
+<legend class="legend margin-top">{{'statistics.title' | translate}}</legend>
+<legend class="legend margin-top mt-40">{{'statistics.legend-top' | translate}}</legend>
+<div style="min-width: 600px; width:100%; height:450px" echarts [options]="echartOptions2" class="demo-chart">
+</div>
+<legend class="legend margin-top mt-40">{{'statistics.legend-top-patents' | translate}}</legend>
+<div style="min-width: 600px; width:100%; height:450px" echarts [options]="echartOptions2" class="demo-chart">
+
+</div>
+<legend class="legend margin-top mt-40">{{'statistics.legend-top-genre' | translate}}</legend>
+<legend class="legend margin-top mt-40">{{'statistics.legend-top-location' | translate}}</legend>
+<div style="height: 300px" leaflet [leafletOptions]="options"></div>

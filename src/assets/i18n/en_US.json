@@ -301,5 +301,12 @@
     "keyword":"Keyword",
     "asociated-publication": "Asociated publication",
     "description": "Description"
+  },
+  "statistics": {
+    "title": "Statistics",
+    "legend-top": "Top organizations with the most content by type of publication",
+    "legend-top-patents": "Top organizations with the most patents",
+    "legend-top-genre": "Top activities by gender",
+    "legend-top-location": "Location of activities by type in the last month"
   }
 }
