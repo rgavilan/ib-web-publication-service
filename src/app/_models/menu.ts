@@ -70,8 +70,8 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     title: 'menu.stats',
     icon: 'oi-bar-chart',
-    url: '/main/home',
-    disabled: true
+    url: '/main/categories/statistics',
+    disabled: false
   },
   {
     title: 'menu.sparql',

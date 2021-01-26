@@ -89,8 +89,8 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       title: 'home.stats',
       iconName: 'oi-bar-chart',
       iconCircle: false,
-      url: null,
-      disabled: true
+      url: '../categories/statistics',
+      disabled: false
     }
   ]
 },

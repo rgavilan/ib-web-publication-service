@@ -11,6 +11,7 @@ import { AreasDetailComponent } from './areas/areas-detail/areas-detail.componen
 import { ScientificProductionComponent } from './scientific-production/scientific-production.component';
 import { DocumentDetailComponent } from './document-detail/document-detail.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path: 'event/:id',
     component: EventDetailComponent
+  },
+  {
+    path: 'statistics',
+    component: StatisticsComponent
   }
 ];
 
