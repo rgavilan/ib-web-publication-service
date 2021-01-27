@@ -1,34 +1,34 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col">
-      <tabset #resultsTab>
-        <tab disabled="true">
+      <tabset role="tablist" #resultsTab>
+        <tab role="tab" aria-selected="true" disabled="true">
           <ng-template tabHeading>
             <span class="oi oi-grid-three-up"></span>
             {{ "sparql.results.table" | translate }}
           </ng-template>
-          <ng-container *ngIf="!!data">
+          <ng-container role="tabpanel" *ngIf="!!data">
             <app-table-results [data]="data"></app-table-results>
           </ng-container>
-          <ng-container *ngIf="!!errorMessage">
+          <ng-container role="tabpanel" *ngIf="!!errorMessage">
             <app-error-results [errorMessage]="errorMessage"></app-error-results>
           </ng-container>
         </tab>
-        <tab disabled="true">
+        <tab role="tab" aria-selected="false" disabled="true">
           <ng-template tabHeading>
             <span class="oi oi-list"></span>
             {{ "sparql.results.response" | translate }}
           </ng-template>
           <app-json-results [data]="data"></app-json-results>
         </tab>
-        <tab disabled="true">
+        <tab role="tab" aria-selected="false" disabled="true">
           <ng-template tabHeading>
             <span class="oi oi-graph"></span>
             {{ "sparql.results.chart" | translate }}
           </ng-template>
           Gráfico
         </tab>
-        <tab disabled="true">
+        <tab role="tab" aria-selected="false" disabled="true">
           <ng-template tabHeading>
             <span class="oi oi-map"></span>
             {{ "sparql.results.map" | translate }}

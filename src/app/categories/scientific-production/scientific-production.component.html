@@ -21,39 +21,39 @@
 </div>
 <div class="row">
     <div class="col-12 mt-40">
-        <tabset #resultsTab [justified]="true">
-            <tab>
+        <tabset role="tablist" #resultsTab [justified]="true">
+            <tab role="tab" aria-selected="true">
                 <ng-template tabHeading>
                     {{'scientific-production.scientific-publications' | translate}}
                 </ng-template>
-                <ng-container>
+                <ng-container role="tabpanel">
                     <app-documents [isTreeVisible]="false" [filterDocumentType]="['Libro', 'Articulo']"></app-documents>
                 </ng-container>
             </tab>
-            <tab>
+            <tab role="tab" aria-selected="false">
                 <ng-template tabHeading>
                     {{'scientific-production.academic-publications' | translate}}
                 </ng-template>
-                <ng-container>
+                <ng-container role="tabpanel">
                     <app-documents [selectDocumentType]="['Tesis de grado', 'Tesis de Master', 'Tesis de doctorado']"
                         [isTreeVisible]="false" [filterDocumentType]="['Libro', 'Articulo']"></app-documents>
                 </ng-container>
             </tab>
-            <tab>
+            <tab role="tab" aria-selected="false">
                 <ng-template tabHeading>
                     {{'scientific-production.other-publications' | translate}}
                 </ng-template>
-                <ng-container>
+                <ng-container role="tabpanel">
                     <app-documents
                         [selectDocumentType]="['Informes', 'Cartel de conferencia', 'Catalogo', 'Extracto', 'Documento audiovisual']"
                         [isTreeVisible]="false" [filterDocumentType]="['Libro', 'Articulo']"></app-documents>
                 </ng-container>
             </tab>
-            <tab>
+            <tab role="tab" aria-selected="false">
                 <ng-template tabHeading>
                     {{'scientific-production.events' | translate}}
                 </ng-template>
-                <ng-container>
+                <ng-container role="tabpanel">
                     <app-events></app-events>
                 </ng-container>
             </tab>

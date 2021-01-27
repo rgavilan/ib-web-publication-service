@@ -14,12 +14,12 @@
     </div>
     <div class="row">
         <div class="col-12 mt-40">
-            <tabset #resultsTab [justified]="true">
-                <tab>
+            <tabset role="tablist" #resultsTab [justified]="true">
+                <tab role="tab" aria-selected="true">
                     <ng-template tabHeading>
                         {{'scientist.acction-inves' | translate}}
                     </ng-template>
-                    <ng-container>
+                    <ng-container role="tabpanel">
                         <legend class="mt-40">{{'scientist.directed-jobs' | translate}}</legend>
                         <hr>
                         <app-directed-jobs></app-directed-jobs>
@@ -31,31 +31,31 @@
                         <app-documents [filterDocumentType]="['Libro', 'Articulo']"></app-documents>
                     </ng-container>
                 </tab>
-                <tab>
+                <tab role="tab" aria-selected="false">
                     <ng-template tabHeading>
                         {{'scientist.events' | translate}}
                     </ng-template>
-                    <ng-container>
+                    <ng-container role="tabpanel">
                         <legend class="mt-40">{{'scientist.congress-events' | translate}}</legend>
                         <hr>
                         <app-events></app-events>
                     </ng-container>
                 </tab>
-                <tab>
+                <tab role="tab" aria-selected="false">
                     <ng-template tabHeading>
                         {{'scientist.business-activity' | translate}}
                     </ng-template>
-                    <ng-container>
+                    <ng-container role="tabpanel">
                         <legend class="mt-40">{{'scientist.startups' | translate}}</legend>
                         <hr>
                         <app-startup></app-startup>
                     </ng-container>
                 </tab>
-                <tab>
+                <tab role="tab" aria-selected="false">
                     <ng-template tabHeading>
                         {{'scientist.trajectory' | translate}}
                     </ng-template>
-                    <ng-container>
+                    <ng-container role="tabpanel">
                         <legend class="mt-40">{{'scientist.scientific-production-indicators' | translate}}</legend>
                         <hr>
                         <p><strong>{{'scientist.times-quoted' | translate}}: </strong>71</p>
