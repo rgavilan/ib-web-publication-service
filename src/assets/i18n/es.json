@@ -260,13 +260,16 @@
   },
   "patent": {
     "area":"Área",
-    "table-header": {
-      "name": "Nombre",
-      "ini": "Fecha inicio",
-      "fin": "Fecha fin",
-      "id":"ID",
-      "tipo": "Tipo"
-    }
+    "dateIssued": "Fecha de publicación",
+    "doi": "DOI",
+    "endDate": "Fecha fin",
+    "endPage": "Página fin",
+    "id":"ID",
+    "keyword":"Palabra clave",
+    "mode": "Modo",
+    "startDate": "Fecha inicio",
+    "startPage":"Página inicio",
+    "title": "Titulo"
   },
   "directed-jobs": {
     "table-header": {

@@ -251,13 +251,16 @@
   },
   "patent": {
     "area": "Area",
-    "table-header": {
-      "name": "Name",
-      "ini": "Start date",
-      "fin": "Finish date",
-      "id": "ID",
-      "tipo": "Type"
-    }
+    "dateIssued": "Date issued",
+    "doi": "DOI",
+    "endDate": "End date",
+    "endPage": "End page",
+    "id":"ID",
+    "keyword":"Keyword",
+    "mode": "Mode",
+    "startDate": "Start date",
+    "startPage":"Start page",
+    "title": "Title"
   },
   "directed-jobs": {
     "table-header": {

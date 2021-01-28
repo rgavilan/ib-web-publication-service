@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { AbstractService } from '../_helpers/abstract';
 import { FindRequest, Page } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
-import { SparqlResults } from '../_models/sparql';
+import { Patent } from '../_models/patent';
 
 /**
  *  Service for patent production
@@ -36,7 +36,7 @@ export class PatentService extends AbstractService {
      * @return {*}  {Page<SparqlResults>}
      * @memberof ProjectService
      */
-    find(findRequest: FindRequest): Observable<Page<SparqlResults>> {
+    find(findRequest: FindRequest): Observable<Page<Patent>> {
         // Filter params
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'tipo', findRequest.filter.type);
