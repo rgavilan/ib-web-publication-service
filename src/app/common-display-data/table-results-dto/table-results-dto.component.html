@@ -3,59 +3,30 @@
     <div class="col">
       <table class="table table-bordered" aria-label="Data displayed from Sparql" *ngIf="!!dataComplete">
         <thead>
-          <tr *ngIf="!headerData">
-            <th class="sortable" (click)="sort(header)" *ngFor="let header of dataComplete.head.vars" id="{{header}}">
-              {{ header }}<em class="float-right" [ngClass]="getSortIcon(header)"></em>
-            </th>
-          </tr>
-          <tr *ngIf="!!headerData">
-            <th class="sortable" (click)="sort(header.columnName)" *ngFor="let header of headerData"
-              id="{{header.columnName}}">
-              {{ header.textToTranslate | translate }}<em class="float-right"
-                [ngClass]="getSortIcon(header.columnName)"></em>
+          <tr>
+            <th class="sortable" (click)="sort(header)" *ngFor="let header of hedearDTO" id="{{header}}">
+              {{ dtoTypeTranslate + '.' + header | translate }}<em class="float-right"
+                [ngClass]="getSortIcon(header)"></em>
             </th>
           </tr>
         </thead>
         <tbody>
           <ng-container *ngFor="let item of dataCompleteToShow; index as i">
-            <tr [routerLink]="[routerNameLink, item[routerField].value]" class="cursor"
+            <tr [routerLink]="[routerNameLink, item[routerField]]" class="cursor"
               *ngIf="!!routerField && !!item[routerField]" [ngClass]="{ 'table-secondary': i % 2 == 1 }">
-              <ng-container *ngIf="!headerData">
-                <td *ngFor="let header of dataComplete.head.vars">
-                  <a href="{{ item[header].value }}" *ngIf="item[header].type == 'uri'">{{ item[header].value }}</a>
-                  <ng-container *ngIf="item[header]?.type != 'uri'">{{
-                    item[header].value
-                    }}</ng-container>
-                </td>
-              </ng-container>
-              <ng-container *ngIf="!!headerData">
-                <td *ngFor="let header of headerData">
-
-                  <a href="{{ item[header.columnName].value }}" *ngIf="item[header.columnName]?.type == 'uri'">{{
-                    item[header.columnName].value }}</a>
-                  <ng-container *ngIf="item[header.columnName]?.type != 'uri'">{{
-                    item[header.columnName].value
-                    }}</ng-container>
+              <ng-container>
+                <td *ngFor="let header of hedearDTO">
+                  <!--  <a href="{{ item[header]}}" *ngIf="item[header].type == 'uri'">{{ item[header]}}</a>-->
+                  <ng-container>{{ item[header] }}</ng-container>
                 </td>
               </ng-container>
             </tr>
 
             <tr *ngIf="!routerField || !item[routerField]" [ngClass]="{ 'table-secondary': i % 2 == 1 }">
-              <ng-container *ngIf="!headerData">
-                <td *ngFor="let header of dataComplete.head.vars">
-                  <a href="{{ item[header].value }}" *ngIf="item[header].type == 'uri'">{{ item[header].value }}</a>
-                  <ng-container *ngIf="item[header]?.type != 'uri'">{{
-                    item[header].value
-                    }}</ng-container>
-                </td>
-              </ng-container>
-              <ng-container *ngIf="!!headerData">
-                <td *ngFor="let header of headerData">
-                  <a href="{{ item[header.columnName].value }}" *ngIf="item[header.columnName].type == 'uri'">{{
-                    item[header.columnName].value }}</a>
-                  <ng-container *ngIf="item[header.columnName]?.type != 'uri'">{{
-                    item[header.columnName].value
-                    }}</ng-container>
+              <ng-container>
+                <td *ngFor="let header of hedearDTO">
+                  <!--<a href="{{ item[header]}}" >{{ item[header]}}</a>-->
+                  <ng-container>{{ item[header] }}</ng-container>
                 </td>
               </ng-container>
             </tr>

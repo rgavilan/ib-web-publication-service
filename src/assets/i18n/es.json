@@ -225,7 +225,14 @@
     "document": "Documentos",
     "date-fin": "Fecha Fin",
     "date-ini": "Fecha Inicio",
-    "type":"Tipo"
+    "types":"Tipo",
+    "title": "Titulo",
+    "id":"ID",
+    "startPage": "Página inicio",
+    "endPage": "Página fin",
+    "doi":"DOI",
+    "publishedIn": "Publicado en",
+    "date": "Fecha"
   },
   "participant": {
     "title": "Participantes",

@@ -10,14 +10,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
-import {
-  Direction,
-  FindRequest,
-  Order,
-  Page,
-  PaginatedSearchComponent,
-} from 'src/app/_helpers/search';
-import { SparqlResults } from 'src/app/_models/sparql';
+import { Direction, FindRequest, Order, Page, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 
 
@@ -48,24 +41,14 @@ export class TableResultsDtoComponent
    * @memberof TableResultsDtoComponent
    */
   @Input()
-  set data(val: SparqlResults) {
+  set data(val: any) {
     // this.dataComplete = Object.assign({}, val);
     this.dataComplete = JSON.parse(JSON.stringify(val));
-    // if (val != null) {
-    // this.dataComplete.results.bindings = this.dataComplete.results.bindings
-    //   .concat(this.dataComplete.results.bindings)
-    //   .concat(this.dataComplete.results.bindings);
-    // this.showPage(1);
-    // this.find();
-    // }
   }
 
-  get data(): SparqlResults {
+  get data(): any {
     return this.dataComplete;
   }
-
-  @Input()
-  headerData: TableResultsHeaderItem[];
 
   /**
    * Data needed to set pagination if we have server pagination
@@ -117,13 +100,27 @@ export class TableResultsDtoComponent
   /*
    * Initial data
    */
-  dataComplete: SparqlResults; // private property dataComplete
+  dataComplete: any; // private property dataComplete
   /*
    * Data that is shown in the actual page
    */
   dataCompleteToShow;
 
   numPages = 1;
+  /**
+   *
+   *
+   * @type {Array<string>}
+   * @memberof TableResultsDtoComponent
+   */
+  hedearDTO: Array<string> = [];
+  /**
+   *
+   *
+   * @type {Array<string>}
+   * @memberof TableResultsDtoComponent
+   */
+  @Input() dtoTypeTranslate = '';
 
   constructor(
     router: Router,
@@ -135,8 +132,12 @@ export class TableResultsDtoComponent
 
 
   ngOnChanges(changes: SimpleChanges): void {
+    // obtengo los headers
+    if (this.data.length > 0) {
+      this.hedearDTO = Object.keys(this.data[0]);
+    }
     if (!!this.pageInfo) {
-      this.dataCompleteToShow = this.dataComplete.results.bindings;
+      this.dataCompleteToShow = this.dataComplete;
     }
     this.find();
   }

@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { AbstractService } from '../_helpers/abstract';
 import { FindRequest, Page } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
+import { Document } from '../_models/document';
 import { SparqlResults } from '../_models/sparql';
 
 /**
@@ -35,7 +36,7 @@ export class DocumentService extends AbstractService {
      * @return {*}  {Observable<Page<SparqlResults>>}
      * @memberof DocumentService
      */
-    find(findRequest: FindRequest): Observable<Page<SparqlResults>> {
+    find(findRequest: FindRequest): Observable<Page<Document>> {
         // Filter params
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'types', findRequest.filter.types);

@@ -216,7 +216,14 @@
     "document": "Documents",
     "date-fin": "End Date",
     "date-ini": "Start Date",
-    "type": "Type"
+    "types":"Type",
+    "title": "Title",
+    "id":"ID",
+    "startPage": "Start page",
+    "endPage": "End page",
+    "doi":"DOI",
+    "publishedIn": "Published in",
+    "date": "Date"
   },
   "participant": {
     "title": "Participants",

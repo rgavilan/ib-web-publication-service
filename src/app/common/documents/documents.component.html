@@ -66,8 +66,8 @@
         </div>
     </div>
 </form>
-<app-table-results *ngIf="loaded" [data]="allDocumentFiltered.content[0]" [routerNameLink]="'../document/'"
-    [headerData]="headerData" [routerField]="'id'" [pageInfo]="allDocumentFiltered"
+<app-table-results-dto [dtoTypeTranslate]="'documents'" *ngIf="loaded" [data]="allDocumentFiltered.content"
+    [routerNameLink]="'../document/'" [routerField]="'id'" [pageInfo]="allDocumentFiltered"
     (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
     (sortChanged)="allprojectsFilteredSortChanged($event)">
-</app-table-results>
+</app-table-results-dto>
