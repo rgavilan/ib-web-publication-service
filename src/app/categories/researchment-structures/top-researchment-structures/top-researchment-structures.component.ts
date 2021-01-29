@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
+import { University } from 'src/app/_models/university';
 import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
 
 /**
@@ -17,7 +18,7 @@ import { ResearchmentStructuresService } from 'src/app/_services/researchment.st
 export class TopResearchmentStructuresComponent implements OnInit {
 
 
-  topResearchmentStructuresFiltered: Page<SparqlResults>;
+  topResearchmentStructuresFiltered: Page<University>;
 
   filters: Map<string, string> = new Map();
   /**
@@ -38,9 +39,11 @@ export class TopResearchmentStructuresComponent implements OnInit {
     pageRequest.page = 1;
     pageRequest.size = 10;
 
-    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters(
-      null, pageRequest
-    );
+    this.findRequest.pageRequest = pageRequest;
+
+    this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
+      this.topResearchmentStructuresFiltered = data;
+    });
   }
 
   /**
@@ -68,10 +71,11 @@ export class TopResearchmentStructuresComponent implements OnInit {
     pageRequest.property = this.topResearchmentStructuresFiltered.sort;
     pageRequest.direction = this.topResearchmentStructuresFiltered.direction;
 
-    // Call service to load data filtered
-    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters(
-      this.filters, pageRequest
-    );
+    this.findRequest.pageRequest = pageRequest;
+
+    this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
+      this.topResearchmentStructuresFiltered = data;
+    });
 
   }
 
@@ -100,11 +104,11 @@ export class TopResearchmentStructuresComponent implements OnInit {
     pageRequest.size = this.topResearchmentStructuresFiltered.size;
     pageRequest.property = this.topResearchmentStructuresFiltered.sort;
     pageRequest.direction = this.topResearchmentStructuresFiltered.direction;
+    this.findRequest.pageRequest = pageRequest;
 
-    // Call service to load data filtered
-    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters(
-      this.filters, pageRequest
-    );
+    this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
+      this.topResearchmentStructuresFiltered = data;
+    });
   }
 
   /**
@@ -122,10 +126,11 @@ export class TopResearchmentStructuresComponent implements OnInit {
     pageRequest.direction = this.topResearchmentStructuresFiltered.direction;
 
     //  const map: Map<string, string> = new Map(Object.entries(this.findRequest.filter));
+    this.findRequest.pageRequest = pageRequest;
 
-    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters(
-      this.filters, pageRequest
-    );
+    this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
+      this.topResearchmentStructuresFiltered = data;
+    });
   }
   /**
    *
@@ -140,10 +145,11 @@ export class TopResearchmentStructuresComponent implements OnInit {
     pageRequest.size = i;
     pageRequest.property = this.topResearchmentStructuresFiltered.sort;
     pageRequest.direction = this.topResearchmentStructuresFiltered.direction;
+    this.findRequest.pageRequest = pageRequest;
 
-    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters(
-      this.filters, pageRequest
-    );
+    this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
+      this.topResearchmentStructuresFiltered = data;
+    });
   }
 
   /**
@@ -160,9 +166,11 @@ export class TopResearchmentStructuresComponent implements OnInit {
     newPageRequest.property = pageRequest.property;
     newPageRequest.direction = pageRequest.direction;
 
-    this.topResearchmentStructuresFiltered = this.researchmentStructureService.findTopResearchmentStructuresByFilters(
-      this.filters, pageRequest
-    );
+    this.findRequest.pageRequest = pageRequest;
+
+    this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
+      this.topResearchmentStructuresFiltered = data;
+    });
   }
 
 }

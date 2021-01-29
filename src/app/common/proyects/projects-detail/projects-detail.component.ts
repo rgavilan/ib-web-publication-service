@@ -48,7 +48,7 @@ export class ProjectsDetailComponent implements OnInit {
         this.findRequest.filter.id = this.id;
         this.projectService.find(this.findRequest).subscribe(data => {
           if (data.content[0]) {
-            this.proyect = data.content[0].results.bindings;
+            this.proyect = data.content[0];
             this.loaded = true;
           }
 

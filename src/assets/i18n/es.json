@@ -136,7 +136,8 @@
     "prod-scientist": "Producción cientifica",
     "projects": "Proyectos",
     "patents": "Patentes",
-    "area": "Área"
+    "area": "Área",
+    "id":"ID"
   },
   "scientist": {
     "title": "Personal investigador",
@@ -200,14 +201,17 @@
     "main-researcher": "Nombre(s) del investigador (s) principal",
     "competitive":"Competitivo",
     "level": "Nivel",
-    "table-header": {
-      "end": "Fecha fin",
-      "fund": "Fund",
-      "id": "ID",
-      "name":"Nombre",
-      "start": "Fecha inicio",
-      "tipo": "Tipo"
-      }
+    "id":"ID",
+    "title": "Titulo",
+    "abbreviation": "Abreviación",
+    "description": "Descripción",
+    "endDate":"Fecha fin",
+    "foreseenJustificationDate": "Fecha justificación",
+    "keyword":"Palabra clave",
+    "modality": "Modalidad",
+    "needsEthicalValidation": "Validación etica",
+    "startDate":"Fecha inicio",
+    "status": "Estado"
   },
   "investigation-actions": {
     "title": "Acciones de investigación",

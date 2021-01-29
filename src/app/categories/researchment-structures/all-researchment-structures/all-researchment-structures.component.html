@@ -68,8 +68,9 @@
         </div>
     </form>
 </fieldset>
-<app-table-results [data]="allResearchmentStructuresFiltered.content[0]" [pageInfo]="allResearchmentStructuresFiltered"
+<app-table-results-dto *ngIf="loaded" [dtoTypeTranslate]="'researchmentStructure'"
+    [data]="allResearchmentStructuresFiltered.content" [pageInfo]="allResearchmentStructuresFiltered"
     [routerField]="'name'" (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)"
     (sizeChanged)="allResearchmentStructuresFilteredSizeChanged($event)"
     (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
-</app-table-results>
+</app-table-results-dto>

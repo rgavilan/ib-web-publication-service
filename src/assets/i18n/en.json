@@ -127,7 +127,8 @@
     "prod-scientist": "Scientific production",
     "projects": "Projects",
     "patents": "Patentes",
-    "area": "Area"
+    "area": "Area",
+    "id":"ID"
   },
   "scientist": {
     "title": "Research staff",
@@ -191,14 +192,17 @@
     "main-researcher": "name(s) main  researcher(s)",
     "competitive": "Competitive",
     "level": "Level",
-    "table-header": {
-      "end": "End",
-      "fund": "Fund",
-      "id": "ID",
-      "name": "Name",
-      "start": "Start",
-      "tipo": "Type"
-    }
+    "id":"ID",
+    "title": "Title",
+    "abbreviation": "Abbreviation",
+    "description": "Description",
+    "endDate":"End Date",
+    "foreseenJustificationDate": "Foreseen Justification Date",
+    "keyword":"Keyword",
+    "modality": "Modality",
+    "needsEthicalValidation": "Needs Ethical Validation",
+    "startDate":"Start date",
+    "status": "status"
   },
   "investigation-actions": {
     "title": "Investigation actions",
