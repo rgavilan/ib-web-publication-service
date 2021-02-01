@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { Project } from 'src/app/_models/project';
 import { FindRequest, Page } from '../../_helpers/search';
-import { SparqlResults } from '../../_models/sparql';
 import { ProjectService } from '../project.service';
 
 
@@ -13,103 +13,71 @@ import { ProjectService } from '../project.service';
     providedIn: 'root',
 })
 export class MockProjectService extends ProjectService {
-    // mock data
-    readonly DUMMY_DATA: SparqlResults = {
-        head: {
-            vars: [
-                'name',
-                'end',
-                'fund',
-                'start',
-                'tipo',
-                'id'
-            ]
-        },
-        results: {
-            bindings: [
-                // 1
-                {
-                    name: {
-                        type: 'literal',
-                        value: 'HERCULES'
-                    },
-                    end: {
-                        type: 'literal',
-                        value: ''
-                    },
-                    fund: {
-                        type: 'literal',
-                        value: '-'
-                    },
-                    start: {
-                        type: 'literal',
-                        value: ''
-                    },
-                    tipo: {
-                        type: 'literal',
-                        value: 'GRUPO'
-                    },
-                    id: {
-                        type: 'literal',
-                        value: 'H2020'
-                    }
-                },
-                // 2
-                {
-                    name: {
-                        type: 'literal',
-                        value: 'HERCULES 1'
-                    },
-                    end: {
-                        type: 'literal',
-                        value: ' - '
-                    },
-                    fund: {
-                        type: 'literal',
-                        value: '-'
-                    },
-                    start: {
-                        type: 'literal',
-                        value: ''
-                    },
-                    tipo: {
-                        type: 'literal',
-                        value: 'GRUPO'
-                    },
-                    id: {
-                        type: 'literal',
-                        value: 'H2021'
-                    }
-                },
-                {
-                    name: {
-                        type: 'literal',
-                        value: 'HERCULES 3'
-                    },
-                    end: {
-                        type: 'literal',
-                        value: ''
-                    },
-                    fund: {
-                        type: 'literal',
-                        value: '-'
-                    },
-                    start: {
-                        type: 'literal',
-                        value: ''
-                    },
-                    tipo: {
-                        type: 'literal',
-                        value: 'CON'
-                    },
-                    id: {
-                        type: 'literal',
-                        value: 'H2022'
-                    }
-                }
-            ]
-        }
-    };
+    DATARESULT: any = [{
+        id: '2826',
+        title: 'EFECTOS DE LA BRIMONIDINA Y LA MEMANTINA EN LA ISQUEMIA RETINIANA',
+        abbreviation: '',
+        description: '',
+        endDate: '2002-12-31',
+        foreseenJustificationDate: '',
+        keyword: '',
+        modality: 'CON',
+        needsEthicalValidation: '',
+        startDate: '1999-05-11',
+        status: ''
+    },
+    {
+        id: '3537',
+        title: 'EVALUACION E INTERVENCION PSICOLOGICA INFANTIL Y DE ADULTOS',
+        abbreviation: '',
+        description: '',
+        endDate: '2012-12-31',
+        foreseenJustificationDate: '',
+        keyword: '',
+        modality: 'CON',
+        needsEthicalValidation: '',
+        startDate: '2000-05-19',
+        status: ''
+    },
+    {
+        id: '5059',
+        title: 'SEGURIDAD MICROBIOLÓGICA DE ALIMENTOS, EVALUACIÓN NUTRICIONAL Y ANÁLISIS SENSORIAL',
+        abbreviation: '',
+        description: '',
+        endDate: '2500-01-01',
+        foreseenJustificationDate: '',
+        keyword: '',
+        modality: 'GACTIVIDAD',
+        needsEthicalValidation: '',
+        startDate: '2002-04-01',
+        status: ''
+    },
+    {
+        id: '5144',
+        title: 'INFORMES PERICIALES',
+        abbreviation: '',
+        description: '',
+        endDate: '2016-12-31',
+        foreseenJustificationDate: '',
+        keyword: '',
+        modality: 'GACTIVIDAD',
+        needsEthicalValidation: '',
+        startDate: '2002-06-27',
+        status: ''
+    },
+    {
+        id: '5396',
+        title: 'DISPOSITIVO Y MÉTODO PARA INTRODUCIR YO RECOGER FLUIDOS EN EL INTERIOR DEL ÚTERO DE UN ANIMAL',
+        abbreviation: '',
+        description: '',
+        endDate: '2020-05-06',
+        foreseenJustificationDate: '',
+        keyword: '',
+        modality: 'PATENTES',
+        needsEthicalValidation: '',
+        startDate: '2002-05-06',
+        status: ''
+    }];
 
     /**
      *
@@ -118,18 +86,18 @@ export class MockProjectService extends ProjectService {
      * @return {*}  {Observable<Page<SparqlResults>>}
      * @memberof MockProjectService
      */
-    find(findRequest: FindRequest): Observable<Page<SparqlResults>> {
+    find(findRequest: FindRequest): Observable<Page<Project>> {
         // Filter params
-        const page: Page<SparqlResults> = new Page<SparqlResults>();
-        let results: SparqlResults = new SparqlResults();
-        results = this.DUMMY_DATA;
+        const page: Page<Project> = new Page<Project>();
+        let results: Project[];
+        results = this.DATARESULT;
         page.number = 0;
         page.numberOfElements = 10;
         page.size = 10;
         page.totalElements = 10;
         // TODO sort
 
-        page.content = [results];
+        page.content = results;
         return of(page);
     }
 

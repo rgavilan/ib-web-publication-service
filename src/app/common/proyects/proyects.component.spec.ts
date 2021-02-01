@@ -33,8 +33,8 @@ describe('ProyectsComponent', () => {
     spyOn(projectService, 'find').and.callThrough();
     spyOn(component, 'ngOnInit').and.callThrough();
     fixture.detectChanges();
-    expect(component.allProjectFiltered.content[0].head.vars.length).toBe(6);
-    expect(component.allProjectFiltered.content[0].results.bindings.length).not.toBe(0);
+    expect(component.allProjectFiltered.content.length).toBe(5);
+    expect(component.allProjectFiltered.content.length).not.toBe(0);
   });
 
   describe('on component Init', () => {

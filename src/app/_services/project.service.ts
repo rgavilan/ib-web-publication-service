@@ -6,7 +6,6 @@ import { AbstractService } from '../_helpers/abstract';
 import { FindRequest, Page } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
 import { Project } from '../_models/project';
-import { SparqlResults } from '../_models/sparql';
 
 /**
  *  Service for scientific production

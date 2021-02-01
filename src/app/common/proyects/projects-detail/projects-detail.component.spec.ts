@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { Page } from 'src/app/_helpers/search';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
+import { Project } from 'src/app/_models/project';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { ParticipantService } from 'src/app/_services/participant.service';
 import { ProjectService } from 'src/app/_services/project.service';
@@ -15,51 +16,72 @@ describe('ProjectsDetailComponent', () => {
   let component: ProjectsDetailComponent;
   let fixture: ComponentFixture<ProjectsDetailComponent>;
   let projectService: MockProjectService;
-  const page: Page<SparqlResults> = new Page();
-  const DATARESULT: SparqlResults = {
-    head: {
-      vars: [
-        'anyo',
-        'description',
-        'id'
-      ]
-    },
-    results: {
-      bindings: [
-        // 1
-        {
-          description: {
-            type: 'literal',
-            value: 'description 1'
-          },
-          id: {
-            type: 'literal',
-            value: '13'
-          },
-          anyo: {
-            type: 'literal',
-            value: '2011'
-          }
-        },
-        // 2
-        {
-          description: {
-            type: 'literal',
-            value: 'description 2'
-          },
-          id: {
-            type: 'literal',
-            value: '1435'
-          },
-          anyo: {
-            type: 'literal',
-            value: '2025'
-          }
-        }
-
-      ]
-    }
-  };
+  const page: Page<Project> = new Page();
+  const DATARESULT: any = [{
+    id: '2826',
+    title: 'EFECTOS DE LA BRIMONIDINA Y LA MEMANTINA EN LA ISQUEMIA RETINIANA',
+    abbreviation: '',
+    description: '',
+    endDate: '2002-12-31',
+    foreseenJustificationDate: '',
+    keyword: '',
+    modality: 'CON',
+    needsEthicalValidation: '',
+    startDate: '1999-05-11',
+    status: ''
+  },
+  {
+    id: '3537',
+    title: 'EVALUACION E INTERVENCION PSICOLOGICA INFANTIL Y DE ADULTOS',
+    abbreviation: '',
+    description: '',
+    endDate: '2012-12-31',
+    foreseenJustificationDate: '',
+    keyword: '',
+    modality: 'CON',
+    needsEthicalValidation: '',
+    startDate: '2000-05-19',
+    status: ''
+  },
+  {
+    id: '5059',
+    title: 'SEGURIDAD MICROBIOLÓGICA DE ALIMENTOS, EVALUACIÓN NUTRICIONAL Y ANÁLISIS SENSORIAL',
+    abbreviation: '',
+    description: '',
+    endDate: '2500-01-01',
+    foreseenJustificationDate: '',
+    keyword: '',
+    modality: 'GACTIVIDAD',
+    needsEthicalValidation: '',
+    startDate: '2002-04-01',
+    status: ''
+  },
+  {
+    id: '5144',
+    title: 'INFORMES PERICIALES',
+    abbreviation: '',
+    description: '',
+    endDate: '2016-12-31',
+    foreseenJustificationDate: '',
+    keyword: '',
+    modality: 'GACTIVIDAD',
+    needsEthicalValidation: '',
+    startDate: '2002-06-27',
+    status: ''
+  },
+  {
+    id: '5396',
+    title: 'DISPOSITIVO Y MÉTODO PARA INTRODUCIR YO RECOGER FLUIDOS EN EL INTERIOR DEL ÚTERO DE UN ANIMAL',
+    abbreviation: '',
+    description: '',
+    endDate: '2020-05-06',
+    foreseenJustificationDate: '',
+    keyword: '',
+    modality: 'PATENTES',
+    needsEthicalValidation: '',
+    startDate: '2002-05-06',
+    status: ''
+  }];
   page.content = [DATARESULT];
   beforeEach(async(() => {
     TestingHelper.configureTest()
@@ -114,7 +136,7 @@ describe('ProjectsDetailComponent', () => {
 
     it('should init instance and return no value in find', () => {
       const projService = fixture.debugElement.injector.get(ProjectService);
-      const pagenew: Page<SparqlResults> = new Page<SparqlResults>();
+      const pagenew: Page<Project> = new Page();
       pagenew.number = 0;
       pagenew.numberOfElements = 10;
       pagenew.size = 10;

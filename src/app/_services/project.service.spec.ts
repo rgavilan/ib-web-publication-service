@@ -81,7 +81,7 @@ describe('ProjectService', () => {
         };
         service.find(findRequest).subscribe(result => {
             if (result.content) {
-                expect(result.content[0].results.bindings.length).toBe(2);
+                expect(result.content.length).toBe(2);
             }
         });
         const request = httpMock.expectOne(Helper.getUrl('/project/search?size=10&page=0'));

@@ -81,7 +81,7 @@ describe('PatentService', () => {
         };
         service.find(findRequest).subscribe(result => {
             if (result.content) {
-                expect(result.content[0].results.bindings.length).toBe(2);
+                expect(result.content.length).toBe(2);
             }
 
         });
