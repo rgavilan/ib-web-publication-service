@@ -24,10 +24,10 @@ export class ResearchmentStructuresService extends AbstractService {
   find(findRequest: FindRequest): Observable<Page<University>> {
     // Filter params
     let parameters = new HttpParams();
-    parameters = Helper.addParam(parameters, 'end', findRequest.filter.end);
-    parameters = Helper.addParam(parameters, 'start', findRequest.filter.start);
+    parameters = Helper.addParam(parameters, 'type', findRequest.filter.type);
+    parameters = Helper.addParam(parameters, 'financing', findRequest.filter.financing);
+    parameters = Helper.addParam(parameters, 'qa', findRequest.filter.qa);
     parameters = Helper.addParam(parameters, 'name', findRequest.filter.name);
-    parameters = Helper.addParam(parameters, 'id', findRequest.filter.id);
     // Pagination params
     parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 
