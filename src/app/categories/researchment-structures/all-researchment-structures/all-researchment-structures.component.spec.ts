@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
+import { TestingHelper } from 'src/app/_helpers/testing.spec';
+import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
+import { MockResearchmentStructuresService } from 'src/app/_services/_testingServices/mockResearchmentStructuresService.service';
 
 import { AllResearchmentStructuresComponent } from './all-researchment-structures.component';
 
@@ -13,16 +16,10 @@ describe('AllResearchmentStructuresComponent', () => {
   let fixture: ComponentFixture<AllResearchmentStructuresComponent>;
 
   beforeEach(async(() => {
+    TestingHelper.configureTest()
+      .compileComponents();
     TestBed.configureTestingModule({
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [
-        RouterTestingModule,
-        TranslateModule.forRoot(),
-        ToastrModule.forRoot(),
-        HttpClientModule,
-        FormsModule,
-      ],
-      declarations: [AllResearchmentStructuresComponent],
+      providers: [{ provide: ResearchmentStructuresService, useClass: MockResearchmentStructuresService }]
     }).compileComponents();
   }));
 

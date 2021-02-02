@@ -1,5 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestingHelper } from 'src/app/_helpers/testing.spec';
 
 import { ResearchmentStructuresByQSComponent } from './researchment-structures-chart-by-qs.component';
 
@@ -8,10 +9,7 @@ describe('SectorChartComponent', () => {
   let fixture: ComponentFixture<ResearchmentStructuresByQSComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      declarations: [ResearchmentStructuresByQSComponent]
-    })
+    TestingHelper.configureTest()
       .compileComponents();
   }));
 

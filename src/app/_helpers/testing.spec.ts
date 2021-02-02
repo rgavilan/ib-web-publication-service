@@ -71,6 +71,10 @@ import { ScientificProductionComponent } from '../categories/scientific-producti
 import { DocumentDetailComponent } from '../categories/document-detail/document-detail.component';
 import { EventDetailComponent } from '../categories/event-detail/event-detail.component';
 import { StatisticsComponent } from '../categories/statistics/statistics.component';
+import { AllResearchmentStructuresComponent } from '../categories/researchment-structures/all-researchment-structures/all-researchment-structures.component';
+import { TopResearchmentStructuresComponent } from '../categories/researchment-structures/top-researchment-structures/top-researchment-structures.component';
+import { ResearchmentStructuresByQSComponent } from '../categories/researchment-structures/researchment-structures-chart-by-qs/researchment-structures-chart-by-qs.component';
+import { ResearchmentStructuresByFinancingComponent } from '../categories/researchment-structures/researchment-structures-chart-by-financing/researchment-structures-chart-by-financing.component';
 
 
 /**
@@ -131,7 +135,11 @@ export class TestingHelper {
         ScientificProductionComponent,
         DocumentDetailComponent,
         EventDetailComponent,
-        StatisticsComponent
+        StatisticsComponent,
+        AllResearchmentStructuresComponent,
+        TopResearchmentStructuresComponent,
+        ResearchmentStructuresByQSComponent,
+        ResearchmentStructuresByFinancingComponent
       ],
       imports: [
         BrowserModule,

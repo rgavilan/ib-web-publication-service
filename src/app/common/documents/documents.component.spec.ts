@@ -32,7 +32,7 @@ describe('DocumentsComponent', () => {
     const spy = spyOn(docService1, 'find').and.callThrough();
     component.ngOnInit();
     fixture.detectChanges();
-    expect(component.allDocumentFiltered.content.length).toBe(3);
+    expect(component.allDocumentFiltered.content.length).toBe(10);
     expect(component.allDocumentFiltered.content.length).not.toBe(0);
   });
 

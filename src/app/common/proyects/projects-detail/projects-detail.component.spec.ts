@@ -142,7 +142,6 @@ describe('ProjectsDetailComponent', () => {
       pagenew.size = 10;
       pagenew.totalElements = 10;
       pagenew.content = [];
-      console.log(pagenew);
       const spy = spyOn(projService, 'find').and.returnValue(of(pagenew));
       component.ngOnInit();
       expect(component.id).toBe('123');

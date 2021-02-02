@@ -29,11 +29,12 @@ export class DocumentService extends AbstractService {
     }
 
 
+
     /**
      *
      *
      * @param {FindRequest} findRequest
-     * @return {*}  {Observable<Page<SparqlResults>>}
+     * @return {*}  {Observable<Page<Document>>}
      * @memberof DocumentService
      */
     find(findRequest: FindRequest): Observable<Page<Document>> {
