@@ -4,7 +4,8 @@
       <table class="table table-bordered" aria-label="Data displayed from Sparql" *ngIf="!!dataComplete">
         <thead>
           <tr>
-            <th class="sortable" (click)="sort(header)" *ngFor="let header of hedearDTO" id="{{header}}">
+            <th class="sortable" (click)="sort(header)" *ngFor="let header of hedearDTO"
+              id="{{header + dtoTypeTranslate}}">
               {{ dtoTypeTranslate + '.' + header | translate }}<em class="float-right"
                 [ngClass]="getSortIcon(header)"></em>
             </th>

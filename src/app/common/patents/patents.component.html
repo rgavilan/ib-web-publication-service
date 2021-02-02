@@ -1,7 +1,8 @@
 <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm">
     <div class="row mt-20">
         <div class="col-lg-12">
-            <button class="btn btn-default" (click)="normalTree = !normalTree">{{'form.change-tree' |
+            <button role="button" aria-pressed="false" class="btn btn-default"
+                (click)="normalTree = !normalTree">{{'form.change-tree' |
                 translate}}</button>
         </div>
         <!-- categorias tree -->
@@ -34,16 +35,17 @@
     <div class="container-fluid">
         <div class="row justify-content-end">
             <div class="input-group col-md-1">
-                <button class="btn btn-secondary" (click)="f.resetForm(); filterPatents();">{{'form.clean' |
+                <button [attr.aria-label]="'form.clean' | translate " role="button" aria-pressed="false"
+                    class="btn btn-secondary" (click)="f.resetForm(); filterPatents();">{{'form.clean' |
                     translate }}</button>
             </div>
             <div class="input-group col-md-4">
                 <input class="form-control py-2 border-right-0 border" type="search" name="search" #search="ngModel"
                     placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name"
-                    id="example-search-input">
+                    id="search-patents">
                 <span class="input-group-append">
-                    <button (click)="filterPatents()" class="btn btn-outline-secondary border-left-0 border"
-                        type="button">
+                    <button [attr.aria-label]="'form.search-by-name'" role="button" aria-pressed="false"
+                        (click)="filterPatents()" class="btn btn-outline-secondary border-left-0 border" type="button">
                         <em class="oi oi-magnifying-glass "></em>
                     </button>
                 </span>

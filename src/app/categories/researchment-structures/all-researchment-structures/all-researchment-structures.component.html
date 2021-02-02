@@ -4,11 +4,10 @@
         <div class="row">
             <!-- type -->
             <div class="form-group col-lg-4">
-                <label for="activo" class="control-label">{{ "researchmentStructure.type" | translate
-                    }}</label>
+                <label for="type" class="control-label">{{ "researchmentStructure.type" | translate }}</label>
                 <div>
-                    {{findRequest.filter.type}}
-                    <select name="type" class="form-control" [(ngModel)]="findRequest.filter.type" #type="ngModel"
+                    <select [attr.aria-label]="'researchmentStructure.type' | translate " name="type"
+                        class="form-control" [(ngModel)]="findRequest.filter.type" id="type" #type="ngModel"
                         (change)="filterResearchmentStructures('type')">
                         <option [value]="undefined"> {{ "form.select" | translate }}</option>
                         <option value="Universidad">Universidad</option>
@@ -22,10 +21,10 @@
 
             <!-- financing -->
             <div class="form-group col-lg-4">
-                <label for="activo" class="control-label">{{ "researchmentStructure.financing" | translate
-                    }}</label>
+                <label for="financing" class="control-label">{{ "researchmentStructure.financing" | translate }}</label>
                 <div>
-                    <select name="financing" class="form-control" [(ngModel)]="findRequest.filter.financing"
+                    <select [attr.aria-label]="'researchmentStructure.financing' | translate " id="financing"
+                        name="financing" class="form-control" [(ngModel)]="findRequest.filter.financing"
                         #financing="ngModel">
                         <option [value]="undefined">{{ "form.select" | translate }}</option>
                         <option value="Proyectos H2020">Proyectos H2020</option>
@@ -37,9 +36,10 @@
             </div>
             <!-- q&a -->
             <div class="form-group col-lg-4">
-                <label for="activo" class="control-label">{{ "researchmentStructure.qa" | translate }}</label>
+                <label for="qa" class="control-label">{{ "researchmentStructure.qa" | translate }}</label>
                 <div>
-                    <select name="qa" class="form-control" [(ngModel)]="findRequest.filter.qa" #qa="ngModel"
+                    <select [attr.aria-label]="'researchmentStructure.qa' | translate " id="qa" name="qa"
+                        class="form-control" [(ngModel)]="findRequest.filter.qa" #qa="ngModel"
                         (change)="filterResearchmentStructures('qa')">
                         <option [value]="undefined">{{ "form.select" | translate }}</option>
                         <option [value]="'Severo Ochoa'">Severo Ochoa</option>
@@ -52,14 +52,16 @@
         <div class="container-fluid">
             <div class="row justify-content-end">
                 <div class="input-group col-md-1">
-                    <button class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
+                    <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button" aria-pressed="false"
+                        class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
                         translate }}</button>
                 </div>
                 <div class="input-group col-md-4">
                     <input class="form-control py-2 border-right-0 border" type="search" name="search" #search="ngModel"
                         placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name">
                     <span class="input-group-append">
-                        <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                        <button [attr.aria-label]="'form.search-by-name' | translate" role="button" aria-pressed="false"
+                            class="btn btn-outline-secondary border-left-0 border" type="button">
                             <em class="oi oi-magnifying-glass "></em>
                         </button>
                     </span>

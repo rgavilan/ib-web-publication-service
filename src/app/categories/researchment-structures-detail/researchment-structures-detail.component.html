@@ -1,5 +1,5 @@
 <fieldset>
-    <legend class="legend margin-top">{{researchment?.name}}</legend>
+    <h1 class="legend margin-top">{{researchment?.name}}</h1>
     <div class="mt-20">
         <div class="row">
             <div class="col-12">
@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-12 mt-40">
             <tabset role="tablist" #resultsTab [justified]="true">
-                <tab role="tab" aria-selected="true">
+                <tab role="tab">
                     <ng-template tabHeading>
                         {{'researchmentStructure.scientist' | translate}}
                     </ng-template>
@@ -23,7 +23,7 @@
                         <app-scientist-search></app-scientist-search>
                     </ng-container>
                 </tab>
-                <tab role="tab" aria-selected="false">
+                <tab role="tab">
                     <ng-template tabHeading>
                         {{'researchmentStructure.prod-scientist' | translate}}
                     </ng-template>
@@ -32,7 +32,7 @@
                         </app-documents>
                     </ng-container>
                 </tab>
-                <tab role="tab" aria-selected="false">
+                <tab role="tab">
                     <ng-template tabHeading>
                         {{'researchmentStructure.projects' | translate}}
                     </ng-template>
@@ -40,7 +40,7 @@
                         <app-proyects [chartType]="'bar'"></app-proyects>
                     </ng-container>
                 </tab>
-                <tab role="tab" aria-selected="false">
+                <tab role="tab">
                     <ng-template tabHeading>
                         {{'researchmentStructure.patents' | translate}}
                     </ng-template>

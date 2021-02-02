@@ -1,7 +1,8 @@
 <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm">
     <div class="row mt-20">
         <div class="col-lg-12">
-            <button class="btn btn-default" (click)="normalTree = !normalTree">{{'form.change-tree' |
+            <button role="button" aria-pressed="false" class="btn btn-default"
+                (click)="normalTree = !normalTree">{{'form.change-tree' |
                 translate}}</button>
         </div>
         <!-- categorias tree -->
@@ -16,10 +17,11 @@
         </div>
         <!-- type -->
         <div class="form-group col-lg-6">
-            <label for="type" class="col-sm-4 control-label">{{ "scientist.type" | translate }}</label>
+            <label for="typeScientist" class="col-sm-4 control-label">{{ "scientist.type" | translate }}</label>
             <div class="col-sm-8">
-                <select (change)="filterTop($event, 'type')" name="type" class="form-control"
-                    [(ngModel)]="findRequest.filter.type" #type="ngModel">
+                <select [attr.aria-label]="'scientist.type' | translate" (change)="filterTop($event, 'type')"
+                    id="typeScientist" name="typeScientist" class="form-control" [(ngModel)]="findRequest.filter.type"
+                    #type="ngModel">
                     <option [value]="undefined">{{ "form.select" | translate }}</option>
                     <option [value]="'Docente'">Docente</option>
                     <option [value]="'Personal Investigador'">Personal Investigador</option>
@@ -33,14 +35,16 @@
     <div class="container-fluid">
         <div class="row justify-content-end">
             <div class="input-group col-md-1">
-                <button class="btn btn-secondary" (click)="f.resetForm(); filterTop(undefined, '')">{{'form.clean' |
+                <button [attr.aria-label]="'form.clean' | translate " role="button" aria-pressed="false"
+                    class="btn btn-secondary" (click)="f.resetForm(); filterTop(undefined, '')">{{'form.clean' |
                     translate }}</button>
             </div>
             <div class="input-group col-md-4">
                 <input class="form-control py-2 border-right-0 border" type="search" name="search" #search="ngModel"
                     placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name">
                 <span class="input-group-append">
-                    <button (click)="filterTop($event, 'name')" class="btn btn-outline-secondary border-left-0 border"
+                    <button [attr.aria-label]="'form.search-by-name'" role="button" aria-pressed="false"
+                        (click)="filterTop($event, 'name')" class="btn btn-outline-secondary border-left-0 border"
                         type="button">
                         <em class="oi oi-magnifying-glass "></em>
                     </button>
