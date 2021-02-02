@@ -25,7 +25,7 @@ export class PatentsComponent implements OnInit {
    * @type {string}
    * @memberof PatentsComponent
    */
-  @Input() universityId: string;
+  @Input() idPrefix: string;
   /**
    * all data shown on table
    *

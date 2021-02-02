@@ -20,8 +20,8 @@
             <label for="typeScientist" class="col-sm-4 control-label">{{ "scientist.type" | translate }}</label>
             <div class="col-sm-8">
                 <select [attr.aria-label]="'scientist.type' | translate" (change)="filterTop($event, 'type')"
-                    id="typeScientist" name="typeScientist" class="form-control" [(ngModel)]="findRequest.filter.type"
-                    #type="ngModel">
+                    id="typeScientist{{idPrefix}}" name="typeScientist" class="form-control"
+                    [(ngModel)]="findRequest.filter.type" #type="ngModel">
                     <option [value]="undefined">{{ "form.select" | translate }}</option>
                     <option [value]="'Docente'">Docente</option>
                     <option [value]="'Personal Investigador'">Personal Investigador</option>

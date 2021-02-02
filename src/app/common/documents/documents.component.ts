@@ -29,6 +29,13 @@ export class DocumentsComponent implements OnInit {
   /**
    *
    *
+   * @type {string}
+   * @memberof DocumentsComponent
+   */
+  @Input() idPrefix: string;
+  /**
+   *
+   *
    * @type {Array<string>}
    * @memberof DocumentsComponent
    */

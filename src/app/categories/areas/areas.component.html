@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12 margin-bottom">
-        <legend class="legend">{{ "areas.title" | translate }}</legend>
+        <h1 class="legend">{{ "areas.title" | translate }}</h1>
     </div>
 </div>
 
@@ -37,7 +37,8 @@
                 <label for="anyo" class="col-sm-4 control-label">{{ "participant.year" | translate
                     }}</label>
                 <div class="col-sm-8">
-                    <select name="anyo" class="form-control" [(ngModel)]="findRequest.filter.anyo" #type="ngModel">
+                    <select [attr.aria-label]="'participant.year' | translate" id="anyo" name="anyo"
+                        class="form-control" [(ngModel)]="findRequest.filter.anyo" #type="ngModel">
                         <option [value]="undefined">{{ "form.select" | translate }}</option>
                         <option *ngFor="let year of yearsForSelect" [value]="year">{{year}}</option>
                     </select>
@@ -49,10 +50,11 @@
         <hr>
         <div class="row">
             <div class="form-group col-lg-6">
-                <label for="anyo" class="col-sm-4 control-label">{{ "participant.year" | translate
+                <label for="anyodos" class="col-sm-4 control-label">{{ "participant.year" | translate
                     }}</label>
                 <div class="col-sm-8">
-                    <select name="anyo" class="form-control" [(ngModel)]="findRequest.filter.anyo" #type="ngModel">
+                    <select id="anyodos" name="anyodos" class="form-control" [(ngModel)]="findRequest.filter.anyodos"
+                        #type="ngModel">
                         <option [value]="undefined">{{ "form.select" | translate }}</option>
                         <option *ngFor="let year of yearsForSelect" [value]="year">{{year}}</option>
                     </select>

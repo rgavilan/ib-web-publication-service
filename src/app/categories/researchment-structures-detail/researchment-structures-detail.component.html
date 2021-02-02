@@ -20,7 +20,7 @@
                         {{'researchmentStructure.scientist' | translate}}
                     </ng-template>
                     <ng-container role="tabpanel">
-                        <app-scientist-search></app-scientist-search>
+                        <app-scientist-search [idPrefix]="'scientist'"></app-scientist-search>
                     </ng-container>
                 </tab>
                 <tab role="tab">
@@ -28,7 +28,8 @@
                         {{'researchmentStructure.prod-scientist' | translate}}
                     </ng-template>
                     <ng-container role="tabpanel">
-                        <app-documents [isTreeVisible]="false" [filterDocumentType]="['Book', 'Article']">
+                        <app-documents [idPrefix]="'prodScientist'" [isTreeVisible]="false"
+                            [filterDocumentType]="['Book', 'Article']">
                         </app-documents>
                     </ng-container>
                 </tab>
@@ -37,7 +38,7 @@
                         {{'researchmentStructure.projects' | translate}}
                     </ng-template>
                     <ng-container role="tabpanel">
-                        <app-proyects [chartType]="'bar'"></app-proyects>
+                        <app-proyects [idPrefix]="'projects'" [chartType]="'bar'"></app-proyects>
                     </ng-container>
                 </tab>
                 <tab role="tab">
@@ -45,7 +46,7 @@
                         {{'researchmentStructure.patents' | translate}}
                     </ng-template>
                     <ng-container role="tabpanel">
-                        <app-patents></app-patents>
+                        <app-patents [idPrefix]="'patents'"></app-patents>
                     </ng-container>
                 </tab>
             </tabset>

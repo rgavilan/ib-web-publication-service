@@ -26,7 +26,7 @@ export class ProyectsComponent implements OnInit {
    * @type {string}
    * @memberof ProyectsComponent
    */
-  @Input() universityId: string;
+  @Input() idPrefix: string;
   /**
    *
    *

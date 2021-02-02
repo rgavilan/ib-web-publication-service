@@ -17,18 +17,18 @@
         </div>
         <!-- type -->
         <div class="form-group col-lg-3">
-            <label for="dateFrom" class="control-label">{{'documents.date-ini' | translate }}</label>
-            <input class="form-control" name="dateFrom" id="dateFrom" required (ngModelChange)="filterPatents()"
-                placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
-                #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();" (keyup)="decisionDate.close()"
-                #dateFrom="ngModel" [(ngModel)]="dateIni" />
+            <label for="dateFrom{{idPrefix}}" class="control-label">{{'documents.date-ini' | translate }}</label>
+            <input class="form-control" name="dateFrom{{idPrefix}}" id="dateFrom{{idPrefix}}" required
+                (ngModelChange)="filterPatents()" placeholder="{{'form.datepicker-placeholder' | translate}}"
+                ngbDatepicker [readonly]="true" #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();"
+                (keyup)="decisionDate.close()" #dateFrom{{idPrefix}}="ngModel" [(ngModel)]="dateIni" />
         </div>
         <div class="form-group col-lg-3">
-            <label for="dateTo" class="control-label">{{'documents.date-fin' | translate }}</label>
-            <input class="form-control" name="dateTo" id="dateTo" required (ngModelChange)="filterPatents()"
-                placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
-                #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();" (keyup)="decisionTo.close()"
-                #dateTo="ngModel" [(ngModel)]="dateFin" />
+            <label for="dateTo{{idPrefix}}" class="control-label">{{'documents.date-fin' | translate }}</label>
+            <input class="form-control" name="dateTo{{idPrefix}}" id="dateTo{{idPrefix}}" required
+                (ngModelChange)="filterPatents()" placeholder="{{'form.datepicker-placeholder' | translate}}"
+                ngbDatepicker [readonly]="true" #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();"
+                (keyup)="decisionTo.close()" #dateTo{{idPrefix}}="ngModel" [(ngModel)]="dateFin" />
         </div>
     </div>
 

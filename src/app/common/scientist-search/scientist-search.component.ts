@@ -20,7 +20,7 @@ export class ScientistSearchComponent implements OnInit {
   /**
    * university Id for search filter in case of necessary
    */
-  @Input() universityId: string;
+  @Input() idPrefix: string;
   /**
    *
    *
