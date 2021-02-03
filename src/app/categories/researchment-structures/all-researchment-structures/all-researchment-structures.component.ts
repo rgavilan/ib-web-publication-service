@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
-import { SparqlResults } from 'src/app/_models/sparql';
 import { University } from 'src/app/_models/university';
 import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
 

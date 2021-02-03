@@ -2,9 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { SparqlResults } from 'src/app/_models/sparql';
-import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { BusinnessActivityService } from 'src/app/_services/businnessActivity.service';
-import { ParticipantService } from 'src/app/_services/participant.service';
 
 @Component({
   selector: 'app-business',

@@ -2,8 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { Document } from 'src/app/_models/document';
-import { SparqlResults } from 'src/app/_models/sparql';
-import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { DocumentService } from 'src/app/_services/document.service';
 
 /**

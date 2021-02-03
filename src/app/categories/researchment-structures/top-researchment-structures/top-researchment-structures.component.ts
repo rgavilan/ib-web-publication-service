@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
-import { SparqlResults } from 'src/app/_models/sparql';
 import { University } from 'src/app/_models/university';
 import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
 
@@ -53,18 +52,6 @@ export class TopResearchmentStructuresComponent implements OnInit {
    * @memberof TopResearchmentStructuresComponent
    */
   filterResearchmentStructures(filterName: string) {
-    switch (filterName) {
-      case 'type':
-        this.findRequest.filter.type !== 'undefined'
-          ? this.filters.set(filterName, this.findRequest.filter.type)
-          : this.filters.set(filterName, '');
-
-        break;
-
-      default:
-        break;
-    }
-
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
     pageRequest.size = this.topResearchmentStructuresFiltered.size;

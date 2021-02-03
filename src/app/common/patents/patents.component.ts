@@ -3,7 +3,6 @@ import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { Patent } from 'src/app/_models/patent';
-import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { PatentService } from 'src/app/_services/patent.service';
 
 

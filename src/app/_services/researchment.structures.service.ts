@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { FindRequest, Page, PageRequest } from '../_helpers/search';
+import { FindRequest, Page } from '../_helpers/search';
 import { AbstractService } from '../_helpers/abstract';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { SparqlResults } from '../_models/sparql';
 import { Helper } from '../_helpers/utils';
 import { Observable } from 'rxjs';
 import { University } from '../_models/university';

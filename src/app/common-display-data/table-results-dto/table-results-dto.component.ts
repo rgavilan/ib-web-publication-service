@@ -11,7 +11,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
 import { Direction, FindRequest, Order, Page, PaginatedSearchComponent } from 'src/app/_helpers/search';
-import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 
 
 /**

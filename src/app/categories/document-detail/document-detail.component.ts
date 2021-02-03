@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Page, PageRequest } from 'src/app/_helpers/search';
 import { DocumentDetail } from 'src/app/_models/documentDetail';
-import { SparqlResults } from 'src/app/_models/sparql';
 import { ScientistService } from 'src/app/_services/scientist.service';
 
 @Component({

@@ -1,11 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
-import { SparqlResults } from 'src/app/_models/sparql';
 import { ProjectService } from 'src/app/_services/project.service';
 import { Helper } from 'src/app/_helpers/utils';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { SeriesBarData } from 'src/app/_models/seriesBarData';
-import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { Project } from 'src/app/_models/project';
 
 /**
