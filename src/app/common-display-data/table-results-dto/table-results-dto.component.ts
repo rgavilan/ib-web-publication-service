@@ -120,7 +120,7 @@ export class TableResultsDtoComponent
    * @memberof TableResultsDtoComponent
    */
   @Input() dtoTypeTranslate = '';
-
+  @Input() extra = '';
   constructor(
     router: Router,
     translate: TranslateService,
@@ -240,17 +240,6 @@ export class TableResultsDtoComponent
     }
   }
 
-  makeid(length): string {
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-      const crypto = window.crypto;
-      const array = new Uint32Array(1);
-      const rest = crypto.getRandomValues(array);
-      result += characters.charAt(Math.floor(rest[0] * charactersLength));
-    }
-    return result;
-  }
+
 
 }

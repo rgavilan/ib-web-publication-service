@@ -22,12 +22,15 @@
                 (ngModelChange)="filterPatents()" placeholder="{{'form.datepicker-placeholder' | translate}}"
                 ngbDatepicker [readonly]="true" #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();"
                 (keyup)="decisionDate.close()" #dateFrom{{idPrefix}}="ngModel" [(ngModel)]="dateIni" />
+            (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDate.close() :
+            decisionDate.toggle();"
         </div>
         <div class="form-group col-lg-3">
             <label for="dateTo{{idPrefix}}" class="control-label">{{'documents.date-fin' | translate }}</label>
             <input class="form-control" name="dateTo{{idPrefix}}" id="dateTo{{idPrefix}}" required
                 (ngModelChange)="filterPatents()" placeholder="{{'form.datepicker-placeholder' | translate}}"
                 ngbDatepicker [readonly]="true" #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();"
+                (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionTo.close() : decisionTo.toggle();"
                 (keyup)="decisionTo.close()" #dateTo{{idPrefix}}="ngModel" [(ngModel)]="dateFin" />
         </div>
     </div>
@@ -54,7 +57,7 @@
     </div>
 </form>
 
-<app-table-results-dto [dtoTypeTranslate]="'patent'" *ngIf="loaded" [data]="allPatentFiltered.content"
+<app-table-results-dto [dtoTypeTranslate]="'patent'" [extra]="'4'" *ngIf="loaded" [data]="allPatentFiltered.content"
     [pageInfo]="allPatentFiltered" (pageChanged)="allPatentsFilteredPageChanged($event)"
     (sizeChanged)="allPatentsFilteredSizeChanged($event)" (sortChanged)="allPatentsFilteredSortChanged($event)">
 </app-table-results-dto>

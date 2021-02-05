@@ -70,7 +70,7 @@
         </div>
     </form>
 </fieldset>
-<app-table-results-dto *ngIf="loaded" [dtoTypeTranslate]="'researchmentStructure'"
+<app-table-results-dto *ngIf="loaded" [dtoTypeTranslate]="'researchmentStructure'" [extra]="'2'"
     [data]="allResearchmentStructuresFiltered.content" [pageInfo]="allResearchmentStructuresFiltered"
     [routerField]="'name'" (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)"
     (sizeChanged)="allResearchmentStructuresFilteredSizeChanged($event)"
