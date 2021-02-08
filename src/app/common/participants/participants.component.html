@@ -39,11 +39,12 @@
         </div>
     </div>
 </div>
-<app-table-results *ngIf="loaded" [data]="allDataParticipants.content[0]" [headerData]="headerData"
-    [pageInfo]="allDataParticipants" (pageChanged)="allParticipantsFilteredPageChanged($event)"
+<app-table-results-dto *ngIf="loaded" [dtoTypeTranslate]="'participants'" [extra]="'2'"
+    [data]="allDataParticipants.content" [pageInfo]="allDataParticipants"
+    (pageChanged)="allParticipantsFilteredPageChanged($event)"
     (sizeChanged)="allParticipantsFilteredSizeChanged($event)"
     (sortChanged)="allParticipantsFilteredSortChanged($event)">
-</app-table-results>
+</app-table-results-dto>
 <hr>
 <legend>{{'participant.people-involved' | translate}}</legend>
 <div class="container-fluid">
@@ -80,8 +81,10 @@
         </div>
     </div>
 </div>
-<app-table-results *ngIf="loaded" [data]="allDataParticipantsSecondTable.content[0]" [headerData]="headerData"
-    [pageInfo]="allDataParticipantsSecondTable" (pageChanged)="allParticipantsFilteredPageChanged($event)"
+
+<app-table-results-dto *ngIf="loaded" [data]="allDataParticipantsSecondTable.content"
+    [dtoTypeTranslate]="'participantsdos'" [extra]="'3'" [pageInfo]="allDataParticipantsSecondTable"
+    (pageChanged)="allParticipantsFilteredPageChanged($event)"
     (sizeChanged)="allParticipantsFilteredSizeChanged($event)"
     (sortChanged)="allParticipantsFilteredSortChanged($event)">
-</app-table-results>
+</app-table-results-dto>

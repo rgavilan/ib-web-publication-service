@@ -14,62 +14,78 @@
     </div>
     <div class="row">
         <div class="col-12 mt-40">
-            <tabset #resultsTab [justified]="true">
-                <tab aria-selected="true">
-                    <ng-template tabHeading>
-                        {{'scientist.acction-inves' | translate}}
-                    </ng-template>
-                    <ng-container>
-                        <legend class="mt-40">{{'scientist.directed-jobs' | translate}}</legend>
-                        <hr>
-                        <app-directed-jobs></app-directed-jobs>
-                        <legend>{{'scientist.prod-scientist' | translate}}</legend>
-                        <hr>
-                        <app-directed-jobs></app-directed-jobs>
-                        <legend>{{'scientist.reg-documents' | translate}}</legend>
-                        <hr>
-                        <app-documents [filterDocumentType]="['Book', 'Article']"></app-documents>
-                    </ng-container>
-                </tab>
-                <tab aria-selected="false">
-                    <ng-template tabHeading>
-                        {{'scientist.events' | translate}}
-                    </ng-template>
-                    <ng-container>
-                        <legend class="mt-40">{{'scientist.congress-events' | translate}}</legend>
-                        <hr>
-                        <app-events></app-events>
-                    </ng-container>
-                </tab>
-                <tab aria-selected="false">
-                    <ng-template tabHeading>
-                        {{'scientist.business-activity' | translate}}
-                    </ng-template>
-                    <ng-container>
-                        <legend class="mt-40">{{'scientist.startups' | translate}}</legend>
-                        <hr>
-                        <app-startup></app-startup>
-                    </ng-container>
-                </tab>
-                <tab aria-selected="false">
-                    <ng-template tabHeading>
-                        {{'scientist.trajectory' | translate}}
-                    </ng-template>
-                    <ng-container>
-                        <legend class="mt-40">{{'scientist.scientific-production-indicators' | translate}}</legend>
-                        <hr>
-                        <p><strong>{{'scientist.times-quoted' | translate}}: </strong>71</p>
-                        <p><strong>{{'scientist.h-index' | translate}}: </strong>12</p>
-                        <p><strong>{{'scientist.apto' | translate}}: </strong>Evalución sobre el sexenio de tranferencia
-                            del
-                            conocimiento e innovación</p>
-                        <legend class="mt-40">{{'scientist.trajectory-by-timeline' | translate}}</legend>
-                        <hr>
-                        <div style="min-width: 600px; width:100%; height:450px" echarts [loading]="loadingData"
-                            [options]="echartOptions" class="demo-chart"></div>
-                    </ng-container>
-                </tab>
-            </tabset>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" [ngClass]="{'active': activeTab === 'acction-inves' }" id="acction-inves-tab"
+                        (click)="changeTab('acction-inves')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
+                        aria-controls="acction-inves" [attr.aria-selected]="activeTab === 'acction-inves'">
+                        {{'scientist.acction-inves' | translate}}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" [ngClass]="{'active': activeTab === 'congress-events' }"
+                        id="congress-events-tab" (click)="changeTab('congress-events')" data-bs-toggle="tab"
+                        href="JavaScript:void(0)" role="tab" aria-controls="congress-events"
+                        [attr.aria-selected]="activeTab === 'congress-events'">{{'scientist.events' | translate}}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" [ngClass]="{'active': activeTab === 'business-activity' }"
+                        id="business-activity-atb" (click)="changeTab('business-activity')" data-bs-toggle="tab"
+                        href="JavaScript:void(0)" role="tab" aria-controls="business-activity"
+                        [attr.aria-selected]="activeTab === 'business-activity'">{{'scientist.business-activity' |
+                        translate}}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" [ngClass]="{'active': activeTab === 'trajectory' }" id="trajectory-tab"
+                        (click)="changeTab('trajectory')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
+                        aria-controls="trajectory"
+                        [attr.aria-selected]="activeTab === 'trajectory'">{{'scientist.trajectory' | translate}}</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade"
+                    [ngClass]="{'show': activeTab === 'acction-inves', 'active': activeTab === 'acction-inves' }"
+                    id="acction-inves" role="tabpanel" aria-labelledby="acction-inves-tab">
+                    <legend class="mt-40">{{'scientist.directed-jobs' | translate}}</legend>
+                    <hr>
+                    <app-directed-jobs></app-directed-jobs>
+                    <legend>{{'scientist.prod-scientist' | translate}}</legend>
+                    <hr>
+                    <app-directed-jobs></app-directed-jobs>
+                    <legend>{{'scientist.reg-documents' | translate}}</legend>
+                    <hr>
+                    <app-documents [filterDocumentType]="['Book', 'Article']"></app-documents>
+                </div>
+                <div class="tab-pane fade"
+                    [ngClass]="{'show': activeTab === 'congress-events', 'active': activeTab === 'congress-events' }"
+                    id="congress-events" role="tabpanel" aria-labelledby="congress-events-tab">
+                    <legend class="mt-40">{{'scientist.congress-events' | translate}}</legend>
+                    <hr>
+                    <app-events></app-events>
+                </div>
+                <div class="tab-pane fade" id="business-activity"
+                    [ngClass]="{'show': activeTab === 'business-activity', 'active': activeTab === 'business-activity' }"
+                    role="tabpanel" aria-labelledby="business-activity-tab">
+                    <legend class="mt-40">{{'scientist.startups' | translate}}</legend>
+                    <hr>
+                    <app-startup></app-startup>
+                </div>
+                <div class="tab-pane fade" id="trajectory"
+                    [ngClass]="{'show': activeTab === 'trajectory', 'active': activeTab === 'trajectory' }"
+                    role="tabpanel" aria-labelledby="trajectory-tab">
+                    <legend class="mt-40">{{'scientist.scientific-production-indicators' | translate}}</legend>
+                    <hr>
+                    <p><strong>{{'scientist.times-quoted' | translate}}: </strong>71</p>
+                    <p><strong>{{'scientist.h-index' | translate}}: </strong>12</p>
+                    <p><strong>{{'scientist.apto' | translate}}: </strong>Evalución sobre el sexenio de tranferencia
+                        del
+                        conocimiento e innovación</p>
+                    <legend class="mt-40">{{'scientist.trajectory-by-timeline' | translate}}</legend>
+                    <hr>
+                    <div style="min-width: 600px; width:100%; height:450px" echarts [loading]="loadingData"
+                        [options]="echartOptions" class="demo-chart"></div>
+                </div>
+            </div>
+
         </div>
     </div>
 </fieldset>

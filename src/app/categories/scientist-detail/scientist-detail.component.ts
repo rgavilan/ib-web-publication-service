@@ -14,9 +14,11 @@ export class ScientistDetailComponent implements OnInit {
   };
   loadingData = false;
   echartOptions: any;
+  activeTab: string;
   constructor() { }
 
   ngOnInit(): void {
+    this.activeTab = 'acction-inves';
     const xAxisData: Array<string> = [];
     const data1: Array<any> = [];
     const data2: Array<any> = [];
@@ -51,6 +53,10 @@ export class ScientistDetailComponent implements OnInit {
       animationDelay: (idx) => idx * 11 + 100,
     }];
     this.echartOptions = HelperGraphics.configChartBar(xAxisData, barData, legend);
+  }
+
+  changeTab(tabName: string) {
+    this.activeTab = tabName;
   }
 
 }

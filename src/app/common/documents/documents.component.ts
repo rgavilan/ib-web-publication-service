@@ -216,8 +216,4 @@ export class DocumentsComponent implements OnInit {
     });
   }
 
-  hola(algo) {
-    console.log(algo);
-  }
-
 }

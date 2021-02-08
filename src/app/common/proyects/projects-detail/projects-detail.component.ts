@@ -35,11 +35,13 @@ export class ProjectsDetailComponent implements OnInit {
    * @memberof ProjectsDetailComponent
    */
   loaded = false;
+  activeTab: string;
   constructor(
     private route: ActivatedRoute,
     private projectService: ProjectService) { }
 
   ngOnInit(): void {
+    this.activeTab = 'general-info';
     this.findRequest.pageRequest.page = 0;
     this.findRequest.pageRequest.size = 10;
     this.route.params.subscribe((params: Params) => {
@@ -56,5 +58,10 @@ export class ProjectsDetailComponent implements OnInit {
       }
     });
   }
+
+  changeTab(tabName: string) {
+    this.activeTab = tabName;
+  }
+
 
 }

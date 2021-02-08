@@ -19,9 +19,26 @@ export class ScientificProductionComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   normalTree: boolean;
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof ScientificProductionComponent
+   */
+  activeTab: string;
   constructor() { }
 
   ngOnInit(): void {
+    this.activeTab = 'scientific-publications';
+  }
+  /**
+   *
+   *
+   * @param {string} tabName
+   * @memberof ScientificProductionComponent
+   */
+  changeTab(tabName: string) {
+    this.activeTab = tabName;
   }
 
 }
