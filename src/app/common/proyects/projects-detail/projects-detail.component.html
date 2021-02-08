@@ -7,12 +7,12 @@
 
 <div class="row">
     <div class="col-12 mt-40">
-        <tabset role="tablist" #resultsTab [justified]="true">
-            <tab role="tab" aria-selected="true">
+        <tabset #resultsTab [justified]="true">
+            <tab aria-selected="true">
                 <ng-template tabHeading>
                     {{'projects.general-info' | translate}}
                 </ng-template>
-                <ng-container role="tabpanel">
+                <ng-container>
                     <div class="row">
                         <div class="col-12 mt-40">
                             <p><strong>{{ 'projects.project-name' | translate}}:</strong><span *ngIf="loaded">
@@ -30,19 +30,19 @@
                     </div>
                 </ng-container>
             </tab>
-            <tab role="tab" aria-selected="false">
+            <tab aria-selected="false">
                 <ng-template tabHeading>
                     {{'projects.participants' | translate}}
                 </ng-template>
-                <ng-container role="tabpanel">
+                <ng-container>
                     <app-participants></app-participants>
                 </ng-container>
             </tab>
-            <tab role="tab" aria-selected="false">
+            <tab aria-selected="false">
                 <ng-template tabHeading>
                     {{'projects.deliverables' | translate}}
                 </ng-template>
-                <ng-container role="tabpanel">
+                <ng-container>
                     <app-deliverable></app-deliverable>
                 </ng-container>
             </tab>

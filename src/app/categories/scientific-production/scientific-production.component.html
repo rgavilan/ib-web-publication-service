@@ -22,42 +22,42 @@
 </div>
 <div class="row">
     <div class="col-12 mt-40">
-        <tabset role="tablist" #resultsTab [justified]="true">
-            <tab role="tab" aria-selected="true">
+        <tabset #resultsTab [justified]="true">
+            <tab aria-selected="true">
                 <ng-template tabHeading>
                     {{'scientific-production.scientific-publications' | translate}}
                 </ng-template>
-                <ng-container role="tabpanel">
+                <ng-container>
                     <app-documents [idPrefix]="'publications'" [isTreeVisible]="false"
                         [filterDocumentType]="['Book', 'Article']"></app-documents>
                 </ng-container>
             </tab>
-            <tab role="tab" aria-selected="false">
+            <tab aria-selected="false">
                 <ng-template tabHeading>
                     {{'scientific-production.academic-publications' | translate}}
                 </ng-template>
-                <ng-container role="tabpanel">
+                <ng-container>
                     <app-documents [idPrefix]="'academic'"
                         [selectDocumentType]="['Tesis de grado', 'Tesis de Master', 'Tesis de doctorado']"
                         [isTreeVisible]="false" [filterDocumentType]="['MasterThesis', 'PhDThesis', 'DoctoralThesis']">
                     </app-documents>
                 </ng-container>
             </tab>
-            <tab role="tab" aria-selected="false">
+            <tab aria-selected="false">
                 <ng-template tabHeading>
                     {{'scientific-production.other-publications' | translate}}
                 </ng-template>
-                <ng-container role="tabpanel">
+                <ng-container>
                     <app-documents [idPrefix]="'other'"
                         [selectDocumentType]="['Informes', 'Cartel de conferencia', 'Catalogo', 'Extracto', 'Documento audiovisual']"
                         [isTreeVisible]="false" [filterDocumentType]="['Book', 'Article']"></app-documents>
                 </ng-container>
             </tab>
-            <tab role="tab" aria-selected="false">
+            <tab aria-selected="false">
                 <ng-template tabHeading>
                     {{'scientific-production.events' | translate}}
                 </ng-template>
-                <ng-container role="tabpanel">
+                <ng-container>
                     <app-events></app-events>
                 </ng-container>
             </tab>

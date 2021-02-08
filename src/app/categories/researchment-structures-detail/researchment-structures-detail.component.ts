@@ -28,6 +28,7 @@ export class ResearchmentStructuresDetailComponent implements OnInit {
     address: '',
     tel: ''
   };
+  activeTab: string;
   /**
    * Creates an instance of ResearchmentStructuresDetailComponent.
    * @param {ActivatedRoute} route
@@ -48,7 +49,13 @@ export class ResearchmentStructuresDetailComponent implements OnInit {
     this.researchment.tel = 'Teléfono: +34 868 88 3000 (centralita) / + 34 868 88 8888 (Información)';
     this.route.params.subscribe((params: Params) => {
       this.researchmentId = params.id; // (+) converts string 'id' to a number
+      this.activeTab = 'scientist';
     });
+  }
+
+
+  changeTab(tabName: string) {
+    this.activeTab = tabName;
   }
 
 }
