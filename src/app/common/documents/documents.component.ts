@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
+import { AcademicPublication } from 'src/app/_models/academicPublication';
 import { Document } from 'src/app/_models/document';
 import { DocumentService } from 'src/app/_services/document.service';
 
@@ -78,7 +79,7 @@ export class DocumentsComponent implements OnInit {
    * @type {Page<SparqlResults>}
    * @memberof DocumentsComponent
    */
-  allDocumentFiltered: Page<Document> = new Page();
+  allDocumentFiltered: Page<Document | AcademicPublication> = new Page();
   /**
    *
    *
@@ -99,10 +100,18 @@ export class DocumentsComponent implements OnInit {
     pageRequest.size = 10;
     this.findRequest.pageRequest = pageRequest;
     this.findRequest.filter.types = this.filterDocumentType;
-    this.documentService.find(this.findRequest).subscribe((data) => {
-      this.allDocumentFiltered = data;
-      this.loaded = true;
-    });
+    if (this.idPrefix === 'academic') {
+      this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
+        this.allDocumentFiltered = data;
+        this.loaded = true;
+      });
+    } else {
+      this.documentService.find(this.findRequest).subscribe((data) => {
+        this.allDocumentFiltered = data;
+        this.loaded = true;
+      });
+    }
+
   }
 
 
@@ -139,10 +148,19 @@ export class DocumentsComponent implements OnInit {
       } else {
         this.findRequest.filter.yearTo = null;
       }
-      this.documentService.find(this.findRequest).subscribe((data) => {
-        this.allDocumentFiltered = data;
-        this.loaded = true;
-      });
+
+      if (this.idPrefix === 'academic') {
+        this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
+          this.allDocumentFiltered = data;
+          this.loaded = true;
+        });
+      } else {
+        this.documentService.find(this.findRequest).subscribe((data) => {
+          this.allDocumentFiltered = data;
+          this.loaded = true;
+        });
+      }
+
     }, 0);
   }
 
@@ -155,10 +173,18 @@ export class DocumentsComponent implements OnInit {
   allprojectsFilteredPageChanged(i: number): void {
     this.findRequest.pageRequest.page = i - 1;
     this.findRequest.pageRequest.size = this.allDocumentFiltered.size;
-    this.documentService.find(this.findRequest).subscribe((data) => {
-      this.allDocumentFiltered = data;
-      this.loaded = true;
-    });
+    if (this.idPrefix === 'academic') {
+      this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
+        this.allDocumentFiltered = data;
+        this.loaded = true;
+      });
+    } else {
+      this.documentService.find(this.findRequest).subscribe((data) => {
+        this.allDocumentFiltered = data;
+        this.loaded = true;
+      });
+    }
+
   }
 
   /**
@@ -171,10 +197,18 @@ export class DocumentsComponent implements OnInit {
     pageRequest.page = 0;
     pageRequest.size = this.allDocumentFiltered.size;
     this.findRequest.pageRequest = pageRequest;
-    this.documentService.find(this.findRequest).subscribe((data) => {
-      this.allDocumentFiltered = data;
-      this.loaded = true;
-    });
+    if (this.idPrefix === 'academic') {
+      this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
+        this.allDocumentFiltered = data;
+        this.loaded = true;
+      });
+    } else {
+      this.documentService.find(this.findRequest).subscribe((data) => {
+        this.allDocumentFiltered = data;
+        this.loaded = true;
+      });
+    }
+
 
   }
 
@@ -191,10 +225,18 @@ export class DocumentsComponent implements OnInit {
     pageRequest.size = i;
     pageRequest.direction = this.allDocumentFiltered.direction;
     this.findRequest.pageRequest = pageRequest;
-    this.documentService.find(this.findRequest).subscribe((data) => {
-      this.allDocumentFiltered = data;
-      this.loaded = true;
-    });
+    if (this.idPrefix === 'academic') {
+      this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
+        this.allDocumentFiltered = data;
+        this.loaded = true;
+      });
+    } else {
+      this.documentService.find(this.findRequest).subscribe((data) => {
+        this.allDocumentFiltered = data;
+        this.loaded = true;
+      });
+    }
+
   }
 
   /**
@@ -210,10 +252,19 @@ export class DocumentsComponent implements OnInit {
     newPageRequest.property = pageRequest.property;
     newPageRequest.direction = pageRequest.direction;
     this.findRequest.pageRequest = pageRequest;
-    this.documentService.find(this.findRequest).subscribe((data) => {
-      this.allDocumentFiltered = data;
-      this.loaded = true;
-    });
+
+    if (this.idPrefix === 'academic') {
+      this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
+        this.allDocumentFiltered = data;
+        this.loaded = true;
+      });
+    } else {
+      this.documentService.find(this.findRequest).subscribe((data) => {
+        this.allDocumentFiltered = data;
+        this.loaded = true;
+      });
+    }
+
   }
 
 }

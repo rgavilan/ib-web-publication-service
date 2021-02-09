@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { AbstractService } from '../_helpers/abstract';
 import { FindRequest, Page } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
+import { AcademicPublication } from '../_models/academicPublication';
 import { Document } from '../_models/document';
 
 /**
@@ -48,6 +49,24 @@ export class DocumentService extends AbstractService {
 
         return this.httpClient
             .get(Helper.getUrl('/document/search'), {
+                params: parameters
+            }).pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    findAcademicPublication(findRequest: FindRequest): Observable<Page<AcademicPublication>> {
+        // Filter params
+        let parameters = new HttpParams();
+        parameters = Helper.addParam(parameters, 'types', findRequest.filter.types);
+        parameters = Helper.addParam(parameters, 'title', findRequest.filter.name);
+        parameters = Helper.addParam(parameters, 'yearFrom', findRequest.filter.yearFrom);
+        parameters = Helper.addParam(parameters, 'yearTo', findRequest.filter.yearTo);
+        // Pagination params
+        parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
+
+        return this.httpClient
+            .get(Helper.getUrl('/academicpublication/search'), {
                 params: parameters
             }).pipe(
                 catchError(this.handleError)

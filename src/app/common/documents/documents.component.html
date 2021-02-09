@@ -33,8 +33,7 @@
                 placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker #decisionTo="ngbDatepicker"
                 (click)="decisionTo.toggle();" #dateTo{{idPrefix}}="ngModel" [(ngModel)]="dateFin" />
         </div>
-    </div>
-    <div class="row">
+
         <!-- type -->
         <div class="form-group col-lg-6">
             <label for="type{{idPrefix}}" class="col-sm-4 control-label">{{ "documents.types" | translate }}</label>

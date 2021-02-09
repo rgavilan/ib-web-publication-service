@@ -237,7 +237,11 @@
     "endPage": "Página fin",
     "doi":"DOI",
     "publishedIn": "Publicado en",
-    "date": "Fecha"
+    "date": "Fecha",
+    "summary": "Sumario",
+    "type":"Tipo",
+    "abbreviation":"Abreviación",
+    "placeOfPublication":"Lugar de publicación"
   },
   "participant": {
     "title": "Participantes",
