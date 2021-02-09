@@ -24,7 +24,7 @@
                     placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name"
                     id="search-directed-jobs{{idPrefix}}">
                 <span class="input-group-append">
-                    <button [attr.aria-label]="'form.search-by-name'" role="button" aria-pressed="false"
+                    <button [attr.aria-label]="'form.search-by-name' | translate" role="button" aria-pressed="false"
                         (click)="filteDirectedJobs()" class="btn btn-outline-secondary border-left-0 border"
                         type="button">
                         <em class="oi oi-magnifying-glass "></em>

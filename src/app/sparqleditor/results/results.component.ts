@@ -1,5 +1,7 @@
 import {
+  AfterViewChecked,
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   OnChanges,
   SimpleChanges,
@@ -12,7 +14,7 @@ import { TabsetComponent } from 'ngx-bootstrap/tabs';
   templateUrl: './results.component.html',
   inputs: ['data', 'errorMessage'],
 })
-export class ResultsComponent implements AfterViewInit, OnChanges {
+export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChecked {
   @ViewChild('resultsTab', { static: false })
   resultsTab: TabsetComponent;
   activeTab: string;
@@ -20,6 +22,14 @@ export class ResultsComponent implements AfterViewInit, OnChanges {
   data: any = null;
   errorMessage = null;
 
+  constructor(private cd: ChangeDetectorRef) {
+
+  }
+
+  ngAfterViewChecked() {
+    /* Looks for changes on this component and its children, after the wizardSteps changed */
+    this.cd.detectChanges();
+  }
   // Set default values after load the view
   ngAfterViewInit(): void {
     this.activeTab = 'table';

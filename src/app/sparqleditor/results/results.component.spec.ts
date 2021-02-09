@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { TestingHelper } from 'src/app/_helpers/testing.spec';
 
 import { ResultsComponent } from './results.component';
 
