@@ -1,10 +1,19 @@
-/**
- *
- *
- * @export
- * @class Document
- */
-export class Document {
+export class AcademicPublication {
+
+    /**
+     * The id
+     */
+    id: string;
+
+    /**
+     * The title
+     */
+    title: string;
+
+    /**
+     * The abbreviation
+     */
+    abbreviation: string;
 
     /**
      * The date
@@ -22,9 +31,9 @@ export class Document {
     endPage: string;
 
     /**
-     * The id
+     * The placeOfPublication
      */
-    id: string;
+    placeOfPublication: string;
 
     /**
      * The publishedIn
@@ -37,9 +46,9 @@ export class Document {
     startPage: string;
 
     /**
-     * The title
+     * The summary
      */
-    title: string;
+    summary: string;
 
     /**
      * The type
