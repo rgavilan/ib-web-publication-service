@@ -31,8 +31,8 @@
 <fieldset>
     <legend></legend>
 
-    <app-table-results [data]="topResearchmentStructuresFiltered.content[0]"
-        [pageInfo]="topResearchmentStructuresFiltered" [routerField]="'name'"
+    <app-table-results [data]="topResearchmentStructuresFiltered.content[0]" [dtoTypeTranslate]="'researchment'"
+        [extra]="'1'" [pageInfo]="topResearchmentStructuresFiltered" [routerField]="'name'"
         (pageChanged)="topResearchmentStructuresFilteredPageChanged($event)"
         (sizeChanged)="topResearchmentStructuresFilteredSizeChanged($event)"
         (sortChanged)="topResearchmentStructuresFilteredSortChanged($event)">

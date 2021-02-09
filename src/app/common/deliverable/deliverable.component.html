@@ -15,7 +15,8 @@
         <div class="form-group col-lg-6">
             <label for="anyo" class="col-sm-4 control-label">{{ "deliverable.year" | translate }}</label>
             <div class="col-sm-8">
-                <select name="anyo" class="form-control" [(ngModel)]="findRequest.filter.anyo" #type="ngModel">
+                <select name="anyo" [attr.aria-label]="'deliverable.year' | translate" class="form-control"
+                    [(ngModel)]="findRequest.filter.anyo" #type="ngModel">
                     <option [value]="undefined">{{ "form.select" | translate }}</option>
                     <option *ngFor="let year of yearsForSelect" [value]="year">{{year}}</option>
                 </select>
@@ -41,8 +42,8 @@
     </div>
 </div>
 <app-table-results *ngIf="loaded" [data]="allData.content[0]" [pageInfo]="allData" [headerData]="headerData"
-    (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
-    (sortChanged)="allprojectsFilteredSortChanged($event)">
+    [dtoTypeTranslate]="'deliverable'" [extra]="'1'" (pageChanged)="allprojectsFilteredPageChanged($event)"
+    (sizeChanged)="allprojectsFilteredSizeChanged($event)" (sortChanged)="allprojectsFilteredSortChanged($event)">
 </app-table-results>
 
 <hr>
@@ -62,6 +63,6 @@
     </div>
 </div>
 <app-table-results *ngIf="loaded" [data]="allData.content[0]" [pageInfo]="allData" [headerData]="headerData"
-    (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
-    (sortChanged)="allprojectsFilteredSortChanged($event)">
+    [dtoTypeTranslate]="'deliverable'" [extra]="'2'" (pageChanged)="allprojectsFilteredPageChanged($event)"
+    (sizeChanged)="allprojectsFilteredSizeChanged($event)" (sortChanged)="allprojectsFilteredSortChanged($event)">
 </app-table-results>

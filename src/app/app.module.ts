@@ -44,6 +44,7 @@ import { NgbModule, NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerI18n } 
 import { CustomNgbDateAdapter } from './_helpers/customNgbDateAdapter';
 import { CustomNgbDateFormatter } from './_helpers/customNgbDateFormatter';
 import { CustomNgbDatepickerI18n } from './_helpers/customNgbDatepickerI18n.provider';
+import { AccesibilityComponent } from './accesibility/accesibility.component';
 
 // -------------- Aux functions --------------
 
@@ -54,7 +55,8 @@ import { CustomNgbDatepickerI18n } from './_helpers/customNgbDatepickerI18n.prov
     MainComponent,
     MenuComponent,
     HomeComponent,
-    LinksComponent
+    LinksComponent,
+    AccesibilityComponent
   ],
   imports: [
     BrowserModule,

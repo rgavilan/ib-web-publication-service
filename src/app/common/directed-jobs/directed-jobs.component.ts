@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { SparqlResults } from 'src/app/_models/sparql';
@@ -17,6 +17,7 @@ export class DirectedJobsComponent implements OnInit {
    * @memberof DirectedJobsComponent
    */
   findRequest: FindRequest = new FindRequest();
+  @Input() idPrefix: string;
   /**
    *
    *

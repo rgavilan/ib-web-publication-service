@@ -28,7 +28,7 @@
     </div>
 </form>
 
-<app-table-results [data]="allTopFiltered.content[0]" [pageInfo]="allTopFiltered"
-    (pageChanged)="allTopsFilteredPageChanged($event)" (sizeChanged)="allTopsFilteredPageChanged($event)"
+<app-table-results [data]="allTopFiltered.content[0]" [pageInfo]="allTopFiltered" [dtoTypeTranslate]="'top'"
+    [extra]="'2'" (pageChanged)="allTopsFilteredPageChanged($event)" (sizeChanged)="allTopsFilteredPageChanged($event)"
     (sortChanged)="allTopsFilteredPageChanged($event)">
 </app-table-results>

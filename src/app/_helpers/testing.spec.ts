@@ -75,6 +75,7 @@ import { AllResearchmentStructuresComponent } from '../categories/researchment-s
 import { TopResearchmentStructuresComponent } from '../categories/researchment-structures/top-researchment-structures/top-researchment-structures.component';
 import { ResearchmentStructuresByQSComponent } from '../categories/researchment-structures/researchment-structures-chart-by-qs/researchment-structures-chart-by-qs.component';
 import { ResearchmentStructuresByFinancingComponent } from '../categories/researchment-structures/researchment-structures-chart-by-financing/researchment-structures-chart-by-financing.component';
+import { ResearchmentStructuresDetailComponent } from '../categories/researchment-structures-detail/researchment-structures-detail.component';
 
 
 /**
@@ -139,7 +140,8 @@ export class TestingHelper {
         AllResearchmentStructuresComponent,
         TopResearchmentStructuresComponent,
         ResearchmentStructuresByQSComponent,
-        ResearchmentStructuresByFinancingComponent
+        ResearchmentStructuresByFinancingComponent,
+        ResearchmentStructuresDetailComponent
       ],
       imports: [
         BrowserModule,

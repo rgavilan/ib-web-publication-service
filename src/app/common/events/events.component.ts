@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { EventsService } from 'src/app/_services/events.service';
@@ -8,6 +8,7 @@ import { EventsService } from 'src/app/_services/events.service';
   templateUrl: './events.component.html'
 })
 export class EventsComponent implements OnInit {
+  @Input() idPrefix: string;
   findRequest: FindRequest = new FindRequest();
   dateIni;
   dateFin;

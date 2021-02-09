@@ -51,6 +51,8 @@ import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 export class TableResultsComponent
   extends PaginatedSearchComponent<any>
   implements OnChanges {
+  @Input() dtoTypeTranslate = '';
+  @Input() extra = '';
 
   /**
    * Mandatory to show the data in the table

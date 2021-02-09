@@ -47,10 +47,10 @@
                     id="acction-inves" role="tabpanel" aria-labelledby="acction-inves-tab">
                     <legend class="mt-40">{{'scientist.directed-jobs' | translate}}</legend>
                     <hr>
-                    <app-directed-jobs></app-directed-jobs>
+                    <app-directed-jobs [idPrefix]="'uno'"></app-directed-jobs>
                     <legend>{{'scientist.prod-scientist' | translate}}</legend>
                     <hr>
-                    <app-directed-jobs></app-directed-jobs>
+                    <app-directed-jobs [idPrefix]="'dos'"></app-directed-jobs>
                     <legend>{{'scientist.reg-documents' | translate}}</legend>
                     <hr>
                     <app-documents [filterDocumentType]="['Book', 'Article']"></app-documents>
@@ -60,7 +60,7 @@
                     id="congress-events" role="tabpanel" aria-labelledby="congress-events-tab">
                     <legend class="mt-40">{{'scientist.congress-events' | translate}}</legend>
                     <hr>
-                    <app-events></app-events>
+                    <app-events [idPrefix]="'events'"></app-events>
                 </div>
                 <div class="tab-pane fade" id="business-activity"
                     [ngClass]="{'show': activeTab === 'business-activity', 'active': activeTab === 'business-activity' }"

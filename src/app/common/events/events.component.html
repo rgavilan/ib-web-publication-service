@@ -38,20 +38,22 @@
         </div>
         <!-- dates -->
         <div class="form-group col-lg-3">
-            <label for="dateFrom" class="control-label">{{'documents.date-ini' | translate }}</label>
-            <input class="form-control" name="dateFrom" id="dateFrom" required (ngModelChange)="filterEvents()"
-                placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
-                #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();" (keyup)="decisionDate.close()"
+            <label for="dateFrom{{idPrefix}}" class="control-label">{{'documents.date-ini' | translate }}</label>
+            <input class="form-control" name="dateFrom{{idPrefix}}" id="dateFrom{{idPrefix}}" required
+                (ngModelChange)="filterEvents()" placeholder="{{'form.datepicker-placeholder' | translate}}"
+                ngbDatepicker [readonly]="true" #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();"
+                (keyup)="decisionDate.close()"
                 (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDate.close() : decisionDate.toggle();"
-                #dateFrom="ngModel" [(ngModel)]="dateIni" />
+                #dateFrom{{idPrefix}}="ngModel" [(ngModel)]="dateIni" />
         </div>
         <div class="form-group col-lg-3">
-            <label for="dateTo" class="control-label">{{'documents.date-fin' | translate }}</label>
-            <input class="form-control" name="dateTo" id="dateTo" required (ngModelChange)="filterEvents()"
-                placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
+            <label for="dateTo{{idPrefix}}" class="control-label">{{'documents.date-fin' | translate }}</label>
+            <input class="form-control" name="dateTo{{idPrefix}}" id="dateTo{{idPrefix}}" required
+                (ngModelChange)="filterEvents()" placeholder="{{'form.datepicker-placeholder' | translate}}"
+                ngbDatepicker [readonly]="true"
                 (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionTo.close() : decisionTo.toggle();"
                 #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();" (keyup)="decisionTo.close()"
-                #dateTo="ngModel" [(ngModel)]="dateFin" />
+                #dateTo{{idPrefix}}="ngModel" [(ngModel)]="dateFin" />
         </div>
 
     </div>
@@ -78,6 +80,7 @@
     </div>
 </form>
 <app-table-results *ngIf="loaded" [data]="allEvents.content[0]" [pageInfo]="allEvents" [routerNameLink]="'../event/'"
-    [routerField]="'id'" (pageChanged)="allEventsFilteredPageChanged($event)"
-    (sizeChanged)="allEventsFilteredSizeChanged($event)" (sortChanged)="allEventsFilteredSortChanged($event)">
+    [dtoTypeTranslate]="'events'" [extra]="'2'" [routerField]="'id'"
+    (pageChanged)="allEventsFilteredPageChanged($event)" (sizeChanged)="allEventsFilteredSizeChanged($event)"
+    (sortChanged)="allEventsFilteredSortChanged($event)">
 </app-table-results>

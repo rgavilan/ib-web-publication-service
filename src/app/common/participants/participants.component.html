@@ -15,7 +15,8 @@
         <div class="form-group col-lg-6">
             <label for="anyo" class="col-sm-4 control-label">{{ "participant.year" | translate }}</label>
             <div class="col-sm-8">
-                <select name="anyo" class="form-control" [(ngModel)]="findRequest.filter.anyo" #type="ngModel">
+                <select name="anyo" [attr.aria-label]="'participant.year' | translate" class="form-control"
+                    [(ngModel)]="findRequest.filter.anyo" #type="ngModel">
                     <option [value]="undefined">{{ "form.select" | translate }}</option>
                     <option *ngFor="let year of yearsForSelect" [value]="year">{{year}}</option>
                 </select>
@@ -62,8 +63,8 @@
     </div>
 </div>
 <app-table-results *ngIf="loaded" [data]="allDataPerson.content[0]" [pageInfo]="allDataPerson"
-    [headerData]="headerData2" (pageChanged)="allChanged($event)" (sizeChanged)="allChanged($event)"
-    (sortChanged)="allChanged($event)">
+    [dtoTypeTranslate]="'part'" [extra]="'2'" [headerData]="headerData2" (pageChanged)="allChanged($event)"
+    (sizeChanged)="allChanged($event)" (sortChanged)="allChanged($event)">
 </app-table-results>
 <hr>
 <legend>{{'participant.proyect-participants' | translate}}</legend>
