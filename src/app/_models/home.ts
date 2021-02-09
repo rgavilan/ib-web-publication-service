@@ -124,6 +124,13 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       disabled: false
     },
     {
+      title: 'menu.accessibility',
+      iconName: 'oi-eye',
+      iconCircle: false,
+      url: '/main/accessibility',
+      disabled: false
+    },
+    {
       title: 'home.info-URI',
       iconName: 'oi-link-intact',
       iconCircle: false,

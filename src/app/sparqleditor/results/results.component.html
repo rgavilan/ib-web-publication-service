@@ -1,41 +1,53 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col">
-      <tabset #resultsTab>
-        <tab aria-selected="true" disabled="true">
-          <ng-template tabHeading>
-            <span class="oi oi-grid-three-up"></span>
-            {{ "sparql.results.table" | translate }}
-          </ng-template>
-          <ng-container *ngIf="!!data">
-            <app-table-results [data]="data"></app-table-results>
-          </ng-container>
-          <ng-container *ngIf="!!errorMessage">
-            <app-error-results [errorMessage]="errorMessage"></app-error-results>
-          </ng-container>
-        </tab>
-        <tab aria-selected="false" disabled="true">
-          <ng-template tabHeading>
-            <span class="oi oi-list"></span>
-            {{ "sparql.results.response" | translate }}
-          </ng-template>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" [ngClass]="{'active': activeTab === 'table' }" id="table-tab" (click)="changeTab('table')"
+            data-bs-toggle="tab" href="JavaScript:void(0)" role="tab" aria-controls="table"
+            [attr.aria-selected]="activeTab === 'table'"><span class="oi oi-grid-three-up"></span>
+            {{ "sparql.results.table" | translate }}</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" [ngClass]="{'active': activeTab === 'response' }" id="response-tab"
+            (click)="changeTab('response')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
+            aria-controls="response" [attr.aria-selected]="activeTab === 'response'"><span class="oi oi-list"></span>
+            {{ "sparql.results.response" | translate }}</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" [ngClass]="{'active': activeTab === 'chart' }" id="chart-atb" (click)="changeTab('chart')"
+            data-bs-toggle="tab" href="JavaScript:void(0)" role="tab" aria-controls="chart"
+            [attr.aria-selected]="activeTab === 'chart'"><span class="oi oi-graph"></span>
+            {{ "sparql.results.chart" | translate }}</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" [ngClass]="{'active': activeTab === 'map' }" id="map-tab" (click)="changeTab('map')"
+            data-bs-toggle="tab" href="JavaScript:void(0)" role="tab" aria-controls="map"
+            [attr.aria-selected]="activeTab === 'map'"><span class="oi oi-map"></span>
+            {{ "sparql.results.map" | translate }}</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade" [ngClass]="{'show': activeTab === 'table', 'active': activeTab === 'table' }"
+          id="table" role="tabpanel" aria-labelledby="table-tab">
+          <app-table-results *ngIf="!!data" [data]="data"></app-table-results>
+          <app-error-results *ngIf="!!errorMessage" [errorMessage]="errorMessage"></app-error-results>
+
+        </div>
+        <div class="tab-pane fade" [ngClass]="{'show': activeTab === 'response', 'active': activeTab === 'response' }"
+          id="response" role="tabpanel" aria-labelledby="response-tab">
           <app-json-results [data]="data"></app-json-results>
-        </tab>
-        <tab aria-selected="false" disabled="true">
-          <ng-template tabHeading>
-            <span class="oi oi-graph"></span>
-            {{ "sparql.results.chart" | translate }}
-          </ng-template>
+        </div>
+        <div class="tab-pane fade" id="chart"
+          [ngClass]="{'show': activeTab === 'chart', 'active': activeTab === 'chart' }" role="tabpanel"
+          aria-labelledby="chart-tab">
           Gráfico
-        </tab>
-        <tab aria-selected="false" disabled="true">
-          <ng-template tabHeading>
-            <span class="oi oi-map"></span>
-            {{ "sparql.results.map" | translate }}
-          </ng-template>
+        </div>
+        <div class="tab-pane fade" id="map" [ngClass]="{'show': activeTab === 'map', 'active': activeTab === 'map' }"
+          role="tabpanel" aria-labelledby="map-tab">
           Mapa
-        </tab>
-      </tabset>
+        </div>
+      </div>
     </div>
   </div>
 </div>

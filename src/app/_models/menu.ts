@@ -80,9 +80,9 @@ export const MENU_ITEMS: MenuItem[] = [
     disabled: false
   },
   {
-    title: 'menu.accesibility',
-    icon: '',
-    url: '',
+    title: 'menu.accessibility',
+    icon: 'oi-eye',
+    url: '/main/accessibility',
     disabled: false
   }
   /*{

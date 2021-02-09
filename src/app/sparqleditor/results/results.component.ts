@@ -15,12 +15,14 @@ import { TabsetComponent } from 'ngx-bootstrap/tabs';
 export class ResultsComponent implements AfterViewInit, OnChanges {
   @ViewChild('resultsTab', { static: false })
   resultsTab: TabsetComponent;
+  activeTab: string;
 
   data: any = null;
   errorMessage = null;
 
   // Set default values after load the view
   ngAfterViewInit(): void {
+    this.activeTab = 'table';
     if (!!this.resultsTab) {
       if (!this.data) {
         this.resultsTab.tabs[0].active = true;
@@ -43,5 +45,9 @@ export class ResultsComponent implements AfterViewInit, OnChanges {
         this.resultsTab.tabs[1].disabled = false;
       }
     }
+  }
+
+  changeTab(tab: string) {
+    this.activeTab = tab;
   }
 }

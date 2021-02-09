@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { NoAuthGuard } from './_guards/no-auth.guard';
 import { GraphicComponent } from './graphic/graphic.component';
 import { LinksComponent } from './links/links.component';
+import { AccesibilityComponent } from './accesibility/accesibility.component';
 
 /**
  * **********************************************
@@ -51,6 +52,10 @@ const noSecureRoutes: Routes = [
   {
     path: 'graphics',
     component: GraphicComponent,
+  },
+  {
+    path: 'accessibility',
+    component: AccesibilityComponent,
   },
   /***************** Categories *******************/
   {
@@ -102,4 +107,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
