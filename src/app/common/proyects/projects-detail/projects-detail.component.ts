@@ -59,6 +59,12 @@ export class ProjectsDetailComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   *
+   * @param {string} tabName
+   * @memberof ProjectsDetailComponent
+   */
   changeTab(tabName: string) {
     this.activeTab = tabName;
   }

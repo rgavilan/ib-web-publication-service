@@ -34,4 +34,9 @@ describe('ResearchmentStructuresDetailComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should change tab selected', () => {
+    component.changeTab('scientis');
+    expect(component.activeTab).toBe('scientis');
+  });
 });

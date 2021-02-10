@@ -55,6 +55,15 @@ describe('DocumentsComponent', () => {
       spyOn(documentService, 'find').and.callThrough();
       expect(component.findRequest.pageRequest.page).toBe(1);
     });
+
+    it('should change to page 1 and a result to show of 5 and call academic service', () => {
+      component.idPrefix = 'academic';
+      const docService1 = fixture.debugElement.injector.get(DocumentService);
+      const spy = spyOn(docService1, 'findAcademicPublication').and.callThrough();
+      component.allprojectsFilteredPageChanged(2);
+      expect(component.findRequest.pageRequest.page).toBe(1);
+      expect(spy).toHaveBeenCalled();
+    });
   });
 
   describe('test filterProjects', () => {
@@ -93,6 +102,17 @@ describe('DocumentsComponent', () => {
       fixture.detectChanges();
       expect(component.findRequest.filter.start).toBeUndefined();
     }));
+
+    it('should call academic service', fakeAsync(() => {
+      component.idPrefix = 'academic';
+      const docService1 = fixture.debugElement.injector.get(DocumentService);
+      const spy = spyOn(docService1, 'findAcademicPublication').and.callThrough();
+      component.dateIni = 138504334344378400000;
+      component.filterProjects();
+      tick(300);
+      fixture.detectChanges();
+      expect(spy).toHaveBeenCalled();
+    }));
   });
 
   describe('filterDocuments', () => {
@@ -102,6 +122,16 @@ describe('DocumentsComponent', () => {
       component.filterDocuments();
       expect(spy).toHaveBeenCalled();
     });
+    it('should filter document data and call service', () => {
+      component.idPrefix = 'academic';
+      const docService = fixture.debugElement.injector.get(DocumentService);
+      const spy = spyOn(docService, 'findAcademicPublication').and.callThrough();
+      component.filterDocuments();
+      expect(spy).toHaveBeenCalled();
+    });
+
+
+
   });
 
   describe('test allprojectsFilteredSortChanged', () => {
@@ -116,6 +146,18 @@ describe('DocumentsComponent', () => {
       component.allprojectsFilteredSortChanged(component.findRequest.pageRequest);
       expect(spy).toHaveBeenCalledWith(component.findRequest);
     });
+    it('should call academic service', fakeAsync(() => {
+      component.idPrefix = 'academic';
+      const newPageRequest: PageRequest = new PageRequest();
+      newPageRequest.page = 0;
+      newPageRequest.size = 10;
+      component.findRequest.pageRequest = newPageRequest;
+      const docService = fixture.debugElement.injector.get(DocumentService);
+      const spy = spyOn(docService, 'findAcademicPublication').and.callThrough();
+      fixture.detectChanges();
+      component.allprojectsFilteredSortChanged(component.findRequest.pageRequest);
+      expect(spy).toHaveBeenCalledWith(component.findRequest);
+    }));
   });
 
   describe('all proyects Filtered Page Changed', () => {
@@ -123,6 +165,15 @@ describe('DocumentsComponent', () => {
       component.allprojectsFilteredSizeChanged(20);
       spyOn(documentService, 'find').and.callThrough();
       expect(component.findRequest.pageRequest.size).toBe(20);
+    });
+
+    it('should change to page 1 and call academin service call', () => {
+      component.idPrefix = 'academic';
+      const docService = fixture.debugElement.injector.get(DocumentService);
+      const spy = spyOn(docService, 'findAcademicPublication').and.callThrough();
+      component.allprojectsFilteredSizeChanged(20);
+      expect(component.findRequest.pageRequest.size).toBe(20);
+      expect(spy).toHaveBeenCalled();
     });
   });
 });

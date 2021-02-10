@@ -147,4 +147,9 @@ describe('ProjectsDetailComponent', () => {
       expect(component.id).toBe('123');
     });
   });
+
+  it('should change tab selected', () => {
+    component.changeTab('scientis');
+    expect(component.activeTab).toBe('scientis');
+  });
 });

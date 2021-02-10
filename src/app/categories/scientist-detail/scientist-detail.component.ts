@@ -55,6 +55,12 @@ export class ScientistDetailComponent implements OnInit {
     this.echartOptions = HelperGraphics.configChartBar(xAxisData, barData, legend);
   }
 
+  /**
+   *
+   *
+   * @param {string} tabName
+   * @memberof ScientistDetailComponent
+   */
   changeTab(tabName: string) {
     this.activeTab = tabName;
   }

@@ -54,6 +54,12 @@ export class ResearchmentStructuresDetailComponent implements OnInit {
   }
 
 
+  /**
+   *
+   *
+   * @param {string} tabName
+   * @memberof ResearchmentStructuresDetailComponent
+   */
   changeTab(tabName: string) {
     this.activeTab = tabName;
   }
