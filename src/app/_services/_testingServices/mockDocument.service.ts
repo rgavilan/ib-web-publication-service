@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { FindRequest, Page } from 'src/app/_helpers/search';
+import { AcademicPublication } from 'src/app/_models/academicPublication';
 import { Document } from 'src/app/_models/document';
 
 
@@ -19,7 +20,7 @@ export class MockDocumentService {
             endPage: '',
             publishedIn: '',
             startPage: '',
-            types: null
+            type: null
         },
         {
             id: '0-333-75765-3',
@@ -29,7 +30,7 @@ export class MockDocumentService {
             endPage: '',
             publishedIn: '',
             startPage: '',
-            types: null
+            type: null
         },
         {
             id: '00-0000-000-0',
@@ -39,7 +40,7 @@ export class MockDocumentService {
             endPage: '',
             publishedIn: '',
             startPage: '',
-            types: null
+            type: null
         },
         {
             id: '0211-8149',
@@ -49,7 +50,7 @@ export class MockDocumentService {
             endPage: '',
             publishedIn: '',
             startPage: '',
-            types: null
+            type: null
         },
         {
             id: '1',
@@ -59,7 +60,7 @@ export class MockDocumentService {
             endPage: '',
             publishedIn: '',
             startPage: '',
-            types: null
+            type: null
         },
         {
             id: '102-418-98',
@@ -69,7 +70,7 @@ export class MockDocumentService {
             endPage: '',
             publishedIn: '',
             startPage: '',
-            types: null
+            type: null
         },
         {
             id: '1130-0507',
@@ -79,7 +80,7 @@ export class MockDocumentService {
             endPage: '',
             publishedIn: '',
             startPage: '',
-            types: null
+            type: null
         },
         {
             id: '1130-8451-92',
@@ -89,7 +90,7 @@ export class MockDocumentService {
             endPage: '',
             publishedIn: '',
             startPage: '',
-            types: null
+            type: null
         },
         {
             id: '11922013',
@@ -99,7 +100,7 @@ export class MockDocumentService {
             endPage: '',
             publishedIn: '',
             startPage: '',
-            types: null
+            type: null
         },
         {
             id: '2-88164-003-6',
@@ -109,13 +110,40 @@ export class MockDocumentService {
             endPage: '',
             publishedIn: '',
             startPage: '',
-            types: null
+            type: null
         }
     ];
+    /**
+     *
+     *
+     * @param {FindRequest} findRequest
+     * @return {*}  {Observable<Page<Document>>}
+     * @memberof MockDocumentService
+     */
     find(findRequest: FindRequest): Observable<Page<Document>> {
         // Filter params
         const page: Page<Document> = new Page<Document>();
         const results: Document[] = this.DUMMY_DATA;
+        page.number = 0;
+        page.numberOfElements = 10;
+        page.size = 10;
+        page.totalElements = 10;
+        // TODO sort
+        page.content = results;
+        return of(page);
+    }
+
+    /**
+     *
+     *
+     * @param {FindRequest} findRequest
+     * @return {*}  {Observable<Page<AcademicPublication>>}
+     * @memberof MockDocumentService
+     */
+    findAcademicPublication(findRequest: FindRequest): Observable<Page<AcademicPublication>> {
+        // Filter params
+        const page: Page<AcademicPublication> = new Page<AcademicPublication>();
+        const results: AcademicPublication[] = [];
         page.number = 0;
         page.numberOfElements = 10;
         page.size = 10;
