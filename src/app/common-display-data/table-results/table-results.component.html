@@ -12,8 +12,11 @@
           <tr *ngIf="!!headerData">
             <th class="sortable" (click)="sort(header.columnName)" *ngFor="let header of headerData"
               id="{{header.columnName + dtoTypeTranslate + extra}}">
+              <em class="oi oi-info" *ngIf="needTooltip(header.columnName).required" placement="top"
+                ngbTooltip="{{needTooltip(header.columnName).textValue}}"></em>
               {{ header.textToTranslate | translate }}<em class="float-right"
                 [ngClass]="getSortIcon(header.columnName)"></em>
+
             </th>
           </tr>
         </thead>

@@ -138,6 +138,7 @@ export class TableResultsComponent
   numPages = 1;
 
   constructor(
+    private translateService: TranslateService,
     router: Router,
     translate: TranslateService,
     toastr: ToastrService
@@ -250,6 +251,22 @@ export class TableResultsComponent
     } else {
       this.sizeChanged.emit(i);
     }
+  }
+
+  /**
+   *
+   *
+   * @param {string} headerName
+   * @return {*} 
+   * @memberof TableResultsComponent
+   */
+  needTooltip(headerName: string) {
+    const needTooltip = { required: false, textValue: '' };
+    if (headerName === 'hIndex') {
+      needTooltip.textValue = this.translateService.instant('tooltip.hIndex');
+      needTooltip.required = true;
+    }
+    return needTooltip;
   }
 
 }

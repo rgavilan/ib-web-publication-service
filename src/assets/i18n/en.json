@@ -327,5 +327,8 @@
     "legend-top-patents": "Top organizations with the most patents",
     "legend-top-genre": "Top activities by gender",
     "legend-top-location": "Location of activities by type in the last month"
+  },
+  "tooltip": {
+    "hIndex": "h-index of scopus"
   }
 }

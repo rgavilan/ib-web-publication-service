@@ -122,6 +122,7 @@ export class TableResultsDtoComponent
   @Input() dtoTypeTranslate = '';
   @Input() extra = '';
   constructor(
+    private translateService: TranslateService,
     router: Router,
     translate: TranslateService,
     toastr: ToastrService
@@ -238,6 +239,22 @@ export class TableResultsDtoComponent
     } else {
       this.sizeChanged.emit(i);
     }
+  }
+
+  /**
+   *
+   *
+   * @param {string} headerName
+   * @return {*} 
+   * @memberof TableResultsDtoComponent
+   */
+  needTooltip(headerName: string) {
+    const needTooltip = { required: false, textValue: '' };
+    if (headerName === 'hIndex') {
+      needTooltip.textValue = this.translateService.instant('tooltip.hIndex');
+      needTooltip.required = true;
+    }
+    return needTooltip;
   }
 
 
