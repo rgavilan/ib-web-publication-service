@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LOCALE_CONFIG } from './configuration';
+import { TranslateHelperService } from './_services/translate-helper.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  constructor(translate: TranslateService) {
+  constructor(translate: TranslateService, private translateHelper: TranslateHelperService) {
     translate.addLangs(LOCALE_CONFIG.availableLanguages);
-
+    const currentSelectetLang = this.translateHelper.getLocalLang();
     translate.setDefaultLang(LOCALE_CONFIG.fallbackLocale);
+
 
     const regExp: RegExp = new RegExp(this.composeRegularExpression());
 
@@ -22,9 +24,14 @@ export class AppComponent {
       browserLang = translate.getBrowserLang();
     }
 
-    translate.use(
-      browserLang.match(regExp) ? browserLang : LOCALE_CONFIG.fallbackLocale
-    );
+    if (currentSelectetLang) {
+      translate.setDefaultLang(currentSelectetLang);
+    } else {
+      translate.use(
+        browserLang.match(regExp) ? browserLang : LOCALE_CONFIG.fallbackLocale
+      );
+    }
+
   }
 
   /**

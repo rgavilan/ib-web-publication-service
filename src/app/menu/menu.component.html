@@ -16,6 +16,10 @@
       {{ item.title | translate }}
     </ng-container>
   </li>
+  <li>
+    <span (click)="translateHelperService.setTransLanguage('es')">Español</span>
+    <span (click)="translateHelperService.setTransLanguage('en')">Inglés</span>
+  </li>
 
   <!-- logout button -->
   <li class=" sidebar-brand">

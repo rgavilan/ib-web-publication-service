@@ -3,6 +3,7 @@ import { MenuService } from '../_services/menu.service';
 import { MenuItem } from '../_models/menu';
 import { LoginService } from '../_services/login.service';
 import { Router } from '@angular/router';
+import { TranslateHelperService } from '../_services/translate-helper.service';
 
 /**
  * Componente que muestra el menú de la aplicación.
@@ -20,6 +21,7 @@ export class MenuComponent implements OnInit {
   menuItems: MenuItem[];
 
   constructor(
+    public translateHelperService: TranslateHelperService,
     private router: Router,
     private menuService: MenuService,
     private loginService: LoginService
@@ -38,4 +40,6 @@ export class MenuComponent implements OnInit {
     this.loginService.logout();
     this.router.navigate(['/login']);
   }
+
+
 }
