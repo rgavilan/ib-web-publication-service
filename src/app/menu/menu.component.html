@@ -16,9 +16,13 @@
       {{ item.title | translate }}
     </ng-container>
   </li>
-  <li>
-    <span (click)="translateHelperService.setTransLanguage('es')">Español</span>
-    <span (click)="translateHelperService.setTransLanguage('en')">Inglés</span>
+  <li class="lang-container">
+    <a class="link-logo" href="JavaScript:void(0)" (click)="translateHelperService.setTransLanguage('es')">
+      <img class="img-logo" src="assets/images/spanish-language.png" />
+    </a>
+    <a class="link-logo" href="JavaScript:void(0)" (click)="translateHelperService.setTransLanguage('en')">
+      <img class="img-logo" src="assets/images/english-language.png" />
+    </a>
   </li>
 
   <!-- logout button -->
