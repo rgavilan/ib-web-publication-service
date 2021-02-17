@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DocumentDetail } from 'src/app/_models/documentDetail';
-import { ScientistService } from 'src/app/_services/scientist.service';
 
 @Component({
   selector: 'app-document-detail',
@@ -20,7 +19,7 @@ export class DocumentDetailComponent implements OnInit {
   };
 
 
-  constructor(private scientificsService: ScientistService) { }
+  constructor() { }
 
   ngOnInit(): void {
 

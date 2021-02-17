@@ -150,14 +150,18 @@
     "trajectory-by-timeline": "Trayectory by timeline",
     "events": "Events",
     "congress-events": "Congress and events",
-    "table-header": {
-      "name": "Name",
-      "area": "Area",
-      "type": "Type",
-      "appointments": "Cites",
-      "h-index": "H-index",
-      "publications": "Publications"
-    }
+    "id":"ID",
+    "birthDate": "BithDate",
+    "description":"Description",
+    "firstName": "Name",
+    "gender": "Gender",
+    "hasContactInfo": "Has contact info",
+    "homepage": "Home page",
+    "nickname": "Nickname",
+    "personalMaibox": "PersonalMailbox",
+    "researchLine": "Research Line",
+    "surname": "Surname",
+    "taxId": "Tax ID"
   },
   "scientific-production": {
     "title": "Scientific production",

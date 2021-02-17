@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
+import { Person } from 'src/app/_models/person';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { TableResultsHeaderItem } from 'src/app/_models/table-results';
-import { ScientistService } from 'src/app/_services/scientist.service';
+import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 /**
  *
  *
@@ -27,7 +28,7 @@ export class ScientistSearchComponent implements OnInit {
    * @type {Page<SparqlResults>}
    * @memberof ScientistSearchComponent
    */
-  allScientificsFiltered: Page<SparqlResults>;
+  allScientificsFiltered: Page<Person> = new Page();
   /**
    *
    *
@@ -62,38 +63,7 @@ export class ScientistSearchComponent implements OnInit {
    * @memberof ScientistSearchComponent
    */
   loaded = false;
-  /**
-   *
-   *
-   * @type {TableResultsHeaderItem[]}
-   * @memberof ScientistSearchComponent
-   */
-  headerData: TableResultsHeaderItem[] = [
-    {
-      textToTranslate: 'scientist.table-header.name',
-      columnName: 'name'
-    },
-    {
-      textToTranslate: 'scientist.table-header.area',
-      columnName: 'area'
-    },
-    {
-      textToTranslate: 'scientist.table-header.type',
-      columnName: 'type'
-    },
-    {
-      textToTranslate: 'scientist.table-header.appointments',
-      columnName: 'appointments'
-    },
-    {
-      textToTranslate: 'scientist.table-header.h-index',
-      columnName: 'hIndex'
-    },
-    {
-      textToTranslate: 'scientist.table-header.publications',
-      columnName: 'publications'
-    }
-  ];
+
 
   /**
    * Constructor
@@ -104,7 +74,7 @@ export class ScientistSearchComponent implements OnInit {
    * param cdr 
    */
   constructor(
-    private scientificsService: ScientistService) {
+    private researchStaffServices: ResearchStaffService) {
   }
 
   /**
@@ -116,11 +86,10 @@ export class ScientistSearchComponent implements OnInit {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
     pageRequest.size = 10;
-
-    this.allScientificsFiltered = this.scientificsService.findTopByFilters(
-      null, pageRequest
-    );
-
+    this.researchStaffServices.find(this.findRequest).subscribe(res => {
+      this.allScientificsFiltered = res;
+      this.loaded = true;
+    });
 
     const xAxisData: Array<string> = [];
     const data1: Array<any> = [];
@@ -148,9 +117,10 @@ export class ScientistSearchComponent implements OnInit {
     pageRequest.size = this.allScientificsFiltered.size;
     pageRequest.property = this.allScientificsFiltered.sort;
     pageRequest.direction = this.allScientificsFiltered.direction;
-    this.allScientificsFiltered = this.scientificsService.findTopByFilters(
-      this.filters, pageRequest
-    );
+    this.researchStaffServices.find(this.findRequest).subscribe(res => {
+      this.allScientificsFiltered = res;
+      this.loaded = true;
+    });
   }
 
   /**
@@ -168,9 +138,10 @@ export class ScientistSearchComponent implements OnInit {
     pageRequest.property = this.allScientificsFiltered.sort;
     pageRequest.direction = this.allScientificsFiltered.direction;
     // Call service to load data filtered
-    this.allScientificsFiltered = this.scientificsService.findTopByFilters(
-      this.filters, pageRequest
-    );
+    this.researchStaffServices.find(this.findRequest).subscribe(res => {
+      this.allScientificsFiltered = res;
+      this.loaded = true;
+    });
   }
 
 }

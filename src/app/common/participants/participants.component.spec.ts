@@ -2,9 +2,9 @@ import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core
 import { PageRequest } from 'src/app/_helpers/search';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
 import { ParticipantService } from 'src/app/_services/participant.service';
-import { ScientistService } from 'src/app/_services/scientist.service';
+import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 import { MockParticipantService } from 'src/app/_services/_testingServices/mockParticipant.service';
-import { MockScientistService } from 'src/app/_services/_testingServices/mockScientist.service';
+import { MockResearchStaffService } from 'src/app/_services/_testingServices/mockResearchStaff.service';
 
 import { ParticipantsComponent } from './participants.component';
 
@@ -16,7 +16,7 @@ describe('ParticipantsComponent', () => {
     TestingHelper.configureTest()
       .compileComponents();
     TestBed.configureTestingModule({
-      providers: [{ provide: ScientistService, useClass: MockScientistService },
+      providers: [{ provide: ResearchStaffService, useClass: MockResearchStaffService },
       { provide: ParticipantService, useClass: MockParticipantService }]
     }).compileComponents();
   }));

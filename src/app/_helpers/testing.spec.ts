@@ -40,7 +40,6 @@ import { OAuthInterceptor } from '../_interceptors/oauth-interceptor';
 import { APP_BASE_HREF } from '@angular/common';
 import { SPARQLEditorComponent } from '../sparqleditor/sparqleditor.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TopSearchComponent } from '../common/top-search/top-search.component';
 import { ScientistSearchComponent } from '../common/scientist-search/scientist-search.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -111,7 +110,6 @@ export class TestingHelper {
         MenuComponent,
         HomeComponent,
         SPARQLEditorComponent,
-        TopSearchComponent,
         ScientistSearchComponent,
         TreeComponent,
         NewTreeComponent,

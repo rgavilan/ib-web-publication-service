@@ -141,7 +141,7 @@
     "id":"ID"
   },
   "scientist": {
-    "title": "Personal investigador",
+    "title": "Titulo",
     "area": "Área",
     "type": "Tipo",
     "acction-inves":"Acciones de investigación",
@@ -159,14 +159,21 @@
     "trajectory-by-timeline": "Trayectoria por línea de tiempo",
     "events":"Eventos",
     "congress-events": "Congresos y eventos de divulgación científica",
-    "table-header": {
-      "name":"Nombre",
-      "area":"Área",
-      "type":"Tipo",
-      "appointments": "Citas",
-      "h-index": "H-index",
-      "publications": "Publicaciones"
-    }
+    "name":"Nombre",
+    "appointments": "Citas",
+    "publications": "Publicaciones",
+    "id":"ID",
+    "birthDate": "Fecha de Nac.",
+    "description":"Descripción",
+    "firstName": "Nombre",
+    "gender": "Género",
+    "hasContactInfo": "Info. de contacto",
+    "homepage": "Pag. Inicio",
+    "nickname": "Nickname",
+    "personalMaibox": "Mail Personal",
+    "researchLine": "Línea de investigación",
+    "surname": "Apellido",
+    "taxId": "Tax ID"
   },
   "scientific-production": {
     "title": "Producción cientifica",

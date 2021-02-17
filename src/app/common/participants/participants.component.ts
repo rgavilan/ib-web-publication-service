@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
+import { Person } from 'src/app/_models/person';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { ParticipantService } from 'src/app/_services/participant.service';
-import { ScientistService } from 'src/app/_services/scientist.service';
+import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 
 @Component({
   selector: 'app-participants',
@@ -29,13 +30,14 @@ export class ParticipantsComponent implements OnInit {
    * @memberof ParticipantsComponent
    */
   allDataParticipantsSecondTable: Page<SparqlResults> = new Page();
+
   /**
    *
    *
-   * @type {Page<SparqlResults>}
+   * @type {Page<Person>}
    * @memberof ParticipantsComponent
    */
-  allDataPerson: Page<SparqlResults> = new Page();
+  allDataPerson: Page<Person> = new Page();
   /**
    *
    *
@@ -110,7 +112,7 @@ export class ParticipantsComponent implements OnInit {
 
   constructor(
     private participantService: ParticipantService,
-    private scientificsService: ScientistService) {
+    private researchStaff: ResearchStaffService) {
   }
 
 
@@ -118,9 +120,10 @@ export class ParticipantsComponent implements OnInit {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
     pageRequest.size = 10;
-    this.allDataPerson = this.scientificsService.findTopByFilters(
-      null, pageRequest
-    );
+    this.researchStaff.find(this.findRequest).subscribe(data => {
+      this.allDataPerson = data;
+      this.loaded = true;
+    });
 
     const findRequest: FindRequest = new FindRequest();
     this.participantService.findPerson(findRequest).subscribe(data => {

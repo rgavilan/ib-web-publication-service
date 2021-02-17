@@ -19,7 +19,6 @@ import { NewTreeComponent } from '../graphic/new-tree/new-tree.component';
 import { PatentsComponent } from '../common/patents/patents.component';
 import { ProyectsComponent } from '../common/proyects/proyects.component';
 import { ScientistSearchComponent } from '../common/scientist-search/scientist-search.component';
-import { TopSearchComponent } from '../common/top-search/top-search.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { DocumentsComponent } from '../common/documents/documents.component';
 import { ProjectsDetailComponent } from '../common/proyects/projects-detail/projects-detail.component';
@@ -42,7 +41,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
     TopResearchmentStructuresComponent, ResearchmentStructuresByFinancingComponent, ResearchmentStructuresByQSComponent,
     InvestigationActionsComponent, TreeComponent, GraphicComponent, NewTreeComponent, PatentsComponent,
-    ProyectsComponent, ScientistSearchComponent, TopSearchComponent, DocumentsComponent,
+    ProyectsComponent, ScientistSearchComponent, DocumentsComponent,
     ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
     DirectedJobsComponent, StartupComponent, AreasComponent, EventsComponent, AreasDetailComponent,
     BusinessComponent, ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent

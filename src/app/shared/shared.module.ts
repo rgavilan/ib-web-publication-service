@@ -8,7 +8,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableResultsComponent } from '../common-display-data/table-results/table-results.component';
 import { RouterModule } from '@angular/router';
 import { PatentService } from '../_services/patent.service';
-import { ScientistService } from '../_services/scientist.service';
 import { DocumentService } from '../_services/document.service';
 import { TableResultsDtoComponent } from '../common-display-data/table-results-dto/table-results-dto.component';
 
@@ -31,7 +30,6 @@ import { TableResultsDtoComponent } from '../common-display-data/table-results-d
     TableResultsComponent, TableResultsDtoComponent],
   providers: [
     PatentService,
-    ScientistService,
     DocumentService
   ]
 })

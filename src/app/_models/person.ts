@@ -59,7 +59,7 @@ export class Person {
     /**
      * The personalMailBox
      */
-    personalMailBox: string;
+    personalMaibox: string;
 
     /**
      * The researchLine

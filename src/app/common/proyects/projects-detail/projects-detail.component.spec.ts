@@ -4,12 +4,11 @@ import { of } from 'rxjs';
 import { Page } from 'src/app/_helpers/search';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
 import { Project } from 'src/app/_models/project';
-import { SparqlResults } from 'src/app/_models/sparql';
 import { ParticipantService } from 'src/app/_services/participant.service';
 import { ProjectService } from 'src/app/_services/project.service';
-import { ScientistService } from 'src/app/_services/scientist.service';
+import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 import { MockProjectService } from 'src/app/_services/_testingServices/mockProject.service';
-import { MockScientistService } from 'src/app/_services/_testingServices/mockScientist.service';
+import { MockResearchStaffService } from 'src/app/_services/_testingServices/mockResearchStaff.service';
 import { ProjectsDetailComponent } from './projects-detail.component';
 
 describe('ProjectsDetailComponent', () => {
@@ -98,7 +97,7 @@ describe('ProjectsDetailComponent', () => {
           find: () => of(page),
           findPerson: () => of(page),
         }
-      }, { provide: ScientistService, useClass: MockScientistService }]
+      }, { provide: ResearchStaffService, useClass: MockResearchStaffService }]
     }).compileComponents();
   }));
 
