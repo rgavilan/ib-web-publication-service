@@ -28,7 +28,6 @@ export class Helper {
       if (Array.isArray(value)) {
         value.forEach(element => {
           if (element !== '' && element !== 'undefined') {
-            // params = params.append(name, element);
             params = params.append(`${name.toString()}`, element);
           }
         });

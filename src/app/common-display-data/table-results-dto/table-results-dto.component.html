@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col">
       <table class="table table-bordered" aria-label="Data displayed from Sparql" *ngIf="!!dataComplete">
+        <caption>{{'form.results' | translate }}</caption>
         <thead>
           <tr>
             <th class="sortable" (click)="sort(header)" *ngFor="let header of hedearDTO"

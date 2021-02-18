@@ -346,5 +346,9 @@
   },
   "tooltip": {
     "hIndex": "h-index de scopus"
+  },
+  "lang": {
+    "es": "Español",
+    "en": "Inglés"
   }
 }

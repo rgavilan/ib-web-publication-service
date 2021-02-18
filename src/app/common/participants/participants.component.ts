@@ -7,6 +7,13 @@ import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { ParticipantService } from 'src/app/_services/participant.service';
 import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 
+/**
+ *
+ *
+ * @export
+ * @class ParticipantsComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-participants',
   templateUrl: './participants.component.html'

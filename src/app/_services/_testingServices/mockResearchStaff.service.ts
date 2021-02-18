@@ -4,11 +4,12 @@ import { FindRequest, Page } from 'src/app/_helpers/search';
 import { Patent } from 'src/app/_models/patent';
 import { Person } from 'src/app/_models/person';
 
+
 /**
- *  Service for testiong patent service
+ *
  *
  * @export
- * @extends {AbstractService}
+ * @class MockResearchStaffService
  */
 @Injectable({
     providedIn: 'root',
@@ -104,6 +105,13 @@ export class MockResearchStaffService {
         }
     ];
 
+    /**
+     *
+     *
+     * @param {FindRequest} findRequest
+     * @return {*}  {Observable<Page<Person>>}
+     * @memberof MockResearchStaffService
+     */
     find(findRequest: FindRequest): Observable<Page<Person>> {
         // Filter params
         const page: Page<Person> = new Page<Person>();

@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { DocumentDetail } from 'src/app/_models/documentDetail';
 
+/**
+ *
+ *
+ * @export
+ * @class DocumentDetailComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-document-detail',
   templateUrl: './document-detail.component.html'

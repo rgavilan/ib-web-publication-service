@@ -7,6 +7,13 @@ import { FindRequest, Page } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
 import { Person } from '../_models/person';
 
+/**
+ *
+ *
+ * @export
+ * @class ResearchStaffService
+ * @extends {AbstractService}
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +23,13 @@ export class ResearchStaffService extends AbstractService {
     super();
   }
 
+  /**
+   *
+   *
+   * @param {FindRequest} findRequest
+   * @return {*}  {Observable<Page<Person>>}
+   * @memberof ResearchStaffService
+   */
   find(findRequest: FindRequest): Observable<Page<Person>> {
     // Filter params
     let parameters = new HttpParams();
