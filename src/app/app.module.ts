@@ -45,6 +45,8 @@ import { CustomNgbDateAdapter } from './_helpers/customNgbDateAdapter';
 import { CustomNgbDateFormatter } from './_helpers/customNgbDateFormatter';
 import { CustomNgbDatepickerI18n } from './_helpers/customNgbDatepickerI18n.provider';
 import { AccesibilityComponent } from './accesibility/accesibility.component';
+import { Helper } from './_helpers/utils';
+import { HelperGraphics } from './_helpers/helperGraphics';
 
 // -------------- Aux functions --------------
 
@@ -109,7 +111,9 @@ import { AccesibilityComponent } from './accesibility/accesibility.component';
     {
       provide: NgbDatepickerI18n,
       useClass: CustomNgbDatepickerI18n
-    }
+    },
+    Helper,
+    HelperGraphics
   ],
   bootstrap: [AppComponent]
 })

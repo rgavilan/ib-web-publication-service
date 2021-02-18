@@ -10,8 +10,7 @@ import { TabsetComponent } from 'ngx-bootstrap/tabs';
  */
 @Component({
   selector: 'app-researchment-structures-detail',
-  templateUrl: './researchment-structures-detail.component.html',
-  styleUrls: ['./researchment-structures-detail.component.css']
+  templateUrl: './researchment-structures-detail.component.html'
 })
 export class ResearchmentStructuresDetailComponent implements OnInit {
   @ViewChild('resultsTab', { static: false })

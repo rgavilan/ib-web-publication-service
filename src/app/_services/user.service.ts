@@ -53,7 +53,7 @@ export class UserService extends AbstractService {
    */
   get(id: string): Observable<User> {
     return this.httpClient
-      .get(Helper.getUrl('/user/' + id))
+      .get(Helper.getUrl(`/user/ ${id}`))
       .pipe(catchError(this.handleError));
   }
 
