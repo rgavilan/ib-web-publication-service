@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   OnChanges,
+  OnInit,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
@@ -26,13 +27,14 @@ export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChec
 
   }
 
+
   ngAfterViewChecked() {
     /* Looks for changes on this component and its children, after the wizardSteps changed */
     this.cd.detectChanges();
+    this.activeTab = 'table';
   }
   // Set default values after load the view
   ngAfterViewInit(): void {
-    this.activeTab = 'table';
     // if (!!this.resultsTab) {
     //   if (!this.data) {
     //     this.resultsTab.tabs[0].active = true;
