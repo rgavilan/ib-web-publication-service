@@ -8,7 +8,7 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { TabsetComponent } from 'ngx-bootstrap/tabs';
+import { Binding, BindingValue, SparqlResults } from 'src/app/_models/sparql';
 
 @Component({
   selector: 'app-results',
@@ -20,8 +20,10 @@ export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChec
   // resultsTab: TabsetComponent;
   activeTab: string;
 
-  data: any = null;
+  data: SparqlResults = null;
   errorMessage = null;
+
+  activeCharts: boolean = false;
 
   constructor(private cd: ChangeDetectorRef) {
 
@@ -35,6 +37,10 @@ export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChec
   }
   // Set default values after load the view
   ngAfterViewInit(): void {
+
+    if (!!this.data && this.enableGraphics) {
+      this.activeCharts = true;
+    }
     // if (!!this.resultsTab) {
     //   if (!this.data) {
     //     this.resultsTab.tabs[0].active = true;
@@ -71,4 +77,40 @@ export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChec
     }
 
   }
+
+
+  /*
+   ************************************
+   ********* PRIVATE FUNCTONS *********
+   ************************************
+  */
+  private enableGraphics() {
+    this.activeCharts = false;
+    if (this.data.head.vars.length == 2 && !!this.data.results.bindings && this.data.results.bindings.length > 0) {
+      var firstResult = this.data.results.bindings[0];
+
+      if (this.isText(firstResult[this.data.head.vars[0]]) || this.isText(firstResult[this.data.head.vars[1]])) {
+        if (this.isText(firstResult[this.data.head.vars[0]]) || this.isText(firstResult[this.data.head.vars[1]])) {
+          this.activeCharts = true;
+        }
+      }
+    }
+
+  }
+
+  private isText(binding: BindingValue): boolean {
+    return binding.type == "literal" && binding.hasOwnProperty('xml:lang');
+  }
+
+  private isNumeric(binding: BindingValue): boolean {
+    if (binding.type == "literal" && binding.hasOwnProperty('datatype')) {
+      if (binding.datatype.includes('decimal')) {
+        if (binding.datatype.includes('integer') || binding.datatype.includes('decimal') || binding.datatype.includes('float') || binding.datatype.includes('double')) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
 }
