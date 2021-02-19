@@ -13,6 +13,7 @@ import { ErrorResultsComponent } from './error-results/error-results.component';
 import { CommonDisplayDataModule } from '../common-display-data/common-display-data.module';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { BarChartResultsComponent } from './bar-chart-results/bar-chart-results.component';
 
 // -------------- Aux functions --------------
 
@@ -22,6 +23,7 @@ import { RouterModule } from '@angular/router';
     ResultsComponent,
     JsonResultsComponent,
     ErrorResultsComponent,
+    BarChartResultsComponent,
   ],
   imports: [
     RouterModule,

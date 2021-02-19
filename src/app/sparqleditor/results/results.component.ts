@@ -16,7 +16,7 @@ import { TabsetComponent } from 'ngx-bootstrap/tabs';
 })
 export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChecked {
   @ViewChild('resultsTab', { static: false })
-  resultsTab: TabsetComponent;
+  // resultsTab: TabsetComponent;
   activeTab: string;
 
   data: any = null;
@@ -33,28 +33,28 @@ export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChec
   // Set default values after load the view
   ngAfterViewInit(): void {
     this.activeTab = 'table';
-    if (!!this.resultsTab) {
-      if (!this.data) {
-        this.resultsTab.tabs[0].active = true;
-      }
-    }
+    // if (!!this.resultsTab) {
+    //   if (!this.data) {
+    //     this.resultsTab.tabs[0].active = true;
+    //   }
+    // }
   }
 
   // Set values when load the view
   ngOnChanges(changes: SimpleChanges) {
     // this.doSomething(changes.categoryId.currentValue);
-    if (!!this.resultsTab) {
-      if (!!this.errorMessage || !this.data) {
-        this.resultsTab.tabs[0].active = true;
-        this.resultsTab.tabs.forEach((tab) => {
-          tab.disabled = true;
-        });
-      } else {
-        // _TODO: Enable tabs depending of the data
-        this.resultsTab.tabs[0].disabled = false;
-        this.resultsTab.tabs[1].disabled = false;
-      }
-    }
+    // if (!!this.resultsTab) {
+    //   if (!!this.errorMessage || !this.data) {
+    //     this.resultsTab.tabs[0].active = true;
+    //     this.resultsTab.tabs.forEach((tab) => {
+    //       tab.disabled = true;
+    //     });
+    //   } else {
+    //     // _TODO: Enable tabs depending of the data
+    //     this.resultsTab.tabs[0].disabled = false;
+    //     this.resultsTab.tabs[1].disabled = false;
+    //   }
+    // }
   }
 
   /**
