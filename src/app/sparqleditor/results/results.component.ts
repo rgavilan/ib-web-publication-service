@@ -65,7 +65,10 @@ export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChec
    * @param {string} tab
    * @memberof ResultsComponent
    */
-  changeTab(tab: string) {
-    this.activeTab = tab;
+  changeTab(tab: string, disabled: boolean) {
+    if (!disabled) {
+      this.activeTab = tab;
+    }
+
   }
 }
