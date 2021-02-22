@@ -2,7 +2,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { TestingHelper } from 'src/app/_helpers/testing.spec';
 
 import { ResultsComponent } from './results.component';
 
@@ -28,8 +27,13 @@ describe('ResultsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should change tab selected', () => {
-    component.changeTab('table', true);
+  it('should change tab selected if tab is enabled', () => {
+    component.changeTab('scientis', false);
+    expect(component.activeTab).toBe('scientis');
+  });
+
+  it('should not change tab selected if tab is disabled', () => {
+    component.changeTab('scientis', true);
     expect(component.activeTab).toBe('table');
   });
 });
