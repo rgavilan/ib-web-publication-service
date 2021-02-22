@@ -35,6 +35,7 @@ export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChec
     this.cd.detectChanges();
     this.activeTab = 'table';
   }
+
   // Set default values after load the view
   ngAfterViewInit(): void {
 
@@ -90,7 +91,9 @@ export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChec
       var firstResult = this.data.results.bindings[0];
 
       if (this.isText(firstResult[this.data.head.vars[0]]) || this.isText(firstResult[this.data.head.vars[1]])) {
-        if (this.isText(firstResult[this.data.head.vars[0]]) || this.isText(firstResult[this.data.head.vars[1]])) {
+        if (this.isText(firstResult[this.data.head.vars[0]]) && this.isNumeric(firstResult[this.data.head.vars[1]])) {
+          this.activeCharts = true;
+        } else if (this.isText(firstResult[this.data.head.vars[1]]) && this.isNumeric(firstResult[this.data.head.vars[0]])) {
           this.activeCharts = true;
         }
       }
