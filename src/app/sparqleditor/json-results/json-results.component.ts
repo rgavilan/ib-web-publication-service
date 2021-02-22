@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-json-results',
   templateUrl: './json-results.component.html'
 })
-export class JsonResultsComponent implements OnInit {
+export class JsonResultsComponent implements OnInit, AfterViewChecked {
   _data; // private property _data
   _dataToShow;
 
@@ -18,7 +18,12 @@ export class JsonResultsComponent implements OnInit {
     this._data = val;
   }
 
-  constructor() { }
+  ngAfterViewChecked() {
+    /* Looks for changes on this component and its children, after the wizardSteps changed */
+    this.cd.detectChanges();
+  }
+
+  constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }
