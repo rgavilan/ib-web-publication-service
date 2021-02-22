@@ -29,7 +29,7 @@ describe('ResultsComponent', () => {
   });
 
   it('should change tab selected', () => {
-    component.changeTab('scientis');
-    expect(component.activeTab).toBe('scientis');
+    component.changeTab('table', true);
+    expect(component.activeTab).toBe('table');
   });
 });
