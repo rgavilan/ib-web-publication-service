@@ -13,10 +13,12 @@ jobs:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
       - name: npm install
         run: npm install
-      - name: ng test
-        run: npm run test -- --karmaConfig=karma.ci.conf.js --watch=false --code-coverage
-      - name: Pre Analyze
-        run: npm install -g sonarqube-scanner
+      # - name: Build
+      #   run: npm run build -- --baseHref=/ --configuration=production --prod
+      # - name: Test
+      #   run: npm run test -- --karmaConfig=karma.ci.conf.js --watch=false --code-coverage
+      # - name: Pre Analyze
+      #   run: npm install -g sonarqube-scanner
       - name: Analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
