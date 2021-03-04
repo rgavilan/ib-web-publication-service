@@ -11,7 +11,7 @@ on:
 env:
   DOCKER_IMAGE: herculescrue/web-publication-service
   ARTIFACT_PATH: './website.tar.gz'
-  DOWNLOAD_ARTIFACT_PATH: docker-build/website.tar.gz
+  DOWNLOAD_ARTIFACT_PATH: docker-build
 
 jobs:
   build:
