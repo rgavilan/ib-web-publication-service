@@ -10,7 +10,7 @@ on:
 
 env:
   DOCKER_IMAGE: herculescrue/web-publication-service
-  ARTIFACT_PATH: website.tar.gz
+  ARTIFACT_PATH: '.'
   DOWNLOAD_ARTIFACT_PATH: docker-build/website.tar.gz
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
       - uses: actions/setup-node@v2
         with:
-          node-version: '12'
+          node-version: '12.18'
       - name: npm install
         run: npm install
       - name: Build
