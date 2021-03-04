@@ -10,29 +10,25 @@ on:
 
 env:
   DOCKER_IMAGE: herculescrue/web-publication-service
-  ARTIFACT_PATH: dist/website.tar.gz
+  ARTIFACT_PATH: website.tar.gz
   DOWNLOAD_ARTIFACT_PATH: docker-build/website.tar.gz
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: node:12.18
 
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
-
-      - name: npm install
-        run: npm install
-
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
       - name: Build
         run: npm run build -- --baseHref=/ --configuration=production --prod
-      
       - name: Create artifact
         working-directory: dist
-        run: tar -zcvf website.tar.gz .
-
+        run: tar -zcvf ../website.tar.gz .
       - name: Archive artifact
         uses: actions/upload-artifact@v2
         with:
